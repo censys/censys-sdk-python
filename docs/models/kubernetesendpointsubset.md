@@ -1,0 +1,9 @@
+# KubernetesEndpointSubset
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `addresses`                                                                                                  | List[[models.KubernetesEndpointSubsetEndpointAddress](../models/kubernetesendpointsubsetendpointaddress.md)] | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `ports`                                                                                                      | List[[models.KubernetesEndpointSubsetPort](../models/kubernetesendpointsubsetport.md)]                       | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

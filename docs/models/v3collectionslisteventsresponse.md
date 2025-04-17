@@ -1,0 +1,9 @@
+# V3CollectionsListEventsResponse
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `headers`                                                                                                | Dict[str, List[*str*]]                                                                                   | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `result`                                                                                                 | [models.ResponseEnvelopeCollectionEventsResponse](../models/responseenvelopecollectioneventsresponse.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

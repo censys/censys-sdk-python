@@ -1,0 +1,12 @@
+# Ser2Net
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `device`                                                                         | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `os`                                                                             | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `serial_parameters`                                                              | [Optional[models.Ser2NetSerialParameters]](../models/ser2netserialparameters.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `software`                                                                       | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `software_version`                                                               | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |

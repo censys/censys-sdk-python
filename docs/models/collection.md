@@ -1,0 +1,17 @@
+# Collection
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `added_assets_24_hours`                                              | *int*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `create_time`                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `description`                                                        | *str*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `id`                                                                 | *str*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `name`                                                               | *str*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `query`                                                              | *str*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `removed_assets_24_hours`                                            | *int*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `status`                                                             | [models.CollectionStatus](../models/collectionstatus.md)             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `status_reason`                                                      | [Nullable[models.StatusReason]](../models/statusreason.md)           | :heavy_check_mark:                                                   | N/A                                                                  |
+| `total_assets`                                                       | *int*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |

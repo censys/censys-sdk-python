@@ -1,0 +1,14 @@
+# Murmur
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `crypt_setup`                                                            | [Optional[models.CryptSetup]](../models/cryptsetup.md)                   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `murmur_messages`                                                        | List[[models.MurmurMessage](../models/murmurmessage.md)]                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `reject`                                                                 | [Optional[models.Reject]](../models/reject.md)                           | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `server_config`                                                          | [Optional[models.ServerConfig]](../models/serverconfig.md)               | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `server_sync`                                                            | [Optional[models.ServerSync]](../models/serversync.md)                   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `text_messages`                                                          | List[[models.TextMessage](../models/textmessage.md)]                     | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `version`                                                                | [Optional[models.MurmurMurmurVersion]](../models/murmurmurmurversion.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

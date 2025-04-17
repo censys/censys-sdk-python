@@ -1,0 +1,14 @@
+# SnmpSystem
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `contact`                                                              | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | 1.3.6.1.2.1.1.4 - Contact info                                         |
+| `desc`                                                                 | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | 1.3.6.1.2.1.1.1 - Description of entity                                |
+| `init_time`                                                            | *Optional[int]*                                                        | :heavy_minus_sign:                                                     | 1.3.6.1.2.1.1.3 - 1/100ths of sec                                      |
+| `location`                                                             | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | 1.3.6.1.2.1.1.6 - Physical location                                    |
+| `name`                                                                 | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | 1.3.6.1.2.1.1.5 - Name, usually FQDN                                   |
+| `object_id`                                                            | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | 1.3.6.1.2.1.1.2 - Vendor ID                                            |
+| `services`                                                             | [Optional[models.SnmpSystemServices]](../models/snmpsystemservices.md) | :heavy_minus_sign:                                                     | N/A                                                                    |

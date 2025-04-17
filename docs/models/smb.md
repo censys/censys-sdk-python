@@ -1,0 +1,16 @@
+# Smb
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `group_name`                                                           | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | Default group name                                                     |
+| `has_ntlm`                                                             | *Optional[bool]*                                                       | :heavy_minus_sign:                                                     | Server supports the NTLM authentication method                         |
+| `native_os`                                                            | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | Server-identified operating system                                     |
+| `negotiation_log`                                                      | [Optional[models.SmbNegotiationLog]](../models/smbnegotiationlog.md)   | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `ntlm`                                                                 | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | Native LAN manager                                                     |
+| `session_setup_log`                                                    | [Optional[models.SmbSessionSetupLog]](../models/smbsessionsetuplog.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `smb_capabilities`                                                     | [Optional[models.SmbSmbCapabilities]](../models/smbsmbcapabilities.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `smb_version`                                                          | [Optional[models.SmbSmbVersions]](../models/smbsmbversions.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `smbv1_support`                                                        | *Optional[bool]*                                                       | :heavy_minus_sign:                                                     | N/A                                                                    |

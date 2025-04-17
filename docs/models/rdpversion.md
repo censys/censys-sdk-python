@@ -1,0 +1,10 @@
+# RdpVersion
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `major`                                                                                 | *Optional[int]*                                                                         | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `minor`                                                                                 | *Optional[int]*                                                                         | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `raw`                                                                                   | *Optional[str]*                                                                         | :heavy_minus_sign:                                                                      | Raw Version Response, Major version is stored in upper 2 bytes, minor in lower 2 bytes. |

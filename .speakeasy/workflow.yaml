@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    converge-source:
+        inputs:
+            - location: https://github.com/censys/censys-sdk-openapi/releases/latest/download/openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/censys/censys/converge-source
+targets:
+    censys-sdk-python:
+        target: python
+        source: converge-source
+        publish:
+            pypi:
+                token: $pypi_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/censys/censys/converge-source-python-code-samples
+            labelOverride:
+                fixedValue: Python (SDK)
+            blocking: false

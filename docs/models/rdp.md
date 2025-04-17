@@ -1,0 +1,13 @@
+# Rdp
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `certificate_info`                                                       | [Optional[models.RdpCertificateInfo]](../models/rdpcertificateinfo.md)   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `connect_response`                                                       | [Optional[models.RdpConnectResponse]](../models/rdpconnectresponse.md)   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `protocol_flags`                                                         | [Optional[models.RdpProtocolFlags]](../models/rdpprotocolflags.md)       | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `selected_security_protocol`                                             | [Optional[models.RdpSecurityProtocol]](../models/rdpsecurityprotocol.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `version`                                                                | [Optional[models.RdpVersion]](../models/rdpversion.md)                   | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `x224_cc_pdu_srcref`                                                     | *Optional[int]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |

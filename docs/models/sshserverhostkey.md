@@ -1,0 +1,13 @@
+# SSHServerHostKey
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `certkey_public_key`                                                             | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `dsa_public_key`                                                                 | [Optional[models.DSACryptographicKey]](../models/dsacryptographickey.md)         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `ecdsa_public_key`                                                               | [Optional[models.ECDSACryptographicKey]](../models/ecdsacryptographickey.md)     | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `ed25519_public_key`                                                             | [Optional[models.Ed25519CryptographicKey]](../models/ed25519cryptographickey.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `fingerprint_sha256`                                                             | *Optional[str]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `rsa_public_key`                                                                 | [Optional[models.RSACryptographicKey]](../models/rsacryptographickey.md)         | :heavy_minus_sign:                                                               | N/A                                                                              |

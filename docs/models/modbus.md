@@ -1,0 +1,11 @@
+# Modbus
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `exception_response`                                                             | [Optional[models.ModbusExceptionResponse]](../models/modbusexceptionresponse.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `function`                                                                       | *Optional[int]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `mei_response`                                                                   | [Optional[models.ModbusMEIResponse]](../models/modbusmeiresponse.md)             | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `unit_id`                                                                        | *Optional[int]*                                                                  | :heavy_minus_sign:                                                               | N/A                                                                              |
