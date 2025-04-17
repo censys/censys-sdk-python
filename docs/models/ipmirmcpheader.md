@@ -1,0 +1,10 @@
+# IpmiRMCPHeader
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `message_class`                                                                        | [Optional[models.IpmiRMCPHeaderMessageClass]](../models/ipmirmcpheadermessageclass.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `sequence_number`                                                                      | *Optional[int]*                                                                        | :heavy_minus_sign:                                                                     | Sequence number of this packet in the session.                                         |
+| `version`                                                                              | *Optional[int]*                                                                        | :heavy_minus_sign:                                                                     | The version. This scanner supports version 6.                                          |

@@ -1,0 +1,16 @@
+# Pptp
+
+
+## Fields
+
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `bearer_message`                                                   | [Optional[models.PptpResponseInfo]](../models/pptpresponseinfo.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `error_message`                                                    | [Optional[models.PptpResponseInfo]](../models/pptpresponseinfo.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `firmware`                                                         | [Optional[models.PptpVersion]](../models/pptpversion.md)           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `framing_message`                                                  | [Optional[models.PptpResponseInfo]](../models/pptpresponseinfo.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `hostname`                                                         | *Optional[str]*                                                    | :heavy_minus_sign:                                                 | N/A                                                                |
+| `maximum_channels`                                                 | *Optional[int]*                                                    | :heavy_minus_sign:                                                 | N/A                                                                |
+| `protocol`                                                         | [Optional[models.PptpVersion]](../models/pptpversion.md)           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `result_message`                                                   | [Optional[models.PptpResponseInfo]](../models/pptpresponseinfo.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `vendor`                                                           | *Optional[str]*                                                    | :heavy_minus_sign:                                                 | N/A                                                                |

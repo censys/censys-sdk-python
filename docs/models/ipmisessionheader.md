@@ -1,0 +1,11 @@
+# IpmiSessionHeader
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `auth_code`                                                                          | *Optional[str]*                                                                      | :heavy_minus_sign:                                                                   | The 16-byte authentication code; not present if auth_type is None.                   |
+| `auth_type`                                                                          | [Optional[models.IpmiSessionHeaderAuthType]](../models/ipmisessionheaderauthtype.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `session_id`                                                                         | *Optional[int]*                                                                      | :heavy_minus_sign:                                                                   | The ID of this sessiod.                                                              |
+| `session_sequence_number`                                                            | *Optional[int]*                                                                      | :heavy_minus_sign:                                                                   | The session sequence number of this packet in the session                            |

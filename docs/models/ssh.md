@@ -1,0 +1,12 @@
+# SSH
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `algorithm_selection`                                                        | [Optional[models.SSHAlgorithmSelection]](../models/sshalgorithmselection.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `endpoint_id`                                                                | [Optional[models.SSHEndpointID]](../models/sshendpointid.md)                 | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `hassh_fingerprint`                                                          | *Optional[str]*                                                              | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `kex_init_message`                                                           | [Optional[models.SSHKexInitMessage]](../models/sshkexinitmessage.md)         | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `server_host_key`                                                            | [Optional[models.SSHServerHostKey]](../models/sshserverhostkey.md)           | :heavy_minus_sign:                                                           | N/A                                                                          |

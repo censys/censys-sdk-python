@@ -1,0 +1,9 @@
+# V3GlobaldataAssetCertificateListResponse
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `headers`                                                                                        | Dict[str, List[*str*]]                                                                           | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `result`                                                                                         | [models.ResponseEnvelopeListCertificateAsset](../models/responseenvelopelistcertificateasset.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

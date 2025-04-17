@@ -1,0 +1,9 @@
+# OracleDescriptor
+
+
+## Fields
+
+| Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `key`                                                                                                     | *Optional[str]*                                                                                           | :heavy_minus_sign:                                                                                        | The dot-delimited path to the parsed value from the error received when the initial handshake is refused. |
+| `value`                                                                                                   | *Optional[str]*                                                                                           | :heavy_minus_sign:                                                                                        | The parsed value from the error received when the initial handshake is refused.                           |

@@ -1,0 +1,11 @@
+# ElasticSearchSystemInfo
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `cluster_uuid`                                                                         | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `name`                                                                                 | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `tagline`                                                                              | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `version`                                                                              | [Optional[models.ElasticSearchSystemInfoVer]](../models/elasticsearchsysteminfover.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |

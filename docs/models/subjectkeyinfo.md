@@ -1,0 +1,13 @@
+# SubjectKeyInfo
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `dsa`                                                                        | [Optional[models.DsaPublicKey]](../models/dsapublickey.md)                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `ecdsa`                                                                      | [Optional[models.EcdsaPublicKey]](../models/ecdsapublickey.md)               | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `fingerprint_sha256`                                                         | *Optional[str]*                                                              | :heavy_minus_sign:                                                           | The SHA-256 digest of the certificate's DER-encoded SubjectPublicKeyInfo.    |
+| `key_algorithm`                                                              | [Optional[models.KeyAlgorithm]](../models/keyalgorithm.md)                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `rsa`                                                                        | [Optional[models.RsaPublicKey]](../models/rsapublickey.md)                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `unrecognized`                                                               | [Optional[models.UnrecognizedPublicKey]](../models/unrecognizedpublickey.md) | :heavy_minus_sign:                                                           | N/A                                                                          |

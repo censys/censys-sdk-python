@@ -1,0 +1,11 @@
+# CertificateRevocationRevocationInfo
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next_update`                                                                  | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `reason`                                                                       | [Optional[models.Reason]](../models/reason.md)                                 | :heavy_minus_sign:                                                             | An enumerated value indicating the issuer-supplied reason for the revocation.  |
+| `revocation_time`                                                              | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | The issuer-supplied timestamp indicating when the certificate was revoked.     |
+| `revoked`                                                                      | *Optional[bool]*                                                               | :heavy_minus_sign:                                                             | Whether the certificate has been revoked before its expiry date by the issuer. |

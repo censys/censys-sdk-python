@@ -1,0 +1,10 @@
+# MongodbBuildInfo
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `build_environment`                                                                                | [Optional[models.MongodbBuildInfoBuildEnvironment]](../models/mongodbbuildinfobuildenvironment.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `git_version`                                                                                      | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | Version of mongodb server                                                                          |
+| `version`                                                                                          | *Optional[str]*                                                                                    | :heavy_minus_sign:                                                                                 | Version of mongodb server                                                                          |

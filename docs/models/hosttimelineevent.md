@@ -1,0 +1,16 @@
+# HostTimelineEvent
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `endpoint_scanned`                                                     | [Optional[models.EndpointScanned]](../models/endpointscanned.md)       | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `event_time`                                                           | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `forward_dns_resolved`                                                 | [Optional[models.ForwardDNSResolved]](../models/forwarddnsresolved.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `jarm_scanned`                                                         | [Optional[models.JarmScanned]](../models/jarmscanned.md)               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `location_updated`                                                     | [Optional[models.LocationUpdated]](../models/locationupdated.md)       | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `reverse_dns_resolved`                                                 | [Optional[models.ReverseDNSResolved]](../models/reversednsresolved.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `route_updated`                                                        | [Optional[models.RouteUpdated]](../models/routeupdated.md)             | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `service_scanned`                                                      | [Optional[models.ServiceScanned]](../models/servicescanned.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `whois_updated`                                                        | [Optional[models.WhoisUpdated]](../models/whoisupdated.md)             | :heavy_minus_sign:                                                     | N/A                                                                    |

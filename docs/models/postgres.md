@@ -1,0 +1,10 @@
+# Postgres
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `protocol_error`                                                                        | Dict[str, *str*]                                                                        | :heavy_minus_sign:                                                                      | The error received in response to a StartupMessage with an unexpected protocol version. |
+| `startup_error`                                                                         | Dict[str, *str*]                                                                        | :heavy_minus_sign:                                                                      | The error received in response to a StartupMessage without providing the User field.    |
+| `supported_versions`                                                                    | *Optional[str]*                                                                         | :heavy_minus_sign:                                                                      | N/A                                                                                     |

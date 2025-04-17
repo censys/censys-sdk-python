@@ -1,0 +1,10 @@
+# IkeV1
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `accepted_proposal`                                                                      | *Optional[bool]*                                                                         | :heavy_minus_sign:                                                                       | Did the host accept our security proposal? When false, the host responded with an error. |
+| `notify_message_types`                                                                   | List[*int*]                                                                              | :heavy_minus_sign:                                                                       | Which types of NOTIFY messages did the host send us?                                     |
+| `vendor_ids`                                                                             | List[*str*]                                                                              | :heavy_minus_sign:                                                                       | The list of Vendor ID "extensions" the host claimed to support in its handshake          |
