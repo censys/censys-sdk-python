@@ -1,0 +1,18 @@
+# Vuln
+
+
+## Fields
+
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `confidence`                                                   | *Optional[float]*                                              | :heavy_minus_sign:                                             | N/A                                                            |
+| `cwes`                                                         | List[[models.Cwe](../models/cwe.md)]                           | :heavy_minus_sign:                                             | N/A                                                            |
+| `evidence`                                                     | List[[models.Evidence](../models/evidence.md)]                 | :heavy_minus_sign:                                             | N/A                                                            |
+| `id`                                                           | *Optional[str]*                                                | :heavy_minus_sign:                                             | N/A                                                            |
+| `kev`                                                          | List[[models.Kev](../models/kev.md)]                           | :heavy_minus_sign:                                             | N/A                                                            |
+| `metrics`                                                      | [Optional[models.Metrics]](../models/metrics.md)               | :heavy_minus_sign:                                             | N/A                                                            |
+| `name`                                                         | *Optional[str]*                                                | :heavy_minus_sign:                                             | N/A                                                            |
+| `risk_source`                                                  | [Optional[models.VulnRiskSource]](../models/vulnrisksource.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| `severity`                                                     | [Optional[models.VulnSeverity]](../models/vulnseverity.md)     | :heavy_minus_sign:                                             | N/A                                                            |
+| `source`                                                       | [Optional[models.VulnSource]](../models/vulnsource.md)         | :heavy_minus_sign:                                             | N/A                                                            |
+| `year`                                                         | *Optional[int]*                                                | :heavy_minus_sign:                                             | N/A                                                            |

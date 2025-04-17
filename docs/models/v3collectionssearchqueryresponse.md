@@ -1,0 +1,9 @@
+# V3CollectionsSearchQueryResponse
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `headers`                                                                                      | Dict[str, List[*str*]]                                                                         | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `result`                                                                                       | [models.ResponseEnvelopeSearchQueryResponse](../models/responseenvelopesearchqueryresponse.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

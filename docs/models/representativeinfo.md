@@ -1,0 +1,11 @@
+# RepresentativeInfo
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `excluded_ports`                                                                   | List[*int*]                                                                        | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `reason`                                                                           | [Optional[models.RepresentativeInfoReason]](../models/representativeinforeason.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `represented_ports`                                                                | List[*int*]                                                                        | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `sampled_port`                                                                     | *Optional[int]*                                                                    | :heavy_minus_sign:                                                                 | N/A                                                                                |

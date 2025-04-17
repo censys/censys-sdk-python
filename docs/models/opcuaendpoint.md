@@ -1,0 +1,15 @@
+# OpcUaEndpoint
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `endpoint_url`                                                         | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `security_level`                                                       | *Optional[int]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `security_mode`                                                        | *Optional[int]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `security_policy_uri`                                                  | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `serve_cert`                                                           | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `server`                                                               | [Optional[models.OpcUaDescription]](../models/opcuadescription.md)     | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `transport_profile_uri`                                                | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `user_identity_token`                                                  | List[[models.OpcUaUserTokenPolicy](../models/opcuausertokenpolicy.md)] | :heavy_minus_sign:                                                     | N/A                                                                    |

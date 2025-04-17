@@ -1,0 +1,39 @@
+speakeasyVersion: 1.533.0
+sources:
+    converge-source:
+        sourceNamespace: converge-source
+        sourceRevisionDigest: sha256:b41ce65159c062ae9db2aecd2a32f0ca232fe3a5c53fa75b17878c6b6efdf355
+        sourceBlobDigest: sha256:03b0187008b224da22ff009b0ade13d49d5dcb7b8896fad35616d67eb122bdb5
+        tags:
+            - latest
+            - 1.0.1
+targets:
+    censys-sdk-python:
+        source: converge-source
+        sourceNamespace: converge-source
+        sourceRevisionDigest: sha256:b41ce65159c062ae9db2aecd2a32f0ca232fe3a5c53fa75b17878c6b6efdf355
+        sourceBlobDigest: sha256:03b0187008b224da22ff009b0ade13d49d5dcb7b8896fad35616d67eb122bdb5
+        codeSamplesNamespace: converge-source-python-code-samples
+        codeSamplesRevisionDigest: sha256:082efd8e3747e47e0ce9e0650a710106c7463355fdc2e83da2b0fe0e091b005d
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        converge-source:
+            inputs:
+                - location: https://github.com/censys/censys-sdk-openapi/releases/latest/download/openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/censys/censys/converge-source
+    targets:
+        censys-sdk-python:
+            target: python
+            source: converge-source
+            publish:
+                pypi:
+                    token: $pypi_token
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/censys/censys/converge-source-python-code-samples
+                labelOverride:
+                    fixedValue: Python (SDK)
+                blocking: false

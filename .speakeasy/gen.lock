@@ -1,0 +1,1325 @@
+lockVersion: 2.0.0
+id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
+management:
+  docChecksum: 52da46172710e5dbb166fe5a9e0ce7c3
+  docVersion: 1.0.1
+  speakeasyVersion: 1.533.0
+  generationVersion: 2.578.0
+  releaseVersion: 0.3.0
+  configChecksum: 98ecab4430d7a96abebeae5b89f34ce1
+  repoURL: https://github.com/censys/censys-sdk-python-internal.git
+  installationURL: https://github.com/censys/censys-sdk-python-internal.git
+  published: true
+features:
+  python:
+    additionalDependencies: 1.0.0
+    constsAndDefaults: 1.0.5
+    core: 5.14.0
+    defaultEnabledRetries: 0.2.0
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.3.2
+    examples: 3.0.1
+    globalSecurity: 3.0.3
+    globalSecurityCallbacks: 1.0.0
+    globalSecurityFlattening: 1.0.0
+    globalServerURLs: 3.1.0
+    globals: 3.0.0
+    ignores: 3.0.1
+    methodArguments: 1.0.2
+    nameOverrides: 3.0.1
+    nullables: 1.0.1
+    responseFormat: 1.0.1
+    retries: 3.0.2
+    sdkHooks: 1.0.1
+generatedFiles:
+  - .gitattributes
+  - .python-version
+  - .vscode/settings.json
+  - USAGE.md
+  - docs/models/activemq.md
+  - docs/models/amqp.md
+  - docs/models/amqpprotocol.md
+  - docs/models/amqpversion.md
+  - docs/models/analyticscapabilities.md
+  - docs/models/anyconnect.md
+  - docs/models/assetchangetypes.md
+  - docs/models/attackcomplexity.md
+  - docs/models/attackrequirements.md
+  - docs/models/attackvector.md
+  - docs/models/attribute.md
+  - docs/models/auth.md
+  - docs/models/authorityinfoaccess.md
+  - docs/models/automatable.md
+  - docs/models/autonomoussystem.md
+  - docs/models/availability.md
+  - docs/models/bacnet.md
+  - docs/models/basicconstraints.md
+  - docs/models/cabforganizationid.md
+  - docs/models/capabilities.md
+  - docs/models/certificate.md
+  - docs/models/certificateasset.md
+  - docs/models/certificateextensions.md
+  - docs/models/certificateparsed.md
+  - docs/models/certificatepolicy.md
+  - docs/models/certificaterevocation.md
+  - docs/models/certificaterevocationrevocationinfo.md
+  - docs/models/changetype.md
+  - docs/models/changetypes.md
+  - docs/models/checkpointtopology.md
+  - docs/models/chromecast.md
+  - docs/models/chromecastapplication.md
+  - docs/models/chromecastnamespace.md
+  - docs/models/chromecastvolume.md
+  - docs/models/chromedevtools.md
+  - docs/models/chromedevtoolstarget.md
+  - docs/models/ciscoipsla.md
+  - docs/models/ciscoipslahandshake.md
+  - docs/models/ciscoipslahandshakeheader.md
+  - docs/models/ciscoipslahandshakemessage.md
+  - docs/models/ciscoipslameasureresponse.md
+  - docs/models/cmore.md
+  - docs/models/coap.md
+  - docs/models/cobaltstrike.md
+  - docs/models/cobaltstrikeconfig.md
+  - docs/models/cobaltstrikehttpconfig.md
+  - docs/models/cobaltstrikepostex.md
+  - docs/models/collection.md
+  - docs/models/collectionevent.md
+  - docs/models/collectioneventsresponse.md
+  - docs/models/collectionstatus.md
+  - docs/models/confidentiality.md
+  - docs/models/connection.md
+  - docs/models/contact.md
+  - docs/models/coordinates.md
+  - docs/models/cpe.md
+  - docs/models/cpelifecycle.md
+  - docs/models/crestroncp3.md
+  - docs/models/crudcreateinputbody.md
+  - docs/models/crudupdateinputbody.md
+  - docs/models/cryptsetup.md
+  - docs/models/ct.md
+  - docs/models/ctrecord.md
+  - docs/models/cvss.md
+  - docs/models/cvsscomponents.md
+  - docs/models/cvssv4.md
+  - docs/models/cvssv4components.md
+  - docs/models/cvssv4componentsattackcomplexity.md
+  - docs/models/cvssv4componentsattackvector.md
+  - docs/models/cvssv4componentsavailability.md
+  - docs/models/cvssv4componentsconfidentiality.md
+  - docs/models/cvssv4componentsintegrity.md
+  - docs/models/cvssv4componentsprivilegesrequired.md
+  - docs/models/cvssv4componentsuserinteraction.md
+  - docs/models/cwe.md
+  - docs/models/cwmp.md
+  - docs/models/darkcomet.md
+  - docs/models/darkgate.md
+  - docs/models/darkgatefile.md
+  - docs/models/dcerpc.md
+  - docs/models/dcerpcendpoint.md
+  - docs/models/desktopinfo.md
+  - docs/models/devicecapabilities.md
+  - docs/models/deviceiocapabilities.md
+  - docs/models/dhcpdiscover.md
+  - docs/models/dhcpdiscoverdeviceinfo.md
+  - docs/models/dhcpdiscoveripaddress.md
+  - docs/models/dhcpdiscoverresponseparams.md
+  - docs/models/distinguishedname.md
+  - docs/models/dnp3.md
+  - docs/models/dns.md
+  - docs/models/dnsedns.md
+  - docs/models/dnsresourcerecord.md
+  - docs/models/dnsresourcerecordtype.md
+  - docs/models/dsacryptographickey.md
+  - docs/models/dsapublickey.md
+  - docs/models/dtls.md
+  - docs/models/dvrip.md
+  - docs/models/dvrippartitioncapability.md
+  - docs/models/ecdsacryptographickey.md
+  - docs/models/ecdsapublickey.md
+  - docs/models/ed25519cryptographickey.md
+  - docs/models/edipartyname.md
+  - docs/models/eip.md
+  - docs/models/eipidentity.md
+  - docs/models/eipinterface.md
+  - docs/models/eipservice.md
+  - docs/models/elasticsearch.md
+  - docs/models/elasticsearchresultsnodeinfo.md
+  - docs/models/elasticsearchresultsnodeinfoclustercombinedinfo.md
+  - docs/models/elasticsearchresultsnodeinfoclustercombinedinfofilesystem.md
+  - docs/models/elasticsearchresultsnodeinfoclustercombinedinfoindices.md
+  - docs/models/elasticsearchresultsnodeinfoclustercombinedinfoindicesdocs.md
+  - docs/models/elasticsearchresultsnodeinfoclustercombinedinfoindicesstore.md
+  - docs/models/elasticsearchresultsnodeinfonodes.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedata.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedatajvm.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedatamodules.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedatanodesettings.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedatanodesettingsnode.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedatanodesettingsnodeattr.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedatanodesettingsnodeattrml.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedataos.md
+  - docs/models/elasticsearchresultsnodeinfonodesnodedatathreadpool.md
+  - docs/models/elasticsearchsysteminfo.md
+  - docs/models/elasticsearchsysteminfover.md
+  - docs/models/elffile.md
+  - docs/models/endpointscan.md
+  - docs/models/endpointscanned.md
+  - docs/models/endpointscanstate.md
+  - docs/models/endpointscantransportprotocol.md
+  - docs/models/epmd.md
+  - docs/models/epss.md
+  - docs/models/errordetail.md
+  - docs/models/errormodel.md
+  - docs/models/etcd.md
+  - docs/models/etcdv2.md
+  - docs/models/etcdv3.md
+  - docs/models/etcdversion.md
+  - docs/models/ethereum.md
+  - docs/models/ethereumversion.md
+  - docs/models/eventassetchange.md
+  - docs/models/eventscapabilities.md
+  - docs/models/eventstatuschange.md
+  - docs/models/evidence.md
+  - docs/models/export.md
+  - docs/models/exportlist.md
+  - docs/models/extendedkeyusage.md
+  - docs/models/extension.md
+  - docs/models/fielddiff.md
+  - docs/models/floatvalue.md
+  - docs/models/fortigate.md
+  - docs/models/forwarddnsresolved.md
+  - docs/models/fox.md
+  - docs/models/ftp.md
+  - docs/models/gearman.md
+  - docs/models/generalnames.md
+  - docs/models/generalsubtreeip.md
+  - docs/models/graphql.md
+  - docs/models/hidvertx.md
+  - docs/models/hikvision.md
+  - docs/models/hikvisionplatform.md
+  - docs/models/hikvisionplatformlibrary.md
+  - docs/models/host.md
+  - docs/models/hostasset.md
+  - docs/models/hostdns.md
+  - docs/models/hostdnsforwardresolution.md
+  - docs/models/hostdnsreverseresolution.md
+  - docs/models/hosttimeline.md
+  - docs/models/hosttimelineevent.md
+  - docs/models/hosttimelineeventasset.md
+  - docs/models/http.md
+  - docs/models/httpfavicon.md
+  - docs/models/httprepeatedheaders.md
+  - docs/models/ibmnje.md
+  - docs/models/ike.md
+  - docs/models/ikev1.md
+  - docs/models/ikev2.md
+  - docs/models/imagecapabilities.md
+  - docs/models/imap.md
+  - docs/models/integrity.md
+  - docs/models/internal/globals.md
+  - docs/models/iota.md
+  - docs/models/ipmi.md
+  - docs/models/ipmicapabilities.md
+  - docs/models/ipmicapabilitiesauthstatus.md
+  - docs/models/ipmicapabilitiescompletioncode.md
+  - docs/models/ipmicapabilitiesextendedcapabilities.md
+  - docs/models/ipmicapabilitiessupportedauthtypes.md
+  - docs/models/ipmicommandpayload.md
+  - docs/models/ipmicommandpayloadcommandnumber.md
+  - docs/models/ipmicommandpayloadpackednetfn.md
+  - docs/models/ipmicommandpayloadpackednetfnlogicalunitnumber.md
+  - docs/models/ipmicommandpayloadpackednetfnnetfn.md
+  - docs/models/ipmirmcpheader.md
+  - docs/models/ipmirmcpheadermessageclass.md
+  - docs/models/ipmisessionheader.md
+  - docs/models/ipmisessionheaderauthtype.md
+  - docs/models/ipp.md
+  - docs/models/ippattribute.md
+  - docs/models/iscsi.md
+  - docs/models/ivantiavalanche.md
+  - docs/models/ja4tscanscan.md
+  - docs/models/jarmscan.md
+  - docs/models/jarmscanned.md
+  - docs/models/jarmscantransportprotocol.md
+  - docs/models/kev.md
+  - docs/models/kevsource.md
+  - docs/models/keyalgorithm.md
+  - docs/models/keyusage.md
+  - docs/models/krpc.md
+  - docs/models/kubernetes.md
+  - docs/models/kubernetesendpoint.md
+  - docs/models/kubernetesendpointsubset.md
+  - docs/models/kubernetesendpointsubsetendpointaddress.md
+  - docs/models/kubernetesendpointsubsetport.md
+  - docs/models/kubernetesnode.md
+  - docs/models/kubernetesnodenodeaddress.md
+  - docs/models/kubernetesrole.md
+  - docs/models/kubernetesrolerule.md
+  - docs/models/kubernetesversioninfo.md
+  - docs/models/l2tp.md
+  - docs/models/l2tpattributevalues.md
+  - docs/models/l2tpsccrp.md
+  - docs/models/l2tpstopccn.md
+  - docs/models/label.md
+  - docs/models/labelsource.md
+  - docs/models/ldap.md
+  - docs/models/ldapattribute.md
+  - docs/models/listcollectionsresponsev1.md
+  - docs/models/location.md
+  - docs/models/locationupdated.md
+  - docs/models/lpd.md
+  - docs/models/lpdmessage.md
+  - docs/models/mdns.md
+  - docs/models/mdnsresult.md
+  - docs/models/mediacapabilities.md
+  - docs/models/mediaprofile.md
+  - docs/models/mediastreaming.md
+  - docs/models/members.md
+  - docs/models/memcached.md
+  - docs/models/metrics.md
+  - docs/models/minecraft.md
+  - docs/models/mms.md
+  - docs/models/modbus.md
+  - docs/models/modbusexceptionresponse.md
+  - docs/models/modbusmeiresponse.md
+  - docs/models/monerop2p.md
+  - docs/models/monerop2pentry.md
+  - docs/models/monerop2ppayload.md
+  - docs/models/monerop2ppingresponse.md
+  - docs/models/monerop2presponseheader.md
+  - docs/models/mongodb.md
+  - docs/models/mongodbbuildinfo.md
+  - docs/models/mongodbbuildinfobuildenvironment.md
+  - docs/models/mongodbismaster.md
+  - docs/models/mqtt.md
+  - docs/models/mqttconnectionackreturn.md
+  - docs/models/mqttsubscriptionackreturn.md
+  - docs/models/mssql.md
+  - docs/models/mssqlpreloginoptions.md
+  - docs/models/mssqlpreloginoptionsserverversion.md
+  - docs/models/murmur.md
+  - docs/models/murmurmessage.md
+  - docs/models/murmurmessagemurmurheader.md
+  - docs/models/murmurmurmurversion.md
+  - docs/models/mysql.md
+  - docs/models/nameconstraints.md
+  - docs/models/natsio.md
+  - docs/models/nbd.md
+  - docs/models/network.md
+  - docs/models/networkcapabilities.md
+  - docs/models/newstatus.md
+  - docs/models/nfsmountd.md
+  - docs/models/nmea.md
+  - docs/models/nmeanmeamessage.md
+  - docs/models/nodeinfov0.md
+  - docs/models/nodeinfov1.md
+  - docs/models/nodeinfov2.md
+  - docs/models/noticereference.md
+  - docs/models/ntlminfo.md
+  - docs/models/ntp.md
+  - docs/models/ntpntpheader.md
+  - docs/models/ntrip.md
+  - docs/models/oldstatus.md
+  - docs/models/ollama.md
+  - docs/models/ollamamodel.md
+  - docs/models/onc.md
+  - docs/models/onvif.md
+  - docs/models/onvifhostname.md
+  - docs/models/onvifservice.md
+  - docs/models/opcua.md
+  - docs/models/opcuadescription.md
+  - docs/models/opcuaendpoint.md
+  - docs/models/opcualocalizedtext.md
+  - docs/models/opcuausertokenpolicy.md
+  - docs/models/openvpn.md
+  - docs/models/oracle.md
+  - docs/models/oracledescriptor.md
+  - docs/models/organization.md
+  - docs/models/othername.md
+  - docs/models/pantiltzoomcapabilities.md
+  - docs/models/parsestatus.md
+  - docs/models/pcanywhere.md
+  - docs/models/pcanywherestatus.md
+  - docs/models/peer.md
+  - docs/models/pgbouncer.md
+  - docs/models/pgbouncerstartupcapabilities.md
+  - docs/models/pixelformat.md
+  - docs/models/plexmediaserver.md
+  - docs/models/pop3.md
+  - docs/models/port.md
+  - docs/models/portmap.md
+  - docs/models/portmapv2entry.md
+  - docs/models/portmapv3entry.md
+  - docs/models/postgres.md
+  - docs/models/pprof.md
+  - docs/models/pptp.md
+  - docs/models/pptpresponseinfo.md
+  - docs/models/pptpversion.md
+  - docs/models/privilegesrequired.md
+  - docs/models/prometheus.md
+  - docs/models/prometheusmetricfamily.md
+  - docs/models/prometheusresponse.md
+  - docs/models/prometheusresponseactivetarget.md
+  - docs/models/prometheusresponseactivetargetdiscoveredlabels.md
+  - docs/models/prometheusresponseactivetargetlabels.md
+  - docs/models/prometheusresponsedroppedtarget.md
+  - docs/models/prometheusresponseprometheusversion.md
+  - docs/models/prometheustarget.md
+  - docs/models/providerurgency.md
+  - docs/models/qcstatements.md
+  - docs/models/qcstatementsmonetaryvalue.md
+  - docs/models/qcstatementsparsedstatements.md
+  - docs/models/qcstatementspdslocation.md
+  - docs/models/qcstatementsqclegislation.md
+  - docs/models/qcstatementsqctype.md
+  - docs/models/rcode.md
+  - docs/models/rdate.md
+  - docs/models/rdp.md
+  - docs/models/rdpcertificateinfo.md
+  - docs/models/rdpconnectresponse.md
+  - docs/models/rdpdomainparameters.md
+  - docs/models/rdpembeddedrsacert.md
+  - docs/models/rdpprotocolflags.md
+  - docs/models/rdpsecurityprotocol.md
+  - docs/models/rdpversion.md
+  - docs/models/realport.md
+  - docs/models/reason.md
+  - docs/models/recordingcapabilities.md
+  - docs/models/recordtype.md
+  - docs/models/recovery.md
+  - docs/models/redis.md
+  - docs/models/redisrawoutput.md
+  - docs/models/redlioncrimson.md
+  - docs/models/redlionweb.md
+  - docs/models/reject.md
+  - docs/models/rejecttype.md
+  - docs/models/replaycapabilities.md
+  - docs/models/representativeinfo.md
+  - docs/models/representativeinforeason.md
+  - docs/models/responseenvelopecertificateasset.md
+  - docs/models/responseenvelopecollection.md
+  - docs/models/responseenvelopecollectioneventsresponse.md
+  - docs/models/responseenvelopehostasset.md
+  - docs/models/responseenvelopehosttimeline.md
+  - docs/models/responseenvelopelistcertificateasset.md
+  - docs/models/responseenvelopelistcollectionsresponsev1.md
+  - docs/models/responseenvelopelisthostasset.md
+  - docs/models/responseenvelopelistwebpropertyasset.md
+  - docs/models/responseenvelopesearchaggregateresponse.md
+  - docs/models/responseenvelopesearchqueryresponse.md
+  - docs/models/responseenvelopewebpropertyasset.md
+  - docs/models/reversednsresolved.md
+  - docs/models/rifatron.md
+  - docs/models/ripple.md
+  - docs/models/rippleclioresults.md
+  - docs/models/rippledpublicresults.md
+  - docs/models/ripplepeerresults.md
+  - docs/models/risk.md
+  - docs/models/risksource.md
+  - docs/models/risksource1.md
+  - docs/models/rlogin.md
+  - docs/models/rocketmq.md
+  - docs/models/rocketmqclusterinfo.md
+  - docs/models/rocketmqresponseheader.md
+  - docs/models/rocketmqtopiclist.md
+  - docs/models/rootstore.md
+  - docs/models/rootstorechain.md
+  - docs/models/routeupdated.md
+  - docs/models/routing.md
+  - docs/models/rsacryptographickey.md
+  - docs/models/rsapublickey.md
+  - docs/models/rtsp.md
+  - docs/models/s7.md
+  - docs/models/safety.md
+  - docs/models/saprouter.md
+  - docs/models/saprouterclientinfo.md
+  - docs/models/saprouterrouterinfo.md
+  - docs/models/saprouterrouterversioninfo.md
+  - docs/models/scadaview.md
+  - docs/models/scope.md
+  - docs/models/scpi.md
+  - docs/models/screenshot.md
+  - docs/models/searchaggregateinputbody.md
+  - docs/models/searchaggregateresponse.md
+  - docs/models/searchaggregateresponsebucket.md
+  - docs/models/searchcapabilities.md
+  - docs/models/searchqueryhit.md
+  - docs/models/searchqueryinputbody.md
+  - docs/models/searchqueryresponse.md
+  - docs/models/security.md
+  - docs/models/securitycapabilities.md
+  - docs/models/ser2net.md
+  - docs/models/ser2netserialparameters.md
+  - docs/models/serverconfig.md
+  - docs/models/serversync.md
+  - docs/models/servertype.md
+  - docs/models/service.md
+  - docs/models/servicescan.md
+  - docs/models/servicescanned.md
+  - docs/models/servicescantransportprotocol.md
+  - docs/models/servicetransportprotocol.md
+  - docs/models/sevendaystodie.md
+  - docs/models/severity.md
+  - docs/models/signature.md
+  - docs/models/signedcertificatetimestamp.md
+  - docs/models/signedcertificatetimestampsignature.md
+  - docs/models/sip.md
+  - docs/models/skinny.md
+  - docs/models/smb.md
+  - docs/models/smbheaderlog.md
+  - docs/models/smbnegotiationlog.md
+  - docs/models/smbsessionsetuplog.md
+  - docs/models/smbsmbcapabilities.md
+  - docs/models/smbsmbversions.md
+  - docs/models/smtp.md
+  - docs/models/snmp.md
+  - docs/models/snmpengine.md
+  - docs/models/snmpinterfaces.md
+  - docs/models/snmpphysical.md
+  - docs/models/snmpsystem.md
+  - docs/models/snmpsystemservices.md
+  - docs/models/socks.md
+  - docs/models/source.md
+  - docs/models/spice.md
+  - docs/models/ssdp.md
+  - docs/models/ssh.md
+  - docs/models/sshalgorithmselection.md
+  - docs/models/sshalgorithmselectiondirectionalgorithms.md
+  - docs/models/sshendpointid.md
+  - docs/models/sshkexinitmessage.md
+  - docs/models/sshserverhostkey.md
+  - docs/models/status.md
+  - docs/models/statuschangetypes.md
+  - docs/models/statusreason.md
+  - docs/models/steam.md
+  - docs/models/subjectkeyinfo.md
+  - docs/models/systemcapabilities.md
+  - docs/models/tacacsplus.md
+  - docs/models/target.md
+  - docs/models/teamviewer.md
+  - docs/models/telnet.md
+  - docs/models/textmessage.md
+  - docs/models/threat.md
+  - docs/models/threatactor.md
+  - docs/models/threatdetails.md
+  - docs/models/threatmalware.md
+  - docs/models/threatsource.md
+  - docs/models/tibia.md
+  - docs/models/tls.md
+  - docs/models/tlschain.md
+  - docs/models/tlsversiondata.md
+  - docs/models/torservicedescriptor.md
+  - docs/models/tplinkkasa.md
+  - docs/models/transportprotocol.md
+  - docs/models/type.md
+  - docs/models/unitronicspcom.md
+  - docs/models/unrecognizedpublickey.md
+  - docs/models/upnp.md
+  - docs/models/upnpdevice.md
+  - docs/models/upnpservice.md
+  - docs/models/upnpspecversion.md
+  - docs/models/user.md
+  - docs/models/userinteraction.md
+  - docs/models/usernotice.md
+  - docs/models/utils/retryconfig.md
+  - docs/models/v3collectionscrudcreateglobals.md
+  - docs/models/v3collectionscrudcreaterequest.md
+  - docs/models/v3collectionscrudcreateresponse.md
+  - docs/models/v3collectionscruddeleteglobals.md
+  - docs/models/v3collectionscruddeleterequest.md
+  - docs/models/v3collectionscruddeleteresponse.md
+  - docs/models/v3collectionscrudgetglobals.md
+  - docs/models/v3collectionscrudgetrequest.md
+  - docs/models/v3collectionscrudgetresponse.md
+  - docs/models/v3collectionscrudlistglobals.md
+  - docs/models/v3collectionscrudlistrequest.md
+  - docs/models/v3collectionscrudlistresponse.md
+  - docs/models/v3collectionscrudupdateglobals.md
+  - docs/models/v3collectionscrudupdaterequest.md
+  - docs/models/v3collectionscrudupdateresponse.md
+  - docs/models/v3collectionslisteventsglobals.md
+  - docs/models/v3collectionslisteventsrequest.md
+  - docs/models/v3collectionslisteventsresponse.md
+  - docs/models/v3collectionssearchaggregateglobals.md
+  - docs/models/v3collectionssearchaggregaterequest.md
+  - docs/models/v3collectionssearchaggregateresponse.md
+  - docs/models/v3collectionssearchqueryglobals.md
+  - docs/models/v3collectionssearchqueryrequest.md
+  - docs/models/v3collectionssearchqueryresponse.md
+  - docs/models/v3globaldataassetcertificateglobals.md
+  - docs/models/v3globaldataassetcertificatelistglobals.md
+  - docs/models/v3globaldataassetcertificatelistrequest.md
+  - docs/models/v3globaldataassetcertificatelistresponse.md
+  - docs/models/v3globaldataassetcertificaterequest.md
+  - docs/models/v3globaldataassetcertificateresponse.md
+  - docs/models/v3globaldataassethostglobals.md
+  - docs/models/v3globaldataassethostlistglobals.md
+  - docs/models/v3globaldataassethostlistrequest.md
+  - docs/models/v3globaldataassethostlistresponse.md
+  - docs/models/v3globaldataassethostrequest.md
+  - docs/models/v3globaldataassethostresponse.md
+  - docs/models/v3globaldataassethosttimelineglobals.md
+  - docs/models/v3globaldataassethosttimelinerequest.md
+  - docs/models/v3globaldataassethosttimelineresponse.md
+  - docs/models/v3globaldataassetwebpropertyglobals.md
+  - docs/models/v3globaldataassetwebpropertylistglobals.md
+  - docs/models/v3globaldataassetwebpropertylistrequest.md
+  - docs/models/v3globaldataassetwebpropertylistresponse.md
+  - docs/models/v3globaldataassetwebpropertyrequest.md
+  - docs/models/v3globaldataassetwebpropertyresponse.md
+  - docs/models/v3globaldatasearchaggregateglobals.md
+  - docs/models/v3globaldatasearchaggregaterequest.md
+  - docs/models/v3globaldatasearchaggregateresponse.md
+  - docs/models/v3globaldatasearchqueryglobals.md
+  - docs/models/v3globaldatasearchqueryrequest.md
+  - docs/models/v3globaldatasearchqueryresponse.md
+  - docs/models/validation.md
+  - docs/models/validationlevel.md
+  - docs/models/validityperiod.md
+  - docs/models/valuedensity.md
+  - docs/models/ventrilo.md
+  - docs/models/ventriloheader.md
+  - docs/models/ventrilomessage.md
+  - docs/models/version.md
+  - docs/models/versionselected.md
+  - docs/models/vnc.md
+  - docs/models/vnckeyvalue.md
+  - docs/models/vuln.md
+  - docs/models/vulnerabilityresponseeffort.md
+  - docs/models/vulnrisksource.md
+  - docs/models/vulnseverity.md
+  - docs/models/vulnsource.md
+  - docs/models/weblogict3.md
+  - docs/models/webproperty.md
+  - docs/models/webpropertyasset.md
+  - docs/models/whois.md
+  - docs/models/whoisupdated.md
+  - docs/models/winrm.md
+  - docs/models/worker.md
+  - docs/models/wsdiscovery.md
+  - docs/models/x11.md
+  - docs/models/zeromq.md
+  - docs/models/zeromqgreeting.md
+  - docs/models/zeromqhandshake.md
+  - docs/models/zlint.md
+  - docs/sdks/collections/README.md
+  - docs/sdks/globaldata/README.md
+  - docs/sdks/sdk/README.md
+  - poetry.toml
+  - py.typed
+  - pylintrc
+  - pyproject.toml
+  - scripts/prepare_readme.py
+  - scripts/publish.sh
+  - src/censys_sdk_python/__init__.py
+  - src/censys_sdk_python/_hooks/__init__.py
+  - src/censys_sdk_python/_hooks/sdkhooks.py
+  - src/censys_sdk_python/_hooks/types.py
+  - src/censys_sdk_python/_version.py
+  - src/censys_sdk_python/basesdk.py
+  - src/censys_sdk_python/collections.py
+  - src/censys_sdk_python/global_data.py
+  - src/censys_sdk_python/httpclient.py
+  - src/censys_sdk_python/models/__init__.py
+  - src/censys_sdk_python/models/activemq.py
+  - src/censys_sdk_python/models/amqp.py
+  - src/censys_sdk_python/models/amqp_protocol.py
+  - src/censys_sdk_python/models/amqp_version.py
+  - src/censys_sdk_python/models/analyticscapabilities.py
+  - src/censys_sdk_python/models/anyconnect.py
+  - src/censys_sdk_python/models/attribute.py
+  - src/censys_sdk_python/models/auth.py
+  - src/censys_sdk_python/models/authorityinfoaccess.py
+  - src/censys_sdk_python/models/autonomoussystem.py
+  - src/censys_sdk_python/models/bacnet.py
+  - src/censys_sdk_python/models/basicconstraints.py
+  - src/censys_sdk_python/models/cabforganizationid.py
+  - src/censys_sdk_python/models/capabilities.py
+  - src/censys_sdk_python/models/certificate.py
+  - src/censys_sdk_python/models/certificate_parsed.py
+  - src/censys_sdk_python/models/certificateasset.py
+  - src/censys_sdk_python/models/certificateextensions.py
+  - src/censys_sdk_python/models/certificatepolicy.py
+  - src/censys_sdk_python/models/certificaterevocation.py
+  - src/censys_sdk_python/models/certificaterevocation_revocationinfo.py
+  - src/censys_sdk_python/models/checkpointtopology.py
+  - src/censys_sdk_python/models/chromecast.py
+  - src/censys_sdk_python/models/chromecast_application.py
+  - src/censys_sdk_python/models/chromecast_namespace.py
+  - src/censys_sdk_python/models/chromecast_volume.py
+  - src/censys_sdk_python/models/chromedevtools.py
+  - src/censys_sdk_python/models/chromedevtools_target.py
+  - src/censys_sdk_python/models/ciscoipsla.py
+  - src/censys_sdk_python/models/ciscoipsla_handshake.py
+  - src/censys_sdk_python/models/ciscoipsla_handshake_header.py
+  - src/censys_sdk_python/models/ciscoipsla_handshake_message.py
+  - src/censys_sdk_python/models/ciscoipsla_measureresponse.py
+  - src/censys_sdk_python/models/cmore.py
+  - src/censys_sdk_python/models/coap.py
+  - src/censys_sdk_python/models/cobaltstrike.py
+  - src/censys_sdk_python/models/cobaltstrike_config.py
+  - src/censys_sdk_python/models/cobaltstrike_httpconfig.py
+  - src/censys_sdk_python/models/cobaltstrike_postex.py
+  - src/censys_sdk_python/models/collection.py
+  - src/censys_sdk_python/models/collectionevent.py
+  - src/censys_sdk_python/models/collectioneventsresponse.py
+  - src/censys_sdk_python/models/connection.py
+  - src/censys_sdk_python/models/contact.py
+  - src/censys_sdk_python/models/coordinates.py
+  - src/censys_sdk_python/models/cpe.py
+  - src/censys_sdk_python/models/cpe_lifecycle.py
+  - src/censys_sdk_python/models/crestroncp3.py
+  - src/censys_sdk_python/models/crudcreateinputbody.py
+  - src/censys_sdk_python/models/crudupdateinputbody.py
+  - src/censys_sdk_python/models/cryptsetup.py
+  - src/censys_sdk_python/models/ct.py
+  - src/censys_sdk_python/models/ct_record.py
+  - src/censys_sdk_python/models/cvss.py
+  - src/censys_sdk_python/models/cvss_components.py
+  - src/censys_sdk_python/models/cvssv4.py
+  - src/censys_sdk_python/models/cvssv4_components.py
+  - src/censys_sdk_python/models/cwe.py
+  - src/censys_sdk_python/models/cwmp.py
+  - src/censys_sdk_python/models/darkcomet.py
+  - src/censys_sdk_python/models/darkgate.py
+  - src/censys_sdk_python/models/darkgate_file.py
+  - src/censys_sdk_python/models/dcerpc.py
+  - src/censys_sdk_python/models/dcerpc_endpoint.py
+  - src/censys_sdk_python/models/desktopinfo.py
+  - src/censys_sdk_python/models/devicecapabilities.py
+  - src/censys_sdk_python/models/deviceiocapabilities.py
+  - src/censys_sdk_python/models/dhcpdiscover.py
+  - src/censys_sdk_python/models/dhcpdiscover_deviceinfo.py
+  - src/censys_sdk_python/models/dhcpdiscover_ipaddress.py
+  - src/censys_sdk_python/models/dhcpdiscover_responseparams.py
+  - src/censys_sdk_python/models/distinguishedname.py
+  - src/censys_sdk_python/models/dnp3.py
+  - src/censys_sdk_python/models/dns.py
+  - src/censys_sdk_python/models/dns_edns.py
+  - src/censys_sdk_python/models/dns_resourcerecord.py
+  - src/censys_sdk_python/models/dsacryptographickey.py
+  - src/censys_sdk_python/models/dsapublickey.py
+  - src/censys_sdk_python/models/dtls.py
+  - src/censys_sdk_python/models/dvrip.py
+  - src/censys_sdk_python/models/dvrip_partitioncapability.py
+  - src/censys_sdk_python/models/ecdsacryptographickey.py
+  - src/censys_sdk_python/models/ecdsapublickey.py
+  - src/censys_sdk_python/models/ed25519cryptographickey.py
+  - src/censys_sdk_python/models/edipartyname.py
+  - src/censys_sdk_python/models/eip.py
+  - src/censys_sdk_python/models/eip_identity.py
+  - src/censys_sdk_python/models/eip_interface.py
+  - src/censys_sdk_python/models/eip_service.py
+  - src/censys_sdk_python/models/elasticsearch.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_clustercombinedinfo.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_clustercombinedinfo_filesystem.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_clustercombinedinfo_indices.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_clustercombinedinfo_indices_docs.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_clustercombinedinfo_indices_store.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_jvm.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_modules.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_nodesettings.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_nodesettings_node.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_nodesettings_node_attr.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_nodesettings_node_attr_ml.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_os.py
+  - src/censys_sdk_python/models/elasticsearch_resultsnodeinfo_nodes_nodedata_threadpool.py
+  - src/censys_sdk_python/models/elasticsearch_systeminfo.py
+  - src/censys_sdk_python/models/elasticsearch_systeminfo_ver.py
+  - src/censys_sdk_python/models/elffile.py
+  - src/censys_sdk_python/models/endpointscan.py
+  - src/censys_sdk_python/models/endpointscanned.py
+  - src/censys_sdk_python/models/endpointscanstate.py
+  - src/censys_sdk_python/models/epmd.py
+  - src/censys_sdk_python/models/epss.py
+  - src/censys_sdk_python/models/errordetail.py
+  - src/censys_sdk_python/models/errormodel.py
+  - src/censys_sdk_python/models/etcd.py
+  - src/censys_sdk_python/models/etcd_v2.py
+  - src/censys_sdk_python/models/etcd_v3.py
+  - src/censys_sdk_python/models/etcd_version.py
+  - src/censys_sdk_python/models/ethereum.py
+  - src/censys_sdk_python/models/ethereum_version.py
+  - src/censys_sdk_python/models/eventassetchange.py
+  - src/censys_sdk_python/models/eventscapabilities.py
+  - src/censys_sdk_python/models/eventstatuschange.py
+  - src/censys_sdk_python/models/evidence.py
+  - src/censys_sdk_python/models/export.py
+  - src/censys_sdk_python/models/exportlist.py
+  - src/censys_sdk_python/models/extendedkeyusage.py
+  - src/censys_sdk_python/models/extension.py
+  - src/censys_sdk_python/models/fielddiff.py
+  - src/censys_sdk_python/models/floatvalue.py
+  - src/censys_sdk_python/models/fortigate.py
+  - src/censys_sdk_python/models/forwarddnsresolved.py
+  - src/censys_sdk_python/models/fox.py
+  - src/censys_sdk_python/models/ftp.py
+  - src/censys_sdk_python/models/gearman.py
+  - src/censys_sdk_python/models/generalnames.py
+  - src/censys_sdk_python/models/generalsubtreeip.py
+  - src/censys_sdk_python/models/graphql.py
+  - src/censys_sdk_python/models/hidvertx.py
+  - src/censys_sdk_python/models/hikvision.py
+  - src/censys_sdk_python/models/hikvision_platform.py
+  - src/censys_sdk_python/models/hikvision_platform_library.py
+  - src/censys_sdk_python/models/host.py
+  - src/censys_sdk_python/models/hostasset.py
+  - src/censys_sdk_python/models/hostdns.py
+  - src/censys_sdk_python/models/hostdns_forwardresolution.py
+  - src/censys_sdk_python/models/hostdns_reverseresolution.py
+  - src/censys_sdk_python/models/hosttimeline.py
+  - src/censys_sdk_python/models/hosttimelineevent.py
+  - src/censys_sdk_python/models/hosttimelineeventasset.py
+  - src/censys_sdk_python/models/http.py
+  - src/censys_sdk_python/models/http_favicon.py
+  - src/censys_sdk_python/models/http_repeatedheaders.py
+  - src/censys_sdk_python/models/ibmnje.py
+  - src/censys_sdk_python/models/ike.py
+  - src/censys_sdk_python/models/ike_v1.py
+  - src/censys_sdk_python/models/ike_v2.py
+  - src/censys_sdk_python/models/imagecapabilities.py
+  - src/censys_sdk_python/models/imap.py
+  - src/censys_sdk_python/models/internal/__init__.py
+  - src/censys_sdk_python/models/internal/globals.py
+  - src/censys_sdk_python/models/iota.py
+  - src/censys_sdk_python/models/ipmi.py
+  - src/censys_sdk_python/models/ipmi_capabilities.py
+  - src/censys_sdk_python/models/ipmi_capabilities_authstatus.py
+  - src/censys_sdk_python/models/ipmi_capabilities_completioncode.py
+  - src/censys_sdk_python/models/ipmi_capabilities_extendedcapabilities.py
+  - src/censys_sdk_python/models/ipmi_capabilities_supportedauthtypes.py
+  - src/censys_sdk_python/models/ipmi_commandpayload.py
+  - src/censys_sdk_python/models/ipmi_commandpayload_commandnumber.py
+  - src/censys_sdk_python/models/ipmi_commandpayload_packednetfn.py
+  - src/censys_sdk_python/models/ipmi_commandpayload_packednetfn_logicalunitnumber.py
+  - src/censys_sdk_python/models/ipmi_commandpayload_packednetfn_netfn.py
+  - src/censys_sdk_python/models/ipmi_rmcpheader.py
+  - src/censys_sdk_python/models/ipmi_rmcpheader_messageclass.py
+  - src/censys_sdk_python/models/ipmi_sessionheader.py
+  - src/censys_sdk_python/models/ipmi_sessionheader_authtype.py
+  - src/censys_sdk_python/models/ipp.py
+  - src/censys_sdk_python/models/ipp_attribute.py
+  - src/censys_sdk_python/models/iscsi.py
+  - src/censys_sdk_python/models/ivantiavalanche.py
+  - src/censys_sdk_python/models/ja4tscanscan.py
+  - src/censys_sdk_python/models/jarmscan.py
+  - src/censys_sdk_python/models/jarmscanned.py
+  - src/censys_sdk_python/models/kev.py
+  - src/censys_sdk_python/models/keyalgorithm.py
+  - src/censys_sdk_python/models/keyusage.py
+  - src/censys_sdk_python/models/krpc.py
+  - src/censys_sdk_python/models/kubernetes.py
+  - src/censys_sdk_python/models/kubernetes_endpoint.py
+  - src/censys_sdk_python/models/kubernetes_endpoint_subset.py
+  - src/censys_sdk_python/models/kubernetes_endpoint_subset_endpointaddress.py
+  - src/censys_sdk_python/models/kubernetes_endpoint_subset_port.py
+  - src/censys_sdk_python/models/kubernetes_node.py
+  - src/censys_sdk_python/models/kubernetes_node_nodeaddress.py
+  - src/censys_sdk_python/models/kubernetes_role.py
+  - src/censys_sdk_python/models/kubernetes_role_rule.py
+  - src/censys_sdk_python/models/kubernetes_versioninfo.py
+  - src/censys_sdk_python/models/l2tp.py
+  - src/censys_sdk_python/models/l2tp_attributevalues.py
+  - src/censys_sdk_python/models/l2tp_sccrp.py
+  - src/censys_sdk_python/models/l2tp_stopccn.py
+  - src/censys_sdk_python/models/label.py
+  - src/censys_sdk_python/models/ldap.py
+  - src/censys_sdk_python/models/ldap_attribute.py
+  - src/censys_sdk_python/models/listcollectionsresponsev1.py
+  - src/censys_sdk_python/models/location.py
+  - src/censys_sdk_python/models/locationupdated.py
+  - src/censys_sdk_python/models/lpd.py
+  - src/censys_sdk_python/models/lpdmessage.py
+  - src/censys_sdk_python/models/mdns.py
+  - src/censys_sdk_python/models/mdnsresult.py
+  - src/censys_sdk_python/models/mediacapabilities.py
+  - src/censys_sdk_python/models/mediaprofile.py
+  - src/censys_sdk_python/models/mediastreaming.py
+  - src/censys_sdk_python/models/members.py
+  - src/censys_sdk_python/models/memcached.py
+  - src/censys_sdk_python/models/metrics.py
+  - src/censys_sdk_python/models/minecraft.py
+  - src/censys_sdk_python/models/mms.py
+  - src/censys_sdk_python/models/modbus.py
+  - src/censys_sdk_python/models/modbus_exceptionresponse.py
+  - src/censys_sdk_python/models/modbus_meiresponse.py
+  - src/censys_sdk_python/models/monerop2p.py
+  - src/censys_sdk_python/models/monerop2p_entry.py
+  - src/censys_sdk_python/models/monerop2p_payload.py
+  - src/censys_sdk_python/models/monerop2p_pingresponse.py
+  - src/censys_sdk_python/models/monerop2p_responseheader.py
+  - src/censys_sdk_python/models/mongodb.py
+  - src/censys_sdk_python/models/mongodb_buildinfo.py
+  - src/censys_sdk_python/models/mongodb_buildinfo_buildenvironment.py
+  - src/censys_sdk_python/models/mongodb_ismaster.py
+  - src/censys_sdk_python/models/mqtt.py
+  - src/censys_sdk_python/models/mqtt_connectionackreturn.py
+  - src/censys_sdk_python/models/mqtt_subscriptionackreturn.py
+  - src/censys_sdk_python/models/mssql.py
+  - src/censys_sdk_python/models/mssql_preloginoptions.py
+  - src/censys_sdk_python/models/mssql_preloginoptions_serverversion.py
+  - src/censys_sdk_python/models/murmur.py
+  - src/censys_sdk_python/models/murmur_murmurversion.py
+  - src/censys_sdk_python/models/murmurmessage.py
+  - src/censys_sdk_python/models/murmurmessage_murmurheader.py
+  - src/censys_sdk_python/models/mysql.py
+  - src/censys_sdk_python/models/nameconstraints.py
+  - src/censys_sdk_python/models/natsio.py
+  - src/censys_sdk_python/models/nbd.py
+  - src/censys_sdk_python/models/network.py
+  - src/censys_sdk_python/models/networkcapabilities.py
+  - src/censys_sdk_python/models/nfsmountd.py
+  - src/censys_sdk_python/models/nmea.py
+  - src/censys_sdk_python/models/nmea_nmeamessage.py
+  - src/censys_sdk_python/models/nodeinfov0.py
+  - src/censys_sdk_python/models/nodeinfov1.py
+  - src/censys_sdk_python/models/nodeinfov2.py
+  - src/censys_sdk_python/models/noticereference.py
+  - src/censys_sdk_python/models/ntlminfo.py
+  - src/censys_sdk_python/models/ntp.py
+  - src/censys_sdk_python/models/ntp_ntpheader.py
+  - src/censys_sdk_python/models/ntrip.py
+  - src/censys_sdk_python/models/ollama.py
+  - src/censys_sdk_python/models/ollama_model.py
+  - src/censys_sdk_python/models/onc.py
+  - src/censys_sdk_python/models/onvif.py
+  - src/censys_sdk_python/models/onvif_hostname.py
+  - src/censys_sdk_python/models/onvifservice.py
+  - src/censys_sdk_python/models/opcua.py
+  - src/censys_sdk_python/models/opcua_description.py
+  - src/censys_sdk_python/models/opcua_endpoint.py
+  - src/censys_sdk_python/models/opcua_localizedtext.py
+  - src/censys_sdk_python/models/opcua_usertokenpolicy.py
+  - src/censys_sdk_python/models/openvpn.py
+  - src/censys_sdk_python/models/oracle.py
+  - src/censys_sdk_python/models/oracle_descriptor.py
+  - src/censys_sdk_python/models/organization.py
+  - src/censys_sdk_python/models/othername.py
+  - src/censys_sdk_python/models/pantiltzoomcapabilities.py
+  - src/censys_sdk_python/models/pcanywhere.py
+  - src/censys_sdk_python/models/pcanywhere_status.py
+  - src/censys_sdk_python/models/peer.py
+  - src/censys_sdk_python/models/pgbouncer.py
+  - src/censys_sdk_python/models/pgbouncer_startupcapabilities.py
+  - src/censys_sdk_python/models/pixelformat.py
+  - src/censys_sdk_python/models/plexmediaserver.py
+  - src/censys_sdk_python/models/pop3.py
+  - src/censys_sdk_python/models/port.py
+  - src/censys_sdk_python/models/portmap.py
+  - src/censys_sdk_python/models/portmap_v2entry.py
+  - src/censys_sdk_python/models/portmap_v3entry.py
+  - src/censys_sdk_python/models/postgres.py
+  - src/censys_sdk_python/models/pprof.py
+  - src/censys_sdk_python/models/pptp.py
+  - src/censys_sdk_python/models/pptp_responseinfo.py
+  - src/censys_sdk_python/models/pptp_version.py
+  - src/censys_sdk_python/models/prometheus.py
+  - src/censys_sdk_python/models/prometheus_response.py
+  - src/censys_sdk_python/models/prometheus_response_activetarget.py
+  - src/censys_sdk_python/models/prometheus_response_activetarget_discoveredlabels.py
+  - src/censys_sdk_python/models/prometheus_response_activetarget_labels.py
+  - src/censys_sdk_python/models/prometheus_response_droppedtarget.py
+  - src/censys_sdk_python/models/prometheus_response_prometheusversion.py
+  - src/censys_sdk_python/models/prometheusmetricfamily.py
+  - src/censys_sdk_python/models/prometheustarget.py
+  - src/censys_sdk_python/models/qcstatements.py
+  - src/censys_sdk_python/models/qcstatements_monetaryvalue.py
+  - src/censys_sdk_python/models/qcstatements_parsedstatements.py
+  - src/censys_sdk_python/models/qcstatements_pdslocation.py
+  - src/censys_sdk_python/models/qcstatements_qclegislation.py
+  - src/censys_sdk_python/models/qcstatements_qctype.py
+  - src/censys_sdk_python/models/rdate.py
+  - src/censys_sdk_python/models/rdp.py
+  - src/censys_sdk_python/models/rdp_certificateinfo.py
+  - src/censys_sdk_python/models/rdp_connectresponse.py
+  - src/censys_sdk_python/models/rdp_domainparameters.py
+  - src/censys_sdk_python/models/rdp_embeddedrsacert.py
+  - src/censys_sdk_python/models/rdp_protocolflags.py
+  - src/censys_sdk_python/models/rdp_securityprotocol.py
+  - src/censys_sdk_python/models/rdp_version.py
+  - src/censys_sdk_python/models/realport.py
+  - src/censys_sdk_python/models/recordingcapabilities.py
+  - src/censys_sdk_python/models/redis.py
+  - src/censys_sdk_python/models/redis_rawoutput.py
+  - src/censys_sdk_python/models/redlioncrimson.py
+  - src/censys_sdk_python/models/redlionweb.py
+  - src/censys_sdk_python/models/reject.py
+  - src/censys_sdk_python/models/replaycapabilities.py
+  - src/censys_sdk_python/models/representativeinfo.py
+  - src/censys_sdk_python/models/responseenvelopecertificateasset.py
+  - src/censys_sdk_python/models/responseenvelopecollection.py
+  - src/censys_sdk_python/models/responseenvelopecollectioneventsresponse.py
+  - src/censys_sdk_python/models/responseenvelopehostasset.py
+  - src/censys_sdk_python/models/responseenvelopehosttimeline.py
+  - src/censys_sdk_python/models/responseenvelopelistcertificateasset.py
+  - src/censys_sdk_python/models/responseenvelopelistcollectionsresponsev1.py
+  - src/censys_sdk_python/models/responseenvelopelisthostasset.py
+  - src/censys_sdk_python/models/responseenvelopelistwebpropertyasset.py
+  - src/censys_sdk_python/models/responseenvelopesearchaggregateresponse.py
+  - src/censys_sdk_python/models/responseenvelopesearchqueryresponse.py
+  - src/censys_sdk_python/models/responseenvelopewebpropertyasset.py
+  - src/censys_sdk_python/models/reversednsresolved.py
+  - src/censys_sdk_python/models/rifatron.py
+  - src/censys_sdk_python/models/ripple.py
+  - src/censys_sdk_python/models/rippleclioresults.py
+  - src/censys_sdk_python/models/rippledpublicresults.py
+  - src/censys_sdk_python/models/ripplepeerresults.py
+  - src/censys_sdk_python/models/risk.py
+  - src/censys_sdk_python/models/rlogin.py
+  - src/censys_sdk_python/models/rocketmq.py
+  - src/censys_sdk_python/models/rocketmq_clusterinfo.py
+  - src/censys_sdk_python/models/rocketmq_responseheader.py
+  - src/censys_sdk_python/models/rocketmq_topiclist.py
+  - src/censys_sdk_python/models/rootstore.py
+  - src/censys_sdk_python/models/rootstore_chain.py
+  - src/censys_sdk_python/models/routeupdated.py
+  - src/censys_sdk_python/models/routing.py
+  - src/censys_sdk_python/models/rsacryptographickey.py
+  - src/censys_sdk_python/models/rsapublickey.py
+  - src/censys_sdk_python/models/rtsp.py
+  - src/censys_sdk_python/models/s7.py
+  - src/censys_sdk_python/models/saprouter.py
+  - src/censys_sdk_python/models/saprouter_clientinfo.py
+  - src/censys_sdk_python/models/saprouter_routerinfo.py
+  - src/censys_sdk_python/models/saprouter_routerversioninfo.py
+  - src/censys_sdk_python/models/scadaview.py
+  - src/censys_sdk_python/models/scpi.py
+  - src/censys_sdk_python/models/screenshot.py
+  - src/censys_sdk_python/models/sdkerror.py
+  - src/censys_sdk_python/models/searchaggregateinputbody.py
+  - src/censys_sdk_python/models/searchaggregateresponse.py
+  - src/censys_sdk_python/models/searchaggregateresponsebucket.py
+  - src/censys_sdk_python/models/searchcapabilities.py
+  - src/censys_sdk_python/models/searchqueryhit.py
+  - src/censys_sdk_python/models/searchqueryinputbody.py
+  - src/censys_sdk_python/models/searchqueryresponse.py
+  - src/censys_sdk_python/models/security.py
+  - src/censys_sdk_python/models/securitycapabilities.py
+  - src/censys_sdk_python/models/ser2net.py
+  - src/censys_sdk_python/models/ser2net_serialparameters.py
+  - src/censys_sdk_python/models/serverconfig.py
+  - src/censys_sdk_python/models/serversync.py
+  - src/censys_sdk_python/models/service.py
+  - src/censys_sdk_python/models/servicescan.py
+  - src/censys_sdk_python/models/servicescanned.py
+  - src/censys_sdk_python/models/sevendaystodie.py
+  - src/censys_sdk_python/models/signature.py
+  - src/censys_sdk_python/models/signedcertificatetimestamp.py
+  - src/censys_sdk_python/models/signedcertificatetimestamp_signature.py
+  - src/censys_sdk_python/models/sip.py
+  - src/censys_sdk_python/models/skinny.py
+  - src/censys_sdk_python/models/smb.py
+  - src/censys_sdk_python/models/smb_headerlog.py
+  - src/censys_sdk_python/models/smb_negotiationlog.py
+  - src/censys_sdk_python/models/smb_sessionsetuplog.py
+  - src/censys_sdk_python/models/smb_smbcapabilities.py
+  - src/censys_sdk_python/models/smb_smbversions.py
+  - src/censys_sdk_python/models/smtp.py
+  - src/censys_sdk_python/models/snmp.py
+  - src/censys_sdk_python/models/snmp_engine.py
+  - src/censys_sdk_python/models/snmp_interfaces.py
+  - src/censys_sdk_python/models/snmp_physical.py
+  - src/censys_sdk_python/models/snmp_system.py
+  - src/censys_sdk_python/models/snmp_system_services.py
+  - src/censys_sdk_python/models/socks.py
+  - src/censys_sdk_python/models/spice.py
+  - src/censys_sdk_python/models/ssdp.py
+  - src/censys_sdk_python/models/ssh.py
+  - src/censys_sdk_python/models/ssh_algorithmselection.py
+  - src/censys_sdk_python/models/ssh_algorithmselection_directionalgorithms.py
+  - src/censys_sdk_python/models/ssh_endpointid.py
+  - src/censys_sdk_python/models/ssh_kexinitmessage.py
+  - src/censys_sdk_python/models/ssh_serverhostkey.py
+  - src/censys_sdk_python/models/status.py
+  - src/censys_sdk_python/models/steam.py
+  - src/censys_sdk_python/models/subjectkeyinfo.py
+  - src/censys_sdk_python/models/systemcapabilities.py
+  - src/censys_sdk_python/models/tacacsplus.py
+  - src/censys_sdk_python/models/target.py
+  - src/censys_sdk_python/models/teamviewer.py
+  - src/censys_sdk_python/models/telnet.py
+  - src/censys_sdk_python/models/textmessage.py
+  - src/censys_sdk_python/models/threat.py
+  - src/censys_sdk_python/models/threat_actor.py
+  - src/censys_sdk_python/models/threat_details.py
+  - src/censys_sdk_python/models/threat_malware.py
+  - src/censys_sdk_python/models/tibia.py
+  - src/censys_sdk_python/models/tls.py
+  - src/censys_sdk_python/models/tls_chain.py
+  - src/censys_sdk_python/models/tls_versiondata.py
+  - src/censys_sdk_python/models/torservicedescriptor.py
+  - src/censys_sdk_python/models/tplinkkasa.py
+  - src/censys_sdk_python/models/unitronicspcom.py
+  - src/censys_sdk_python/models/unrecognizedpublickey.py
+  - src/censys_sdk_python/models/upnp.py
+  - src/censys_sdk_python/models/upnp_device.py
+  - src/censys_sdk_python/models/upnp_service.py
+  - src/censys_sdk_python/models/upnp_specversion.py
+  - src/censys_sdk_python/models/user.py
+  - src/censys_sdk_python/models/usernotice.py
+  - src/censys_sdk_python/models/v3_collections_crud_createop.py
+  - src/censys_sdk_python/models/v3_collections_crud_deleteop.py
+  - src/censys_sdk_python/models/v3_collections_crud_getop.py
+  - src/censys_sdk_python/models/v3_collections_crud_listop.py
+  - src/censys_sdk_python/models/v3_collections_crud_updateop.py
+  - src/censys_sdk_python/models/v3_collections_list_eventsop.py
+  - src/censys_sdk_python/models/v3_collections_search_aggregateop.py
+  - src/censys_sdk_python/models/v3_collections_search_queryop.py
+  - src/censys_sdk_python/models/v3_globaldata_asset_certificate_listop.py
+  - src/censys_sdk_python/models/v3_globaldata_asset_certificateop.py
+  - src/censys_sdk_python/models/v3_globaldata_asset_host_listop.py
+  - src/censys_sdk_python/models/v3_globaldata_asset_host_timelineop.py
+  - src/censys_sdk_python/models/v3_globaldata_asset_hostop.py
+  - src/censys_sdk_python/models/v3_globaldata_asset_webproperty_listop.py
+  - src/censys_sdk_python/models/v3_globaldata_asset_webpropertyop.py
+  - src/censys_sdk_python/models/v3_globaldata_search_aggregateop.py
+  - src/censys_sdk_python/models/v3_globaldata_search_queryop.py
+  - src/censys_sdk_python/models/validation.py
+  - src/censys_sdk_python/models/validityperiod.py
+  - src/censys_sdk_python/models/ventrilo.py
+  - src/censys_sdk_python/models/ventrilo_header.py
+  - src/censys_sdk_python/models/ventrilo_message.py
+  - src/censys_sdk_python/models/vnc.py
+  - src/censys_sdk_python/models/vnc_keyvalue.py
+  - src/censys_sdk_python/models/vuln.py
+  - src/censys_sdk_python/models/weblogict3.py
+  - src/censys_sdk_python/models/webproperty.py
+  - src/censys_sdk_python/models/webpropertyasset.py
+  - src/censys_sdk_python/models/whois.py
+  - src/censys_sdk_python/models/whoisupdated.py
+  - src/censys_sdk_python/models/winrm.py
+  - src/censys_sdk_python/models/worker.py
+  - src/censys_sdk_python/models/wsdiscovery.py
+  - src/censys_sdk_python/models/x11.py
+  - src/censys_sdk_python/models/zeromq.py
+  - src/censys_sdk_python/models/zeromq_greeting.py
+  - src/censys_sdk_python/models/zeromq_handshake.py
+  - src/censys_sdk_python/models/zlint.py
+  - src/censys_sdk_python/py.typed
+  - src/censys_sdk_python/sdk.py
+  - src/censys_sdk_python/sdkconfiguration.py
+  - src/censys_sdk_python/types/__init__.py
+  - src/censys_sdk_python/types/basemodel.py
+  - src/censys_sdk_python/utils/__init__.py
+  - src/censys_sdk_python/utils/annotations.py
+  - src/censys_sdk_python/utils/enums.py
+  - src/censys_sdk_python/utils/eventstreaming.py
+  - src/censys_sdk_python/utils/forms.py
+  - src/censys_sdk_python/utils/headers.py
+  - src/censys_sdk_python/utils/logger.py
+  - src/censys_sdk_python/utils/metadata.py
+  - src/censys_sdk_python/utils/queryparams.py
+  - src/censys_sdk_python/utils/requestbodies.py
+  - src/censys_sdk_python/utils/retries.py
+  - src/censys_sdk_python/utils/security.py
+  - src/censys_sdk_python/utils/serializers.py
+  - src/censys_sdk_python/utils/url.py
+  - src/censys_sdk_python/utils/values.py
+examples:
+  v3-collections-crud-list:
+    speakeasy-default-v3-collections-crud-list:
+      parameters:
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-collections-crud-create:
+    speakeasy-default-v3-collections-crud-create:
+      parameters:
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-collections-crud-delete:
+    speakeasy-default-v3-collections-crud-delete:
+      parameters:
+        path:
+          collection_uid: "<id>"
+        query:
+          organization_id: "<id>"
+      responses:
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-collections-crud-get:
+    speakeasy-default-v3-collections-crud-get:
+      parameters:
+        path:
+          collection_uid: "<id>"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-collections-crud-update:
+    speakeasy-default-v3-collections-crud-update:
+      parameters:
+        path:
+          collection_uid: "<id>"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-collections-list-events:
+    speakeasy-default-v3-collections-list-events:
+      parameters:
+        path:
+          collection_uid: "<id>"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-collections-search-aggregate:
+    speakeasy-default-v3-collections-search-aggregate:
+      parameters:
+        path:
+          collection_uid: "<id>"
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"field": "<value>", "number_of_buckets": 590414, "query": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-collections-search-query:
+    speakeasy-default-v3-collections-search-query:
+      parameters:
+        path:
+          collection_uid: "<id>"
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"query": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-asset-certificate-list:
+    speakeasy-default-v3-globaldata-asset-certificate-list:
+      parameters:
+        query:
+          organization_id: "<id>"
+          certificate_ids: ["<value>"]
+      responses:
+        "200":
+          application/vnd.censys.api.v3.certificate.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-asset-certificate:
+    speakeasy-default-v3-globaldata-asset-certificate:
+      parameters:
+        path:
+          certificate_id: "<id>"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/vnd.censys.api.v3.certificate.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-asset-host-list:
+    speakeasy-default-v3-globaldata-asset-host-list:
+      parameters:
+        query:
+          organization_id: "<id>"
+          host_ids: []
+      responses:
+        "200":
+          application/vnd.censys.api.v3.host.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-asset-host:
+    speakeasy-default-v3-globaldata-asset-host:
+      parameters:
+        path:
+          host_id: "<id>"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/vnd.censys.api.v3.host.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-asset-host-timeline:
+    speakeasy-default-v3-globaldata-asset-host-timeline:
+      parameters:
+        path:
+          host_id: "<id>"
+        query:
+          organization_id: "<id>"
+          start_time: "2024-04-27T09:30:08.024Z"
+          end_time: "2023-04-13T10:41:42.221Z"
+      responses:
+        "200":
+          application/vnd.censys.api.v3.host_timeline_event.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-asset-webproperty-list:
+    speakeasy-default-v3-globaldata-asset-webproperty-list:
+      parameters:
+        query:
+          organization_id: "<id>"
+          webproperty_ids: ["<value>"]
+      responses:
+        "200":
+          application/vnd.censys.api.v3.webproperty.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-asset-webproperty:
+    speakeasy-default-v3-globaldata-asset-webproperty:
+      parameters:
+        path:
+          webproperty_id: "<id>"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/vnd.censys.api.v3.webproperty.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-search-aggregate:
+    speakeasy-default-v3-globaldata-search-aggregate:
+      parameters:
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"field": "<value>", "number_of_buckets": 590414, "query": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-search-query:
+    speakeasy-default-v3-globaldata-search-query:
+      parameters:
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"query": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+examplesVersion: 1.0.1
+generatedTests: {}

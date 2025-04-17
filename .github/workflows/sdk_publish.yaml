@@ -1,0 +1,23 @@
+name: Publish
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+  id-token: write
+"on":
+  push:
+    branches:
+      - main
+    paths:
+      - .speakeasy/gen.lock
+  workflow_dispatch: {}
+jobs:
+  publish:
+    uses: ./.github/workflows/speakeasy_sdk_publish.yaml
+    with:
+      target: censys-sdk-python
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      pypi_token: ${{ secrets.PYPI_TOKEN }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

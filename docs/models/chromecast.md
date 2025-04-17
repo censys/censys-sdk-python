@@ -1,0 +1,14 @@
+# Chromecast
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `applications`                                                           | List[[models.ChromecastApplication](../models/chromecastapplication.md)] | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `icon_url`                                                               | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `is_active_input`                                                        | *Optional[bool]*                                                         | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `protocol_version`                                                       | *Optional[int]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `status_text`                                                            | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `universal_app_id`                                                       | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `volume`                                                                 | [Optional[models.ChromecastVolume]](../models/chromecastvolume.md)       | :heavy_minus_sign:                                                       | N/A                                                                      |

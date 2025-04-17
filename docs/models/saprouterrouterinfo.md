@@ -1,0 +1,16 @@
+# SapRouterRouterInfo
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `connected_client_info`                                              | List[[models.SapRouterClientInfo](../models/saprouterclientinfo.md)] | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `num_clients`                                                        | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `parent_pid`                                                         | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `parent_port`                                                        | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `pid`                                                                | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `port`                                                               | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `routtab_relative_directory`                                         | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `sap_router_absolute_directory`                                      | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `started_on`                                                         | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |

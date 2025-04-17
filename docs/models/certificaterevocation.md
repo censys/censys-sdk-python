@@ -1,0 +1,9 @@
+# CertificateRevocation
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `crl`                                                                                                    | [Optional[models.CertificateRevocationRevocationInfo]](../models/certificaterevocationrevocationinfo.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `ocsp`                                                                                                   | [Optional[models.CertificateRevocationRevocationInfo]](../models/certificaterevocationrevocationinfo.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |

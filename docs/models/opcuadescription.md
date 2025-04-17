@@ -1,0 +1,14 @@
+# OpcUaDescription
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `application_name`                                                     | [Optional[models.OpcUaLocalizedText]](../models/opcualocalizedtext.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `application_type`                                                     | *Optional[int]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `application_uri`                                                      | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `discovery_profile_uri`                                                | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `discovery_urls`                                                       | List[*str*]                                                            | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `gateway_server_uri`                                                   | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `product_uri`                                                          | *Optional[str]*                                                        | :heavy_minus_sign:                                                     | N/A                                                                    |

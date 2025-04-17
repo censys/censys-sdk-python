@@ -1,0 +1,13 @@
+# Kubernetes
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `endpoints`                                                                  | List[[models.KubernetesEndpoint](../models/kubernetesendpoint.md)]           | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `kubernetes_dashboard_found`                                                 | *Optional[bool]*                                                             | :heavy_minus_sign:                                                           | True if the dashboard is running and accessible                              |
+| `nodes`                                                                      | List[[models.KubernetesNode](../models/kubernetesnode.md)]                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `pod_names`                                                                  | List[*str*]                                                                  | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `roles`                                                                      | List[[models.KubernetesRole](../models/kubernetesrole.md)]                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `version_info`                                                               | [Optional[models.KubernetesVersionInfo]](../models/kubernetesversioninfo.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
