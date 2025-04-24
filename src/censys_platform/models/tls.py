@@ -19,7 +19,7 @@ from typing_extensions import NotRequired, TypedDict
 class VersionSelected(str, Enum):
     r"""Certificate version v1(0), v2(1), v3(2)."""
 
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     SS_LV_2 = "ss_lv_2"
     SS_LV_3 = "ss_lv_3"
     TLSV1_0 = "tlsv1_0"

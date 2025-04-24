@@ -5,7 +5,7 @@
 
 | Name       | Value      |
 | ---------- | ---------- |
-| `UNKNOWN`  | unknown    |
+| `UNKNOWN`  |            |
 | `SS_LV_2`  | ss_lv_2    |
 | `SS_LV_3`  | ss_lv_3    |
 | `TLSV1_0`  | tlsv1_0    |

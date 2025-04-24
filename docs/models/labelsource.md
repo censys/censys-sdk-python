@@ -5,7 +5,7 @@
 
 | Name          | Value         |
 | ------------- | ------------- |
-| `UNDEFINED`   | undefined     |
+| `UNKNOWN`     |               |
 | `CENSYS`      | censys        |
 | `RECOG`       | recog         |
 | `WAPPALYZER`  | wappalyzer    |

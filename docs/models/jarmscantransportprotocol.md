@@ -5,7 +5,7 @@
 
 | Name      | Value     |
 | --------- | --------- |
-| `UNKNOWN` | unknown   |
+| `UNKNOWN` |           |
 | `TCP`     | tcp       |
 | `UDP`     | udp       |
 | `ICMP`    | icmp      |

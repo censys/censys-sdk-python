@@ -5,8 +5,8 @@ Determines whether a vulnerability in one system or component can impact another
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `UNSPECIFIED` | unspecified   |
-| `UNCHANGED`   | unchanged     |
-| `CHANGED`     | changed       |
+| Name        | Value       |
+| ----------- | ----------- |
+| `UNKNOWN`   |             |
+| `UNCHANGED` | unchanged   |
+| `CHANGED`   | changed     |

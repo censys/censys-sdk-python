@@ -3,8 +3,8 @@
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `UNSPECIFIED` | unspecified   |
-| `NONE`        | none          |
-| `PRESENT`     | present       |
+| Name      | Value     |
+| --------- | --------- |
+| `UNKNOWN` |           |
+| `NONE`    | none      |
+| `PRESENT` | present   |

@@ -5,7 +5,7 @@
 
 | Name            | Value           |
 | --------------- | --------------- |
-| `NOT_DEFINED`   | not_defined     |
+| `UNKNOWN`       |                 |
 | `AUTOMATIC`     | automatic       |
 | `USER`          | user            |
 | `IRRECOVERABLE` | irrecoverable   |

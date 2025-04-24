@@ -5,7 +5,7 @@
 
 | Name        | Value       |
 | ----------- | ----------- |
-| `UNKNOWN`   | unknown     |
+| `UNKNOWN`   |             |
 | `SUCCESS`   | success     |
 | `FAIL`      | fail        |
 | `CORRUPTED` | corrupted   |

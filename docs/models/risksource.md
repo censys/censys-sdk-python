@@ -3,8 +3,8 @@
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `UNSPECIFIED` | unspecified   |
-| `CENSYS`      | censys        |
-| `CVE`         | cve           |
+| Name      | Value     |
+| --------- | --------- |
+| `UNKNOWN` |           |
+| `CENSYS`  | censys    |
+| `CVE`     | cve       |

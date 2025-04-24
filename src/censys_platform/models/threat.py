@@ -19,7 +19,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class ThreatSource(str, Enum):
-    UNDEFINED = "undefined"
+    UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
     WAPPALYZER = "wappalyzer"

@@ -5,8 +5,8 @@ Describes whether a user, other than the attacker, is required to do anything or
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `UNSPECIFIED` | unspecified   |
-| `NONE`        | none          |
-| `REQUIRED`    | required      |
+| Name       | Value      |
+| ---------- | ---------- |
+| `UNKNOWN`  |            |
+| `NONE`     | none       |
+| `REQUIRED` | required   |

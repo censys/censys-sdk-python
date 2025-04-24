@@ -5,6 +5,6 @@
 
 | Name           | Value          |
 | -------------- | -------------- |
-| `NOT_DEFINED`  | not_defined    |
+| `UNKNOWN`      |                |
 | `DIFFUSE`      | diffuse        |
 | `CONCENTRATED` | concentrated   |

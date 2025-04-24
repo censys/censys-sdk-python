@@ -7,6 +7,6 @@ The source checked to determine whether the CVE is in the KEV catalog.
 
 | Name          | Value         |
 | ------------- | ------------- |
-| `UNSPECIFIED` | unspecified   |
+| `UNKNOWN`     |               |
 | `CISA`        | cisa          |
 | `THIRD_PARTY` | third_party   |

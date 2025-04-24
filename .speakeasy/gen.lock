@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 52da46172710e5dbb166fe5a9e0ce7c3
-  docVersion: 1.0.1
-  speakeasyVersion: 1.535.1
-  generationVersion: 2.585.2
-  releaseVersion: 0.4.1
-  configChecksum: 4ead50d77f544f0283e5dae5e95ef8cc
+  docChecksum: cad05d0c379176f7fedd20b4f2969298
+  docVersion: 1.0.2
+  speakeasyVersion: 1.538.0
+  generationVersion: 2.591.1
+  releaseVersion: 0.5.0
+  configChecksum: 8c98921c9c58fd6a7bdac405904aac02
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.14.0
+    core: 5.16.0
     defaultEnabledRetries: 0.2.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
@@ -1107,6 +1107,7 @@ generatedFiles:
   - src/censys_platform/types/basemodel.py
   - src/censys_platform/utils/__init__.py
   - src/censys_platform/utils/annotations.py
+  - src/censys_platform/utils/datetimes.py
   - src/censys_platform/utils/enums.py
   - src/censys_platform/utils/eventstreaming.py
   - src/censys_platform/utils/forms.py

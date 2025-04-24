@@ -3,8 +3,8 @@
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `NOT_DEFINED` | not_defined   |
-| `NO`          | no            |
-| `YES`         | yes           |
+| Name      | Value     |
+| --------- | --------- |
+| `UNKNOWN` |           |
+| `NO`      | no        |
+| `YES`     | yes       |

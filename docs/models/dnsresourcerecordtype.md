@@ -7,7 +7,7 @@ An enumerated field indicating what type of data is in the "services.dns.additio
 
 | Name      | Value     |
 | --------- | --------- |
-| `UNKNOWN` | unknown   |
+| `UNKNOWN` |           |
 | `A`       | a         |
 | `TXT`     | txt       |
 | `NS`      | ns        |

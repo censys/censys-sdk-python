@@ -19,13 +19,13 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class VulnRiskSource(str, Enum):
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     CENSYS = "censys"
     CVE = "cve"
 
 
 class VulnSeverity(str, Enum):
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     LOW = "low"
     MEDIUM = "medium"
     HIGH = "high"
@@ -33,7 +33,7 @@ class VulnSeverity(str, Enum):
 
 
 class VulnSource(str, Enum):
-    UNDEFINED = "undefined"
+    UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
     WAPPALYZER = "wappalyzer"

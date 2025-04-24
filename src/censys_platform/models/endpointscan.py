@@ -32,7 +32,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class EndpointScanTransportProtocol(str, Enum):
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     TCP = "tcp"
     UDP = "udp"
     ICMP = "icmp"

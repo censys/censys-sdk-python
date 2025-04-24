@@ -8,7 +8,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class RecordType(str, Enum):
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     A = "a"
     AAAA = "aaaa"
 

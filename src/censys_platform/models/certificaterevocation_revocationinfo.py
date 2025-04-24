@@ -10,7 +10,7 @@ from typing_extensions import NotRequired, TypedDict
 class Reason(str, Enum):
     r"""An enumerated value indicating the issuer-supplied reason for the revocation."""
 
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     UNSPECIFIED = "unspecified"
     KEY_COMPROMISE = "key_compromise"
     CA_COMPROMISE = "ca_compromise"
