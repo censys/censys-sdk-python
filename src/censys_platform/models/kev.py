@@ -10,7 +10,7 @@ from typing_extensions import NotRequired, TypedDict
 class KEVSource(str, Enum):
     r"""The source checked to determine whether the CVE is in the KEV catalog."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     CISA = "cisa"
     THIRD_PARTY = "third_party"
 

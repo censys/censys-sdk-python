@@ -19,7 +19,7 @@ from typing_extensions import NotRequired, TypedDict
 class RCode(str, Enum):
     r"""A enumerated field indicating the result of the request. The most common values are defined in RFC 1035."""
 
-    UNKNOWN_CODE = "unknown_code"
+    UNKNOWN = ""
     SUCCESS = "success"
     FORMAT_ERROR = "format_error"
     SERVER_FAILURE = "server_failure"
@@ -44,7 +44,7 @@ class RCode(str, Enum):
 class ServerType(str, Enum):
     r"""An enumerated value indicating the behavior of the server. An AUTHORITATIVE server fulfills requests for domain names it controls, which are not listed by the server. FORWARDING and RECURSIVE_RESOLVER servers fulfill requests indirectly for domain names they do not control. A RECURSIVE_RESOLVER will query ip.parrotdns.com itself, resulting in its own IP address being present in the dns.answers.response field."""
 
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     RECURSIVE_RESOLVER = "recursive_resolver"
     AUTHORITATIVE = "authoritative"
     FORWARDING = "forwarding"

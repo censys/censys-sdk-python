@@ -18,13 +18,13 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class RiskSource(str, Enum):
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     CENSYS = "censys"
     CVE = "cve"
 
 
 class Severity(str, Enum):
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     LOW = "low"
     MEDIUM = "medium"
     HIGH = "high"
@@ -32,7 +32,7 @@ class Severity(str, Enum):
 
 
 class RiskSource1(str, Enum):
-    UNDEFINED = "undefined"
+    UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
     WAPPALYZER = "wappalyzer"

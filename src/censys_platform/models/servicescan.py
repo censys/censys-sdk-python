@@ -125,7 +125,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class ServiceScanTransportProtocol(str, Enum):
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     TCP = "tcp"
     UDP = "udp"
     ICMP = "icmp"

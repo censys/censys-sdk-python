@@ -7,7 +7,7 @@ A enumerated field indicating the result of the request. The most common values 
 
 | Name              | Value             |
 | ----------------- | ----------------- |
-| `UNKNOWN_CODE`    | unknown_code      |
+| `UNKNOWN`         |                   |
 | `SUCCESS`         | success           |
 | `FORMAT_ERROR`    | format_error      |
 | `SERVER_FAILURE`  | server_failure    |

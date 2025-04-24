@@ -7,7 +7,7 @@ The extent to which the certificate's issuer validated the identity of the entit
 
 | Name      | Value     |
 | --------- | --------- |
-| `UNKNOWN` | unknown   |
+| `UNKNOWN` |           |
 | `DV`      | dv        |
 | `OV`      | ov        |
 | `EV`      | ev        |

@@ -10,7 +10,7 @@ from typing_extensions import NotRequired, TypedDict
 class AttackComplexity(str, Enum):
     r"""Indicates conditions beyond the attacker’s control that must exist in order to exploit the vulnerability. The Attack Complexity metric is scored as either Low or High. There are two possible values: Low (L) – There are no specific pre-conditions required for exploitation, High (H) – The attacker must complete some number of preparatory steps in order to get access."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     LOW = "low"
     HIGH = "high"
 
@@ -18,7 +18,7 @@ class AttackComplexity(str, Enum):
 class AttackVector(str, Enum):
     r"""Indicates the level of access required for an attacker to exploit the vulnerability. The Attack Vector metric is scored in one of four levels: Network (N) – Vulnerabilities with this rating are remotely exploitable, from one or more hops away, up to, and including, remote exploitation over the Internet, Adjacent (A) – A vulnerability with this rating requires network adjacency for exploitation. The attack must be launched from the same physical or logical network, Local (L) – Vulnerabilities with this rating are not exploitable over a network, Physical (P) – An attacker must physically interact with the target system."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     NETWORK = "network"
     ADJACENT = "adjacent"
     LOCAL = "local"
@@ -28,7 +28,7 @@ class AttackVector(str, Enum):
 class Availability(str, Enum):
     r"""If an attack renders information unavailable, such as when a system crashes or through a DDoS attack, availability is negatively impacted. Availability has three possible values: None (N) – There is no loss of availability, Low (L) – Availability might be intermittently limited, or performance might be negatively impacted, as a result of a successful attack, High (H) – There is a complete loss of availability of the impacted system or information."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     NONE = "none"
     LOW = "low"
     HIGH = "high"
@@ -37,7 +37,7 @@ class Availability(str, Enum):
 class Confidentiality(str, Enum):
     r"""Refers to the disclosure of sensitive information to authorized and unauthorized users, with the goal being that only authorized users are able to access the target data. Confidentiality has three potential values: High (H) – The attacker has full access to all resources in the impacted system, including highly sensitive information such as encryption keys, Low (L) – The attacker has partial access to information, with no control over what, specifically, they are able to access, None (N) – No data is accessible to unauthorized users as a result of the exploit."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     NONE = "none"
     LOW = "low"
     HIGH = "high"
@@ -46,7 +46,7 @@ class Confidentiality(str, Enum):
 class Integrity(str, Enum):
     r"""Refers to whether the protected information has been tampered with or changed in any way. If there is no way for an attacker to alter the accuracy or completeness of the information, integrity has been maintained. Integrity has three values: None (N) – There is no loss of the integrity of any information, Low (L) – A limited amount of information might be tampered with or modified, but there is no serious impact on the protected system, High (H) – The attacker can modify any/all information on the target system, resulting in a complete loss of integrity."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     NONE = "none"
     LOW = "low"
     HIGH = "high"
@@ -55,7 +55,7 @@ class Integrity(str, Enum):
 class PrivilegesRequired(str, Enum):
     r"""Describes the level of privileges or access an attacker must have before successful exploitation. There are three possible values: None (N) – There is no privilege or special access required to conduct the attack, Low (L) – The attacker requires basic, “user” level privileges to leverage the exploit, High (H) – Administrative or similar access privileges are required for successful attack."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     NONE = "none"
     LOW = "low"
     HIGH = "high"
@@ -64,7 +64,7 @@ class PrivilegesRequired(str, Enum):
 class Scope(str, Enum):
     r"""Determines whether a vulnerability in one system or component can impact another system or component. If a vulnerability in a vulnerable component can affect a component which is in a different security scope than the vulnerable component, a scope change occurs. Scope has two possible ratings: Changed (C) – An exploited vulnerability can have a carry over impact on another system, Unchanged (U) – The exploited vulnerability is limited in damage to only the local security authority."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     UNCHANGED = "unchanged"
     CHANGED = "changed"
 
@@ -72,7 +72,7 @@ class Scope(str, Enum):
 class UserInteraction(str, Enum):
     r"""Describes whether a user, other than the attacker, is required to do anything or participate in exploitation of the vulnerability. User interaction has two possible values: None (N) – No user interaction is required, Required (R) – A user must complete some steps for the exploit to succeed. For example, a user might be required to install some software."""
 
-    UNSPECIFIED = "unspecified"
+    UNKNOWN = ""
     NONE = "none"
     REQUIRED = "required"
 

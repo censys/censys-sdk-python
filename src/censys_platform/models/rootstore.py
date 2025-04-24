@@ -18,7 +18,7 @@ from typing_extensions import NotRequired, TypedDict
 class Type(str, Enum):
     r"""The certificate's type. Options include root, intermediate, or leaf."""
 
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     ROOT = "root"
     INTERMEDIATE = "intermediate"
     LEAF = "leaf"

@@ -8,7 +8,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class JarmScanTransportProtocol(str, Enum):
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     TCP = "tcp"
     UDP = "udp"
     ICMP = "icmp"

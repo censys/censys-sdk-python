@@ -20,7 +20,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class ParseStatus(str, Enum):
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     SUCCESS = "success"
     FAIL = "fail"
     CORRUPTED = "corrupted"
@@ -29,7 +29,7 @@ class ParseStatus(str, Enum):
 class ValidationLevel(str, Enum):
     r"""The extent to which the certificate's issuer validated the identity of the entity requesting the certificate. Options include Domain validated (DV), Organization Validated (OV), or Extended Validation (EV)."""
 
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     DV = "dv"
     OV = "ov"
     EV = "ev"

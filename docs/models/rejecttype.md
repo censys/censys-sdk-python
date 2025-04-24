@@ -5,7 +5,7 @@
 
 | Name                 | Value                |
 | -------------------- | -------------------- |
-| `UNRECOGNIZED`       | unrecognized         |
+| `UNKNOWN`            |                      |
 | `WRONG_VERSION`      | wrong_version        |
 | `INVALID_USERNAME`   | invalid_username     |
 | `WRONG_USER_PW`      | wrong_user_pw        |

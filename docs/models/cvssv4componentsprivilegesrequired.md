@@ -5,9 +5,9 @@ Describes the level of privileges or access an attacker must have before success
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `UNSPECIFIED` | unspecified   |
-| `NONE`        | none          |
-| `LOW`         | low           |
-| `HIGH`        | high          |
+| Name      | Value     |
+| --------- | --------- |
+| `UNKNOWN` |           |
+| `NONE`    | none      |
+| `LOW`     | low       |
+| `HIGH`    | high      |

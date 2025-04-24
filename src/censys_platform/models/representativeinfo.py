@@ -15,7 +15,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class RepresentativeInfoReason(str, Enum):
-    UNKNOWN = "unknown"
+    UNKNOWN = ""
     PROTOCOL_PORT_COUNT = "protocol_port_count"
     INCAPSULA = "incapsula"
     ZSCALER = "zscaler"

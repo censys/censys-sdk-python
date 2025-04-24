@@ -188,14 +188,14 @@ Get the timeline of events for a Host
 
 ```python
 from censys_platform import SDK
-import dateutil.parser
+from censys_platform.utils import parse_datetime
 
 
 with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.global_data.get_host_timeline(host_id="<id>", start_time=dateutil.parser.isoparse("2024-04-27T09:30:08.024Z"), end_time=dateutil.parser.isoparse("2023-04-13T10:41:42.221Z"), organization_id="<id>")
+    res = sdk.global_data.get_host_timeline(host_id="<id>", start_time=parse_datetime("2024-04-27T09:30:08.024Z"), end_time=parse_datetime("2023-04-13T10:41:42.221Z"), organization_id="<id>")
 
     # Handle response
     print(res)

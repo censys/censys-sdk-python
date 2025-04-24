@@ -16,7 +16,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class LabelSource(str, Enum):
-    UNDEFINED = "undefined"
+    UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
     WAPPALYZER = "wappalyzer"
