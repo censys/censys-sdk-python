@@ -491,6 +491,8 @@ from .opcua_description import OpcUaDescription, OpcUaDescriptionTypedDict
 from .opcua_endpoint import OpcUaEndpoint, OpcUaEndpointTypedDict
 from .opcua_localizedtext import OpcUaLocalizedText, OpcUaLocalizedTextTypedDict
 from .opcua_usertokenpolicy import OpcUaUserTokenPolicy, OpcUaUserTokenPolicyTypedDict
+from .opendirectory import OpenDirectory, OpenDirectoryTypedDict
+from .opendirectory_file import OpenDirectoryFile, OpenDirectoryFileTypedDict
 from .openvpn import Openvpn, OpenvpnTypedDict
 from .oracle import Oracle, OracleTypedDict
 from .oracle_descriptor import OracleDescriptor, OracleDescriptorTypedDict
@@ -1492,6 +1494,10 @@ __all__ = [
     "OpcUaTypedDict",
     "OpcUaUserTokenPolicy",
     "OpcUaUserTokenPolicyTypedDict",
+    "OpenDirectory",
+    "OpenDirectoryFile",
+    "OpenDirectoryFileTypedDict",
+    "OpenDirectoryTypedDict",
     "Openvpn",
     "OpenvpnTypedDict",
     "Oracle",
