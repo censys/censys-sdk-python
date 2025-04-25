@@ -10,6 +10,7 @@ from .http import HTTP, HTTPTypedDict
 from .ivantiavalanche import IvantiAvalanche, IvantiAvalancheTypedDict
 from .kubernetes import Kubernetes, KubernetesTypedDict
 from .ollama import Ollama, OllamaTypedDict
+from .opendirectory import OpenDirectory, OpenDirectoryTypedDict
 from .plexmediaserver import PlexMediaServer, PlexMediaServerTypedDict
 from .pprof import Pprof, PprofTypedDict
 from .prometheus import Prometheus, PrometheusTypedDict
@@ -55,6 +56,7 @@ class EndpointScanTypedDict(TypedDict):
     ivanti_avalanche: NotRequired[IvantiAvalancheTypedDict]
     kubernetes: NotRequired[KubernetesTypedDict]
     ollama: NotRequired[OllamaTypedDict]
+    open_directory: NotRequired[OpenDirectoryTypedDict]
     path: NotRequired[str]
     plex_media_server: NotRequired[PlexMediaServerTypedDict]
     port: NotRequired[int]
@@ -100,6 +102,8 @@ class EndpointScan(BaseModel):
 
     ollama: Optional[Ollama] = None
 
+    open_directory: Optional[OpenDirectory] = None
+
     path: Optional[str] = None
 
     plex_media_server: Optional[PlexMediaServer] = None
@@ -142,6 +146,7 @@ class EndpointScan(BaseModel):
             "ivanti_avalanche",
             "kubernetes",
             "ollama",
+            "open_directory",
             "path",
             "plex_media_server",
             "port",

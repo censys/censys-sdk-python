@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: cad05d0c379176f7fedd20b4f2969298
-  docVersion: 1.0.2
-  speakeasyVersion: 1.538.0
+  docChecksum: f52d49f9323bde4c8ee98858ed509473
+  docVersion: 1.0.3
+  speakeasyVersion: 1.539.2
   generationVersion: 2.591.1
-  releaseVersion: 0.5.0
-  configChecksum: 8c98921c9c58fd6a7bdac405904aac02
+  releaseVersion: 0.5.1
+  configChecksum: e03b13a7bb1516b3ab24e9a530c14dbf
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -333,6 +333,8 @@ generatedFiles:
   - docs/models/opcuaendpoint.md
   - docs/models/opcualocalizedtext.md
   - docs/models/opcuausertokenpolicy.md
+  - docs/models/opendirectory.md
+  - docs/models/opendirectoryfile.md
   - docs/models/openvpn.md
   - docs/models/oracle.md
   - docs/models/oracledescriptor.md
@@ -895,6 +897,8 @@ generatedFiles:
   - src/censys_platform/models/opcua_endpoint.py
   - src/censys_platform/models/opcua_localizedtext.py
   - src/censys_platform/models/opcua_usertokenpolicy.py
+  - src/censys_platform/models/opendirectory.py
+  - src/censys_platform/models/opendirectory_file.py
   - src/censys_platform/models/openvpn.py
   - src/censys_platform/models/oracle.py
   - src/censys_platform/models/oracle_descriptor.py

@@ -10,15 +10,24 @@ from .http import HTTP, HTTPTypedDict
 from .ivantiavalanche import IvantiAvalanche, IvantiAvalancheTypedDict
 from .kubernetes import Kubernetes, KubernetesTypedDict
 from .ollama import Ollama, OllamaTypedDict
+from .opendirectory import OpenDirectory, OpenDirectoryTypedDict
 from .plexmediaserver import PlexMediaServer, PlexMediaServerTypedDict
 from .pprof import Pprof, PprofTypedDict
 from .prometheus import Prometheus, PrometheusTypedDict
 from .prometheustarget import PrometheusTarget, PrometheusTargetTypedDict
 from .redlionweb import RedlionWeb, RedlionWebTypedDict
 from .scadaview import ScadaView, ScadaViewTypedDict
-from censys_platform.types import BaseModel
+from .screenshot import Screenshot, ScreenshotTypedDict
+from censys_platform.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from enum import Enum
-from typing import Optional
+from pydantic import model_serializer
+from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -45,6 +54,7 @@ class EndpointScanStateTypedDict(TypedDict):
     ivanti_avalanche: NotRequired[IvantiAvalancheTypedDict]
     kubernetes: NotRequired[KubernetesTypedDict]
     ollama: NotRequired[OllamaTypedDict]
+    open_directory: NotRequired[OpenDirectoryTypedDict]
     path: NotRequired[str]
     plex_media_server: NotRequired[PlexMediaServerTypedDict]
     port: NotRequired[int]
@@ -54,6 +64,7 @@ class EndpointScanStateTypedDict(TypedDict):
     redlion_web: NotRequired[RedlionWebTypedDict]
     scada_view: NotRequired[ScadaViewTypedDict]
     scan_time: NotRequired[str]
+    screenshots: NotRequired[Nullable[List[ScreenshotTypedDict]]]
     transport_protocol: NotRequired[TransportProtocol]
 
 
@@ -86,6 +97,8 @@ class EndpointScanState(BaseModel):
 
     ollama: Optional[Ollama] = None
 
+    open_directory: Optional[OpenDirectory] = None
+
     path: Optional[str] = None
 
     plex_media_server: Optional[PlexMediaServer] = None
@@ -104,4 +117,63 @@ class EndpointScanState(BaseModel):
 
     scan_time: Optional[str] = None
 
+    screenshots: OptionalNullable[List[Screenshot]] = UNSET
+
     transport_protocol: Optional[TransportProtocol] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = [
+            "banner",
+            "banner_hash_sha256",
+            "chrome_devtools",
+            "cobalt_strike",
+            "elasticsearch",
+            "endpoint_type",
+            "fortigate",
+            "graphql",
+            "hostname",
+            "http",
+            "ip",
+            "ivanti_avalanche",
+            "kubernetes",
+            "ollama",
+            "open_directory",
+            "path",
+            "plex_media_server",
+            "port",
+            "pprof",
+            "prometheus",
+            "prometheus_target",
+            "redlion_web",
+            "scada_view",
+            "scan_time",
+            "screenshots",
+            "transport_protocol",
+        ]
+        nullable_fields = ["screenshots"]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m
