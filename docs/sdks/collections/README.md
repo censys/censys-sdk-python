@@ -111,7 +111,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.delete(collection_uid="<id>", organization_id="<id>")
+    res = sdk.collections.delete(collection_uid="d9ed2825-23bc-46db-bc4b-b4ac6c48f664", organization_id="<id>")
 
     # Handle response
     print(res)
@@ -151,7 +151,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.get(collection_uid="<id>", organization_id="<id>")
+    res = sdk.collections.get(collection_uid="4d6d3f55-e4ae-405b-8d0f-4207b74028ab", organization_id="<id>")
 
     # Handle response
     print(res)
@@ -234,7 +234,7 @@ with SDK(
 
     res = sdk.collections.list_events(request={
         "organization_id": "<id>",
-        "collection_uid": "<id>",
+        "collection_uid": "ddc110c4-03da-472a-98af-be013b92eff5",
     })
 
     # Handle response
@@ -274,9 +274,9 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.aggregate(collection_uid="<id>", search_aggregate_input_body={
+    res = sdk.collections.aggregate(collection_uid="ee98f78d-a47d-44fb-89f4-0626ceaf34d7", search_aggregate_input_body={
         "field": "<value>",
-        "number_of_buckets": 590414,
+        "number_of_buckets": 829469,
         "query": "<value>",
     }, organization_id="<id>")
 
