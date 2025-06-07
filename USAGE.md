@@ -5,12 +5,13 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.global_data.search(search_query_input_body={
         "query": "<value>",
-    }, organization_id="<id>")
+    })
 
     # Handle response
     print(res)
@@ -27,12 +28,13 @@ from censys_platform import SDK
 async def main():
 
     async with SDK(
+        organization_id="<id>",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
 
         res = await sdk.global_data.search_async(search_query_input_body={
             "query": "<value>",
-        }, organization_id="<id>")
+        })
 
         # Handle response
         print(res)

@@ -117,12 +117,13 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.global_data.search(search_query_input_body={
         "query": "<value>",
-    }, organization_id="<id>")
+    })
 
     # Handle response
     print(res)
@@ -139,12 +140,13 @@ from censys_platform import SDK
 async def main():
 
     async with SDK(
+        organization_id="<id>",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
 
         res = await sdk.global_data.search_async(search_query_input_body={
             "query": "<value>",
-        }, organization_id="<id>")
+        })
 
         # Handle response
         print(res)
@@ -191,7 +193,7 @@ asyncio.run(main())
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `organization_id` to `"<id>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `list`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `organization_id` to `` at SDK initialization and then you do not have to pass the same value on calls to operations like `list`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -209,10 +211,11 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(organization_id="<id>")
+    res = sdk.collections.list()
 
     # Handle response
     print(res)
@@ -232,10 +235,11 @@ from censys_platform.utils import BackoffStrategy, RetryConfig
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(organization_id="<id>",
+    res = sdk.collections.list(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Handle response
@@ -251,10 +255,11 @@ from censys_platform.utils import BackoffStrategy, RetryConfig
 
 with SDK(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(organization_id="<id>")
+    res = sdk.collections.list()
 
     # Handle response
     print(res)
@@ -290,12 +295,13 @@ from censys_platform import SDK, models
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
     res = None
     try:
 
-        res = sdk.collections.list(organization_id="<id>")
+        res = sdk.collections.list()
 
         # Handle response
         print(res)
@@ -321,10 +327,11 @@ from censys_platform import SDK
 
 with SDK(
     server_url="https://api.platform.censys.io",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(organization_id="<id>")
+    res = sdk.collections.list()
 
     # Handle response
     print(res)
@@ -431,9 +438,10 @@ from censys_platform import SDK
 
 with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+    organization_id="<id>",
 ) as sdk:
 
-    res = sdk.collections.list(organization_id="<id>")
+    res = sdk.collections.list()
 
     # Handle response
     print(res)
@@ -453,6 +461,7 @@ from censys_platform import SDK
 def main():
 
     with SDK(
+        organization_id="<id>",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...
@@ -462,6 +471,7 @@ def main():
 async def amain():
 
     async with SDK(
+        organization_id="<id>",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...
