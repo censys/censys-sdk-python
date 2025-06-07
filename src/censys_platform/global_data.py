@@ -76,6 +76,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-list",
                 oauth2_scopes=[],
@@ -184,6 +185,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-list",
                 oauth2_scopes=[],
@@ -292,6 +294,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate",
                 oauth2_scopes=[],
@@ -400,6 +403,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate",
                 oauth2_scopes=[],
@@ -508,6 +512,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-list",
                 oauth2_scopes=[],
@@ -616,6 +621,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-list",
                 oauth2_scopes=[],
@@ -727,6 +733,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host",
                 oauth2_scopes=[],
@@ -838,6 +845,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host",
                 oauth2_scopes=[],
@@ -952,6 +960,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-timeline",
                 oauth2_scopes=[],
@@ -1066,6 +1075,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-timeline",
                 oauth2_scopes=[],
@@ -1174,6 +1184,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty-list",
                 oauth2_scopes=[],
@@ -1282,6 +1293,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty-list",
                 oauth2_scopes=[],
@@ -1393,6 +1405,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty",
                 oauth2_scopes=[],
@@ -1504,6 +1517,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty",
                 oauth2_scopes=[],
@@ -1623,6 +1637,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-aggregate",
                 oauth2_scopes=[],
@@ -1740,6 +1755,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-aggregate",
                 oauth2_scopes=[],
@@ -1857,6 +1873,7 @@ class GlobalData(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-query",
                 oauth2_scopes=[],
@@ -1974,6 +1991,7 @@ class GlobalData(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-query",
                 oauth2_scopes=[],
