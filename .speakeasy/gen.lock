@@ -3,10 +3,10 @@ id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
   docChecksum: f52d49f9323bde4c8ee98858ed509473
   docVersion: 1.0.3
-  speakeasyVersion: 1.539.2
-  generationVersion: 2.591.1
-  releaseVersion: 0.5.1
-  configChecksum: e03b13a7bb1516b3ab24e9a530c14dbf
+  speakeasyVersion: 1.563.0
+  generationVersion: 2.629.1
+  releaseVersion: 0.6.0
+  configChecksum: 92c88728c1fb8c9469d73888360f041c
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.16.0
+    core: 5.19.3
     defaultEnabledRetries: 0.2.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
@@ -23,7 +23,7 @@ features:
     globalSecurity: 3.0.3
     globalSecurityCallbacks: 1.0.0
     globalSecurityFlattening: 1.0.0
-    globalServerURLs: 3.1.0
+    globalServerURLs: 3.1.1
     globals: 3.0.0
     ignores: 3.0.1
     methodArguments: 1.0.2
@@ -31,7 +31,7 @@ features:
     nullables: 1.0.1
     responseFormat: 1.0.1
     retries: 3.0.2
-    sdkHooks: 1.0.1
+    sdkHooks: 1.1.0
 generatedFiles:
   - .gitattributes
   - .python-version
@@ -1150,7 +1150,7 @@ examples:
     speakeasy-default-v3-collections-crud-delete:
       parameters:
         path:
-          collection_uid: "<id>"
+          collection_uid: "d9ed2825-23bc-46db-bc4b-b4ac6c48f664"
         query:
           organization_id: "<id>"
       responses:
@@ -1160,7 +1160,7 @@ examples:
     speakeasy-default-v3-collections-crud-get:
       parameters:
         path:
-          collection_uid: "<id>"
+          collection_uid: "4d6d3f55-e4ae-405b-8d0f-4207b74028ab"
         query:
           organization_id: "<id>"
       responses:
@@ -1184,7 +1184,7 @@ examples:
     speakeasy-default-v3-collections-list-events:
       parameters:
         path:
-          collection_uid: "<id>"
+          collection_uid: "ddc110c4-03da-472a-98af-be013b92eff5"
         query:
           organization_id: "<id>"
       responses:
@@ -1196,11 +1196,11 @@ examples:
     speakeasy-default-v3-collections-search-aggregate:
       parameters:
         path:
-          collection_uid: "<id>"
+          collection_uid: "ee98f78d-a47d-44fb-89f4-0626ceaf34d7"
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "<value>", "number_of_buckets": 590414, "query": "<value>"}
+        application/json: {"field": "<value>", "number_of_buckets": 829469, "query": "<value>"}
       responses:
         "200":
           application/json: {}
@@ -1225,7 +1225,7 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
-          certificate_ids: ["<value>"]
+          certificate_ids: []
       responses:
         "200":
           application/vnd.censys.api.v3.certificate.v1+json: {}
@@ -1248,7 +1248,7 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
-          host_ids: []
+          host_ids: ["<value 1>"]
       responses:
         "200":
           application/vnd.censys.api.v3.host.v1+json: {}
@@ -1273,8 +1273,8 @@ examples:
           host_id: "<id>"
         query:
           organization_id: "<id>"
-          start_time: "2024-04-27T09:30:08.024Z"
-          end_time: "2023-04-13T10:41:42.221Z"
+          start_time: "2024-10-02T01:32:37.490Z"
+          end_time: "2025-02-08T13:31:28.844Z"
       responses:
         "200":
           application/vnd.censys.api.v3.host_timeline_event.v1+json: {}
@@ -1285,7 +1285,7 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
-          webproperty_ids: ["<value>"]
+          webproperty_ids: ["<value 1>"]
       responses:
         "200":
           application/vnd.censys.api.v3.webproperty.v1+json: {}
@@ -1309,7 +1309,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "<value>", "number_of_buckets": 590414, "query": "<value>"}
+        application/json: {"field": "<value>", "number_of_buckets": 309828, "query": "<value>"}
       responses:
         "200":
           application/json: {}
@@ -1327,5 +1327,5 @@ examples:
           application/json: {}
         "401":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
-examplesVersion: 1.0.1
+examplesVersion: 1.0.2
 generatedTests: {}
