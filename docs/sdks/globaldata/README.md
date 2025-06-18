@@ -28,12 +28,11 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.global_data.get_certificates(certificate_ids=[
-        "<value>",
-    ], organization_id="<id>")
+    res = sdk.global_data.get_certificates(certificate_ids=[])
 
     # Handle response
     print(res)
@@ -70,10 +69,11 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.global_data.get_certificate(certificate_id="<id>", organization_id="<id>")
+    res = sdk.global_data.get_certificate(certificate_id="<id>")
 
     # Handle response
     print(res)
@@ -110,10 +110,13 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.global_data.get_hosts(host_ids=[], organization_id="<id>")
+    res = sdk.global_data.get_hosts(host_ids=[
+        "<value 1>",
+    ])
 
     # Handle response
     print(res)
@@ -150,10 +153,11 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.global_data.get_host(host_id="<id>", organization_id="<id>")
+    res = sdk.global_data.get_host(host_id="<id>")
 
     # Handle response
     print(res)
@@ -192,10 +196,11 @@ from censys_platform.utils import parse_datetime
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.global_data.get_host_timeline(host_id="<id>", start_time=parse_datetime("2024-04-27T09:30:08.024Z"), end_time=parse_datetime("2023-04-13T10:41:42.221Z"), organization_id="<id>")
+    res = sdk.global_data.get_host_timeline(host_id="<id>", start_time=parse_datetime("2024-10-02T01:32:37.490Z"), end_time=parse_datetime("2025-02-08T13:31:28.844Z"))
 
     # Handle response
     print(res)
@@ -234,12 +239,13 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.global_data.get_web_properties(webproperty_ids=[
-        "<value>",
-    ], organization_id="<id>")
+        "<value 1>",
+    ])
 
     # Handle response
     print(res)
@@ -276,10 +282,11 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.global_data.get_web_property(webproperty_id="<id>", organization_id="<id>")
+    res = sdk.global_data.get_web_property(webproperty_id="<id>")
 
     # Handle response
     print(res)
@@ -317,14 +324,15 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.global_data.aggregate(search_aggregate_input_body={
         "field": "<value>",
-        "number_of_buckets": 590414,
+        "number_of_buckets": 309828,
         "query": "<value>",
-    }, organization_id="<id>")
+    })
 
     # Handle response
     print(res)
@@ -361,12 +369,13 @@ from censys_platform import SDK
 
 
 with SDK(
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.global_data.search(search_query_input_body={
         "query": "<value>",
-    }, organization_id="<id>")
+    })
 
     # Handle response
     print(res)
