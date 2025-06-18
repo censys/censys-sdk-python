@@ -69,6 +69,7 @@ from .pop3 import Pop3, Pop3TypedDict
 from .portmap import Portmap, PortmapTypedDict
 from .postgres import Postgres, PostgresTypedDict
 from .pptp import Pptp, PptpTypedDict
+from .profinetcm import ProfinetCm, ProfinetCmTypedDict
 from .rdate import Rdate, RdateTypedDict
 from .rdp import Rdp, RdpTypedDict
 from .realport import Realport, RealportTypedDict
@@ -206,6 +207,7 @@ class ServiceScanTypedDict(TypedDict):
     portmap: NotRequired[PortmapTypedDict]
     postgres: NotRequired[PostgresTypedDict]
     pptp: NotRequired[PptpTypedDict]
+    profinet_cm: NotRequired[ProfinetCmTypedDict]
     protocol: NotRequired[str]
     rdate: NotRequired[RdateTypedDict]
     rdp: NotRequired[RdpTypedDict]
@@ -400,6 +402,8 @@ class ServiceScan(BaseModel):
 
     pptp: Optional[Pptp] = None
 
+    profinet_cm: Optional[ProfinetCm] = None
+
     protocol: Optional[str] = None
 
     rdate: Optional[Rdate] = None
@@ -566,6 +570,7 @@ class ServiceScan(BaseModel):
             "portmap",
             "postgres",
             "pptp",
+            "profinet_cm",
             "protocol",
             "rdate",
             "rdp",
