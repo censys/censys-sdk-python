@@ -3,7 +3,7 @@ speakeasyVersion: latest
 sources:
     converge-source:
         inputs:
-            - location: https://github.com/censys/censys-sdk-openapi/releases/latest/download/openapi.yaml
+            - location: https://github.com/censys/censys-sdk-openapi/releases/download/v1.0.7/openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/censys/censys/converge-source
 targets:
