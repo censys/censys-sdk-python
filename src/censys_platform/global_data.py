@@ -21,9 +21,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateListResponse:
-        r"""Asset / Certificate Bulk
+        r"""Get multiple certificates
 
-        Get multiple Certificates
+        Retrieve information about multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_ids: A list of SHA-256 certificate fingerprints.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -130,9 +130,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateListResponse:
-        r"""Asset / Certificate Bulk
+        r"""Get multiple certificates
 
-        Get multiple Certificates
+        Retrieve information about multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_ids: A list of SHA-256 certificate fingerprints.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -239,9 +239,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateResponse:
-        r"""Asset / Certificate
+        r"""Get a certificate
 
-        Get a Certificate
+        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -348,9 +348,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateResponse:
-        r"""Asset / Certificate
+        r"""Get a certificate
 
-        Get a Certificate
+        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -457,9 +457,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostListResponse:
-        r"""Asset / Host Bulk
+        r"""Get multiple hosts
 
-        Get multiple Hosts
+        Retrieve information about multiple hosts. A host ID is its IP address.
 
         :param host_ids: A list of host IP addresses.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -566,9 +566,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostListResponse:
-        r"""Asset / Host Bulk
+        r"""Get multiple hosts
 
-        Get multiple Hosts
+        Retrieve information about multiple hosts. A host ID is its IP address.
 
         :param host_ids: A list of host IP addresses.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -676,9 +676,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostResponse:
-        r"""Asset / Host
+        r"""Get a host
 
-        Get a Host
+        Retrieve information about a single host. A host ID is its IP address.
 
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -788,9 +788,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostResponse:
-        r"""Asset / Host
+        r"""Get a host
 
-        Get a Host
+        Retrieve information about a single host. A host ID is its IP address.
 
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -901,9 +901,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
-        r"""Asset / Host Timeline
+        r"""Get host event history
 
-        Get the timeline of events for a Host
+        Retrieve event history for a host. A host ID is its IP address.
 
         :param host_id: The IP address of a host.
         :param start_time: Start time of the host timeline. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
@@ -1016,9 +1016,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
-        r"""Asset / Host Timeline
+        r"""Get host event history
 
-        Get the timeline of events for a Host
+        Retrieve event history for a host. A host ID is its IP address.
 
         :param host_id: The IP address of a host.
         :param start_time: Start time of the host timeline. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
@@ -1129,9 +1129,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetWebpropertyListResponse:
-        r"""Asset / WebProperty Bulk
+        r"""Get multiple web properties
 
-        Get multiple WebProperties
+        Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param webproperty_ids: A web property host identifier, the format is hostname:port.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1238,9 +1238,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetWebpropertyListResponse:
-        r"""Asset / WebProperty Bulk
+        r"""Get multiple web properties
 
-        Get multiple WebProperties
+        Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param webproperty_ids: A web property host identifier, the format is hostname:port.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1348,9 +1348,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetWebpropertyResponse:
-        r"""Asset / WebProperty
+        r"""Get a web property
 
-        Get a WebProperty
+        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param webproperty_id: A web property host identifier, the format is hostname:port.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1460,9 +1460,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetWebpropertyResponse:
-        r"""Asset / WebProperty
+        r"""Get a web property
 
-        Get a WebProperty
+        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param webproperty_id: A web property host identifier, the format is hostname:port.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1573,9 +1573,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataSearchAggregateResponse:
-        r"""Search / Aggregate
+        r"""Aggregate results for a search query
 
-        Run an aggregation via the Global data set
+        Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param search_aggregate_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1691,9 +1691,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataSearchAggregateResponse:
-        r"""Search / Aggregate
+        r"""Aggregate results for a search query
 
-        Run an aggregation via the Global data set
+        Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param search_aggregate_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1809,9 +1809,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataSearchQueryResponse:
-        r"""Search / Query
+        r"""Run a search query
 
-        Search the Global data set
+        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
 
         :param search_query_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1927,9 +1927,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataSearchQueryResponse:
-        r"""Search / Query
+        r"""Run a search query
 
-        Search the Global data set
+        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
 
         :param search_query_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.

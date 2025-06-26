@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 9fbfa7d2bf4a65db10589651868bb8f0
-  docVersion: 1.0.4
-  speakeasyVersion: 1.566.1
-  generationVersion: 2.630.9
-  releaseVersion: 0.6.0
-  configChecksum: 92c88728c1fb8c9469d73888360f041c
+  docChecksum: 3995af55f68b9e021ea909072c09386c
+  docVersion: 1.0.7
+  speakeasyVersion: 1.570.0
+  generationVersion: 2.638.0
+  releaseVersion: 0.6.1
+  configChecksum: 8bf0d89bbf0a245c5d51a270054eca37
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -394,6 +394,7 @@ generatedFiles:
   - docs/models/recovery.md
   - docs/models/redis.md
   - docs/models/redisrawoutput.md
+  - docs/models/redline.md
   - docs/models/redlioncrimson.md
   - docs/models/redlionweb.md
   - docs/models/reject.md
@@ -952,6 +953,7 @@ generatedFiles:
   - src/censys_platform/models/recordingcapabilities.py
   - src/censys_platform/models/redis.py
   - src/censys_platform/models/redis_rawoutput.py
+  - src/censys_platform/models/redline.py
   - src/censys_platform/models/redlioncrimson.py
   - src/censys_platform/models/redlionweb.py
   - src/censys_platform/models/reject.py

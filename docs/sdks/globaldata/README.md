@@ -7,19 +7,19 @@ Endpoints related to the Global Data product
 
 ### Available Operations
 
-* [get_certificates](#get_certificates) - Asset / Certificate Bulk
-* [get_certificate](#get_certificate) - Asset / Certificate
-* [get_hosts](#get_hosts) - Asset / Host Bulk
-* [get_host](#get_host) - Asset / Host
-* [get_host_timeline](#get_host_timeline) - Asset / Host Timeline
-* [get_web_properties](#get_web_properties) - Asset / WebProperty Bulk
-* [get_web_property](#get_web_property) - Asset / WebProperty
-* [aggregate](#aggregate) - Search / Aggregate
-* [search](#search) - Search / Query
+* [get_certificates](#get_certificates) - Get multiple certificates
+* [get_certificate](#get_certificate) - Get a certificate
+* [get_hosts](#get_hosts) - Get multiple hosts
+* [get_host](#get_host) - Get a host
+* [get_host_timeline](#get_host_timeline) - Get host event history
+* [get_web_properties](#get_web_properties) - Get multiple web properties
+* [get_web_property](#get_web_property) - Get a web property
+* [aggregate](#aggregate) - Aggregate results for a search query
+* [search](#search) - Run a search query
 
 ## get_certificates
 
-Get multiple Certificates
+Retrieve information about multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ with SDK(
 
 ## get_certificate
 
-Get a Certificate
+Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
 ### Example Usage
 
@@ -101,7 +101,7 @@ with SDK(
 
 ## get_hosts
 
-Get multiple Hosts
+Retrieve information about multiple hosts. A host ID is its IP address.
 
 ### Example Usage
 
@@ -144,7 +144,7 @@ with SDK(
 
 ## get_host
 
-Get a Host
+Retrieve information about a single host. A host ID is its IP address.
 
 ### Example Usage
 
@@ -186,7 +186,7 @@ with SDK(
 
 ## get_host_timeline
 
-Get the timeline of events for a Host
+Retrieve event history for a host. A host ID is its IP address.
 
 ### Example Usage
 
@@ -230,7 +230,7 @@ with SDK(
 
 ## get_web_properties
 
-Get multiple WebProperties
+Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
 ### Example Usage
 
@@ -273,7 +273,7 @@ with SDK(
 
 ## get_web_property
 
-Get a WebProperty
+Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
 ### Example Usage
 
@@ -315,7 +315,7 @@ with SDK(
 
 ## aggregate
 
-Run an aggregation via the Global data set
+Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
 ### Example Usage
 
@@ -360,7 +360,7 @@ with SDK(
 
 ## search
 
-Search the Global data set
+Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
 
 ### Example Usage
 

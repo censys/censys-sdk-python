@@ -626,6 +626,7 @@ if TYPE_CHECKING:
     )
     from .redis import Redis, RedisTypedDict
     from .redis_rawoutput import RedisRawOutput, RedisRawOutputTypedDict
+    from .redline import Redline, RedlineTypedDict
     from .redlioncrimson import RedlionCrimson, RedlionCrimsonTypedDict
     from .redlionweb import RedlionWeb, RedlionWebTypedDict
     from .reject import Reject, RejectType, RejectTypedDict
@@ -1675,6 +1676,8 @@ __all__ = [
     "RedisRawOutput",
     "RedisRawOutputTypedDict",
     "RedisTypedDict",
+    "Redline",
+    "RedlineTypedDict",
     "RedlionCrimson",
     "RedlionCrimsonTypedDict",
     "RedlionWeb",
@@ -2764,6 +2767,8 @@ _dynamic_imports: dict[str, str] = {
     "RedisTypedDict": ".redis",
     "RedisRawOutput": ".redis_rawoutput",
     "RedisRawOutputTypedDict": ".redis_rawoutput",
+    "Redline": ".redline",
+    "RedlineTypedDict": ".redline",
     "RedlionCrimson": ".redlioncrimson",
     "RedlionCrimsonTypedDict": ".redlioncrimson",
     "RedlionWeb": ".redlionweb",
