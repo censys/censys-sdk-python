@@ -80,6 +80,7 @@ from .rdate import Rdate, RdateTypedDict
 from .rdp import Rdp, RdpTypedDict
 from .realport import Realport, RealportTypedDict
 from .redis import Redis, RedisTypedDict
+from .redline import Redline, RedlineTypedDict
 from .redlioncrimson import RedlionCrimson, RedlionCrimsonTypedDict
 from .representativeinfo import RepresentativeInfo, RepresentativeInfoTypedDict
 from .rifatron import Rifatron, RifatronTypedDict
@@ -231,6 +232,7 @@ class ServiceTypedDict(TypedDict):
     rdp: NotRequired[RdpTypedDict]
     realport: NotRequired[RealportTypedDict]
     redis: NotRequired[RedisTypedDict]
+    redline: NotRequired[RedlineTypedDict]
     redlion_crimson: NotRequired[RedlionCrimsonTypedDict]
     representative_info: NotRequired[RepresentativeInfoTypedDict]
     rifatron: NotRequired[RifatronTypedDict]
@@ -453,6 +455,8 @@ class Service(BaseModel):
 
     redis: Optional[Redis] = None
 
+    redline: Optional[Redline] = None
+
     redlion_crimson: Optional[RedlionCrimson] = None
 
     representative_info: Optional[RepresentativeInfo] = None
@@ -630,6 +634,7 @@ class Service(BaseModel):
             "rdp",
             "realport",
             "redis",
+            "redline",
             "redlion_crimson",
             "representative_info",
             "rifatron",

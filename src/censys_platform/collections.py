@@ -21,9 +21,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudListResponse:
-        r"""List Collections
+        r"""List collections
 
-        List Collections
+        List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param page_token: page token for the requested page of collection results
@@ -131,9 +131,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudListResponse:
-        r"""List Collections
+        r"""List collections
 
-        List Collections
+        List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param page_token: page token for the requested page of collection results
@@ -242,9 +242,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudCreateResponse:
-        r"""Create a Collection
+        r"""Create a collection
 
-        Create a Collection
+        Create a new collection.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param crud_create_input_body:
@@ -360,9 +360,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudCreateResponse:
-        r"""Create a Collection
+        r"""Create a collection
 
-        Create a Collection
+        Create a new collection.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param crud_create_input_body:
@@ -476,9 +476,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudDeleteResponse:
-        r"""Delete a Collection
+        r"""Delete a collection
 
-        Delete a Collection
+        Delete a collection.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -580,9 +580,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudDeleteResponse:
-        r"""Delete a Collection
+        r"""Delete a collection
 
-        Delete a Collection
+        Delete a collection.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -684,9 +684,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudGetResponse:
-        r"""Get a Collection
+        r"""Get a collection
 
-        Get a Collection
+        Retrieve information about a collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console. Retrieved information includes its name, query, description, status, and asset count.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -791,9 +791,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudGetResponse:
-        r"""Get a Collection
+        r"""Get a collection
 
-        Get a Collection
+        Retrieve information about a collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console. Retrieved information includes its name, query, description, status, and asset count.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -901,9 +901,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudUpdateResponse:
-        r"""Update a Collection
+        r"""Update a collection
 
-        Update a Collection
+        Update a collection's name, description, and/or query.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1022,9 +1022,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudUpdateResponse:
-        r"""Update a Collection
+        r"""Update a collection
 
-        Update a Collection
+        Update a collection's name, description, and/or query.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1142,9 +1142,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsListEventsResponse:
-        r"""List a Collection's events
+        r"""Get a collection's events
 
-        List a Collection's events
+        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1249,9 +1249,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsListEventsResponse:
-        r"""List a Collection's events
+        r"""Get a collection's events
 
-        List a Collection's events
+        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1357,9 +1357,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsSearchAggregateResponse:
-        r"""Search / Aggregate
+        r"""Aggregate results for a search query within a collection
 
-        Run an aggregation via a Collection data set
+        Aggregate results for a Platform search query that targets a collection's assets. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param collection_uid: The UID for the collection
         :param search_aggregate_input_body:
@@ -1478,9 +1478,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsSearchAggregateResponse:
-        r"""Search / Aggregate
+        r"""Aggregate results for a search query within a collection
 
-        Run an aggregation via a Collection data set
+        Aggregate results for a Platform search query that targets a collection's assets. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param collection_uid: The UID for the collection
         :param search_aggregate_input_body:
@@ -1599,9 +1599,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsSearchQueryResponse:
-        r"""Search / Query
+        r"""Run a search query within a collection
 
-        Run a query via a Collection data set
+        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
 
         :param collection_uid: The UID for the collection
         :param search_query_input_body:
@@ -1720,9 +1720,9 @@ class Collections(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsSearchQueryResponse:
-        r"""Search / Query
+        r"""Run a search query within a collection
 
-        Run a query via a Collection data set
+        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
 
         :param collection_uid: The UID for the collection
         :param search_query_input_body:

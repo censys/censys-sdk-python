@@ -7,18 +7,18 @@ Endpoints related to the Collections product
 
 ### Available Operations
 
-* [list](#list) - List Collections
-* [create](#create) - Create a Collection
-* [delete](#delete) - Delete a Collection
-* [get](#get) - Get a Collection
-* [update](#update) - Update a Collection
-* [list_events](#list_events) - List a Collection's events
-* [aggregate](#aggregate) - Search / Aggregate
-* [search](#search) - Search / Query
+* [list](#list) - List collections
+* [create](#create) - Create a collection
+* [delete](#delete) - Delete a collection
+* [get](#get) - Get a collection
+* [update](#update) - Update a collection
+* [list_events](#list_events) - Get a collection's events
+* [aggregate](#aggregate) - Aggregate results for a search query within a collection
+* [search](#search) - Run a search query within a collection
 
 ## list
 
-List Collections
+List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
 
 ### Example Usage
 
@@ -60,7 +60,7 @@ with SDK(
 
 ## create
 
-Create a Collection
+Create a new collection.
 
 ### Example Usage
 
@@ -101,7 +101,7 @@ with SDK(
 
 ## delete
 
-Delete a Collection
+Delete a collection.
 
 ### Example Usage
 
@@ -142,7 +142,7 @@ with SDK(
 
 ## get
 
-Get a Collection
+Retrieve information about a collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console. Retrieved information includes its name, query, description, status, and asset count.
 
 ### Example Usage
 
@@ -183,7 +183,7 @@ with SDK(
 
 ## update
 
-Update a Collection
+Update a collection's name, description, and/or query.
 
 ### Example Usage
 
@@ -225,7 +225,7 @@ with SDK(
 
 ## list_events
 
-List a Collection's events
+Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.
 
 ### Example Usage
 
@@ -267,7 +267,7 @@ with SDK(
 
 ## aggregate
 
-Run an aggregation via a Collection data set
+Aggregate results for a Platform search query that targets a collection's assets. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
 ### Example Usage
 
@@ -313,7 +313,7 @@ with SDK(
 
 ## search
 
-Run a query via a Collection data set
+Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
 
 ### Example Usage
 
