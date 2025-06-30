@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 3995af55f68b9e021ea909072c09386c
-  docVersion: 1.0.7
-  speakeasyVersion: 1.570.0
-  generationVersion: 2.638.0
-  releaseVersion: 0.6.1
-  configChecksum: 8bf0d89bbf0a245c5d51a270054eca37
+  docChecksum: 84086bbf6887036c2326b4e056c5e8be
+  docVersion: 1.0.8
+  speakeasyVersion: 1.572.0
+  generationVersion: 2.643.0
+  releaseVersion: 0.6.2
+  configChecksum: 9db3b263e062aee912de6e6d74d7c78e
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -187,6 +187,7 @@ generatedFiles:
   - docs/models/extendedkeyusage.md
   - docs/models/extension.md
   - docs/models/fielddiff.md
+  - docs/models/fieldvaluepair.md
   - docs/models/floatvalue.md
   - docs/models/fortigate.md
   - docs/models/forwarddnsresolved.md
@@ -413,6 +414,7 @@ generatedFiles:
   - docs/models/responseenvelopelistwebpropertyasset.md
   - docs/models/responseenvelopesearchaggregateresponse.md
   - docs/models/responseenvelopesearchqueryresponse.md
+  - docs/models/responseenvelopevaluecountsresponse.md
   - docs/models/responseenvelopewebpropertyasset.md
   - docs/models/reversednsresolved.md
   - docs/models/rifatron.md
@@ -452,6 +454,7 @@ generatedFiles:
   - docs/models/searchqueryhit.md
   - docs/models/searchqueryinputbody.md
   - docs/models/searchqueryresponse.md
+  - docs/models/searchvaluecountsinputbody.md
   - docs/models/security.md
   - docs/models/securitycapabilities.md
   - docs/models/ser2net.md
@@ -579,9 +582,13 @@ generatedFiles:
   - docs/models/v3globaldatasearchqueryglobals.md
   - docs/models/v3globaldatasearchqueryrequest.md
   - docs/models/v3globaldatasearchqueryresponse.md
+  - docs/models/v3threathuntingvaluecountsglobals.md
+  - docs/models/v3threathuntingvaluecountsrequest.md
+  - docs/models/v3threathuntingvaluecountsresponse.md
   - docs/models/validation.md
   - docs/models/validationlevel.md
   - docs/models/validityperiod.md
+  - docs/models/valuecountsresponse.md
   - docs/models/valuedensity.md
   - docs/models/ventrilo.md
   - docs/models/ventriloheader.md
@@ -611,6 +618,7 @@ generatedFiles:
   - docs/sdks/collections/README.md
   - docs/sdks/globaldata/README.md
   - docs/sdks/sdk/README.md
+  - docs/sdks/threathunting/README.md
   - poetry.toml
   - py.typed
   - pylintrc
@@ -758,6 +766,7 @@ generatedFiles:
   - src/censys_platform/models/extendedkeyusage.py
   - src/censys_platform/models/extension.py
   - src/censys_platform/models/fielddiff.py
+  - src/censys_platform/models/fieldvaluepair.py
   - src/censys_platform/models/floatvalue.py
   - src/censys_platform/models/fortigate.py
   - src/censys_platform/models/forwarddnsresolved.py
@@ -970,6 +979,7 @@ generatedFiles:
   - src/censys_platform/models/responseenvelopelistwebpropertyasset.py
   - src/censys_platform/models/responseenvelopesearchaggregateresponse.py
   - src/censys_platform/models/responseenvelopesearchqueryresponse.py
+  - src/censys_platform/models/responseenvelopevaluecountsresponse.py
   - src/censys_platform/models/responseenvelopewebpropertyasset.py
   - src/censys_platform/models/reversednsresolved.py
   - src/censys_platform/models/rifatron.py
@@ -1006,6 +1016,7 @@ generatedFiles:
   - src/censys_platform/models/searchqueryhit.py
   - src/censys_platform/models/searchqueryinputbody.py
   - src/censys_platform/models/searchqueryresponse.py
+  - src/censys_platform/models/searchvaluecountsinputbody.py
   - src/censys_platform/models/security.py
   - src/censys_platform/models/securitycapabilities.py
   - src/censys_platform/models/ser2net.py
@@ -1087,8 +1098,10 @@ generatedFiles:
   - src/censys_platform/models/v3_globaldata_asset_webpropertyop.py
   - src/censys_platform/models/v3_globaldata_search_aggregateop.py
   - src/censys_platform/models/v3_globaldata_search_queryop.py
+  - src/censys_platform/models/v3_threathunting_value_countsop.py
   - src/censys_platform/models/validation.py
   - src/censys_platform/models/validityperiod.py
+  - src/censys_platform/models/valuecountsresponse.py
   - src/censys_platform/models/ventrilo.py
   - src/censys_platform/models/ventrilo_header.py
   - src/censys_platform/models/ventrilo_message.py
@@ -1111,6 +1124,7 @@ generatedFiles:
   - src/censys_platform/py.typed
   - src/censys_platform/sdk.py
   - src/censys_platform/sdkconfiguration.py
+  - src/censys_platform/threat_hunting.py
   - src/censys_platform/types/__init__.py
   - src/censys_platform/types/basemodel.py
   - src/censys_platform/utils/__init__.py
@@ -1326,6 +1340,18 @@ examples:
           organization_id: "<id>"
       requestBody:
         application/json: {"query": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-value-counts:
+    speakeasy-default-v3-threathunting-value-counts:
+      parameters:
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"and_count_conditions": [[{"field": "<value>", "value": "<value>"}], []]}
       responses:
         "200":
           application/json: {}
