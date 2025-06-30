@@ -17,6 +17,7 @@ import weakref
 if TYPE_CHECKING:
     from censys_platform.collections import Collections
     from censys_platform.global_data import GlobalData
+    from censys_platform.threat_hunting import ThreatHunting
 
 
 class SDK(BaseSDK):
@@ -24,9 +25,12 @@ class SDK(BaseSDK):
     r"""Endpoints related to the Collections product"""
     global_data: "GlobalData"
     r"""Endpoints related to the Global Data product"""
+    threat_hunting: "ThreatHunting"
+    r"""Endpoints related to the Threat Hunting product"""
     _sub_sdk_map = {
         "collections": ("censys_platform.collections", "Collections"),
         "global_data": ("censys_platform.global_data", "GlobalData"),
+        "threat_hunting": ("censys_platform.threat_hunting", "ThreatHunting"),
     }
 
     def __init__(

@@ -303,6 +303,7 @@ if TYPE_CHECKING:
     from .extendedkeyusage import ExtendedKeyUsage, ExtendedKeyUsageTypedDict
     from .extension import Extension, ExtensionTypedDict
     from .fielddiff import FieldDiff, FieldDiffTypedDict
+    from .fieldvaluepair import FieldValuePair, FieldValuePairTypedDict
     from .floatvalue import FloatValue, FloatValueTypedDict
     from .fortigate import Fortigate, FortigateTypedDict
     from .forwarddnsresolved import ForwardDNSResolved, ForwardDNSResolvedTypedDict
@@ -680,6 +681,10 @@ if TYPE_CHECKING:
         ResponseEnvelopeSearchQueryResponse,
         ResponseEnvelopeSearchQueryResponseTypedDict,
     )
+    from .responseenvelopevaluecountsresponse import (
+        ResponseEnvelopeValueCountsResponse,
+        ResponseEnvelopeValueCountsResponseTypedDict,
+    )
     from .responseenvelopewebpropertyasset import (
         ResponseEnvelopeWebpropertyAsset,
         ResponseEnvelopeWebpropertyAssetTypedDict,
@@ -740,6 +745,10 @@ if TYPE_CHECKING:
         SearchQueryInputBodyTypedDict,
     )
     from .searchqueryresponse import SearchQueryResponse, SearchQueryResponseTypedDict
+    from .searchvaluecountsinputbody import (
+        SearchValueCountsInputBody,
+        SearchValueCountsInputBodyTypedDict,
+    )
     from .security import Security, SecurityTypedDict
     from .securitycapabilities import (
         SecurityCapabilities,
@@ -971,8 +980,17 @@ if TYPE_CHECKING:
         V3GlobaldataSearchQueryResponse,
         V3GlobaldataSearchQueryResponseTypedDict,
     )
+    from .v3_threathunting_value_countsop import (
+        V3ThreathuntingValueCountsGlobals,
+        V3ThreathuntingValueCountsGlobalsTypedDict,
+        V3ThreathuntingValueCountsRequest,
+        V3ThreathuntingValueCountsRequestTypedDict,
+        V3ThreathuntingValueCountsResponse,
+        V3ThreathuntingValueCountsResponseTypedDict,
+    )
     from .validation import Validation, ValidationTypedDict
     from .validityperiod import ValidityPeriod, ValidityPeriodTypedDict
+    from .valuecountsresponse import ValueCountsResponse, ValueCountsResponseTypedDict
     from .ventrilo import Ventrilo, VentriloTypedDict
     from .ventrilo_header import VentriloHeader, VentriloHeaderTypedDict
     from .ventrilo_message import VentriloMessage, VentriloMessageTypedDict
@@ -1275,6 +1293,8 @@ __all__ = [
     "ExtensionTypedDict",
     "FieldDiff",
     "FieldDiffTypedDict",
+    "FieldValuePair",
+    "FieldValuePairTypedDict",
     "FloatValue",
     "FloatValueTypedDict",
     "Fortigate",
@@ -1712,6 +1732,8 @@ __all__ = [
     "ResponseEnvelopeSearchAggregateResponseTypedDict",
     "ResponseEnvelopeSearchQueryResponse",
     "ResponseEnvelopeSearchQueryResponseTypedDict",
+    "ResponseEnvelopeValueCountsResponse",
+    "ResponseEnvelopeValueCountsResponseTypedDict",
     "ResponseEnvelopeWebpropertyAsset",
     "ResponseEnvelopeWebpropertyAssetTypedDict",
     "ReverseDNSResolved",
@@ -1799,6 +1821,8 @@ __all__ = [
     "SearchQueryInputBodyTypedDict",
     "SearchQueryResponse",
     "SearchQueryResponseTypedDict",
+    "SearchValueCountsInputBody",
+    "SearchValueCountsInputBodyTypedDict",
     "Security",
     "SecurityCapabilities",
     "SecurityCapabilitiesTypedDict",
@@ -2026,11 +2050,19 @@ __all__ = [
     "V3GlobaldataSearchQueryRequestTypedDict",
     "V3GlobaldataSearchQueryResponse",
     "V3GlobaldataSearchQueryResponseTypedDict",
+    "V3ThreathuntingValueCountsGlobals",
+    "V3ThreathuntingValueCountsGlobalsTypedDict",
+    "V3ThreathuntingValueCountsRequest",
+    "V3ThreathuntingValueCountsRequestTypedDict",
+    "V3ThreathuntingValueCountsResponse",
+    "V3ThreathuntingValueCountsResponseTypedDict",
     "Validation",
     "ValidationLevel",
     "ValidationTypedDict",
     "ValidityPeriod",
     "ValidityPeriodTypedDict",
+    "ValueCountsResponse",
+    "ValueCountsResponseTypedDict",
     "ValueDensity",
     "Ventrilo",
     "VentriloHeader",
@@ -2377,6 +2409,8 @@ _dynamic_imports: dict[str, str] = {
     "ExtensionTypedDict": ".extension",
     "FieldDiff": ".fielddiff",
     "FieldDiffTypedDict": ".fielddiff",
+    "FieldValuePair": ".fieldvaluepair",
+    "FieldValuePairTypedDict": ".fieldvaluepair",
     "FloatValue": ".floatvalue",
     "FloatValueTypedDict": ".floatvalue",
     "Fortigate": ".fortigate",
@@ -2803,6 +2837,8 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeSearchAggregateResponseTypedDict": ".responseenvelopesearchaggregateresponse",
     "ResponseEnvelopeSearchQueryResponse": ".responseenvelopesearchqueryresponse",
     "ResponseEnvelopeSearchQueryResponseTypedDict": ".responseenvelopesearchqueryresponse",
+    "ResponseEnvelopeValueCountsResponse": ".responseenvelopevaluecountsresponse",
+    "ResponseEnvelopeValueCountsResponseTypedDict": ".responseenvelopevaluecountsresponse",
     "ResponseEnvelopeWebpropertyAsset": ".responseenvelopewebpropertyasset",
     "ResponseEnvelopeWebpropertyAssetTypedDict": ".responseenvelopewebpropertyasset",
     "ReverseDNSResolved": ".reversednsresolved",
@@ -2878,6 +2914,8 @@ _dynamic_imports: dict[str, str] = {
     "SearchQueryInputBodyTypedDict": ".searchqueryinputbody",
     "SearchQueryResponse": ".searchqueryresponse",
     "SearchQueryResponseTypedDict": ".searchqueryresponse",
+    "SearchValueCountsInputBody": ".searchvaluecountsinputbody",
+    "SearchValueCountsInputBodyTypedDict": ".searchvaluecountsinputbody",
     "Security": ".security",
     "SecurityTypedDict": ".security",
     "SecurityCapabilities": ".securitycapabilities",
@@ -3116,10 +3154,18 @@ _dynamic_imports: dict[str, str] = {
     "V3GlobaldataSearchQueryRequestTypedDict": ".v3_globaldata_search_queryop",
     "V3GlobaldataSearchQueryResponse": ".v3_globaldata_search_queryop",
     "V3GlobaldataSearchQueryResponseTypedDict": ".v3_globaldata_search_queryop",
+    "V3ThreathuntingValueCountsGlobals": ".v3_threathunting_value_countsop",
+    "V3ThreathuntingValueCountsGlobalsTypedDict": ".v3_threathunting_value_countsop",
+    "V3ThreathuntingValueCountsRequest": ".v3_threathunting_value_countsop",
+    "V3ThreathuntingValueCountsRequestTypedDict": ".v3_threathunting_value_countsop",
+    "V3ThreathuntingValueCountsResponse": ".v3_threathunting_value_countsop",
+    "V3ThreathuntingValueCountsResponseTypedDict": ".v3_threathunting_value_countsop",
     "Validation": ".validation",
     "ValidationTypedDict": ".validation",
     "ValidityPeriod": ".validityperiod",
     "ValidityPeriodTypedDict": ".validityperiod",
+    "ValueCountsResponse": ".valuecountsresponse",
+    "ValueCountsResponseTypedDict": ".valuecountsresponse",
     "Ventrilo": ".ventrilo",
     "VentriloTypedDict": ".ventrilo",
     "VentriloHeader": ".ventrilo_header",

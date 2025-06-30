@@ -185,6 +185,10 @@ asyncio.run(main())
 * [search](docs/sdks/globaldata/README.md#search) - Run a search query
 
 
+### [threat_hunting](docs/sdks/threathunting/README.md)
+
+* [value_counts](docs/sdks/threathunting/README.md#value_counts) - Value Counts
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
