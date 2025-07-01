@@ -53,7 +53,7 @@ class ThreatHunting(BaseSDK):
 
         req = self._build_request(
             method="POST",
-            path="/v3/threat-hunting/value_counts",
+            path="/v3/threat-hunting/value-counts",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -172,7 +172,7 @@ class ThreatHunting(BaseSDK):
 
         req = self._build_request_async(
             method="POST",
-            path="/v3/threat-hunting/value_counts",
+            path="/v3/threat-hunting/value-counts",
             base_url=base_url,
             url_variables=url_variables,
             request=request,

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 84086bbf6887036c2326b4e056c5e8be
-  docVersion: 1.0.8
-  speakeasyVersion: 1.572.0
-  generationVersion: 2.643.0
-  releaseVersion: 0.6.2
-  configChecksum: 9db3b263e062aee912de6e6d74d7c78e
+  docChecksum: 7050f640c452e32f83ec760b39a1d63d
+  docVersion: 1.0.9
+  speakeasyVersion: 1.573.0
+  generationVersion: 2.644.1
+  releaseVersion: 0.6.3
+  configChecksum: e69bb6b71817553af781e919da1ba8ae
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
