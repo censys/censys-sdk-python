@@ -3,6 +3,6 @@
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `and_count_conditions`                                           | List[List[[models.FieldValuePair](../models/fieldvaluepair.md)]] | :heavy_check_mark:                                               | Conditions that are AND-ed together to determine what to count   |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `and_count_conditions`                                     | List[[models.CountCondition](../models/countcondition.md)] | :heavy_check_mark:                                         | Groups of field-value pairs to count matches for.          |

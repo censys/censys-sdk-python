@@ -93,6 +93,7 @@ if TYPE_CHECKING:
     from .connection import Connection, ConnectionTypedDict
     from .contact import Contact, ContactTypedDict
     from .coordinates import Coordinates, CoordinatesTypedDict
+    from .countcondition import CountCondition, CountConditionTypedDict
     from .cpe import Cpe, CpeTypedDict
     from .cpe_lifecycle import CPELifeCycle, CPELifeCycleTypedDict
     from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
@@ -512,6 +513,7 @@ if TYPE_CHECKING:
     from .nfsmountd import NfsMountd, NfsMountdTypedDict
     from .nmea import Nmea, NmeaTypedDict
     from .nmea_nmeamessage import NmeaNmeaMessage, NmeaNmeaMessageTypedDict
+    from .no_response_error import NoResponseError
     from .nodeinfov0 import NodeInfoV0, NodeInfoV0TypedDict
     from .nodeinfov1 import NodeInfoV1, NodeInfoV1TypedDict
     from .nodeinfov2 import NodeInfoV2, NodeInfoV2TypedDict
@@ -689,6 +691,7 @@ if TYPE_CHECKING:
         ResponseEnvelopeWebpropertyAsset,
         ResponseEnvelopeWebpropertyAssetTypedDict,
     )
+    from .responsevalidationerror import ResponseValidationError
     from .reversednsresolved import ReverseDNSResolved, ReverseDNSResolvedTypedDict
     from .rifatron import Rifatron, RifatronTypedDict
     from .ripple import Ripple, RippleTypedDict
@@ -725,6 +728,7 @@ if TYPE_CHECKING:
     from .scadaview import ScadaView, ScadaViewTypedDict
     from .scpi import Scpi, ScpiTypedDict
     from .screenshot import Screenshot, ScreenshotTypedDict
+    from .sdkbaseerror import SDKBaseError
     from .sdkerror import SDKError
     from .searchaggregateinputbody import (
         SearchAggregateInputBody,
@@ -1127,6 +1131,8 @@ __all__ = [
     "ContactTypedDict",
     "Coordinates",
     "CoordinatesTypedDict",
+    "CountCondition",
+    "CountConditionTypedDict",
     "Cpe",
     "CpeTypedDict",
     "CrestronCp3",
@@ -1542,6 +1548,7 @@ __all__ = [
     "NmeaNmeaMessage",
     "NmeaNmeaMessageTypedDict",
     "NmeaTypedDict",
+    "NoResponseError",
     "NodeInfoV0",
     "NodeInfoV0TypedDict",
     "NodeInfoV1",
@@ -1736,6 +1743,7 @@ __all__ = [
     "ResponseEnvelopeValueCountsResponseTypedDict",
     "ResponseEnvelopeWebpropertyAsset",
     "ResponseEnvelopeWebpropertyAssetTypedDict",
+    "ResponseValidationError",
     "ReverseDNSResolved",
     "ReverseDNSResolvedTypedDict",
     "Rifatron",
@@ -1776,6 +1784,7 @@ __all__ = [
     "RtspTypedDict",
     "S7",
     "S7TypedDict",
+    "SDKBaseError",
     "SDKError",
     "SMTP",
     "SMTPTypedDict",
@@ -2207,6 +2216,8 @@ _dynamic_imports: dict[str, str] = {
     "ContactTypedDict": ".contact",
     "Coordinates": ".coordinates",
     "CoordinatesTypedDict": ".coordinates",
+    "CountCondition": ".countcondition",
+    "CountConditionTypedDict": ".countcondition",
     "Cpe": ".cpe",
     "CpeTypedDict": ".cpe",
     "CPELifeCycle": ".cpe_lifecycle",
@@ -2655,6 +2666,7 @@ _dynamic_imports: dict[str, str] = {
     "NmeaTypedDict": ".nmea",
     "NmeaNmeaMessage": ".nmea_nmeamessage",
     "NmeaNmeaMessageTypedDict": ".nmea_nmeamessage",
+    "NoResponseError": ".no_response_error",
     "NodeInfoV0": ".nodeinfov0",
     "NodeInfoV0TypedDict": ".nodeinfov0",
     "NodeInfoV1": ".nodeinfov1",
@@ -2841,6 +2853,7 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeValueCountsResponseTypedDict": ".responseenvelopevaluecountsresponse",
     "ResponseEnvelopeWebpropertyAsset": ".responseenvelopewebpropertyasset",
     "ResponseEnvelopeWebpropertyAssetTypedDict": ".responseenvelopewebpropertyasset",
+    "ResponseValidationError": ".responsevalidationerror",
     "ReverseDNSResolved": ".reversednsresolved",
     "ReverseDNSResolvedTypedDict": ".reversednsresolved",
     "Rifatron": ".rifatron",
@@ -2899,6 +2912,7 @@ _dynamic_imports: dict[str, str] = {
     "ScpiTypedDict": ".scpi",
     "Screenshot": ".screenshot",
     "ScreenshotTypedDict": ".screenshot",
+    "SDKBaseError": ".sdkbaseerror",
     "SDKError": ".sdkerror",
     "SearchAggregateInputBody": ".searchaggregateinputbody",
     "SearchAggregateInputBodyTypedDict": ".searchaggregateinputbody",

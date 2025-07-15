@@ -25,7 +25,7 @@ class V3GlobaldataAssetWebpropertyListGlobals(BaseModel):
 
 class V3GlobaldataAssetWebpropertyListRequestTypedDict(TypedDict):
     webproperty_ids: Nullable[List[str]]
-    r"""A web property host identifier, the format is hostname:port."""
+    r"""A list of web property identifiers."""
     organization_id: NotRequired[str]
     r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
 
@@ -35,7 +35,7 @@ class V3GlobaldataAssetWebpropertyListRequest(BaseModel):
         Nullable[List[str]],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ]
-    r"""A web property host identifier, the format is hostname:port."""
+    r"""A list of web property identifiers."""
 
     organization_id: Annotated[
         Optional[str],

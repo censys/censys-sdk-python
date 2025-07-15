@@ -15,27 +15,27 @@ from typing_extensions import NotRequired, TypedDict
 
 class SearchQueryInputBodyTypedDict(TypedDict):
     query: str
-    r"""CenQL query string to search upon."""
+    r"""CenQL query string to search upon"""
     fields: NotRequired[Nullable[List[str]]]
-    r"""Specify fields to return in response and ignore others."""
+    r"""specify fields to return in response and ignore others"""
     page_size: NotRequired[Nullable[int]]
-    r"""Amount of results to return per page."""
+    r"""amount of results to return per page"""
     page_token: NotRequired[str]
-    r"""Page token for the requested page of search results."""
+    r"""page token for the requested page of search results"""
 
 
 class SearchQueryInputBody(BaseModel):
     query: str
-    r"""CenQL query string to search upon."""
+    r"""CenQL query string to search upon"""
 
     fields: OptionalNullable[List[str]] = UNSET
-    r"""Specify fields to return in response and ignore others."""
+    r"""specify fields to return in response and ignore others"""
 
     page_size: OptionalNullable[int] = UNSET
-    r"""Amount of results to return per page."""
+    r"""amount of results to return per page"""
 
     page_token: Optional[str] = None
-    r"""Page token for the requested page of search results."""
+    r"""page token for the requested page of search results"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

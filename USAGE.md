@@ -5,12 +5,17 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.global_data.search(search_query_input_body={
-        "query": "<value>",
+        "fields": [
+            "host.ip",
+        ],
+        "page_size": 1,
+        "page_token": "<next_page_token>",
+        "query": "host.services: (protocol=SSH and not port: 22)",
     })
 
     # Handle response
@@ -28,12 +33,17 @@ from censys_platform import SDK
 async def main():
 
     async with SDK(
-        organization_id="<id>",
+        organization_id="11111111-2222-3333-4444-555555555555",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
 
         res = await sdk.global_data.search_async(search_query_input_body={
-            "query": "<value>",
+            "fields": [
+                "host.ip",
+            ],
+            "page_size": 1,
+            "page_token": "<next_page_token>",
+            "query": "host.services: (protocol=SSH and not port: 22)",
         })
 
         # Handle response

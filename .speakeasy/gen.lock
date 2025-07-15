@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 7050f640c452e32f83ec760b39a1d63d
-  docVersion: 1.0.9
-  speakeasyVersion: 1.573.0
-  generationVersion: 2.644.1
-  releaseVersion: 0.6.3
-  configChecksum: e69bb6b71817553af781e919da1ba8ae
+  docChecksum: da764aca16cefa712b9f73e3ac4916f7
+  docVersion: 1.0.12
+  speakeasyVersion: 1.581.2
+  generationVersion: 2.656.9
+  releaseVersion: 0.6.4
+  configChecksum: d334b104593812fb9cc03598a7b6cca5
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -14,11 +14,11 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.19.3
+    core: 5.19.4
     defaultEnabledRetries: 0.2.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
-    examples: 3.0.1
+    examples: 3.0.2
     flattening: 3.1.1
     globalSecurity: 3.0.3
     globalSecurityCallbacks: 1.0.0
@@ -34,7 +34,6 @@ features:
     sdkHooks: 1.1.0
 generatedFiles:
   - .gitattributes
-  - .python-version
   - .vscode/settings.json
   - USAGE.md
   - docs/models/activemq.md
@@ -92,6 +91,7 @@ generatedFiles:
   - docs/models/connection.md
   - docs/models/contact.md
   - docs/models/coordinates.md
+  - docs/models/countcondition.md
   - docs/models/cpe.md
   - docs/models/cpelifecycle.md
   - docs/models/crestroncp3.md
@@ -680,6 +680,7 @@ generatedFiles:
   - src/censys_platform/models/connection.py
   - src/censys_platform/models/contact.py
   - src/censys_platform/models/coordinates.py
+  - src/censys_platform/models/countcondition.py
   - src/censys_platform/models/cpe.py
   - src/censys_platform/models/cpe_lifecycle.py
   - src/censys_platform/models/crestroncp3.py
@@ -889,6 +890,7 @@ generatedFiles:
   - src/censys_platform/models/nfsmountd.py
   - src/censys_platform/models/nmea.py
   - src/censys_platform/models/nmea_nmeamessage.py
+  - src/censys_platform/models/no_response_error.py
   - src/censys_platform/models/nodeinfov0.py
   - src/censys_platform/models/nodeinfov1.py
   - src/censys_platform/models/nodeinfov2.py
@@ -981,6 +983,7 @@ generatedFiles:
   - src/censys_platform/models/responseenvelopesearchqueryresponse.py
   - src/censys_platform/models/responseenvelopevaluecountsresponse.py
   - src/censys_platform/models/responseenvelopewebpropertyasset.py
+  - src/censys_platform/models/responsevalidationerror.py
   - src/censys_platform/models/reversednsresolved.py
   - src/censys_platform/models/rifatron.py
   - src/censys_platform/models/ripple.py
@@ -1008,6 +1011,7 @@ generatedFiles:
   - src/censys_platform/models/scadaview.py
   - src/censys_platform/models/scpi.py
   - src/censys_platform/models/screenshot.py
+  - src/censys_platform/models/sdkbaseerror.py
   - src/censys_platform/models/sdkerror.py
   - src/censys_platform/models/searchaggregateinputbody.py
   - src/censys_platform/models/searchaggregateresponse.py
@@ -1141,6 +1145,7 @@ generatedFiles:
   - src/censys_platform/utils/retries.py
   - src/censys_platform/utils/security.py
   - src/censys_platform/utils/serializers.py
+  - src/censys_platform/utils/unmarshal_json_response.py
   - src/censys_platform/utils/url.py
   - src/censys_platform/utils/values.py
 examples:
@@ -1149,6 +1154,8 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
+          page_token: "<next_page_token>"
+          page_size: 1
       responses:
         "200":
           application/json: {}
@@ -1159,6 +1166,8 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
+      requestBody:
+        application/json: {"description": "Hosts with services with AsyncRAT indicator in cert subject DN", "name": "Hosts services with AsyncRAT indicator", "query": "host.services.cert.parsed.subject_dn: \"asyncrat\""}
       responses:
         "200":
           application/json: {}
@@ -1168,7 +1177,7 @@ examples:
     speakeasy-default-v3-collections-crud-delete:
       parameters:
         path:
-          collection_uid: "d9ed2825-23bc-46db-bc4b-b4ac6c48f664"
+          collection_uid: "11111111-2222-3333-4444-555555555555"
         query:
           organization_id: "<id>"
       responses:
@@ -1178,7 +1187,7 @@ examples:
     speakeasy-default-v3-collections-crud-get:
       parameters:
         path:
-          collection_uid: "4d6d3f55-e4ae-405b-8d0f-4207b74028ab"
+          collection_uid: "11111111-2222-3333-4444-555555555555"
         query:
           organization_id: "<id>"
       responses:
@@ -1190,9 +1199,11 @@ examples:
     speakeasy-default-v3-collections-crud-update:
       parameters:
         path:
-          collection_uid: "<id>"
+          collection_uid: "11111111-2222-3333-4444-555555555555"
         query:
           organization_id: "<id>"
+      requestBody:
+        application/json: {"description": "Hosts with services with AsyncRAT indicator in cert subject DN", "name": "Hosts services with AsyncRAT indicator", "query": "host.services.cert.parsed.subject_dn: \"asyncrat\""}
       responses:
         "200":
           application/json: {}
@@ -1202,9 +1213,13 @@ examples:
     speakeasy-default-v3-collections-list-events:
       parameters:
         path:
-          collection_uid: "ddc110c4-03da-472a-98af-be013b92eff5"
+          collection_uid: "11111111-2222-3333-4444-555555555555"
         query:
           organization_id: "<id>"
+          page_size: 1
+          page_token: "<next_page_token>"
+          start_time: "2025-01-01T00:00:00Z"
+          end_time: "2025-01-02T00:00:00Z"
       responses:
         "200":
           application/json: {}
@@ -1214,11 +1229,11 @@ examples:
     speakeasy-default-v3-collections-search-aggregate:
       parameters:
         path:
-          collection_uid: "ee98f78d-a47d-44fb-89f4-0626ceaf34d7"
+          collection_uid: "11111111-2222-3333-4444-555555555555"
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "<value>", "number_of_buckets": 829469, "query": "<value>"}
+        application/json: {"field": "web.endpoints.http.html_title", "number_of_buckets": 100, "query": "web: *"}
       responses:
         "200":
           application/json: {}
@@ -1232,7 +1247,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"query": "<value>"}
+        application/json: {"fields": ["host.ip"], "page_size": 1, "page_token": "<next_page_token>", "query": "host.services: (protocol=SSH and not port: 22)"}
       responses:
         "200":
           application/json: {}
@@ -1243,7 +1258,7 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
-          certificate_ids: []
+          certificate_ids: ["3daf2843a77b6f4e6af43cd9b6f6746053b8c928e056e8a724808db8905a94cf"]
       responses:
         "200":
           application/vnd.censys.api.v3.certificate.v1+json: {}
@@ -1253,7 +1268,7 @@ examples:
     speakeasy-default-v3-globaldata-asset-certificate:
       parameters:
         path:
-          certificate_id: "<id>"
+          certificate_id: "3daf2843a77b6f4e6af43cd9b6f6746053b8c928e056e8a724808db8905a94cf"
         query:
           organization_id: "<id>"
       responses:
@@ -1266,7 +1281,7 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
-          host_ids: ["<value 1>"]
+          host_ids: ["8.8.8.8"]
       responses:
         "200":
           application/vnd.censys.api.v3.host.v1+json: {}
@@ -1276,9 +1291,10 @@ examples:
     speakeasy-default-v3-globaldata-asset-host:
       parameters:
         path:
-          host_id: "<id>"
+          host_id: "8.8.8.8"
         query:
           organization_id: "<id>"
+          at_time: "2025-01-01T00:00:00Z"
       responses:
         "200":
           application/vnd.censys.api.v3.host.v1+json: {}
@@ -1288,11 +1304,11 @@ examples:
     speakeasy-default-v3-globaldata-asset-host-timeline:
       parameters:
         path:
-          host_id: "<id>"
+          host_id: "8.8.8.8"
         query:
           organization_id: "<id>"
-          start_time: "2024-10-02T01:32:37.490Z"
-          end_time: "2025-02-08T13:31:28.844Z"
+          start_time: "2025-01-01T00:00:00Z"
+          end_time: "2025-01-02T00:00:00Z"
       responses:
         "200":
           application/vnd.censys.api.v3.host_timeline_event.v1+json: {}
@@ -1303,7 +1319,7 @@ examples:
       parameters:
         query:
           organization_id: "<id>"
-          webproperty_ids: ["<value 1>"]
+          webproperty_ids: ["platform.censys.io:80"]
       responses:
         "200":
           application/vnd.censys.api.v3.webproperty.v1+json: {}
@@ -1313,9 +1329,10 @@ examples:
     speakeasy-default-v3-globaldata-asset-webproperty:
       parameters:
         path:
-          webproperty_id: "<id>"
+          webproperty_id: "platform.censys.io:80"
         query:
           organization_id: "<id>"
+          at_time: "2025-01-01T00:00:00Z"
       responses:
         "200":
           application/vnd.censys.api.v3.webproperty.v1+json: {}
@@ -1327,7 +1344,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "<value>", "number_of_buckets": 309828, "query": "<value>"}
+        application/json: {"field": "web.endpoints.http.html_title", "number_of_buckets": 100, "query": "web: *"}
       responses:
         "200":
           application/json: {}
@@ -1339,7 +1356,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"query": "<value>"}
+        application/json: {"fields": ["host.ip"], "page_size": 1, "page_token": "<next_page_token>", "query": "host.services: (protocol=SSH and not port: 22)"}
       responses:
         "200":
           application/json: {}
@@ -1351,7 +1368,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"and_count_conditions": [[{"field": "<value>", "value": "<value>"}], []]}
+        application/json: {"and_count_conditions": [{"field_value_pairs": [{"field": "host.services.port", "value": "80"}]}, {"field_value_pairs": []}]}
       responses:
         "200":
           application/json: {}

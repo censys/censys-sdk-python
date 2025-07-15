@@ -7,19 +7,19 @@ from typing_extensions import TypedDict
 
 class SearchAggregateInputBodyTypedDict(TypedDict):
     field: str
-    r"""Specify field to aggregate by."""
+    r"""field to aggregate by"""
     number_of_buckets: int
-    r"""Number of buckets to split results into."""
+    r"""number of buckets to split results into"""
     query: str
-    r"""CenQL query string to search upon."""
+    r"""CenQL query string to search upon"""
 
 
 class SearchAggregateInputBody(BaseModel):
     field: str
-    r"""Specify field to aggregate by."""
+    r"""field to aggregate by"""
 
     number_of_buckets: int
-    r"""Number of buckets to split results into."""
+    r"""number of buckets to split results into"""
 
     query: str
-    r"""CenQL query string to search upon."""
+    r"""CenQL query string to search upon"""
