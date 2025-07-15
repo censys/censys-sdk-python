@@ -2,24 +2,25 @@
 
 from __future__ import annotations
 from censys_platform.types import BaseModel
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class CrudUpdateInputBodyTypedDict(TypedDict):
-    description: str
-    r"""description of the collection"""
     name: str
     r"""name of the collection"""
     query: str
     r"""query string to search upon to build the collection"""
+    description: NotRequired[str]
+    r"""description of the collection"""
 
 
 class CrudUpdateInputBody(BaseModel):
-    description: str
-    r"""description of the collection"""
-
     name: str
     r"""name of the collection"""
 
     query: str
     r"""query string to search upon to build the collection"""
+
+    description: Optional[str] = None
+    r"""description of the collection"""

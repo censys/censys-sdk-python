@@ -4,6 +4,7 @@ from .basesdk import BaseSDK
 from censys_platform import models, utils
 from censys_platform._hooks import HookContext
 from censys_platform.types import Nullable, OptionalNullable, UNSET
+from censys_platform.utils.unmarshal_json_response import unmarshal_json_response
 from datetime import datetime
 from typing import Any, List, Mapping, Optional, Union
 
@@ -92,33 +93,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.certificate.v1+json"
         ):
             return models.V3GlobaldataAssetCertificateListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeListCertificateAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListCertificateAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_certificates_async(
         self,
@@ -201,33 +191,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.certificate.v1+json"
         ):
             return models.V3GlobaldataAssetCertificateListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeListCertificateAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListCertificateAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_certificate(
         self,
@@ -310,33 +289,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.certificate.v1+json"
         ):
             return models.V3GlobaldataAssetCertificateResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeCertificateAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeCertificateAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_certificate_async(
         self,
@@ -419,33 +387,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.certificate.v1+json"
         ):
             return models.V3GlobaldataAssetCertificateResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeCertificateAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeCertificateAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_hosts(
         self,
@@ -528,33 +485,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.host.v1+json"
         ):
             return models.V3GlobaldataAssetHostListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeListHostAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListHostAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_hosts_async(
         self,
@@ -637,33 +583,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.host.v1+json"
         ):
             return models.V3GlobaldataAssetHostListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeListHostAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListHostAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_host(
         self,
@@ -749,33 +684,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.host.v1+json"
         ):
             return models.V3GlobaldataAssetHostResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeHostAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeHostAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_host_async(
         self,
@@ -861,33 +785,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.host.v1+json"
         ):
             return models.V3GlobaldataAssetHostResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeHostAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeHostAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_host_timeline(
         self,
@@ -976,33 +889,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.host_timeline_event.v1+json"
         ):
             return models.V3GlobaldataAssetHostTimelineResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeHostTimeline
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeHostTimeline, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_host_timeline_async(
         self,
@@ -1091,33 +993,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.host_timeline_event.v1+json"
         ):
             return models.V3GlobaldataAssetHostTimelineResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeHostTimeline
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeHostTimeline, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_web_properties(
         self,
@@ -1133,7 +1024,7 @@ class GlobalData(BaseSDK):
 
         Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
-        :param webproperty_ids: A web property host identifier, the format is hostname:port.
+        :param webproperty_ids: A list of web property identifiers.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1200,33 +1091,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.webproperty.v1+json"
         ):
             return models.V3GlobaldataAssetWebpropertyListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeListWebpropertyAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListWebpropertyAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_web_properties_async(
         self,
@@ -1242,7 +1122,7 @@ class GlobalData(BaseSDK):
 
         Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
-        :param webproperty_ids: A web property host identifier, the format is hostname:port.
+        :param webproperty_ids: A list of web property identifiers.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1309,33 +1189,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.webproperty.v1+json"
         ):
             return models.V3GlobaldataAssetWebpropertyListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeListWebpropertyAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListWebpropertyAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def get_web_property(
         self,
@@ -1352,7 +1221,7 @@ class GlobalData(BaseSDK):
 
         Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
-        :param webproperty_id: A web property host identifier, the format is hostname:port.
+        :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param at_time: RFC3339 Timestamp to view a webproperty at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time
         :param retries: Override the default retry configuration for this method
@@ -1421,33 +1290,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.webproperty.v1+json"
         ):
             return models.V3GlobaldataAssetWebpropertyResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeWebpropertyAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeWebpropertyAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_web_property_async(
         self,
@@ -1464,7 +1322,7 @@ class GlobalData(BaseSDK):
 
         Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
-        :param webproperty_id: A web property host identifier, the format is hostname:port.
+        :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param at_time: RFC3339 Timestamp to view a webproperty at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time
         :param retries: Override the default retry configuration for this method
@@ -1533,33 +1391,22 @@ class GlobalData(BaseSDK):
             http_res, "200", "application/vnd.censys.api.v3.webproperty.v1+json"
         ):
             return models.V3GlobaldataAssetWebpropertyResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeWebpropertyAsset
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeWebpropertyAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def aggregate(
         self,
@@ -1651,33 +1498,22 @@ class GlobalData(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.V3GlobaldataSearchAggregateResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeSearchAggregateResponse
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeSearchAggregateResponse, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def aggregate_async(
         self,
@@ -1769,33 +1605,22 @@ class GlobalData(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.V3GlobaldataSearchAggregateResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeSearchAggregateResponse
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeSearchAggregateResponse, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def search(
         self,
@@ -1887,33 +1712,22 @@ class GlobalData(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.V3GlobaldataSearchQueryResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeSearchQueryResponse
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeSearchQueryResponse, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def search_async(
         self,
@@ -2005,30 +1819,19 @@ class GlobalData(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.V3GlobaldataSearchQueryResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, models.ResponseEnvelopeSearchQueryResponse
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeSearchQueryResponse, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = utils.unmarshal_json(http_res.text, models.ErrorModelData)
-            raise models.ErrorModel(data=response_data)
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)

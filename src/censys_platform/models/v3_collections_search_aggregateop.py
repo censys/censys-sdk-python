@@ -33,7 +33,7 @@ class V3CollectionsSearchAggregateGlobals(BaseModel):
 
 class V3CollectionsSearchAggregateRequestTypedDict(TypedDict):
     collection_uid: str
-    r"""The UID for the collection"""
+    r"""The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console."""
     search_aggregate_input_body: SearchAggregateInputBodyTypedDict
     organization_id: NotRequired[str]
     r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
@@ -43,7 +43,7 @@ class V3CollectionsSearchAggregateRequest(BaseModel):
     collection_uid: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""The UID for the collection"""
+    r"""The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console."""
 
     search_aggregate_input_body: Annotated[
         SearchAggregateInputBody,

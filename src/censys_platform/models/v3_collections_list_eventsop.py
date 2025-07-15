@@ -50,11 +50,13 @@ class StatusChangeTypes(str, Enum):
 
 class V3CollectionsListEventsRequestTypedDict(TypedDict):
     collection_uid: str
-    r"""The UID for the collection"""
+    r"""The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console."""
     organization_id: NotRequired[str]
     r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
     page_size: NotRequired[int]
+    r"""Amount of results to return per page."""
     page_token: NotRequired[str]
+    r"""Page token for the requested page of collection results."""
     change_types: NotRequired[Nullable[List[ChangeTypes]]]
     r"""Change types"""
     asset_change_types: NotRequired[Nullable[List[AssetChangeTypes]]]
@@ -71,7 +73,7 @@ class V3CollectionsListEventsRequest(BaseModel):
     collection_uid: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""The UID for the collection"""
+    r"""The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console."""
 
     organization_id: Annotated[
         Optional[str],
@@ -83,11 +85,13 @@ class V3CollectionsListEventsRequest(BaseModel):
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
+    r"""Amount of results to return per page."""
 
     page_token: Annotated[
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
+    r"""Page token for the requested page of collection results."""
 
     change_types: Annotated[
         OptionalNullable[List[ChangeTypes]],

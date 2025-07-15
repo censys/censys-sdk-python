@@ -7,11 +7,11 @@ Endpoints related to the Threat Hunting product
 
 ### Available Operations
 
-* [value_counts](#value_counts) - Value Counts
+* [value_counts](#value_counts) - CensEye: Retrieve value counts to discover pivots
 
 ## value_counts
 
-Get counts for specific field-value combinations for threat hunting analysis (requires api-censeye feature flag)
+Get counts of web assets for specific field-value pairs and combinations of field-value pairs. This is similar to the [CensEye functionality](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#/) available in the Platform web UI, but it allows you to define specific fields of interest rather than the [default fields](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#default-pivot-fields) leveraged by the tool in the UI.<br><br>Each array can only target fields within the same nested object. For example, you can combine `host.services.port=80` and `host.services.protocol=SSH` in the same array, but you cannot combine `host.services.port=80` and `host.location.country=”United States”` in the same array. You can input multiple arrays of objects in each API call.<br><br>To use this endpoint, your organization must have access to the Threat Hunting Module. This endpoint costs 1 credit per count condition (array of objects) included in the API call.
 
 ### Example Usage
 
@@ -20,19 +20,23 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.threat_hunting.value_counts(search_value_counts_input_body={
         "and_count_conditions": [
-            [
-                {
-                    "field": "<value>",
-                    "value": "<value>",
-                },
-            ],
-            [],
+            {
+                "field_value_pairs": [
+                    {
+                        "field": "host.services.port",
+                        "value": "80",
+                    },
+                ],
+            },
+            {
+                "field_value_pairs": [],
+            },
         ],
     })
 

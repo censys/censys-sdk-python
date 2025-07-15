@@ -3,8 +3,8 @@
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `field`                                  | *str*                                    | :heavy_check_mark:                       | Specify field to aggregate by.           |
-| `number_of_buckets`                      | *int*                                    | :heavy_check_mark:                       | Number of buckets to split results into. |
-| `query`                                  | *str*                                    | :heavy_check_mark:                       | CenQL query string to search upon.       |
+| Field                                   | Type                                    | Required                                | Description                             | Example                                 |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `field`                                 | *str*                                   | :heavy_check_mark:                      | field to aggregate by                   | web.endpoints.http.html_title           |
+| `number_of_buckets`                     | *int*                                   | :heavy_check_mark:                      | number of buckets to split results into | 100                                     |
+| `query`                                 | *str*                                   | :heavy_check_mark:                      | CenQL query string to search upon       | web: *                                  |

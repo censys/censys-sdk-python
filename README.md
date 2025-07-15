@@ -117,12 +117,17 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
     res = sdk.global_data.search(search_query_input_body={
-        "query": "<value>",
+        "fields": [
+            "host.ip",
+        ],
+        "page_size": 1,
+        "page_token": "<next_page_token>",
+        "query": "host.services: (protocol=SSH and not port: 22)",
     })
 
     # Handle response
@@ -140,12 +145,17 @@ from censys_platform import SDK
 async def main():
 
     async with SDK(
-        organization_id="<id>",
+        organization_id="11111111-2222-3333-4444-555555555555",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
 
         res = await sdk.global_data.search_async(search_query_input_body={
-            "query": "<value>",
+            "fields": [
+                "host.ip",
+            ],
+            "page_size": 1,
+            "page_token": "<next_page_token>",
+            "query": "host.services: (protocol=SSH and not port: 22)",
         })
 
         # Handle response
@@ -187,7 +197,7 @@ asyncio.run(main())
 
 ### [threat_hunting](docs/sdks/threathunting/README.md)
 
-* [value_counts](docs/sdks/threathunting/README.md#value_counts) - Value Counts
+* [value_counts](docs/sdks/threathunting/README.md#value_counts) - CensEye: Retrieve value counts to discover pivots
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -215,11 +225,11 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list()
+    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
 
     # Handle response
     print(res)
@@ -239,11 +249,11 @@ from censys_platform.utils import BackoffStrategy, RetryConfig
 
 
 with SDK(
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(,
+    res = sdk.collections.list(page_token="<next_page_token>", page_size=1,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Handle response
@@ -259,11 +269,11 @@ from censys_platform.utils import BackoffStrategy, RetryConfig
 
 with SDK(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list()
+    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
 
     # Handle response
     print(res)
@@ -274,49 +284,72 @@ with SDK(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+[`SDKBaseError`](./src/censys_platform/models/sdkbaseerror.py) is the base class for all HTTP error responses. It has the following properties:
 
-By default, an API error will raise a models.SDKError exception, which has the following properties:
-
-| Property        | Type             | Description           |
-|-----------------|------------------|-----------------------|
-| `.status_code`  | *int*            | The HTTP status code  |
-| `.message`      | *str*            | The error message     |
-| `.raw_response` | *httpx.Response* | The raw HTTP response |
-| `.body`         | *str*            | The response content  |
-
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `list_async` method may raise the following exceptions:
-
-| Error Type        | Status Code | Content Type             |
-| ----------------- | ----------- | ------------------------ |
-| models.ErrorModel | 401, 403    | application/problem+json |
-| models.SDKError   | 4XX, 5XX    | \*/\*                    |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
 ### Example
-
 ```python
+import censys_platform
 from censys_platform import SDK, models
 
 
 with SDK(
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
     res = None
     try:
 
-        res = sdk.collections.list()
+        res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
 
         # Handle response
         print(res)
 
-    except models.ErrorModel as e:
-        # handle e.data: models.ErrorModelData
-        raise(e)
-    except models.SDKError as e:
-        # handle exception
-        raise(e)
+
+    except models.SDKBaseError as e:
+        # The base class for HTTP error responses
+        print(e.message)
+        print(e.status_code)
+        print(e.body)
+        print(e.headers)
+        print(e.raw_response)
+
+        # Depending on the method different errors may be thrown
+        if isinstance(e, models.ErrorModel):
+            print(e.data.detail)  # Optional[str]
+            print(e.data.errors)  # OptionalNullable[List[censys_platform.ErrorDetail]]
+            print(e.data.instance)  # Optional[str]
+            print(e.data.status)  # Optional[int]
+            print(e.data.title)  # Optional[str]
 ```
+
+### Error Classes
+**Primary errors:**
+* [`SDKBaseError`](./src/censys_platform/models/sdkbaseerror.py): The base class for HTTP error responses.
+  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): Request does not contain a valid Authorization token.
+
+<details><summary>Less common errors (5)</summary>
+
+<br />
+
+**Network errors:**
+* [`httpx.RequestError`](https://www.python-httpx.org/exceptions/#httpx.RequestError): Base class for request errors.
+    * [`httpx.ConnectError`](https://www.python-httpx.org/exceptions/#httpx.ConnectError): HTTP client was unable to make a request to a server.
+    * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
+
+
+**Inherit from [`SDKBaseError`](./src/censys_platform/models/sdkbaseerror.py)**:
+* [`ResponseValidationError`](./src/censys_platform/models/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -331,11 +364,11 @@ from censys_platform import SDK
 
 with SDK(
     server_url="https://api.platform.censys.io",
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list()
+    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
 
     # Handle response
     print(res)
@@ -442,10 +475,10 @@ from censys_platform import SDK
 
 with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
-    organization_id="<id>",
+    organization_id="11111111-2222-3333-4444-555555555555",
 ) as sdk:
 
-    res = sdk.collections.list()
+    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
 
     # Handle response
     print(res)
@@ -465,7 +498,7 @@ from censys_platform import SDK
 def main():
 
     with SDK(
-        organization_id="<id>",
+        organization_id="11111111-2222-3333-4444-555555555555",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...
@@ -475,7 +508,7 @@ def main():
 async def amain():
 
     async with SDK(
-        organization_id="<id>",
+        organization_id="11111111-2222-3333-4444-555555555555",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...

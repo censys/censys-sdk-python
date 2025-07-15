@@ -25,7 +25,7 @@ class V3GlobaldataAssetWebpropertyGlobals(BaseModel):
 
 class V3GlobaldataAssetWebpropertyRequestTypedDict(TypedDict):
     webproperty_id: str
-    r"""A web property host identifier, the format is hostname:port."""
+    r"""A web property identifier."""
     organization_id: NotRequired[str]
     r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
     at_time: NotRequired[datetime]
@@ -36,7 +36,7 @@ class V3GlobaldataAssetWebpropertyRequest(BaseModel):
     webproperty_id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""A web property host identifier, the format is hostname:port."""
+    r"""A web property identifier."""
 
     organization_id: Annotated[
         Optional[str],
