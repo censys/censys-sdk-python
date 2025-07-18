@@ -97,6 +97,7 @@ if TYPE_CHECKING:
     from .cpe import Cpe, CpeTypedDict
     from .cpe_lifecycle import CPELifeCycle, CPELifeCycleTypedDict
     from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
+    from .crestrondinap2 import CrestronDinAp2, CrestronDinAp2TypedDict
     from .crudcreateinputbody import CrudCreateInputBody, CrudCreateInputBodyTypedDict
     from .crudupdateinputbody import CrudUpdateInputBody, CrudUpdateInputBodyTypedDict
     from .cryptsetup import CryptSetup, CryptSetupTypedDict
@@ -1137,6 +1138,8 @@ __all__ = [
     "CpeTypedDict",
     "CrestronCp3",
     "CrestronCp3TypedDict",
+    "CrestronDinAp2",
+    "CrestronDinAp2TypedDict",
     "CrudCreateInputBody",
     "CrudCreateInputBodyTypedDict",
     "CrudUpdateInputBody",
@@ -2224,6 +2227,8 @@ _dynamic_imports: dict[str, str] = {
     "CPELifeCycleTypedDict": ".cpe_lifecycle",
     "CrestronCp3": ".crestroncp3",
     "CrestronCp3TypedDict": ".crestroncp3",
+    "CrestronDinAp2": ".crestrondinap2",
+    "CrestronDinAp2TypedDict": ".crestrondinap2",
     "CrudCreateInputBody": ".crudcreateinputbody",
     "CrudCreateInputBodyTypedDict": ".crudcreateinputbody",
     "CrudUpdateInputBody": ".crudupdateinputbody",
