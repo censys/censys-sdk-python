@@ -13,6 +13,7 @@ from .ciscoipsla import CiscoIpsla, CiscoIpslaTypedDict
 from .cmore import Cmore, CmoreTypedDict
 from .coap import Coap, CoapTypedDict
 from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
+from .crestrondinap2 import CrestronDinAp2, CrestronDinAp2TypedDict
 from .cwmp import Cwmp, CwmpTypedDict
 from .darkcomet import Darkcomet, DarkcometTypedDict
 from .darkgate import Darkgate, DarkgateTypedDict
@@ -158,6 +159,7 @@ class ServiceTypedDict(TypedDict):
     cmore: NotRequired[CmoreTypedDict]
     coap: NotRequired[CoapTypedDict]
     crestron_cp3: NotRequired[CrestronCp3TypedDict]
+    crestron_din_ap2: NotRequired[CrestronDinAp2TypedDict]
     cwmp: NotRequired[CwmpTypedDict]
     darkcomet: NotRequired[DarkcometTypedDict]
     darkgate: NotRequired[DarkgateTypedDict]
@@ -306,6 +308,8 @@ class Service(BaseModel):
     coap: Optional[Coap] = None
 
     crestron_cp3: Optional[CrestronCp3] = None
+
+    crestron_din_ap2: Optional[CrestronDinAp2] = None
 
     cwmp: Optional[Cwmp] = None
 
@@ -560,6 +564,7 @@ class Service(BaseModel):
             "cmore",
             "coap",
             "crestron_cp3",
+            "crestron_din_ap2",
             "cwmp",
             "darkcomet",
             "darkgate",
