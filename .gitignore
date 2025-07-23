@@ -12,3 +12,4 @@ __pycache__/
 .DS_Store
 pyrightconfig.json
 README-PYPI.md
+.env

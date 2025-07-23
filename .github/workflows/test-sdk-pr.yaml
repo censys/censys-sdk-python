@@ -1,0 +1,48 @@
+name: Test SDK on PR
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: read
+  statuses: write
+  id-token: write
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+jobs:
+  test-python-sdk:
+    name: Test Python SDK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          poetry --version
+
+      - name: Configure Poetry
+        run: |
+          poetry config virtualenvs.in-project true
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Run tests
+        env:
+          CENSYS_PAT: ${{ secrets.PAT }}
+          CENSYS_ORG_ID: ${{ secrets.ORG_ID }}
+        run: poetry run pytest -v tests/test_sdk.py 
