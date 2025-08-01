@@ -1,0 +1,9 @@
+# V3GlobaldataGetHostObservationsWithCertificateResponse
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `headers`                                                                                              | Dict[str, List[*str*]]                                                                                 | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `result`                                                                                               | [models.ResponseEnvelopeHostObservationResponse](../models/responseenvelopehostobservationresponse.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

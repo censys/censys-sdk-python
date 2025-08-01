@@ -8,6 +8,8 @@ from typing_extensions import NotRequired, TypedDict
 
 class HTTPFaviconTypedDict(TypedDict):
     hash_md5: NotRequired[str]
+    hash_phash: NotRequired[str]
+    r"""A 64-bit 'perceptual' hash of the favicon"""
     hash_sha256: NotRequired[str]
     hash_shodan: NotRequired[int]
     r"""A hash expressed as a signed decimal integer, provided for compatability with Shodan search."""
@@ -19,6 +21,9 @@ class HTTPFaviconTypedDict(TypedDict):
 
 class HTTPFavicon(BaseModel):
     hash_md5: Optional[str] = None
+
+    hash_phash: Optional[str] = None
+    r"""A 64-bit 'perceptual' hash of the favicon"""
 
     hash_sha256: Optional[str] = None
 

@@ -3,10 +3,10 @@
 import importlib.metadata
 
 __title__: str = "censys-platform"
-__version__: str = "0.6.6"
-__openapi_doc_version__: str = "1.0.16"
-__gen_version__: str = "2.661.4"
-__user_agent__: str = "speakeasy-sdk/python 0.6.6 2.661.4 1.0.16 censys-platform"
+__version__: str = "0.7.0"
+__openapi_doc_version__: str = "1.0.24"
+__gen_version__: str = "2.671.2"
+__user_agent__: str = "speakeasy-sdk/python 0.7.0 2.671.2 1.0.24 censys-platform"
 
 try:
     if __package__ is not None:

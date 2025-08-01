@@ -126,7 +126,6 @@ with SDK(
             "host.ip",
         ],
         "page_size": 1,
-        "page_token": "<next_page_token>",
         "query": "host.services: (protocol=SSH and not port: 22)",
     })
 
@@ -154,7 +153,6 @@ async def main():
                 "host.ip",
             ],
             "page_size": 1,
-            "page_token": "<next_page_token>",
             "query": "host.services: (protocol=SSH and not port: 22)",
         })
 
@@ -186,17 +184,24 @@ asyncio.run(main())
 
 * [get_certificates](docs/sdks/globaldata/README.md#get_certificates) - Get multiple certificates
 * [get_certificate](docs/sdks/globaldata/README.md#get_certificate) - Get a certificate
+* [get_host_observations_with_certificate](docs/sdks/globaldata/README.md#get_host_observations_with_certificate) - Get Host Observations With Certificate
 * [get_hosts](docs/sdks/globaldata/README.md#get_hosts) - Get multiple hosts
 * [get_host](docs/sdks/globaldata/README.md#get_host) - Get a host
 * [get_host_timeline](docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
 * [get_web_properties](docs/sdks/globaldata/README.md#get_web_properties) - Get multiple web properties
 * [get_web_property](docs/sdks/globaldata/README.md#get_web_property) - Get a web property
+* [create_tracked_scan](docs/sdks/globaldata/README.md#create_tracked_scan) - Create a tracked rescan
+* [get_tracked_scan](docs/sdks/globaldata/README.md#get_tracked_scan) - Get tracked scan details
 * [aggregate](docs/sdks/globaldata/README.md#aggregate) - Aggregate results for a search query
 * [search](docs/sdks/globaldata/README.md#search) - Run a search query
+* [get_tracked_scan_threat_hunting](docs/sdks/globaldata/README.md#get_tracked_scan_threat_hunting) - Get tracked scan details
 
 
 ### [threat_hunting](docs/sdks/threathunting/README.md)
 
+* [get_tracked_scan](docs/sdks/threathunting/README.md#get_tracked_scan) - Get tracked scan details
+* [create_tracked_scan](docs/sdks/threathunting/README.md#create_tracked_scan) - Create a tracked discovery scan
+* [get_tracked_scan_threat_hunting](docs/sdks/threathunting/README.md#get_tracked_scan_threat_hunting) - Get tracked scan details
 * [value_counts](docs/sdks/threathunting/README.md#value_counts) - CensEye: Retrieve value counts to discover pivots
 
 </details>
@@ -334,7 +339,7 @@ with SDK(
 ### Error Classes
 **Primary errors:**
 * [`SDKBaseError`](./src/censys_platform/models/sdkbaseerror.py): The base class for HTTP error responses.
-  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): Request does not contain a valid Authorization token.
+  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): Request does not contain a valid Authorization token. *
 
 <details><summary>Less common errors (5)</summary>
 
@@ -350,6 +355,8 @@ with SDK(
 * [`ResponseValidationError`](./src/censys_platform/models/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->

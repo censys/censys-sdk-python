@@ -2,6 +2,7 @@
 
 from typing import TYPE_CHECKING
 from importlib import import_module
+import builtins
 
 if TYPE_CHECKING:
     from .activemq import Activemq, ActivemqTypedDict
@@ -193,6 +194,10 @@ if TYPE_CHECKING:
     from .eip_interface import EipInterface, EipInterfaceTypedDict
     from .eip_service import EipService, EipServiceTypedDict
     from .elasticsearch import ElasticSearch, ElasticSearchTypedDict
+    from .elasticsearch_errormessage import (
+        ElasticSearchErrorMessage,
+        ElasticSearchErrorMessageTypedDict,
+    )
     from .elasticsearch_resultsnodeinfo import (
         ElasticSearchResultsNodeInfo,
         ElasticSearchResultsNodeInfoTypedDict,
@@ -333,6 +338,14 @@ if TYPE_CHECKING:
     from .hostdns_reverseresolution import (
         HostDNSReverseResolution,
         HostDNSReverseResolutionTypedDict,
+    )
+    from .hostobservationrange import (
+        HostObservationRange,
+        HostObservationRangeTypedDict,
+    )
+    from .hostobservationresponse import (
+        HostObservationResponse,
+        HostObservationResponseTypedDict,
     )
     from .hosttimeline import HostTimeline, HostTimelineTypedDict
     from .hosttimelineevent import HostTimelineEvent, HostTimelineEventTypedDict
@@ -656,6 +669,10 @@ if TYPE_CHECKING:
         ResponseEnvelopeHostAsset,
         ResponseEnvelopeHostAssetTypedDict,
     )
+    from .responseenvelopehostobservationresponse import (
+        ResponseEnvelopeHostObservationResponse,
+        ResponseEnvelopeHostObservationResponseTypedDict,
+    )
     from .responseenvelopehosttimeline import (
         ResponseEnvelopeHostTimeline,
         ResponseEnvelopeHostTimelineTypedDict,
@@ -683,6 +700,10 @@ if TYPE_CHECKING:
     from .responseenvelopesearchqueryresponse import (
         ResponseEnvelopeSearchQueryResponse,
         ResponseEnvelopeSearchQueryResponseTypedDict,
+    )
+    from .responseenvelopetrackedscan import (
+        ResponseEnvelopeTrackedScan,
+        ResponseEnvelopeTrackedScanTypedDict,
     )
     from .responseenvelopevaluecountsresponse import (
         ResponseEnvelopeValueCountsResponse,
@@ -727,6 +748,35 @@ if TYPE_CHECKING:
         SapRouterRouterVersionInfoTypedDict,
     )
     from .scadaview import ScadaView, ScadaViewTypedDict
+    from .scansdiscoveryinputbody import (
+        HostPort,
+        HostPortTypedDict,
+        HostnamePort,
+        HostnamePortTypedDict,
+        ScansDiscoveryInputBody,
+        ScansDiscoveryInputBodyTarget,
+        ScansDiscoveryInputBodyTargetTypedDict,
+        ScansDiscoveryInputBodyTypedDict,
+        Target1,
+        Target1TypedDict,
+        Target2,
+        Target2TypedDict,
+    )
+    from .scansrescaninputbody import (
+        One,
+        OneTypedDict,
+        ScansRescanInputBody,
+        ScansRescanInputBodyTarget,
+        ScansRescanInputBodyTargetTypedDict,
+        ScansRescanInputBodyTypedDict,
+        TargetServiceID,
+        TargetServiceIDTypedDict,
+        TargetTransportProtocol,
+        TargetWebOrigin,
+        TargetWebOriginTypedDict,
+        Two,
+        TwoTypedDict,
+    )
     from .scpi import Scpi, ScpiTypedDict
     from .screenshot import Screenshot, ScreenshotTypedDict
     from .sdkbaseerror import SDKBaseError
@@ -767,6 +817,7 @@ if TYPE_CHECKING:
     from .serverconfig import ServerConfig, ServerConfigTypedDict
     from .serversync import ServerSync, ServerSyncTypedDict
     from .service import Service, ServiceTransportProtocol, ServiceTypedDict
+    from .serviceid import ServiceID, ServiceIDTransportProtocol, ServiceIDTypedDict
     from .servicescan import (
         ServiceScan,
         ServiceScanTransportProtocol,
@@ -835,6 +886,24 @@ if TYPE_CHECKING:
         TorServiceDescriptorTypedDict,
     )
     from .tplinkkasa import TplinkKasa, TplinkKasaTypedDict
+    from .trackedscan import TrackedScan, TrackedScanTypedDict
+    from .trackedscan_scantarget import (
+        TrackedScanScanTarget,
+        TrackedScanScanTargetTypedDict,
+    )
+    from .trackedscan_scantarget_hostnameport import (
+        TrackedScanScanTargetHostnamePort,
+        TrackedScanScanTargetHostnamePortTypedDict,
+    )
+    from .trackedscan_scantarget_hostport import (
+        TrackedScanScanTargetHostPort,
+        TrackedScanScanTargetHostPortTypedDict,
+    )
+    from .trackedscan_task import (
+        TrackedScanTask,
+        TrackedScanTaskStatus,
+        TrackedScanTaskTypedDict,
+    )
     from .unitronicspcom import UnitronicsPcom, UnitronicsPcomTypedDict
     from .unrecognizedpublickey import (
         UnrecognizedPublicKey,
@@ -969,6 +1038,30 @@ if TYPE_CHECKING:
         V3GlobaldataAssetWebpropertyResponse,
         V3GlobaldataAssetWebpropertyResponseTypedDict,
     )
+    from .v3_globaldata_get_host_observations_with_certificateop import (
+        V3GlobaldataGetHostObservationsWithCertificateGlobals,
+        V3GlobaldataGetHostObservationsWithCertificateGlobalsTypedDict,
+        V3GlobaldataGetHostObservationsWithCertificateRequest,
+        V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict,
+        V3GlobaldataGetHostObservationsWithCertificateResponse,
+        V3GlobaldataGetHostObservationsWithCertificateResponseTypedDict,
+    )
+    from .v3_globaldata_scans_getop import (
+        V3GlobaldataScansGetGlobals,
+        V3GlobaldataScansGetGlobalsTypedDict,
+        V3GlobaldataScansGetRequest,
+        V3GlobaldataScansGetRequestTypedDict,
+        V3GlobaldataScansGetResponse,
+        V3GlobaldataScansGetResponseTypedDict,
+    )
+    from .v3_globaldata_scans_rescanop import (
+        V3GlobaldataScansRescanGlobals,
+        V3GlobaldataScansRescanGlobalsTypedDict,
+        V3GlobaldataScansRescanRequest,
+        V3GlobaldataScansRescanRequestTypedDict,
+        V3GlobaldataScansRescanResponse,
+        V3GlobaldataScansRescanResponseTypedDict,
+    )
     from .v3_globaldata_search_aggregateop import (
         V3GlobaldataSearchAggregateGlobals,
         V3GlobaldataSearchAggregateGlobalsTypedDict,
@@ -984,6 +1077,22 @@ if TYPE_CHECKING:
         V3GlobaldataSearchQueryRequestTypedDict,
         V3GlobaldataSearchQueryResponse,
         V3GlobaldataSearchQueryResponseTypedDict,
+    )
+    from .v3_threathunting_scans_discoveryop import (
+        V3ThreathuntingScansDiscoveryGlobals,
+        V3ThreathuntingScansDiscoveryGlobalsTypedDict,
+        V3ThreathuntingScansDiscoveryRequest,
+        V3ThreathuntingScansDiscoveryRequestTypedDict,
+        V3ThreathuntingScansDiscoveryResponse,
+        V3ThreathuntingScansDiscoveryResponseTypedDict,
+    )
+    from .v3_threathunting_scans_getop import (
+        V3ThreathuntingScansGetGlobals,
+        V3ThreathuntingScansGetGlobalsTypedDict,
+        V3ThreathuntingScansGetRequest,
+        V3ThreathuntingScansGetRequestTypedDict,
+        V3ThreathuntingScansGetResponse,
+        V3ThreathuntingScansGetResponseTypedDict,
     )
     from .v3_threathunting_value_countsop import (
         V3ThreathuntingValueCountsGlobals,
@@ -1003,6 +1112,7 @@ if TYPE_CHECKING:
     from .vnc_keyvalue import VncKeyValue, VncKeyValueTypedDict
     from .vuln import Vuln, VulnRiskSource, VulnSeverity, VulnSource, VulnTypedDict
     from .weblogict3 import WeblogicT3, WeblogicT3TypedDict
+    from .weborigin import WebOrigin, WebOriginTypedDict
     from .webproperty import Webproperty, WebpropertyTypedDict
     from .webpropertyasset import WebpropertyAsset, WebpropertyAssetTypedDict
     from .whois import Whois, WhoisTypedDict
@@ -1218,6 +1328,8 @@ __all__ = [
     "EipServiceTypedDict",
     "EipTypedDict",
     "ElasticSearch",
+    "ElasticSearchErrorMessage",
+    "ElasticSearchErrorMessageTypedDict",
     "ElasticSearchResultsNodeInfo",
     "ElasticSearchResultsNodeInfoClusterCombinedInfo",
     "ElasticSearchResultsNodeInfoClusterCombinedInfoFilesystem",
@@ -1345,6 +1457,12 @@ __all__ = [
     "HostDNSReverseResolution",
     "HostDNSReverseResolutionTypedDict",
     "HostDNSTypedDict",
+    "HostObservationRange",
+    "HostObservationRangeTypedDict",
+    "HostObservationResponse",
+    "HostObservationResponseTypedDict",
+    "HostPort",
+    "HostPortTypedDict",
     "HostTimeline",
     "HostTimelineEvent",
     "HostTimelineEventAsset",
@@ -1352,6 +1470,8 @@ __all__ = [
     "HostTimelineEventTypedDict",
     "HostTimelineTypedDict",
     "HostTypedDict",
+    "HostnamePort",
+    "HostnamePortTypedDict",
     "Ibmnje",
     "IbmnjeTypedDict",
     "Ike",
@@ -1573,6 +1693,8 @@ __all__ = [
     "OllamaTypedDict",
     "Onc",
     "OncTypedDict",
+    "One",
+    "OneTypedDict",
     "Onvif",
     "OnvifHostname",
     "OnvifHostnameTypedDict",
@@ -1728,6 +1850,8 @@ __all__ = [
     "ResponseEnvelopeCollectionTypedDict",
     "ResponseEnvelopeHostAsset",
     "ResponseEnvelopeHostAssetTypedDict",
+    "ResponseEnvelopeHostObservationResponse",
+    "ResponseEnvelopeHostObservationResponseTypedDict",
     "ResponseEnvelopeHostTimeline",
     "ResponseEnvelopeHostTimelineTypedDict",
     "ResponseEnvelopeListCertificateAsset",
@@ -1742,6 +1866,8 @@ __all__ = [
     "ResponseEnvelopeSearchAggregateResponseTypedDict",
     "ResponseEnvelopeSearchQueryResponse",
     "ResponseEnvelopeSearchQueryResponseTypedDict",
+    "ResponseEnvelopeTrackedScan",
+    "ResponseEnvelopeTrackedScanTypedDict",
     "ResponseEnvelopeValueCountsResponse",
     "ResponseEnvelopeValueCountsResponseTypedDict",
     "ResponseEnvelopeWebpropertyAsset",
@@ -1814,6 +1940,14 @@ __all__ = [
     "SapRouterTypedDict",
     "ScadaView",
     "ScadaViewTypedDict",
+    "ScansDiscoveryInputBody",
+    "ScansDiscoveryInputBodyTarget",
+    "ScansDiscoveryInputBodyTargetTypedDict",
+    "ScansDiscoveryInputBodyTypedDict",
+    "ScansRescanInputBody",
+    "ScansRescanInputBodyTarget",
+    "ScansRescanInputBodyTargetTypedDict",
+    "ScansRescanInputBodyTypedDict",
     "Scope",
     "Scpi",
     "ScpiTypedDict",
@@ -1849,6 +1983,9 @@ __all__ = [
     "ServerSyncTypedDict",
     "ServerType",
     "Service",
+    "ServiceID",
+    "ServiceIDTransportProtocol",
+    "ServiceIDTypedDict",
     "ServiceScan",
     "ServiceScanTransportProtocol",
     "ServiceScanTypedDict",
@@ -1919,7 +2056,16 @@ __all__ = [
     "TacacsPlus",
     "TacacsPlusTypedDict",
     "Target",
+    "Target1",
+    "Target1TypedDict",
+    "Target2",
+    "Target2TypedDict",
+    "TargetServiceID",
+    "TargetServiceIDTypedDict",
+    "TargetTransportProtocol",
     "TargetTypedDict",
+    "TargetWebOrigin",
+    "TargetWebOriginTypedDict",
     "TeamViewer",
     "TeamViewerTypedDict",
     "Telnet",
@@ -1941,7 +2087,20 @@ __all__ = [
     "TorServiceDescriptorTypedDict",
     "TplinkKasa",
     "TplinkKasaTypedDict",
+    "TrackedScan",
+    "TrackedScanScanTarget",
+    "TrackedScanScanTargetHostPort",
+    "TrackedScanScanTargetHostPortTypedDict",
+    "TrackedScanScanTargetHostnamePort",
+    "TrackedScanScanTargetHostnamePortTypedDict",
+    "TrackedScanScanTargetTypedDict",
+    "TrackedScanTask",
+    "TrackedScanTaskStatus",
+    "TrackedScanTaskTypedDict",
+    "TrackedScanTypedDict",
     "TransportProtocol",
+    "Two",
+    "TwoTypedDict",
     "Type",
     "UnitronicsPcom",
     "UnitronicsPcomTypedDict",
@@ -2050,6 +2209,24 @@ __all__ = [
     "V3GlobaldataAssetWebpropertyRequestTypedDict",
     "V3GlobaldataAssetWebpropertyResponse",
     "V3GlobaldataAssetWebpropertyResponseTypedDict",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobals",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobalsTypedDict",
+    "V3GlobaldataGetHostObservationsWithCertificateRequest",
+    "V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict",
+    "V3GlobaldataGetHostObservationsWithCertificateResponse",
+    "V3GlobaldataGetHostObservationsWithCertificateResponseTypedDict",
+    "V3GlobaldataScansGetGlobals",
+    "V3GlobaldataScansGetGlobalsTypedDict",
+    "V3GlobaldataScansGetRequest",
+    "V3GlobaldataScansGetRequestTypedDict",
+    "V3GlobaldataScansGetResponse",
+    "V3GlobaldataScansGetResponseTypedDict",
+    "V3GlobaldataScansRescanGlobals",
+    "V3GlobaldataScansRescanGlobalsTypedDict",
+    "V3GlobaldataScansRescanRequest",
+    "V3GlobaldataScansRescanRequestTypedDict",
+    "V3GlobaldataScansRescanResponse",
+    "V3GlobaldataScansRescanResponseTypedDict",
     "V3GlobaldataSearchAggregateGlobals",
     "V3GlobaldataSearchAggregateGlobalsTypedDict",
     "V3GlobaldataSearchAggregateRequest",
@@ -2062,6 +2239,18 @@ __all__ = [
     "V3GlobaldataSearchQueryRequestTypedDict",
     "V3GlobaldataSearchQueryResponse",
     "V3GlobaldataSearchQueryResponseTypedDict",
+    "V3ThreathuntingScansDiscoveryGlobals",
+    "V3ThreathuntingScansDiscoveryGlobalsTypedDict",
+    "V3ThreathuntingScansDiscoveryRequest",
+    "V3ThreathuntingScansDiscoveryRequestTypedDict",
+    "V3ThreathuntingScansDiscoveryResponse",
+    "V3ThreathuntingScansDiscoveryResponseTypedDict",
+    "V3ThreathuntingScansGetGlobals",
+    "V3ThreathuntingScansGetGlobalsTypedDict",
+    "V3ThreathuntingScansGetRequest",
+    "V3ThreathuntingScansGetRequestTypedDict",
+    "V3ThreathuntingScansGetResponse",
+    "V3ThreathuntingScansGetResponseTypedDict",
     "V3ThreathuntingValueCountsGlobals",
     "V3ThreathuntingValueCountsGlobalsTypedDict",
     "V3ThreathuntingValueCountsRequest",
@@ -2094,6 +2283,8 @@ __all__ = [
     "VulnSource",
     "VulnTypedDict",
     "VulnerabilityResponseEffort",
+    "WebOrigin",
+    "WebOriginTypedDict",
     "WeblogicT3",
     "WeblogicT3TypedDict",
     "Webproperty",
@@ -2338,6 +2529,8 @@ _dynamic_imports: dict[str, str] = {
     "EipServiceTypedDict": ".eip_service",
     "ElasticSearch": ".elasticsearch",
     "ElasticSearchTypedDict": ".elasticsearch",
+    "ElasticSearchErrorMessage": ".elasticsearch_errormessage",
+    "ElasticSearchErrorMessageTypedDict": ".elasticsearch_errormessage",
     "ElasticSearchResultsNodeInfo": ".elasticsearch_resultsnodeinfo",
     "ElasticSearchResultsNodeInfoTypedDict": ".elasticsearch_resultsnodeinfo",
     "ElasticSearchResultsNodeInfoClusterCombinedInfo": ".elasticsearch_resultsnodeinfo_clustercombinedinfo",
@@ -2464,6 +2657,10 @@ _dynamic_imports: dict[str, str] = {
     "RecordType": ".hostdns_forwardresolution",
     "HostDNSReverseResolution": ".hostdns_reverseresolution",
     "HostDNSReverseResolutionTypedDict": ".hostdns_reverseresolution",
+    "HostObservationRange": ".hostobservationrange",
+    "HostObservationRangeTypedDict": ".hostobservationrange",
+    "HostObservationResponse": ".hostobservationresponse",
+    "HostObservationResponseTypedDict": ".hostobservationresponse",
     "HostTimeline": ".hosttimeline",
     "HostTimelineTypedDict": ".hosttimeline",
     "HostTimelineEvent": ".hosttimelineevent",
@@ -2840,6 +3037,8 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeCollectionEventsResponseTypedDict": ".responseenvelopecollectioneventsresponse",
     "ResponseEnvelopeHostAsset": ".responseenvelopehostasset",
     "ResponseEnvelopeHostAssetTypedDict": ".responseenvelopehostasset",
+    "ResponseEnvelopeHostObservationResponse": ".responseenvelopehostobservationresponse",
+    "ResponseEnvelopeHostObservationResponseTypedDict": ".responseenvelopehostobservationresponse",
     "ResponseEnvelopeHostTimeline": ".responseenvelopehosttimeline",
     "ResponseEnvelopeHostTimelineTypedDict": ".responseenvelopehosttimeline",
     "ResponseEnvelopeListCertificateAsset": ".responseenvelopelistcertificateasset",
@@ -2854,6 +3053,8 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeSearchAggregateResponseTypedDict": ".responseenvelopesearchaggregateresponse",
     "ResponseEnvelopeSearchQueryResponse": ".responseenvelopesearchqueryresponse",
     "ResponseEnvelopeSearchQueryResponseTypedDict": ".responseenvelopesearchqueryresponse",
+    "ResponseEnvelopeTrackedScan": ".responseenvelopetrackedscan",
+    "ResponseEnvelopeTrackedScanTypedDict": ".responseenvelopetrackedscan",
     "ResponseEnvelopeValueCountsResponse": ".responseenvelopevaluecountsresponse",
     "ResponseEnvelopeValueCountsResponseTypedDict": ".responseenvelopevaluecountsresponse",
     "ResponseEnvelopeWebpropertyAsset": ".responseenvelopewebpropertyasset",
@@ -2913,6 +3114,31 @@ _dynamic_imports: dict[str, str] = {
     "SapRouterRouterVersionInfoTypedDict": ".saprouter_routerversioninfo",
     "ScadaView": ".scadaview",
     "ScadaViewTypedDict": ".scadaview",
+    "HostPort": ".scansdiscoveryinputbody",
+    "HostPortTypedDict": ".scansdiscoveryinputbody",
+    "HostnamePort": ".scansdiscoveryinputbody",
+    "HostnamePortTypedDict": ".scansdiscoveryinputbody",
+    "ScansDiscoveryInputBody": ".scansdiscoveryinputbody",
+    "ScansDiscoveryInputBodyTarget": ".scansdiscoveryinputbody",
+    "ScansDiscoveryInputBodyTargetTypedDict": ".scansdiscoveryinputbody",
+    "ScansDiscoveryInputBodyTypedDict": ".scansdiscoveryinputbody",
+    "Target1": ".scansdiscoveryinputbody",
+    "Target1TypedDict": ".scansdiscoveryinputbody",
+    "Target2": ".scansdiscoveryinputbody",
+    "Target2TypedDict": ".scansdiscoveryinputbody",
+    "One": ".scansrescaninputbody",
+    "OneTypedDict": ".scansrescaninputbody",
+    "ScansRescanInputBody": ".scansrescaninputbody",
+    "ScansRescanInputBodyTarget": ".scansrescaninputbody",
+    "ScansRescanInputBodyTargetTypedDict": ".scansrescaninputbody",
+    "ScansRescanInputBodyTypedDict": ".scansrescaninputbody",
+    "TargetServiceID": ".scansrescaninputbody",
+    "TargetServiceIDTypedDict": ".scansrescaninputbody",
+    "TargetTransportProtocol": ".scansrescaninputbody",
+    "TargetWebOrigin": ".scansrescaninputbody",
+    "TargetWebOriginTypedDict": ".scansrescaninputbody",
+    "Two": ".scansrescaninputbody",
+    "TwoTypedDict": ".scansrescaninputbody",
     "Scpi": ".scpi",
     "ScpiTypedDict": ".scpi",
     "Screenshot": ".screenshot",
@@ -2950,6 +3176,9 @@ _dynamic_imports: dict[str, str] = {
     "Service": ".service",
     "ServiceTransportProtocol": ".service",
     "ServiceTypedDict": ".service",
+    "ServiceID": ".serviceid",
+    "ServiceIDTransportProtocol": ".serviceid",
+    "ServiceIDTypedDict": ".serviceid",
     "ServiceScan": ".servicescan",
     "ServiceScanTransportProtocol": ".servicescan",
     "ServiceScanTypedDict": ".servicescan",
@@ -3052,6 +3281,17 @@ _dynamic_imports: dict[str, str] = {
     "TorServiceDescriptorTypedDict": ".torservicedescriptor",
     "TplinkKasa": ".tplinkkasa",
     "TplinkKasaTypedDict": ".tplinkkasa",
+    "TrackedScan": ".trackedscan",
+    "TrackedScanTypedDict": ".trackedscan",
+    "TrackedScanScanTarget": ".trackedscan_scantarget",
+    "TrackedScanScanTargetTypedDict": ".trackedscan_scantarget",
+    "TrackedScanScanTargetHostnamePort": ".trackedscan_scantarget_hostnameport",
+    "TrackedScanScanTargetHostnamePortTypedDict": ".trackedscan_scantarget_hostnameport",
+    "TrackedScanScanTargetHostPort": ".trackedscan_scantarget_hostport",
+    "TrackedScanScanTargetHostPortTypedDict": ".trackedscan_scantarget_hostport",
+    "TrackedScanTask": ".trackedscan_task",
+    "TrackedScanTaskStatus": ".trackedscan_task",
+    "TrackedScanTaskTypedDict": ".trackedscan_task",
     "UnitronicsPcom": ".unitronicspcom",
     "UnitronicsPcomTypedDict": ".unitronicspcom",
     "UnrecognizedPublicKey": ".unrecognizedpublickey",
@@ -3161,6 +3401,24 @@ _dynamic_imports: dict[str, str] = {
     "V3GlobaldataAssetWebpropertyRequestTypedDict": ".v3_globaldata_asset_webpropertyop",
     "V3GlobaldataAssetWebpropertyResponse": ".v3_globaldata_asset_webpropertyop",
     "V3GlobaldataAssetWebpropertyResponseTypedDict": ".v3_globaldata_asset_webpropertyop",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobals": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobalsTypedDict": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateRequest": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateResponse": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateResponseTypedDict": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataScansGetGlobals": ".v3_globaldata_scans_getop",
+    "V3GlobaldataScansGetGlobalsTypedDict": ".v3_globaldata_scans_getop",
+    "V3GlobaldataScansGetRequest": ".v3_globaldata_scans_getop",
+    "V3GlobaldataScansGetRequestTypedDict": ".v3_globaldata_scans_getop",
+    "V3GlobaldataScansGetResponse": ".v3_globaldata_scans_getop",
+    "V3GlobaldataScansGetResponseTypedDict": ".v3_globaldata_scans_getop",
+    "V3GlobaldataScansRescanGlobals": ".v3_globaldata_scans_rescanop",
+    "V3GlobaldataScansRescanGlobalsTypedDict": ".v3_globaldata_scans_rescanop",
+    "V3GlobaldataScansRescanRequest": ".v3_globaldata_scans_rescanop",
+    "V3GlobaldataScansRescanRequestTypedDict": ".v3_globaldata_scans_rescanop",
+    "V3GlobaldataScansRescanResponse": ".v3_globaldata_scans_rescanop",
+    "V3GlobaldataScansRescanResponseTypedDict": ".v3_globaldata_scans_rescanop",
     "V3GlobaldataSearchAggregateGlobals": ".v3_globaldata_search_aggregateop",
     "V3GlobaldataSearchAggregateGlobalsTypedDict": ".v3_globaldata_search_aggregateop",
     "V3GlobaldataSearchAggregateRequest": ".v3_globaldata_search_aggregateop",
@@ -3173,6 +3431,18 @@ _dynamic_imports: dict[str, str] = {
     "V3GlobaldataSearchQueryRequestTypedDict": ".v3_globaldata_search_queryop",
     "V3GlobaldataSearchQueryResponse": ".v3_globaldata_search_queryop",
     "V3GlobaldataSearchQueryResponseTypedDict": ".v3_globaldata_search_queryop",
+    "V3ThreathuntingScansDiscoveryGlobals": ".v3_threathunting_scans_discoveryop",
+    "V3ThreathuntingScansDiscoveryGlobalsTypedDict": ".v3_threathunting_scans_discoveryop",
+    "V3ThreathuntingScansDiscoveryRequest": ".v3_threathunting_scans_discoveryop",
+    "V3ThreathuntingScansDiscoveryRequestTypedDict": ".v3_threathunting_scans_discoveryop",
+    "V3ThreathuntingScansDiscoveryResponse": ".v3_threathunting_scans_discoveryop",
+    "V3ThreathuntingScansDiscoveryResponseTypedDict": ".v3_threathunting_scans_discoveryop",
+    "V3ThreathuntingScansGetGlobals": ".v3_threathunting_scans_getop",
+    "V3ThreathuntingScansGetGlobalsTypedDict": ".v3_threathunting_scans_getop",
+    "V3ThreathuntingScansGetRequest": ".v3_threathunting_scans_getop",
+    "V3ThreathuntingScansGetRequestTypedDict": ".v3_threathunting_scans_getop",
+    "V3ThreathuntingScansGetResponse": ".v3_threathunting_scans_getop",
+    "V3ThreathuntingScansGetResponseTypedDict": ".v3_threathunting_scans_getop",
     "V3ThreathuntingValueCountsGlobals": ".v3_threathunting_value_countsop",
     "V3ThreathuntingValueCountsGlobalsTypedDict": ".v3_threathunting_value_countsop",
     "V3ThreathuntingValueCountsRequest": ".v3_threathunting_value_countsop",
@@ -3202,6 +3472,8 @@ _dynamic_imports: dict[str, str] = {
     "VulnTypedDict": ".vuln",
     "WeblogicT3": ".weblogict3",
     "WeblogicT3TypedDict": ".weblogict3",
+    "WebOrigin": ".weborigin",
+    "WebOriginTypedDict": ".weborigin",
     "Webproperty": ".webproperty",
     "WebpropertyTypedDict": ".webproperty",
     "WebpropertyAsset": ".webpropertyasset",
@@ -3251,5 +3523,5 @@ def __getattr__(attr_name: str) -> object:
 
 
 def __dir__():
-    lazy_attrs = list(_dynamic_imports.keys())
-    return sorted(lazy_attrs)
+    lazy_attrs = builtins.list(_dynamic_imports.keys())
+    return builtins.sorted(lazy_attrs)

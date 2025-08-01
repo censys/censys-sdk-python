@@ -1,0 +1,11 @@
+# ServiceID
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ip`                                                                                   | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `port`                                                                                 | *Optional[int]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `protocol`                                                                             | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `transport_protocol`                                                                   | [Optional[models.ServiceIDTransportProtocol]](../models/serviceidtransportprotocol.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |

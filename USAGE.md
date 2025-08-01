@@ -14,7 +14,6 @@ with SDK(
             "host.ip",
         ],
         "page_size": 1,
-        "page_token": "<next_page_token>",
         "query": "host.services: (protocol=SSH and not port: 22)",
     })
 
@@ -42,7 +41,6 @@ async def main():
                 "host.ip",
             ],
             "page_size": 1,
-            "page_token": "<next_page_token>",
             "query": "host.services: (protocol=SSH and not port: 22)",
         })
 

@@ -4,22 +4,27 @@ from __future__ import annotations
 from .countcondition import CountCondition, CountConditionTypedDict
 from censys_platform.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List
-from typing_extensions import TypedDict
+from typing import List, Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class SearchValueCountsInputBodyTypedDict(TypedDict):
     and_count_conditions: Nullable[List[CountConditionTypedDict]]
     r"""Groups of field-value pairs to count matches for."""
+    query: NotRequired[str]
+    r"""CenQL query string to filter documents"""
 
 
 class SearchValueCountsInputBody(BaseModel):
     and_count_conditions: Nullable[List[CountCondition]]
     r"""Groups of field-value pairs to count matches for."""
 
+    query: Optional[str] = None
+    r"""CenQL query string to filter documents"""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["query"]
         nullable_fields = ["and_count_conditions"]
         null_default_fields = []
 
