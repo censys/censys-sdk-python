@@ -9,6 +9,7 @@ Endpoints related to the Global Data product
 
 * [get_certificates](#get_certificates) - Get multiple certificates
 * [get_certificate](#get_certificate) - Get a certificate
+* [get_host_observations_with_certificate](#get_host_observations_with_certificate) - Get Host Observations With Certificate
 * [get_hosts](#get_hosts) - Get multiple hosts
 * [get_host](#get_host) - Get a host
 * [get_host_timeline](#get_host_timeline) - Get host event history
@@ -23,6 +24,7 @@ Retrieve information about multiple certificates. A certificate ID is its SHA-25
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-certificate-list" method="get" path="/v3/global/asset/certificate" -->
 ```python
 from censys_platform import SDK
 
@@ -66,6 +68,7 @@ Retrieve information about a single certificate. A certificate ID is its SHA-256
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-certificate" method="get" path="/v3/global/asset/certificate/{certificate_id}" -->
 ```python
 from censys_platform import SDK
 
@@ -101,12 +104,61 @@ with SDK(
 | models.ErrorModel        | 401, 403                 | application/problem+json |
 | models.SDKError          | 4XX, 5XX                 | \*/\*                    |
 
+## get_host_observations_with_certificate
+
+Retrieve historical observations of hosts associated with a certificate fingerprint. Useful for threat hunting, detection engineering, and timeline generation.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-get-host-observations-with-certificate" method="get" path="/v3/global/asset/certificate/{certificate_id}/observations/hosts" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.get_host_observations_with_certificate(request={
+        "certificate_id": "55af8a301eb51abdaf7c31bec951638fe5a99d5d92117eca2be493026613fa46",
+        "start_time": "2023-01-01T00:00:00Z",
+        "end_time": "2023-12-31T23:59:59Z",
+        "port": 443,
+        "protocol": "TCP",
+        "page_size": 50,
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                             | [models.V3GlobaldataGetHostObservationsWithCertificateRequest](../../models/v3globaldatagethostobservationswithcertificaterequest.md) | :heavy_check_mark:                                                                                                                    | The request object to use for the request.                                                                                            |
+| `retries`                                                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                      | :heavy_minus_sign:                                                                                                                    | Configuration to override the default retry behavior of the client.                                                                   |
+
+### Response
+
+**[models.V3GlobaldataGetHostObservationsWithCertificateResponse](../../models/v3globaldatagethostobservationswithcertificateresponse.md)**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ErrorModel        | 401, 403                 | application/problem+json |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
+
 ## get_hosts
 
 Retrieve information about multiple hosts. A host ID is its IP address.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-host-list" method="get" path="/v3/global/asset/host" -->
 ```python
 from censys_platform import SDK
 
@@ -150,6 +202,7 @@ Retrieve information about a single host. A host ID is its IP address.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-host" method="get" path="/v3/global/asset/host/{host_id}" -->
 ```python
 from censys_platform import SDK
 from censys_platform.utils import parse_datetime
@@ -193,6 +246,7 @@ Retrieve event history for a host. A host ID is its IP address.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-host-timeline" method="get" path="/v3/global/asset/host/{host_id}/timeline" -->
 ```python
 from censys_platform import SDK
 from censys_platform.utils import parse_datetime
@@ -237,6 +291,7 @@ Retrieve information about multiple web properties. Web properties are identifie
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-webproperty-list" method="get" path="/v3/global/asset/webproperty" -->
 ```python
 from censys_platform import SDK
 
@@ -280,6 +335,7 @@ Retrieve information about a single web property. Web properties are identified 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-webproperty" method="get" path="/v3/global/asset/webproperty/{webproperty_id}" -->
 ```python
 from censys_platform import SDK
 from censys_platform.utils import parse_datetime
@@ -323,6 +379,7 @@ Aggregate results for a Platform search query. This functionality is equivalent 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-search-aggregate" method="post" path="/v3/global/search/aggregate" -->
 ```python
 from censys_platform import SDK
 
@@ -333,9 +390,9 @@ with SDK(
 ) as sdk:
 
     res = sdk.global_data.aggregate(search_aggregate_input_body={
-        "field": "web.endpoints.http.html_title",
+        "field": "host.services.port",
         "number_of_buckets": 100,
-        "query": "web: *",
+        "query": "host.services.protocol=SSH",
     })
 
     # Handle response
@@ -368,6 +425,7 @@ Run a search query across Censys data. Reference the [documentation on Censys Qu
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-search-query" method="post" path="/v3/global/search/query" -->
 ```python
 from censys_platform import SDK
 
@@ -382,7 +440,6 @@ with SDK(
             "host.ip",
         ],
         "page_size": 1,
-        "page_token": "<next_page_token>",
         "query": "host.services: (protocol=SSH and not port: 22)",
     })
 

@@ -126,7 +126,6 @@ with SDK(
             "host.ip",
         ],
         "page_size": 1,
-        "page_token": "<next_page_token>",
         "query": "host.services: (protocol=SSH and not port: 22)",
     })
 
@@ -154,7 +153,6 @@ async def main():
                 "host.ip",
             ],
             "page_size": 1,
-            "page_token": "<next_page_token>",
             "query": "host.services: (protocol=SSH and not port: 22)",
         })
 
@@ -186,6 +184,7 @@ asyncio.run(main())
 
 * [get_certificates](docs/sdks/globaldata/README.md#get_certificates) - Get multiple certificates
 * [get_certificate](docs/sdks/globaldata/README.md#get_certificate) - Get a certificate
+* [get_host_observations_with_certificate](docs/sdks/globaldata/README.md#get_host_observations_with_certificate) - Get Host Observations With Certificate
 * [get_hosts](docs/sdks/globaldata/README.md#get_hosts) - Get multiple hosts
 * [get_host](docs/sdks/globaldata/README.md#get_host) - Get a host
 * [get_host_timeline](docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history

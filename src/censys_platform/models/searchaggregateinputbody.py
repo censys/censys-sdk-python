@@ -13,6 +13,8 @@ class SearchAggregateInputBodyTypedDict(TypedDict):
     r"""number of buckets to split results into"""
     query: str
     r"""CenQL query string to search upon"""
+    count_by_level: NotRequired[str]
+    r"""Specifies which document level's count is returned per term bucket, primarily for nested fields. This is the same functionality available in the Count By dropdown in the Report Builder UI. When aggregating on nested fields like 'host.services.port': empty string (default) counts documents at the deepest level containing the field; '.' counts root documents (e.g. counts matching 'host'); 'host.services' counts documents at the specified nested level."""
     filter_by_query: NotRequired[bool]
     r"""Controls whether aggregation results are limited to values that match the query. When true, only field values that satisfy the query constraints are included in aggregation counts. When false, aggregation includes all field values from records that match the query, even if those specific field values don't match the query constraints. For example, if the query is 'host.services.protocol=SSH' and you are aggregating by 'host.services.port' - when true, only shows SSH ports; when false, shows all ports on hosts that have SSH services."""
 
@@ -26,6 +28,9 @@ class SearchAggregateInputBody(BaseModel):
 
     query: str
     r"""CenQL query string to search upon"""
+
+    count_by_level: Optional[str] = None
+    r"""Specifies which document level's count is returned per term bucket, primarily for nested fields. This is the same functionality available in the Count By dropdown in the Report Builder UI. When aggregating on nested fields like 'host.services.port': empty string (default) counts documents at the deepest level containing the field; '.' counts root documents (e.g. counts matching 'host'); 'host.services' counts documents at the specified nested level."""
 
     filter_by_query: Optional[bool] = False
     r"""Controls whether aggregation results are limited to values that match the query. When true, only field values that satisfy the query constraints are included in aggregation counts. When false, aggregation includes all field values from records that match the query, even if those specific field values don't match the query constraints. For example, if the query is 'host.services.protocol=SSH' and you are aggregating by 'host.services.port' - when true, only shows SSH ports; when false, shows all ports on hosts that have SSH services."""

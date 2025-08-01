@@ -334,6 +334,14 @@ if TYPE_CHECKING:
         HostDNSReverseResolution,
         HostDNSReverseResolutionTypedDict,
     )
+    from .hostobservationrange import (
+        HostObservationRange,
+        HostObservationRangeTypedDict,
+    )
+    from .hostobservationresponse import (
+        HostObservationResponse,
+        HostObservationResponseTypedDict,
+    )
     from .hosttimeline import HostTimeline, HostTimelineTypedDict
     from .hosttimelineevent import HostTimelineEvent, HostTimelineEventTypedDict
     from .hosttimelineeventasset import (
@@ -656,6 +664,10 @@ if TYPE_CHECKING:
         ResponseEnvelopeHostAsset,
         ResponseEnvelopeHostAssetTypedDict,
     )
+    from .responseenvelopehostobservationresponse import (
+        ResponseEnvelopeHostObservationResponse,
+        ResponseEnvelopeHostObservationResponseTypedDict,
+    )
     from .responseenvelopehosttimeline import (
         ResponseEnvelopeHostTimeline,
         ResponseEnvelopeHostTimelineTypedDict,
@@ -968,6 +980,14 @@ if TYPE_CHECKING:
         V3GlobaldataAssetWebpropertyRequestTypedDict,
         V3GlobaldataAssetWebpropertyResponse,
         V3GlobaldataAssetWebpropertyResponseTypedDict,
+    )
+    from .v3_globaldata_get_host_observations_with_certificateop import (
+        V3GlobaldataGetHostObservationsWithCertificateGlobals,
+        V3GlobaldataGetHostObservationsWithCertificateGlobalsTypedDict,
+        V3GlobaldataGetHostObservationsWithCertificateRequest,
+        V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict,
+        V3GlobaldataGetHostObservationsWithCertificateResponse,
+        V3GlobaldataGetHostObservationsWithCertificateResponseTypedDict,
     )
     from .v3_globaldata_search_aggregateop import (
         V3GlobaldataSearchAggregateGlobals,
@@ -1345,6 +1365,10 @@ __all__ = [
     "HostDNSReverseResolution",
     "HostDNSReverseResolutionTypedDict",
     "HostDNSTypedDict",
+    "HostObservationRange",
+    "HostObservationRangeTypedDict",
+    "HostObservationResponse",
+    "HostObservationResponseTypedDict",
     "HostTimeline",
     "HostTimelineEvent",
     "HostTimelineEventAsset",
@@ -1728,6 +1752,8 @@ __all__ = [
     "ResponseEnvelopeCollectionTypedDict",
     "ResponseEnvelopeHostAsset",
     "ResponseEnvelopeHostAssetTypedDict",
+    "ResponseEnvelopeHostObservationResponse",
+    "ResponseEnvelopeHostObservationResponseTypedDict",
     "ResponseEnvelopeHostTimeline",
     "ResponseEnvelopeHostTimelineTypedDict",
     "ResponseEnvelopeListCertificateAsset",
@@ -2050,6 +2076,12 @@ __all__ = [
     "V3GlobaldataAssetWebpropertyRequestTypedDict",
     "V3GlobaldataAssetWebpropertyResponse",
     "V3GlobaldataAssetWebpropertyResponseTypedDict",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobals",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobalsTypedDict",
+    "V3GlobaldataGetHostObservationsWithCertificateRequest",
+    "V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict",
+    "V3GlobaldataGetHostObservationsWithCertificateResponse",
+    "V3GlobaldataGetHostObservationsWithCertificateResponseTypedDict",
     "V3GlobaldataSearchAggregateGlobals",
     "V3GlobaldataSearchAggregateGlobalsTypedDict",
     "V3GlobaldataSearchAggregateRequest",
@@ -2464,6 +2496,10 @@ _dynamic_imports: dict[str, str] = {
     "RecordType": ".hostdns_forwardresolution",
     "HostDNSReverseResolution": ".hostdns_reverseresolution",
     "HostDNSReverseResolutionTypedDict": ".hostdns_reverseresolution",
+    "HostObservationRange": ".hostobservationrange",
+    "HostObservationRangeTypedDict": ".hostobservationrange",
+    "HostObservationResponse": ".hostobservationresponse",
+    "HostObservationResponseTypedDict": ".hostobservationresponse",
     "HostTimeline": ".hosttimeline",
     "HostTimelineTypedDict": ".hosttimeline",
     "HostTimelineEvent": ".hosttimelineevent",
@@ -2840,6 +2876,8 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeCollectionEventsResponseTypedDict": ".responseenvelopecollectioneventsresponse",
     "ResponseEnvelopeHostAsset": ".responseenvelopehostasset",
     "ResponseEnvelopeHostAssetTypedDict": ".responseenvelopehostasset",
+    "ResponseEnvelopeHostObservationResponse": ".responseenvelopehostobservationresponse",
+    "ResponseEnvelopeHostObservationResponseTypedDict": ".responseenvelopehostobservationresponse",
     "ResponseEnvelopeHostTimeline": ".responseenvelopehosttimeline",
     "ResponseEnvelopeHostTimelineTypedDict": ".responseenvelopehosttimeline",
     "ResponseEnvelopeListCertificateAsset": ".responseenvelopelistcertificateasset",
@@ -3161,6 +3199,12 @@ _dynamic_imports: dict[str, str] = {
     "V3GlobaldataAssetWebpropertyRequestTypedDict": ".v3_globaldata_asset_webpropertyop",
     "V3GlobaldataAssetWebpropertyResponse": ".v3_globaldata_asset_webpropertyop",
     "V3GlobaldataAssetWebpropertyResponseTypedDict": ".v3_globaldata_asset_webpropertyop",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobals": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateGlobalsTypedDict": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateRequest": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateResponse": ".v3_globaldata_get_host_observations_with_certificateop",
+    "V3GlobaldataGetHostObservationsWithCertificateResponseTypedDict": ".v3_globaldata_get_host_observations_with_certificateop",
     "V3GlobaldataSearchAggregateGlobals": ".v3_globaldata_search_aggregateop",
     "V3GlobaldataSearchAggregateGlobalsTypedDict": ".v3_globaldata_search_aggregateop",
     "V3GlobaldataSearchAggregateRequest": ".v3_globaldata_search_aggregateop",

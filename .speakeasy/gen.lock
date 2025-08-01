@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 3c398bac678d6a7c9b412318e55bf2c0
-  docVersion: 1.0.16
-  speakeasyVersion: 1.586.0
-  generationVersion: 2.661.4
-  releaseVersion: 0.6.6
-  configChecksum: 9031f050e2ed8d07991aeb9bc9b36148
+  docChecksum: cb7af6a8b59467147462c2165f521017
+  docVersion: 1.0.22
+  speakeasyVersion: 1.595.0
+  generationVersion: 2.670.1
+  releaseVersion: 0.6.7
+  configChecksum: dbd2c427b34bc14c9f519036ed534890
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.19.4
+    core: 5.19.5
     defaultEnabledRetries: 0.2.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
@@ -207,6 +207,8 @@ generatedFiles:
   - docs/models/hostdns.md
   - docs/models/hostdnsforwardresolution.md
   - docs/models/hostdnsreverseresolution.md
+  - docs/models/hostobservationrange.md
+  - docs/models/hostobservationresponse.md
   - docs/models/hosttimeline.md
   - docs/models/hosttimelineevent.md
   - docs/models/hosttimelineeventasset.md
@@ -408,6 +410,7 @@ generatedFiles:
   - docs/models/responseenvelopecollection.md
   - docs/models/responseenvelopecollectioneventsresponse.md
   - docs/models/responseenvelopehostasset.md
+  - docs/models/responseenvelopehostobservationresponse.md
   - docs/models/responseenvelopehosttimeline.md
   - docs/models/responseenvelopelistcertificateasset.md
   - docs/models/responseenvelopelistcollectionsresponsev1.md
@@ -577,6 +580,9 @@ generatedFiles:
   - docs/models/v3globaldataassetwebpropertylistresponse.md
   - docs/models/v3globaldataassetwebpropertyrequest.md
   - docs/models/v3globaldataassetwebpropertyresponse.md
+  - docs/models/v3globaldatagethostobservationswithcertificateglobals.md
+  - docs/models/v3globaldatagethostobservationswithcertificaterequest.md
+  - docs/models/v3globaldatagethostobservationswithcertificateresponse.md
   - docs/models/v3globaldatasearchaggregateglobals.md
   - docs/models/v3globaldatasearchaggregaterequest.md
   - docs/models/v3globaldatasearchaggregateresponse.md
@@ -788,6 +794,8 @@ generatedFiles:
   - src/censys_platform/models/hostdns.py
   - src/censys_platform/models/hostdns_forwardresolution.py
   - src/censys_platform/models/hostdns_reverseresolution.py
+  - src/censys_platform/models/hostobservationrange.py
+  - src/censys_platform/models/hostobservationresponse.py
   - src/censys_platform/models/hosttimeline.py
   - src/censys_platform/models/hosttimelineevent.py
   - src/censys_platform/models/hosttimelineeventasset.py
@@ -976,6 +984,7 @@ generatedFiles:
   - src/censys_platform/models/responseenvelopecollection.py
   - src/censys_platform/models/responseenvelopecollectioneventsresponse.py
   - src/censys_platform/models/responseenvelopehostasset.py
+  - src/censys_platform/models/responseenvelopehostobservationresponse.py
   - src/censys_platform/models/responseenvelopehosttimeline.py
   - src/censys_platform/models/responseenvelopelistcertificateasset.py
   - src/censys_platform/models/responseenvelopelistcollectionsresponsev1.py
@@ -1102,6 +1111,7 @@ generatedFiles:
   - src/censys_platform/models/v3_globaldata_asset_hostop.py
   - src/censys_platform/models/v3_globaldata_asset_webproperty_listop.py
   - src/censys_platform/models/v3_globaldata_asset_webpropertyop.py
+  - src/censys_platform/models/v3_globaldata_get_host_observations_with_certificateop.py
   - src/censys_platform/models/v3_globaldata_search_aggregateop.py
   - src/censys_platform/models/v3_globaldata_search_queryop.py
   - src/censys_platform/models/v3_threathunting_value_countsop.py
@@ -1235,7 +1245,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "web.endpoints.http.html_title", "filter_by_query": false, "number_of_buckets": 100, "query": "web: *"}
+        application/json: {"field": "host.services.port", "filter_by_query": false, "number_of_buckets": 100, "query": "host.services.protocol=SSH"}
       responses:
         "200":
           application/json: {}
@@ -1249,7 +1259,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"fields": ["host.ip"], "page_size": 1, "page_token": "<next_page_token>", "query": "host.services: (protocol=SSH and not port: 22)"}
+        application/json: {"fields": ["host.ip"], "page_size": 1, "query": "host.services: (protocol=SSH and not port: 22)"}
       responses:
         "200":
           application/json: {}
@@ -1346,7 +1356,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "web.endpoints.http.html_title", "filter_by_query": false, "number_of_buckets": 100, "query": "web: *"}
+        application/json: {"field": "host.services.port", "filter_by_query": false, "number_of_buckets": 100, "query": "host.services.protocol=SSH"}
       responses:
         "200":
           application/json: {}
@@ -1358,7 +1368,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"fields": ["host.ip"], "page_size": 1, "page_token": "<next_page_token>", "query": "host.services: (protocol=SSH and not port: 22)"}
+        application/json: {"fields": ["host.ip"], "page_size": 1, "query": "host.services: (protocol=SSH and not port: 22)"}
       responses:
         "200":
           application/json: {}
@@ -1371,6 +1381,23 @@ examples:
           organization_id: "<id>"
       requestBody:
         application/json: {"and_count_conditions": [{"field_value_pairs": [{"field": "host.services.port", "value": "80"}]}, {"field_value_pairs": []}]}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-get-host-observations-with-certificate:
+    speakeasy-default-v3-globaldata-get-host-observations-with-certificate:
+      parameters:
+        path:
+          certificate_id: "55af8a301eb51abdaf7c31bec951638fe5a99d5d92117eca2be493026613fa46"
+        query:
+          organization_id: "<id>"
+          start_time: "2023-01-01T00:00:00Z"
+          end_time: "2023-12-31T23:59:59Z"
+          port: 443
+          protocol: "TCP"
+          page_size: 50
       responses:
         "200":
           application/json: {}

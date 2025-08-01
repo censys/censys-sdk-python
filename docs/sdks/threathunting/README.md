@@ -15,6 +15,7 @@ Get counts of web assets for specific field-value pairs and combinations of fiel
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-threathunting-value-counts" method="post" path="/v3/threat-hunting/value-counts" -->
 ```python
 from censys_platform import SDK
 

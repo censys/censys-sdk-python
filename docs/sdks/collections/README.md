@@ -22,6 +22,7 @@ List all collections for an organization. Retrieved information includes collect
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-crud-list" method="get" path="/v3/collections" -->
 ```python
 from censys_platform import SDK
 
@@ -64,6 +65,7 @@ Create a new collection.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-crud-create" method="post" path="/v3/collections" -->
 ```python
 from censys_platform import SDK
 
@@ -109,6 +111,7 @@ Delete a collection.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-crud-delete" method="delete" path="/v3/collections/{collection_uid}" -->
 ```python
 from censys_platform import SDK
 
@@ -150,6 +153,7 @@ Retrieve information about a collection. Retrieved information includes its name
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-crud-get" method="get" path="/v3/collections/{collection_uid}" -->
 ```python
 from censys_platform import SDK
 
@@ -191,6 +195,7 @@ Update a collection's name, description, and/or query.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-crud-update" method="put" path="/v3/collections/{collection_uid}" -->
 ```python
 from censys_platform import SDK
 
@@ -237,6 +242,7 @@ Retrieve the event history for a collection. This includes the addition or remov
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-list-events" method="get" path="/v3/collections/{collection_uid}/events" -->
 ```python
 from censys_platform import SDK
 from censys_platform.utils import parse_datetime
@@ -284,6 +290,7 @@ Aggregate results for a Platform search query that targets a collection's assets
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-search-aggregate" method="post" path="/v3/collections/{collection_uid}/search/aggregate" -->
 ```python
 from censys_platform import SDK
 
@@ -294,9 +301,9 @@ with SDK(
 ) as sdk:
 
     res = sdk.collections.aggregate(collection_uid="11111111-2222-3333-4444-555555555555", search_aggregate_input_body={
-        "field": "web.endpoints.http.html_title",
+        "field": "host.services.port",
         "number_of_buckets": 100,
-        "query": "web: *",
+        "query": "host.services.protocol=SSH",
     })
 
     # Handle response
@@ -330,6 +337,7 @@ Run a search query across a collection's assets. Reference the [documentation on
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-collections-search-query" method="post" path="/v3/collections/{collection_uid}/search/query" -->
 ```python
 from censys_platform import SDK
 
@@ -344,7 +352,6 @@ with SDK(
             "host.ip",
         ],
         "page_size": 1,
-        "page_token": "<next_page_token>",
         "query": "host.services: (protocol=SSH and not port: 22)",
     })
 
