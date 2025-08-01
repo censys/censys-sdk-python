@@ -1,0 +1,12 @@
+# TrackedScan
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `completed`                                                                  | *Optional[bool]*                                                             | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `create_time`                                                                | *Optional[str]*                                                              | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `target`                                                                     | [Optional[models.TrackedScanScanTarget]](../models/trackedscanscantarget.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `tasks`                                                                      | List[[models.TrackedScanTask](../models/trackedscantask.md)]                 | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `tracked_scan_id`                                                            | *Optional[str]*                                                              | :heavy_minus_sign:                                                           | N/A                                                                          |

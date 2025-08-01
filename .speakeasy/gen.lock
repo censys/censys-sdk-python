@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 3c398bac678d6a7c9b412318e55bf2c0
-  docVersion: 1.0.16
-  speakeasyVersion: 1.586.0
-  generationVersion: 2.661.4
-  releaseVersion: 0.6.6
-  configChecksum: 9031f050e2ed8d07991aeb9bc9b36148
+  docChecksum: 18eb579f1504b0a4a663f34494fcac83
+  docVersion: 1.0.24
+  speakeasyVersion: 1.595.3
+  generationVersion: 2.671.2
+  releaseVersion: 0.7.0
+  configChecksum: e3f05ffd90a052d11a377cb9745570ba
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.19.4
+    core: 5.19.6
     defaultEnabledRetries: 0.2.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
@@ -32,6 +32,7 @@ features:
     responseFormat: 1.0.1
     retries: 3.0.2
     sdkHooks: 1.1.0
+    unions: 3.0.4
 generatedFiles:
   - .gitattributes
   - .vscode/settings.json
@@ -146,6 +147,7 @@ generatedFiles:
   - docs/models/eipinterface.md
   - docs/models/eipservice.md
   - docs/models/elasticsearch.md
+  - docs/models/elasticsearcherrormessage.md
   - docs/models/elasticsearchresultsnodeinfo.md
   - docs/models/elasticsearchresultsnodeinfoclustercombinedinfo.md
   - docs/models/elasticsearchresultsnodeinfoclustercombinedinfofilesystem.md
@@ -207,6 +209,10 @@ generatedFiles:
   - docs/models/hostdns.md
   - docs/models/hostdnsforwardresolution.md
   - docs/models/hostdnsreverseresolution.md
+  - docs/models/hostnameport.md
+  - docs/models/hostobservationrange.md
+  - docs/models/hostobservationresponse.md
+  - docs/models/hostport.md
   - docs/models/hosttimeline.md
   - docs/models/hosttimelineevent.md
   - docs/models/hosttimelineeventasset.md
@@ -327,6 +333,7 @@ generatedFiles:
   - docs/models/ollama.md
   - docs/models/ollamamodel.md
   - docs/models/onc.md
+  - docs/models/one.md
   - docs/models/onvif.md
   - docs/models/onvifhostname.md
   - docs/models/onvifservice.md
@@ -408,6 +415,7 @@ generatedFiles:
   - docs/models/responseenvelopecollection.md
   - docs/models/responseenvelopecollectioneventsresponse.md
   - docs/models/responseenvelopehostasset.md
+  - docs/models/responseenvelopehostobservationresponse.md
   - docs/models/responseenvelopehosttimeline.md
   - docs/models/responseenvelopelistcertificateasset.md
   - docs/models/responseenvelopelistcollectionsresponsev1.md
@@ -415,6 +423,7 @@ generatedFiles:
   - docs/models/responseenvelopelistwebpropertyasset.md
   - docs/models/responseenvelopesearchaggregateresponse.md
   - docs/models/responseenvelopesearchqueryresponse.md
+  - docs/models/responseenvelopetrackedscan.md
   - docs/models/responseenvelopevaluecountsresponse.md
   - docs/models/responseenvelopewebpropertyasset.md
   - docs/models/reversednsresolved.md
@@ -445,6 +454,10 @@ generatedFiles:
   - docs/models/saprouterrouterinfo.md
   - docs/models/saprouterrouterversioninfo.md
   - docs/models/scadaview.md
+  - docs/models/scansdiscoveryinputbody.md
+  - docs/models/scansdiscoveryinputbodytarget.md
+  - docs/models/scansrescaninputbody.md
+  - docs/models/scansrescaninputbodytarget.md
   - docs/models/scope.md
   - docs/models/scpi.md
   - docs/models/screenshot.md
@@ -464,6 +477,8 @@ generatedFiles:
   - docs/models/serversync.md
   - docs/models/servertype.md
   - docs/models/service.md
+  - docs/models/serviceid.md
+  - docs/models/serviceidtransportprotocol.md
   - docs/models/servicescan.md
   - docs/models/servicescanned.md
   - docs/models/servicescantransportprotocol.md
@@ -506,6 +521,11 @@ generatedFiles:
   - docs/models/systemcapabilities.md
   - docs/models/tacacsplus.md
   - docs/models/target.md
+  - docs/models/target1.md
+  - docs/models/target2.md
+  - docs/models/targetserviceid.md
+  - docs/models/targettransportprotocol.md
+  - docs/models/targetweborigin.md
   - docs/models/teamviewer.md
   - docs/models/telnet.md
   - docs/models/textmessage.md
@@ -520,7 +540,14 @@ generatedFiles:
   - docs/models/tlsversiondata.md
   - docs/models/torservicedescriptor.md
   - docs/models/tplinkkasa.md
+  - docs/models/trackedscan.md
+  - docs/models/trackedscanscantarget.md
+  - docs/models/trackedscanscantargethostnameport.md
+  - docs/models/trackedscanscantargethostport.md
+  - docs/models/trackedscantask.md
+  - docs/models/trackedscantaskstatus.md
   - docs/models/transportprotocol.md
+  - docs/models/two.md
   - docs/models/type.md
   - docs/models/unitronicspcom.md
   - docs/models/unrecognizedpublickey.md
@@ -577,12 +604,27 @@ generatedFiles:
   - docs/models/v3globaldataassetwebpropertylistresponse.md
   - docs/models/v3globaldataassetwebpropertyrequest.md
   - docs/models/v3globaldataassetwebpropertyresponse.md
+  - docs/models/v3globaldatagethostobservationswithcertificateglobals.md
+  - docs/models/v3globaldatagethostobservationswithcertificaterequest.md
+  - docs/models/v3globaldatagethostobservationswithcertificateresponse.md
+  - docs/models/v3globaldatascansgetglobals.md
+  - docs/models/v3globaldatascansgetrequest.md
+  - docs/models/v3globaldatascansgetresponse.md
+  - docs/models/v3globaldatascansrescanglobals.md
+  - docs/models/v3globaldatascansrescanrequest.md
+  - docs/models/v3globaldatascansrescanresponse.md
   - docs/models/v3globaldatasearchaggregateglobals.md
   - docs/models/v3globaldatasearchaggregaterequest.md
   - docs/models/v3globaldatasearchaggregateresponse.md
   - docs/models/v3globaldatasearchqueryglobals.md
   - docs/models/v3globaldatasearchqueryrequest.md
   - docs/models/v3globaldatasearchqueryresponse.md
+  - docs/models/v3threathuntingscansdiscoveryglobals.md
+  - docs/models/v3threathuntingscansdiscoveryrequest.md
+  - docs/models/v3threathuntingscansdiscoveryresponse.md
+  - docs/models/v3threathuntingscansgetglobals.md
+  - docs/models/v3threathuntingscansgetrequest.md
+  - docs/models/v3threathuntingscansgetresponse.md
   - docs/models/v3threathuntingvaluecountsglobals.md
   - docs/models/v3threathuntingvaluecountsrequest.md
   - docs/models/v3threathuntingvaluecountsresponse.md
@@ -604,6 +646,7 @@ generatedFiles:
   - docs/models/vulnseverity.md
   - docs/models/vulnsource.md
   - docs/models/weblogict3.md
+  - docs/models/weborigin.md
   - docs/models/webproperty.md
   - docs/models/webpropertyasset.md
   - docs/models/whois.md
@@ -728,6 +771,7 @@ generatedFiles:
   - src/censys_platform/models/eip_interface.py
   - src/censys_platform/models/eip_service.py
   - src/censys_platform/models/elasticsearch.py
+  - src/censys_platform/models/elasticsearch_errormessage.py
   - src/censys_platform/models/elasticsearch_resultsnodeinfo.py
   - src/censys_platform/models/elasticsearch_resultsnodeinfo_clustercombinedinfo.py
   - src/censys_platform/models/elasticsearch_resultsnodeinfo_clustercombinedinfo_filesystem.py
@@ -788,6 +832,8 @@ generatedFiles:
   - src/censys_platform/models/hostdns.py
   - src/censys_platform/models/hostdns_forwardresolution.py
   - src/censys_platform/models/hostdns_reverseresolution.py
+  - src/censys_platform/models/hostobservationrange.py
+  - src/censys_platform/models/hostobservationresponse.py
   - src/censys_platform/models/hosttimeline.py
   - src/censys_platform/models/hosttimelineevent.py
   - src/censys_platform/models/hosttimelineeventasset.py
@@ -976,6 +1022,7 @@ generatedFiles:
   - src/censys_platform/models/responseenvelopecollection.py
   - src/censys_platform/models/responseenvelopecollectioneventsresponse.py
   - src/censys_platform/models/responseenvelopehostasset.py
+  - src/censys_platform/models/responseenvelopehostobservationresponse.py
   - src/censys_platform/models/responseenvelopehosttimeline.py
   - src/censys_platform/models/responseenvelopelistcertificateasset.py
   - src/censys_platform/models/responseenvelopelistcollectionsresponsev1.py
@@ -983,6 +1030,7 @@ generatedFiles:
   - src/censys_platform/models/responseenvelopelistwebpropertyasset.py
   - src/censys_platform/models/responseenvelopesearchaggregateresponse.py
   - src/censys_platform/models/responseenvelopesearchqueryresponse.py
+  - src/censys_platform/models/responseenvelopetrackedscan.py
   - src/censys_platform/models/responseenvelopevaluecountsresponse.py
   - src/censys_platform/models/responseenvelopewebpropertyasset.py
   - src/censys_platform/models/responsevalidationerror.py
@@ -1011,6 +1059,8 @@ generatedFiles:
   - src/censys_platform/models/saprouter_routerinfo.py
   - src/censys_platform/models/saprouter_routerversioninfo.py
   - src/censys_platform/models/scadaview.py
+  - src/censys_platform/models/scansdiscoveryinputbody.py
+  - src/censys_platform/models/scansrescaninputbody.py
   - src/censys_platform/models/scpi.py
   - src/censys_platform/models/screenshot.py
   - src/censys_platform/models/sdkbaseerror.py
@@ -1030,6 +1080,7 @@ generatedFiles:
   - src/censys_platform/models/serverconfig.py
   - src/censys_platform/models/serversync.py
   - src/censys_platform/models/service.py
+  - src/censys_platform/models/serviceid.py
   - src/censys_platform/models/servicescan.py
   - src/censys_platform/models/servicescanned.py
   - src/censys_platform/models/sevendaystodie.py
@@ -1079,6 +1130,11 @@ generatedFiles:
   - src/censys_platform/models/tls_versiondata.py
   - src/censys_platform/models/torservicedescriptor.py
   - src/censys_platform/models/tplinkkasa.py
+  - src/censys_platform/models/trackedscan.py
+  - src/censys_platform/models/trackedscan_scantarget.py
+  - src/censys_platform/models/trackedscan_scantarget_hostnameport.py
+  - src/censys_platform/models/trackedscan_scantarget_hostport.py
+  - src/censys_platform/models/trackedscan_task.py
   - src/censys_platform/models/unitronicspcom.py
   - src/censys_platform/models/unrecognizedpublickey.py
   - src/censys_platform/models/upnp.py
@@ -1102,8 +1158,13 @@ generatedFiles:
   - src/censys_platform/models/v3_globaldata_asset_hostop.py
   - src/censys_platform/models/v3_globaldata_asset_webproperty_listop.py
   - src/censys_platform/models/v3_globaldata_asset_webpropertyop.py
+  - src/censys_platform/models/v3_globaldata_get_host_observations_with_certificateop.py
+  - src/censys_platform/models/v3_globaldata_scans_getop.py
+  - src/censys_platform/models/v3_globaldata_scans_rescanop.py
   - src/censys_platform/models/v3_globaldata_search_aggregateop.py
   - src/censys_platform/models/v3_globaldata_search_queryop.py
+  - src/censys_platform/models/v3_threathunting_scans_discoveryop.py
+  - src/censys_platform/models/v3_threathunting_scans_getop.py
   - src/censys_platform/models/v3_threathunting_value_countsop.py
   - src/censys_platform/models/validation.py
   - src/censys_platform/models/validityperiod.py
@@ -1115,6 +1176,7 @@ generatedFiles:
   - src/censys_platform/models/vnc_keyvalue.py
   - src/censys_platform/models/vuln.py
   - src/censys_platform/models/weblogict3.py
+  - src/censys_platform/models/weborigin.py
   - src/censys_platform/models/webproperty.py
   - src/censys_platform/models/webpropertyasset.py
   - src/censys_platform/models/whois.py
@@ -1235,7 +1297,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "web.endpoints.http.html_title", "filter_by_query": false, "number_of_buckets": 100, "query": "web: *"}
+        application/json: {"field": "host.services.port", "filter_by_query": false, "number_of_buckets": 100, "query": "host.services.protocol=SSH"}
       responses:
         "200":
           application/json: {}
@@ -1249,7 +1311,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"fields": ["host.ip"], "page_size": 1, "page_token": "<next_page_token>", "query": "host.services: (protocol=SSH and not port: 22)"}
+        application/json: {"fields": ["host.ip"], "page_size": 1, "query": "host.services: (protocol=SSH and not port: 22)"}
       responses:
         "200":
           application/json: {}
@@ -1346,7 +1408,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"field": "web.endpoints.http.html_title", "filter_by_query": false, "number_of_buckets": 100, "query": "web: *"}
+        application/json: {"field": "host.services.port", "filter_by_query": false, "number_of_buckets": 100, "query": "host.services.protocol=SSH"}
       responses:
         "200":
           application/json: {}
@@ -1358,7 +1420,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"fields": ["host.ip"], "page_size": 1, "page_token": "<next_page_token>", "query": "host.services: (protocol=SSH and not port: 22)"}
+        application/json: {"fields": ["host.ip"], "page_size": 1, "query": "host.services: (protocol=SSH and not port: 22)"}
       responses:
         "200":
           application/json: {}
@@ -1371,6 +1433,71 @@ examples:
           organization_id: "<id>"
       requestBody:
         application/json: {"and_count_conditions": [{"field_value_pairs": [{"field": "host.services.port", "value": "80"}]}, {"field_value_pairs": []}]}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-get-host-observations-with-certificate:
+    speakeasy-default-v3-globaldata-get-host-observations-with-certificate:
+      parameters:
+        path:
+          certificate_id: "55af8a301eb51abdaf7c31bec951638fe5a99d5d92117eca2be493026613fa46"
+        query:
+          organization_id: "<id>"
+          start_time: "2023-01-01T00:00:00Z"
+          end_time: "2023-12-31T23:59:59Z"
+          port: 443
+          protocol: "TCP"
+          page_size: 50
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-scans-rescan:
+    speakeasy-default-v3-globaldata-scans-rescan:
+      parameters:
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"target": {"web_origin": {"hostname": "censys.io", "port": 443}}}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-globaldata-scans-get:
+    speakeasy-default-v3-globaldata-scans-get:
+      parameters:
+        path:
+          scan_id: "5f39588f-d4c5-48e5-8894-0bb5918c28fa"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/vnd.censys.api.v3.trackedscan.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-scans-get:
+    speakeasy-default-v3-threathunting-scans-get:
+      parameters:
+        path:
+          scan_id: "cd62e794-9f12-4c2f-b5b3-153853aaf8d9"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/vnd.censys.api.v3.trackedscan.v1+json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-scans-discovery:
+    speakeasy-default-v3-threathunting-scans-discovery:
+      parameters:
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"target": {"hostname_port": {"hostname": "censys.io", "port": 443}}}
       responses:
         "200":
           application/json: {}

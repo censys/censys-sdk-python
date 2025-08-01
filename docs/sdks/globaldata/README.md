@@ -9,13 +9,17 @@ Endpoints related to the Global Data product
 
 * [get_certificates](#get_certificates) - Get multiple certificates
 * [get_certificate](#get_certificate) - Get a certificate
+* [get_host_observations_with_certificate](#get_host_observations_with_certificate) - Get Host Observations With Certificate
 * [get_hosts](#get_hosts) - Get multiple hosts
 * [get_host](#get_host) - Get a host
 * [get_host_timeline](#get_host_timeline) - Get host event history
 * [get_web_properties](#get_web_properties) - Get multiple web properties
 * [get_web_property](#get_web_property) - Get a web property
+* [create_tracked_scan](#create_tracked_scan) - Create a tracked rescan
+* [get_tracked_scan](#get_tracked_scan) - Get tracked scan details
 * [aggregate](#aggregate) - Aggregate results for a search query
 * [search](#search) - Run a search query
+* [get_tracked_scan_threat_hunting](#get_tracked_scan_threat_hunting) - Get tracked scan details
 
 ## get_certificates
 
@@ -23,6 +27,7 @@ Retrieve information about multiple certificates. A certificate ID is its SHA-25
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-certificate-list" method="get" path="/v3/global/asset/certificate" -->
 ```python
 from censys_platform import SDK
 
@@ -66,6 +71,7 @@ Retrieve information about a single certificate. A certificate ID is its SHA-256
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-certificate" method="get" path="/v3/global/asset/certificate/{certificate_id}" -->
 ```python
 from censys_platform import SDK
 
@@ -101,12 +107,61 @@ with SDK(
 | models.ErrorModel        | 401, 403                 | application/problem+json |
 | models.SDKError          | 4XX, 5XX                 | \*/\*                    |
 
+## get_host_observations_with_certificate
+
+Retrieve historical observations of hosts associated with a certificate fingerprint. Useful for threat hunting, detection engineering, and timeline generation.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-get-host-observations-with-certificate" method="get" path="/v3/global/asset/certificate/{certificate_id}/observations/hosts" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.get_host_observations_with_certificate(request={
+        "certificate_id": "55af8a301eb51abdaf7c31bec951638fe5a99d5d92117eca2be493026613fa46",
+        "start_time": "2023-01-01T00:00:00Z",
+        "end_time": "2023-12-31T23:59:59Z",
+        "port": 443,
+        "protocol": "TCP",
+        "page_size": 50,
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                             | [models.V3GlobaldataGetHostObservationsWithCertificateRequest](../../models/v3globaldatagethostobservationswithcertificaterequest.md) | :heavy_check_mark:                                                                                                                    | The request object to use for the request.                                                                                            |
+| `retries`                                                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                      | :heavy_minus_sign:                                                                                                                    | Configuration to override the default retry behavior of the client.                                                                   |
+
+### Response
+
+**[models.V3GlobaldataGetHostObservationsWithCertificateResponse](../../models/v3globaldatagethostobservationswithcertificateresponse.md)**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ErrorModel        | 401, 403                 | application/problem+json |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
+
 ## get_hosts
 
 Retrieve information about multiple hosts. A host ID is its IP address.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-host-list" method="get" path="/v3/global/asset/host" -->
 ```python
 from censys_platform import SDK
 
@@ -150,6 +205,7 @@ Retrieve information about a single host. A host ID is its IP address.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-host" method="get" path="/v3/global/asset/host/{host_id}" -->
 ```python
 from censys_platform import SDK
 from censys_platform.utils import parse_datetime
@@ -193,6 +249,7 @@ Retrieve event history for a host. A host ID is its IP address.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-host-timeline" method="get" path="/v3/global/asset/host/{host_id}/timeline" -->
 ```python
 from censys_platform import SDK
 from censys_platform.utils import parse_datetime
@@ -237,6 +294,7 @@ Retrieve information about multiple web properties. Web properties are identifie
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-webproperty-list" method="get" path="/v3/global/asset/webproperty" -->
 ```python
 from censys_platform import SDK
 
@@ -280,6 +338,7 @@ Retrieve information about a single web property. Web properties are identified 
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-webproperty" method="get" path="/v3/global/asset/webproperty/{webproperty_id}" -->
 ```python
 from censys_platform import SDK
 from censys_platform.utils import parse_datetime
@@ -317,12 +376,105 @@ with SDK(
 | models.ErrorModel        | 401, 403                 | application/problem+json |
 | models.SDKError          | 4XX, 5XX                 | \*/\*                    |
 
+## create_tracked_scan
+
+Create a new tracked rescan for a known service or web property. Rescans are used to update information for previously discovered targets. The scan will be queued. The response will contain a scan ID that you can use with the [get tracked scan details endpoint](https://docs.censys.com/reference/v3-globaldata-scans-get#/) to monitor its status and results.<br><br>This endpoint is available to all Enterprise customers.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-scans-rescan" method="post" path="/v3/global/scans/rescan" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.create_tracked_scan(scans_rescan_input_body={
+        "target": {
+            "web_origin": {
+                "hostname": "censys.io",
+                "port": 443,
+            },
+        },
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                          | Type                                                                                                                                                                                               | Required                                                                                                                                                                                           | Description                                                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scans_rescan_input_body`                                                                                                                                                                          | [models.ScansRescanInputBody](../../models/scansrescaninputbody.md)                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                 | N/A                                                                                                                                                                                                |
+| `organization_id`                                                                                                                                                                                  | *Optional[str]*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                 | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information. |
+| `retries`                                                                                                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                 | Configuration to override the default retry behavior of the client.                                                                                                                                |
+
+### Response
+
+**[models.V3GlobaldataScansRescanResponse](../../models/v3globaldatascansrescanresponse.md)**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ErrorModel        | 401, 403                 | application/problem+json |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
+
+## get_tracked_scan
+
+Retrieve the current status and results of a tracked scan by its ID.
+        This endpoint works for both discovery scans and rescans.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-scans-get" method="get" path="/v3/global/scans/{scan_id}" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.get_tracked_scan(scan_id="5f39588f-d4c5-48e5-8894-0bb5918c28fa")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                          | Type                                                                                                                                                                                               | Required                                                                                                                                                                                           | Description                                                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scan_id`                                                                                                                                                                                          | *str*                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                 | The unique identifier of the tracked scan                                                                                                                                                          |
+| `organization_id`                                                                                                                                                                                  | *Optional[str]*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                 | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information. |
+| `retries`                                                                                                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                 | Configuration to override the default retry behavior of the client.                                                                                                                                |
+
+### Response
+
+**[models.V3GlobaldataScansGetResponse](../../models/v3globaldatascansgetresponse.md)**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ErrorModel        | 401, 403                 | application/problem+json |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
+
 ## aggregate
 
 Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-search-aggregate" method="post" path="/v3/global/search/aggregate" -->
 ```python
 from censys_platform import SDK
 
@@ -333,9 +485,9 @@ with SDK(
 ) as sdk:
 
     res = sdk.global_data.aggregate(search_aggregate_input_body={
-        "field": "web.endpoints.http.html_title",
+        "field": "host.services.port",
         "number_of_buckets": 100,
-        "query": "web: *",
+        "query": "host.services.protocol=SSH",
     })
 
     # Handle response
@@ -368,6 +520,7 @@ Run a search query across Censys data. Reference the [documentation on Censys Qu
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="v3-globaldata-search-query" method="post" path="/v3/global/search/query" -->
 ```python
 from censys_platform import SDK
 
@@ -382,7 +535,6 @@ with SDK(
             "host.ip",
         ],
         "page_size": 1,
-        "page_token": "<next_page_token>",
         "query": "host.services: (protocol=SSH and not port: 22)",
     })
 
@@ -402,6 +554,49 @@ with SDK(
 ### Response
 
 **[models.V3GlobaldataSearchQueryResponse](../../models/v3globaldatasearchqueryresponse.md)**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ErrorModel        | 401, 403                 | application/problem+json |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
+
+## get_tracked_scan_threat_hunting
+
+Retrieve the current status and results of a tracked scan by its ID.
+        This endpoint works for both discovery scans and rescans.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-threathunting-scans-get" method="get" path="/v3/threat-hunting/scans/{scan_id}" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.get_tracked_scan_threat_hunting(scan_id="cd62e794-9f12-4c2f-b5b3-153853aaf8d9")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                          | Type                                                                                                                                                                                               | Required                                                                                                                                                                                           | Description                                                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scan_id`                                                                                                                                                                                          | *str*                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                 | The unique identifier of the tracked scan                                                                                                                                                          |
+| `organization_id`                                                                                                                                                                                  | *Optional[str]*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                 | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information. |
+| `retries`                                                                                                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                 | Configuration to override the default retry behavior of the client.                                                                                                                                |
+
+### Response
+
+**[models.V3ThreathuntingScansGetResponse](../../models/v3threathuntingscansgetresponse.md)**
 
 ### Errors
 

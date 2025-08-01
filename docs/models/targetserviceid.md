@@ -1,0 +1,11 @@
+# TargetServiceID
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            | Example                                                                |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `ip`                                                                   | *str*                                                                  | :heavy_check_mark:                                                     | IP address of service                                                  | 8.8.8.8                                                                |
+| `port`                                                                 | *int*                                                                  | :heavy_check_mark:                                                     | Port number of service                                                 | 443                                                                    |
+| `protocol`                                                             | *str*                                                                  | :heavy_check_mark:                                                     | Name of service protocol                                               | HTTPS                                                                  |
+| `transport_protocol`                                                   | [models.TargetTransportProtocol](../models/targettransportprotocol.md) | :heavy_check_mark:                                                     | N/A                                                                    |                                                                        |

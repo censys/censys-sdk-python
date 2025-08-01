@@ -3,10 +3,10 @@
 from .basesdk import BaseSDK
 from censys_platform import models, utils
 from censys_platform._hooks import HookContext
-from censys_platform.types import Nullable, OptionalNullable, UNSET
+from censys_platform.types import BaseModel, Nullable, OptionalNullable, UNSET
 from censys_platform.utils.unmarshal_json_response import unmarshal_json_response
 from datetime import datetime
-from typing import Any, List, Mapping, Optional, Union
+from typing import Any, List, Mapping, Optional, Union, cast
 
 
 class GlobalData(BaseSDK):
@@ -389,6 +389,206 @@ class GlobalData(BaseSDK):
             return models.V3GlobaldataAssetCertificateResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeCertificateAsset, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def get_host_observations_with_certificate(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataGetHostObservationsWithCertificateRequest,
+            models.V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataGetHostObservationsWithCertificateResponse:
+        r"""Get Host Observations With Certificate
+
+        Retrieve historical observations of hosts associated with a certificate fingerprint. Useful for threat hunting, detection engineering, and timeline generation.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataGetHostObservationsWithCertificateRequest
+            )
+        request = cast(
+            models.V3GlobaldataGetHostObservationsWithCertificateRequest, request
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/global/asset/certificate/{certificate_id}/observations/hosts",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataGetHostObservationsWithCertificateGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-get-host-observations-with-certificate",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataGetHostObservationsWithCertificateResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeHostObservationResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def get_host_observations_with_certificate_async(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataGetHostObservationsWithCertificateRequest,
+            models.V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataGetHostObservationsWithCertificateResponse:
+        r"""Get Host Observations With Certificate
+
+        Retrieve historical observations of hosts associated with a certificate fingerprint. Useful for threat hunting, detection engineering, and timeline generation.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataGetHostObservationsWithCertificateRequest
+            )
+        request = cast(
+            models.V3GlobaldataGetHostObservationsWithCertificateRequest, request
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/global/asset/certificate/{certificate_id}/observations/hosts",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataGetHostObservationsWithCertificateGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-get-host-observations-with-certificate",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataGetHostObservationsWithCertificateResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeHostObservationResponse, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
@@ -1408,6 +1608,418 @@ class GlobalData(BaseSDK):
 
         raise models.SDKError("Unexpected response received", http_res)
 
+    def create_tracked_scan(
+        self,
+        *,
+        scans_rescan_input_body: Union[
+            models.ScansRescanInputBody, models.ScansRescanInputBodyTypedDict
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataScansRescanResponse:
+        r"""Create a tracked rescan
+
+        Create a new tracked rescan for a known service or web property. Rescans are used to update information for previously discovered targets. The scan will be queued. The response will contain a scan ID that you can use with the [get tracked scan details endpoint](https://docs.censys.com/reference/v3-globaldata-scans-get#/) to monitor its status and results.<br><br>This endpoint is available to all Enterprise customers.
+
+        :param scans_rescan_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataScansRescanRequest(
+            organization_id=organization_id,
+            scans_rescan_input_body=utils.get_pydantic_model(
+                scans_rescan_input_body, models.ScansRescanInputBody
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/global/scans/rescan",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataScansRescanGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.scans_rescan_input_body,
+                False,
+                False,
+                "json",
+                models.ScansRescanInputBody,
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-scans-rescan",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataScansRescanResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTrackedScan, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def create_tracked_scan_async(
+        self,
+        *,
+        scans_rescan_input_body: Union[
+            models.ScansRescanInputBody, models.ScansRescanInputBodyTypedDict
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataScansRescanResponse:
+        r"""Create a tracked rescan
+
+        Create a new tracked rescan for a known service or web property. Rescans are used to update information for previously discovered targets. The scan will be queued. The response will contain a scan ID that you can use with the [get tracked scan details endpoint](https://docs.censys.com/reference/v3-globaldata-scans-get#/) to monitor its status and results.<br><br>This endpoint is available to all Enterprise customers.
+
+        :param scans_rescan_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataScansRescanRequest(
+            organization_id=organization_id,
+            scans_rescan_input_body=utils.get_pydantic_model(
+                scans_rescan_input_body, models.ScansRescanInputBody
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/global/scans/rescan",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataScansRescanGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.scans_rescan_input_body,
+                False,
+                False,
+                "json",
+                models.ScansRescanInputBody,
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-scans-rescan",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataScansRescanResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTrackedScan, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def get_tracked_scan(
+        self,
+        *,
+        scan_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataScansGetResponse:
+        r"""Get tracked scan details
+
+        Retrieve the current status and results of a tracked scan by its ID.
+        This endpoint works for both discovery scans and rescans.
+
+        :param scan_id: The unique identifier of the tracked scan
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataScansGetRequest(
+            organization_id=organization_id,
+            scan_id=scan_id,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/global/scans/{scan_id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/vnd.censys.api.v3.trackedscan.v1+json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataScansGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-scans-get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(
+            http_res, "200", "application/vnd.censys.api.v3.trackedscan.v1+json"
+        ):
+            return models.V3GlobaldataScansGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTrackedScan, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def get_tracked_scan_async(
+        self,
+        *,
+        scan_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataScansGetResponse:
+        r"""Get tracked scan details
+
+        Retrieve the current status and results of a tracked scan by its ID.
+        This endpoint works for both discovery scans and rescans.
+
+        :param scan_id: The unique identifier of the tracked scan
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataScansGetRequest(
+            organization_id=organization_id,
+            scan_id=scan_id,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/global/scans/{scan_id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/vnd.censys.api.v3.trackedscan.v1+json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataScansGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-scans-get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(
+            http_res, "200", "application/vnd.censys.api.v3.trackedscan.v1+json"
+        ):
+            return models.V3GlobaldataScansGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTrackedScan, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
     def aggregate(
         self,
         *,
@@ -1821,6 +2433,204 @@ class GlobalData(BaseSDK):
             return models.V3GlobaldataSearchQueryResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeSearchQueryResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def get_tracked_scan_threat_hunting(
+        self,
+        *,
+        scan_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingScansGetResponse:
+        r"""Get tracked scan details
+
+        Retrieve the current status and results of a tracked scan by its ID.
+        This endpoint works for both discovery scans and rescans.
+
+        :param scan_id: The unique identifier of the tracked scan
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingScansGetRequest(
+            organization_id=organization_id,
+            scan_id=scan_id,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/threat-hunting/scans/{scan_id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/vnd.censys.api.v3.trackedscan.v1+json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingScansGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-scans-get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(
+            http_res, "200", "application/vnd.censys.api.v3.trackedscan.v1+json"
+        ):
+            return models.V3ThreathuntingScansGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTrackedScan, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def get_tracked_scan_threat_hunting_async(
+        self,
+        *,
+        scan_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingScansGetResponse:
+        r"""Get tracked scan details
+
+        Retrieve the current status and results of a tracked scan by its ID.
+        This endpoint works for both discovery scans and rescans.
+
+        :param scan_id: The unique identifier of the tracked scan
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingScansGetRequest(
+            organization_id=organization_id,
+            scan_id=scan_id,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/threat-hunting/scans/{scan_id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/vnd.censys.api.v3.trackedscan.v1+json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingScansGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-scans-get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(
+            http_res, "200", "application/vnd.censys.api.v3.trackedscan.v1+json"
+        ):
+            return models.V3ThreathuntingScansGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTrackedScan, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
