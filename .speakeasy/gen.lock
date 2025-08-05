@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 18eb579f1504b0a4a663f34494fcac83
-  docVersion: 1.0.24
-  speakeasyVersion: 1.595.3
-  generationVersion: 2.671.2
-  releaseVersion: 0.7.0
-  configChecksum: e3f05ffd90a052d11a377cb9745570ba
+  docChecksum: b4f8f6d248cb74d458e3f2f57c93bd34
+  docVersion: 1.0.25
+  speakeasyVersion: 1.596.1
+  generationVersion: 2.672.0
+  releaseVersion: 0.7.1
+  configChecksum: bc396cbdf582eb321c372cbc7d42c743
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -604,9 +604,6 @@ generatedFiles:
   - docs/models/v3globaldataassetwebpropertylistresponse.md
   - docs/models/v3globaldataassetwebpropertyrequest.md
   - docs/models/v3globaldataassetwebpropertyresponse.md
-  - docs/models/v3globaldatagethostobservationswithcertificateglobals.md
-  - docs/models/v3globaldatagethostobservationswithcertificaterequest.md
-  - docs/models/v3globaldatagethostobservationswithcertificateresponse.md
   - docs/models/v3globaldatascansgetglobals.md
   - docs/models/v3globaldatascansgetrequest.md
   - docs/models/v3globaldatascansgetresponse.md
@@ -619,6 +616,9 @@ generatedFiles:
   - docs/models/v3globaldatasearchqueryglobals.md
   - docs/models/v3globaldatasearchqueryrequest.md
   - docs/models/v3globaldatasearchqueryresponse.md
+  - docs/models/v3threathuntinggethostobservationswithcertificateglobals.md
+  - docs/models/v3threathuntinggethostobservationswithcertificaterequest.md
+  - docs/models/v3threathuntinggethostobservationswithcertificateresponse.md
   - docs/models/v3threathuntingscansdiscoveryglobals.md
   - docs/models/v3threathuntingscansdiscoveryrequest.md
   - docs/models/v3threathuntingscansdiscoveryresponse.md
@@ -1158,11 +1158,11 @@ generatedFiles:
   - src/censys_platform/models/v3_globaldata_asset_hostop.py
   - src/censys_platform/models/v3_globaldata_asset_webproperty_listop.py
   - src/censys_platform/models/v3_globaldata_asset_webpropertyop.py
-  - src/censys_platform/models/v3_globaldata_get_host_observations_with_certificateop.py
   - src/censys_platform/models/v3_globaldata_scans_getop.py
   - src/censys_platform/models/v3_globaldata_scans_rescanop.py
   - src/censys_platform/models/v3_globaldata_search_aggregateop.py
   - src/censys_platform/models/v3_globaldata_search_queryop.py
+  - src/censys_platform/models/v3_threathunting_get_host_observations_with_certificateop.py
   - src/censys_platform/models/v3_threathunting_scans_discoveryop.py
   - src/censys_platform/models/v3_threathunting_scans_getop.py
   - src/censys_platform/models/v3_threathunting_value_countsop.py
@@ -1498,6 +1498,23 @@ examples:
           organization_id: "<id>"
       requestBody:
         application/json: {"target": {"hostname_port": {"hostname": "censys.io", "port": 443}}}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-get-host-observations-with-certificate:
+    speakeasy-default-v3-threathunting-get-host-observations-with-certificate:
+      parameters:
+        path:
+          certificate_id: "55af8a301eb51abdaf7c31bec951638fe5a99d5d92117eca2be493026613fa46"
+        query:
+          organization_id: "<id>"
+          start_time: "2023-01-01T00:00:00Z"
+          end_time: "2023-12-31T23:59:59Z"
+          port: 443
+          protocol: "TCP"
+          page_size: 50
       responses:
         "200":
           application/json: {}

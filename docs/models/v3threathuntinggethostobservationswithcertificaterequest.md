@@ -1,4 +1,4 @@
-# V3GlobaldataGetHostObservationsWithCertificateRequest
+# V3ThreathuntingGetHostObservationsWithCertificateRequest
 
 
 ## Fields

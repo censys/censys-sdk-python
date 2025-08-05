@@ -184,7 +184,6 @@ asyncio.run(main())
 
 * [get_certificates](docs/sdks/globaldata/README.md#get_certificates) - Get multiple certificates
 * [get_certificate](docs/sdks/globaldata/README.md#get_certificate) - Get a certificate
-* [get_host_observations_with_certificate](docs/sdks/globaldata/README.md#get_host_observations_with_certificate) - Get Host Observations With Certificate
 * [get_hosts](docs/sdks/globaldata/README.md#get_hosts) - Get multiple hosts
 * [get_host](docs/sdks/globaldata/README.md#get_host) - Get a host
 * [get_host_timeline](docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
@@ -200,6 +199,7 @@ asyncio.run(main())
 ### [threat_hunting](docs/sdks/threathunting/README.md)
 
 * [get_tracked_scan](docs/sdks/threathunting/README.md#get_tracked_scan) - Get tracked scan details
+* [get_host_observations_with_certificate](docs/sdks/threathunting/README.md#get_host_observations_with_certificate) - Get Host Observations With Certificate
 * [create_tracked_scan](docs/sdks/threathunting/README.md#create_tracked_scan) - Create a tracked discovery scan
 * [get_tracked_scan_threat_hunting](docs/sdks/threathunting/README.md#get_tracked_scan_threat_hunting) - Get tracked scan details
 * [value_counts](docs/sdks/threathunting/README.md#value_counts) - CensEye: Retrieve value counts to discover pivots

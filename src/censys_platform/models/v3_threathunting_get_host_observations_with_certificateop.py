@@ -11,18 +11,18 @@ from typing import Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class V3GlobaldataGetHostObservationsWithCertificateGlobalsTypedDict(TypedDict):
+class V3ThreathuntingGetHostObservationsWithCertificateGlobalsTypedDict(TypedDict):
     organization_id: NotRequired[str]
 
 
-class V3GlobaldataGetHostObservationsWithCertificateGlobals(BaseModel):
+class V3ThreathuntingGetHostObservationsWithCertificateGlobals(BaseModel):
     organization_id: Annotated[
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
 
 
-class V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict(TypedDict):
+class V3ThreathuntingGetHostObservationsWithCertificateRequestTypedDict(TypedDict):
     certificate_id: str
     r"""SHA-256 hash of the certificate"""
     organization_id: NotRequired[str]
@@ -41,7 +41,7 @@ class V3GlobaldataGetHostObservationsWithCertificateRequestTypedDict(TypedDict):
     r"""Number of results per page. Maximum 100, defaults to 100 if not specified"""
 
 
-class V3GlobaldataGetHostObservationsWithCertificateRequest(BaseModel):
+class V3ThreathuntingGetHostObservationsWithCertificateRequest(BaseModel):
     certificate_id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
@@ -90,12 +90,12 @@ class V3GlobaldataGetHostObservationsWithCertificateRequest(BaseModel):
     r"""Number of results per page. Maximum 100, defaults to 100 if not specified"""
 
 
-class V3GlobaldataGetHostObservationsWithCertificateResponseTypedDict(TypedDict):
+class V3ThreathuntingGetHostObservationsWithCertificateResponseTypedDict(TypedDict):
     headers: Dict[str, List[str]]
     result: ResponseEnvelopeHostObservationResponseTypedDict
 
 
-class V3GlobaldataGetHostObservationsWithCertificateResponse(BaseModel):
+class V3ThreathuntingGetHostObservationsWithCertificateResponse(BaseModel):
     headers: Dict[str, List[str]]
 
     result: ResponseEnvelopeHostObservationResponse
