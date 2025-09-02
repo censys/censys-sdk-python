@@ -1,4 +1,4 @@
-# V3GlobaldataAssetHostListResponse
+# V3GlobaldataAssetHostListPostResponse
 
 
 ## Fields

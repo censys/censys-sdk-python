@@ -17,6 +17,7 @@ class RdpTypedDict(TypedDict):
     protocol_flags: NotRequired[RdpProtocolFlagsTypedDict]
     selected_security_protocol: NotRequired[RdpSecurityProtocolTypedDict]
     version: NotRequired[RdpVersionTypedDict]
+    x224_cc_pdu_dstref: NotRequired[int]
     x224_cc_pdu_srcref: NotRequired[int]
 
 
@@ -30,5 +31,7 @@ class Rdp(BaseModel):
     selected_security_protocol: Optional[RdpSecurityProtocol] = None
 
     version: Optional[RdpVersion] = None
+
+    x224_cc_pdu_dstref: Optional[int] = None
 
     x224_cc_pdu_srcref: Optional[int] = None

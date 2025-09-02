@@ -46,7 +46,15 @@ Developer-friendly & type-safe Python SDK specifically catered to leverage *open
 >
 > Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
 
-The SDK can be installed with either *pip* or *poetry* package managers.
+The SDK can be installed with *uv*, *pip*, or *poetry* package managers.
+
+### uv
+
+*uv* is a fast Python package installer and resolver, designed as a drop-in replacement for pip and pip-tools. It's recommended for its speed and modern Python tooling capabilities.
+
+```bash
+uv add censys-platform
+```
 
 ### PIP
 
@@ -135,7 +143,7 @@ with SDK(
 
 </br>
 
-The same SDK client can also be used to make asychronous requests by importing asyncio.
+The same SDK client can also be used to make asynchronous requests by importing asyncio.
 ```python
 # Asynchronous Example
 import asyncio
@@ -183,25 +191,26 @@ asyncio.run(main())
 ### [global_data](docs/sdks/globaldata/README.md)
 
 * [get_certificates](docs/sdks/globaldata/README.md#get_certificates) - Get multiple certificates
+* [get_certificates_raw](docs/sdks/globaldata/README.md#get_certificates_raw) - Get multiple certificates in PEM format
 * [get_certificate](docs/sdks/globaldata/README.md#get_certificate) - Get a certificate
+* [get_certificate_raw](docs/sdks/globaldata/README.md#get_certificate_raw) - Get a certificate in PEM format
 * [get_hosts](docs/sdks/globaldata/README.md#get_hosts) - Get multiple hosts
 * [get_host](docs/sdks/globaldata/README.md#get_host) - Get a host
 * [get_host_timeline](docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
 * [get_web_properties](docs/sdks/globaldata/README.md#get_web_properties) - Get multiple web properties
 * [get_web_property](docs/sdks/globaldata/README.md#get_web_property) - Get a web property
-* [create_tracked_scan](docs/sdks/globaldata/README.md#create_tracked_scan) - Create a tracked rescan
-* [get_tracked_scan](docs/sdks/globaldata/README.md#get_tracked_scan) - Get tracked scan details
+* [create_tracked_scan](docs/sdks/globaldata/README.md#create_tracked_scan) - Live Rescan: Initiate a new rescan
+* [get_tracked_scan](docs/sdks/globaldata/README.md#get_tracked_scan) - Get scan status
 * [aggregate](docs/sdks/globaldata/README.md#aggregate) - Aggregate results for a search query
+* [convert_legacy_search_queries](docs/sdks/globaldata/README.md#convert_legacy_search_queries) - Convert Legacy Search queries to Platform queries
 * [search](docs/sdks/globaldata/README.md#search) - Run a search query
-* [get_tracked_scan_threat_hunting](docs/sdks/globaldata/README.md#get_tracked_scan_threat_hunting) - Get tracked scan details
 
 
 ### [threat_hunting](docs/sdks/threathunting/README.md)
 
-* [get_tracked_scan](docs/sdks/threathunting/README.md#get_tracked_scan) - Get tracked scan details
-* [get_host_observations_with_certificate](docs/sdks/threathunting/README.md#get_host_observations_with_certificate) - Get Host Observations With Certificate
-* [create_tracked_scan](docs/sdks/threathunting/README.md#create_tracked_scan) - Create a tracked discovery scan
-* [get_tracked_scan_threat_hunting](docs/sdks/threathunting/README.md#get_tracked_scan_threat_hunting) - Get tracked scan details
+* [get_host_observations_with_certificate](docs/sdks/threathunting/README.md#get_host_observations_with_certificate) - Get host history for a certificate
+* [create_tracked_scan](docs/sdks/threathunting/README.md#create_tracked_scan) - Live Discovery: Initiate a new scan
+* [get_tracked_scan_threat_hunting](docs/sdks/threathunting/README.md#get_tracked_scan_threat_hunting) - Get scan status
 * [value_counts](docs/sdks/threathunting/README.md#value_counts) - CensEye: Retrieve value counts to discover pivots
 
 </details>
@@ -339,7 +348,7 @@ with SDK(
 ### Error Classes
 **Primary errors:**
 * [`SDKBaseError`](./src/censys_platform/models/sdkbaseerror.py): The base class for HTTP error responses.
-  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): Request does not contain a valid Authorization token. *
+  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): Request does not contain a valid Authorization token.
 
 <details><summary>Less common errors (5)</summary>
 
@@ -355,8 +364,6 @@ with SDK(
 * [`ResponseValidationError`](./src/censys_platform/models/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
-
-\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
