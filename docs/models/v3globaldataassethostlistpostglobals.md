@@ -1,4 +1,4 @@
-# V3GlobaldataAssetWebpropertyListGlobals
+# V3GlobaldataAssetHostListPostGlobals
 
 
 ## Fields

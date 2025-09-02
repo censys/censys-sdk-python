@@ -7,58 +7,14 @@ Endpoints related to the Threat Hunting product
 
 ### Available Operations
 
-* [get_tracked_scan](#get_tracked_scan) - Get tracked scan details
-* [get_host_observations_with_certificate](#get_host_observations_with_certificate) - Get Host Observations With Certificate
-* [create_tracked_scan](#create_tracked_scan) - Create a tracked discovery scan
-* [get_tracked_scan_threat_hunting](#get_tracked_scan_threat_hunting) - Get tracked scan details
+* [get_host_observations_with_certificate](#get_host_observations_with_certificate) - Get host history for a certificate
+* [create_tracked_scan](#create_tracked_scan) - Live Discovery: Initiate a new scan
+* [get_tracked_scan_threat_hunting](#get_tracked_scan_threat_hunting) - Get scan status
 * [value_counts](#value_counts) - CensEye: Retrieve value counts to discover pivots
-
-## get_tracked_scan
-
-Retrieve the current status and results of a tracked scan by its ID.
-        This endpoint works for both discovery scans and rescans.
-
-### Example Usage
-
-<!-- UsageSnippet language="python" operationID="v3-globaldata-scans-get" method="get" path="/v3/global/scans/{scan_id}" -->
-```python
-from censys_platform import SDK
-
-
-with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
-    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
-
-    res = sdk.threat_hunting.get_tracked_scan(scan_id="5f39588f-d4c5-48e5-8894-0bb5918c28fa")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                          | Type                                                                                                                                                                                               | Required                                                                                                                                                                                           | Description                                                                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scan_id`                                                                                                                                                                                          | *str*                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                 | The unique identifier of the tracked scan                                                                                                                                                          |
-| `organization_id`                                                                                                                                                                                  | *Optional[str]*                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                 | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information. |
-| `retries`                                                                                                                                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                 | Configuration to override the default retry behavior of the client.                                                                                                                                |
-
-### Response
-
-**[models.V3GlobaldataScansGetResponse](../../models/v3globaldatascansgetresponse.md)**
-
-### Errors
-
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| models.ErrorModel        | 401, 403                 | application/problem+json |
-| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
 
 ## get_host_observations_with_certificate
 
-Retrieve historical observations of hosts associated with a certificate fingerprint. Useful for threat hunting, detection engineering, and timeline generation.
+Retrieve the historical observations of hosts associated with a certificate. This is useful for threat hunting, detection engineering, and timeline generation. Certificate history is also visible to Threat Hunting users in the Platform UI on the [certificate timeline](https://docs.censys.com/docs/platform-threat-hunting-use-cert-history-to-build-better-detections#/).<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account. You may also filter results by port and transport protocol.<br><br>This endpoint is available to organizations that have access to the Threat Hunting module. It costs 5 credits per page of results.
 
 ### Example Usage
 
@@ -106,7 +62,7 @@ with SDK(
 
 ## create_tracked_scan
 
-Create a new tracked discovery scan for a specified target. Discovery scans are used to scan new targets that have not been previously identified. The scan will be queued. The response will contain a scan ID that you can use with the [get tracked scan details endpoint](https://docs.censys.com/reference/v3-globaldata-scans-get#/) to monitor its status and results.<br><br>This endpoint is available to organizations that have access to the Threat Hunting module.
+Initiate a scan to look for a currently unobserved service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Discovery](https://docs.censys.com/docs/platform-threat-hunting-use-live-scan-and-rescan-to-validate-infrastructure#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-threathunting-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to organizations that have access to the Threat Hunting module. It costs 15 credits to execute this endpoint.
 
 ### Example Usage
 
@@ -155,8 +111,7 @@ with SDK(
 
 ## get_tracked_scan_threat_hunting
 
-Retrieve the current status and results of a tracked scan by its ID.
-        This endpoint works for both discovery scans and rescans.
+Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
 
 ### Example Usage
 

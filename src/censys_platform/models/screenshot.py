@@ -9,9 +9,12 @@ from typing_extensions import NotRequired, TypedDict
 class ScreenshotTypedDict(TypedDict):
     extracted_text: NotRequired[str]
     handle: NotRequired[str]
+    phash: NotRequired[str]
 
 
 class Screenshot(BaseModel):
     extracted_text: Optional[str] = None
 
     handle: Optional[str] = None
+
+    phash: Optional[str] = None

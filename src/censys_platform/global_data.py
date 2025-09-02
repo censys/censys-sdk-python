@@ -3,10 +3,10 @@
 from .basesdk import BaseSDK
 from censys_platform import models, utils
 from censys_platform._hooks import HookContext
-from censys_platform.types import Nullable, OptionalNullable, UNSET
+from censys_platform.types import OptionalNullable, UNSET
 from censys_platform.utils.unmarshal_json_response import unmarshal_json_response
 from datetime import datetime
-from typing import Any, List, Mapping, Optional, Union
+from typing import Any, Mapping, Optional, Union
 
 
 class GlobalData(BaseSDK):
@@ -15,18 +15,21 @@ class GlobalData(BaseSDK):
     def get_certificates(
         self,
         *,
-        certificate_ids: Nullable[List[str]],
+        asset_certificate_list_input_body: Union[
+            models.AssetCertificateListInputBody,
+            models.AssetCertificateListInputBodyTypedDict,
+        ],
         organization_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3GlobaldataAssetCertificateListResponse:
+    ) -> models.V3GlobaldataAssetCertificateListPostResponse:
         r"""Get multiple certificates
 
         Retrieve information about multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
-        :param certificate_ids: A list of SHA-256 certificate fingerprints.
+        :param asset_certificate_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -43,27 +46,36 @@ class GlobalData(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3GlobaldataAssetCertificateListRequest(
+        request = models.V3GlobaldataAssetCertificateListPostRequest(
             organization_id=organization_id,
-            certificate_ids=certificate_ids,
+            asset_certificate_list_input_body=utils.get_pydantic_model(
+                asset_certificate_list_input_body, models.AssetCertificateListInputBody
+            ),
         )
 
         req = self._build_request(
-            method="GET",
+            method="POST",
             path="/v3/global/asset/certificate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/vnd.censys.api.v3.certificate.v1+json",
             http_headers=http_headers,
-            _globals=models.V3GlobaldataAssetCertificateListGlobals(
+            _globals=models.V3GlobaldataAssetCertificateListPostGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_certificate_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetCertificateListInputBody,
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -79,7 +91,7 @@ class GlobalData(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v3-globaldata-asset-certificate-list",
+                operation_id="v3-globaldata-asset-certificate-list-post",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -92,7 +104,7 @@ class GlobalData(BaseSDK):
         if utils.match_response(
             http_res, "200", "application/vnd.censys.api.v3.certificate.v1+json"
         ):
-            return models.V3GlobaldataAssetCertificateListResponse(
+            return models.V3GlobaldataAssetCertificateListPostResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeListCertificateAsset, http_res
                 ),
@@ -113,18 +125,21 @@ class GlobalData(BaseSDK):
     async def get_certificates_async(
         self,
         *,
-        certificate_ids: Nullable[List[str]],
+        asset_certificate_list_input_body: Union[
+            models.AssetCertificateListInputBody,
+            models.AssetCertificateListInputBodyTypedDict,
+        ],
         organization_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3GlobaldataAssetCertificateListResponse:
+    ) -> models.V3GlobaldataAssetCertificateListPostResponse:
         r"""Get multiple certificates
 
         Retrieve information about multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
-        :param certificate_ids: A list of SHA-256 certificate fingerprints.
+        :param asset_certificate_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -141,27 +156,36 @@ class GlobalData(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3GlobaldataAssetCertificateListRequest(
+        request = models.V3GlobaldataAssetCertificateListPostRequest(
             organization_id=organization_id,
-            certificate_ids=certificate_ids,
+            asset_certificate_list_input_body=utils.get_pydantic_model(
+                asset_certificate_list_input_body, models.AssetCertificateListInputBody
+            ),
         )
 
         req = self._build_request_async(
-            method="GET",
+            method="POST",
             path="/v3/global/asset/certificate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/vnd.censys.api.v3.certificate.v1+json",
             http_headers=http_headers,
-            _globals=models.V3GlobaldataAssetCertificateListGlobals(
+            _globals=models.V3GlobaldataAssetCertificateListPostGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_certificate_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetCertificateListInputBody,
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -177,7 +201,7 @@ class GlobalData(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v3-globaldata-asset-certificate-list",
+                operation_id="v3-globaldata-asset-certificate-list-post",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -190,13 +214,229 @@ class GlobalData(BaseSDK):
         if utils.match_response(
             http_res, "200", "application/vnd.censys.api.v3.certificate.v1+json"
         ):
-            return models.V3GlobaldataAssetCertificateListResponse(
+            return models.V3GlobaldataAssetCertificateListPostResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeListCertificateAsset, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
         if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def get_certificates_raw(
+        self,
+        *,
+        asset_certificate_list_input_body: Union[
+            models.AssetCertificateListInputBody,
+            models.AssetCertificateListInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataAssetCertificateListRawPostResponse:
+        r"""Get multiple certificates in PEM format
+
+        Retrieve the raw PEM-encoded format for multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+
+        :param asset_certificate_list_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataAssetCertificateListRawPostRequest(
+            organization_id=organization_id,
+            asset_certificate_list_input_body=utils.get_pydantic_model(
+                asset_certificate_list_input_body, models.AssetCertificateListInputBody
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/global/asset/certificate/raw",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataAssetCertificateListRawPostGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_certificate_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetCertificateListInputBody,
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-asset-certificate-list-raw-post",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "404", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataAssetCertificateListRawPostResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListRawCertificateResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "404"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def get_certificates_raw_async(
+        self,
+        *,
+        asset_certificate_list_input_body: Union[
+            models.AssetCertificateListInputBody,
+            models.AssetCertificateListInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataAssetCertificateListRawPostResponse:
+        r"""Get multiple certificates in PEM format
+
+        Retrieve the raw PEM-encoded format for multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+
+        :param asset_certificate_list_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataAssetCertificateListRawPostRequest(
+            organization_id=organization_id,
+            asset_certificate_list_input_body=utils.get_pydantic_model(
+                asset_certificate_list_input_body, models.AssetCertificateListInputBody
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/global/asset/certificate/raw",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataAssetCertificateListRawPostGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_certificate_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetCertificateListInputBody,
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-asset-certificate-list-raw-post",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "404", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataAssetCertificateListRawPostResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListRawCertificateResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, ["401", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -404,21 +644,21 @@ class GlobalData(BaseSDK):
 
         raise models.SDKError("Unexpected response received", http_res)
 
-    def get_hosts(
+    def get_certificate_raw(
         self,
         *,
-        host_ids: Nullable[List[str]],
+        certificate_id: str,
         organization_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3GlobaldataAssetHostListResponse:
-        r"""Get multiple hosts
+    ) -> models.V3GlobaldataAssetCertificateRawResponse:
+        r"""Get a certificate in PEM format
 
-        Retrieve information about multiple hosts. A host ID is its IP address.
+        Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
-        :param host_ids: A list of host IP addresses.
+        :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -435,24 +675,24 @@ class GlobalData(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3GlobaldataAssetHostListRequest(
+        request = models.V3GlobaldataAssetCertificateRawRequest(
             organization_id=organization_id,
-            host_ids=host_ids,
+            certificate_id=certificate_id,
         )
 
         req = self._build_request(
             method="GET",
-            path="/v3/global/asset/host",
+            path="/v3/global/asset/certificate/{certificate_id}/raw",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
             request_body_required=False,
-            request_has_path_params=False,
+            request_has_path_params=True,
             request_has_query_params=True,
             user_agent_header="user-agent",
-            accept_header_value="application/vnd.censys.api.v3.host.v1+json",
+            accept_header_value="application/x-pem-file",
             http_headers=http_headers,
-            _globals=models.V3GlobaldataAssetHostListGlobals(
+            _globals=models.V3GlobaldataAssetCertificateRawGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
@@ -471,7 +711,214 @@ class GlobalData(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v3-globaldata-asset-host-list",
+                operation_id="v3-globaldata-asset-certificate-raw",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            stream=True,
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/x-pem-file"):
+            return models.V3GlobaldataAssetCertificateRawResponse(
+                result=http_res, headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            http_res_text = utils.stream_to_text(http_res)
+            response_data = unmarshal_json_response(
+                models.ErrorModelData, http_res, http_res_text
+            )
+            raise models.ErrorModel(response_data, http_res, http_res_text)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        http_res_text = utils.stream_to_text(http_res)
+        raise models.SDKError("Unexpected response received", http_res, http_res_text)
+
+    async def get_certificate_raw_async(
+        self,
+        *,
+        certificate_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataAssetCertificateRawResponse:
+        r"""Get a certificate in PEM format
+
+        Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+
+        :param certificate_id: The SHA-256 certificate fingerprint.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataAssetCertificateRawRequest(
+            organization_id=organization_id,
+            certificate_id=certificate_id,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/global/asset/certificate/{certificate_id}/raw",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/x-pem-file",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataAssetCertificateRawGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-asset-certificate-raw",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "403", "4XX", "5XX"],
+            stream=True,
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/x-pem-file"):
+            return models.V3GlobaldataAssetCertificateRawResponse(
+                result=http_res, headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            response_data = unmarshal_json_response(
+                models.ErrorModelData, http_res, http_res_text
+            )
+            raise models.ErrorModel(response_data, http_res, http_res_text)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        http_res_text = await utils.stream_to_text_async(http_res)
+        raise models.SDKError("Unexpected response received", http_res, http_res_text)
+
+    def get_hosts(
+        self,
+        *,
+        asset_host_list_input_body: Union[
+            models.AssetHostListInputBody, models.AssetHostListInputBodyTypedDict
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataAssetHostListPostResponse:
+        r"""Get multiple hosts
+
+        Retrieve information about multiple hosts. A host ID is its IP address.
+
+        :param asset_host_list_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataAssetHostListPostRequest(
+            organization_id=organization_id,
+            asset_host_list_input_body=utils.get_pydantic_model(
+                asset_host_list_input_body, models.AssetHostListInputBody
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/global/asset/host",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/vnd.censys.api.v3.host.v1+json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataAssetHostListPostGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_host_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetHostListInputBody,
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-asset-host-list-post",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -484,7 +931,7 @@ class GlobalData(BaseSDK):
         if utils.match_response(
             http_res, "200", "application/vnd.censys.api.v3.host.v1+json"
         ):
-            return models.V3GlobaldataAssetHostListResponse(
+            return models.V3GlobaldataAssetHostListPostResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeListHostAsset, http_res
                 ),
@@ -505,18 +952,20 @@ class GlobalData(BaseSDK):
     async def get_hosts_async(
         self,
         *,
-        host_ids: Nullable[List[str]],
+        asset_host_list_input_body: Union[
+            models.AssetHostListInputBody, models.AssetHostListInputBodyTypedDict
+        ],
         organization_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3GlobaldataAssetHostListResponse:
+    ) -> models.V3GlobaldataAssetHostListPostResponse:
         r"""Get multiple hosts
 
         Retrieve information about multiple hosts. A host ID is its IP address.
 
-        :param host_ids: A list of host IP addresses.
+        :param asset_host_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -533,27 +982,36 @@ class GlobalData(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3GlobaldataAssetHostListRequest(
+        request = models.V3GlobaldataAssetHostListPostRequest(
             organization_id=organization_id,
-            host_ids=host_ids,
+            asset_host_list_input_body=utils.get_pydantic_model(
+                asset_host_list_input_body, models.AssetHostListInputBody
+            ),
         )
 
         req = self._build_request_async(
-            method="GET",
+            method="POST",
             path="/v3/global/asset/host",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/vnd.censys.api.v3.host.v1+json",
             http_headers=http_headers,
-            _globals=models.V3GlobaldataAssetHostListGlobals(
+            _globals=models.V3GlobaldataAssetHostListPostGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_host_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetHostListInputBody,
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -569,7 +1027,7 @@ class GlobalData(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v3-globaldata-asset-host-list",
+                operation_id="v3-globaldata-asset-host-list-post",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -582,7 +1040,7 @@ class GlobalData(BaseSDK):
         if utils.match_response(
             http_res, "200", "application/vnd.censys.api.v3.host.v1+json"
         ):
-            return models.V3GlobaldataAssetHostListResponse(
+            return models.V3GlobaldataAssetHostListPostResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeListHostAsset, http_res
                 ),
@@ -816,11 +1274,11 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
         r"""Get host event history
 
-        Retrieve event history for a host. A host ID is its IP address.
+        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will only be reflected in the `scan` object. It will not be shown in the `service_scanned diff` object.
 
         :param host_id: The IP address of a host.
-        :param start_time: Start time of the host timeline. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
-        :param end_time: End time of the host timeline. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
+        :param start_time: Start time of the host timeline. Equivalent to the To field in the event history UI. This must be the timestamp closest to the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 2 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
+        :param end_time: End time of the host timeline. Equivalent to the From field in the event history UI. This must be the timestamp furthest from the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 1 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -920,11 +1378,11 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
         r"""Get host event history
 
-        Retrieve event history for a host. A host ID is its IP address.
+        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will only be reflected in the `scan` object. It will not be shown in the `service_scanned diff` object.
 
         :param host_id: The IP address of a host.
-        :param start_time: Start time of the host timeline. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
-        :param end_time: End time of the host timeline. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
+        :param start_time: Start time of the host timeline. Equivalent to the To field in the event history UI. This must be the timestamp closest to the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 2 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
+        :param end_time: End time of the host timeline. Equivalent to the From field in the event history UI. This must be the timestamp furthest from the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 1 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1013,18 +1471,21 @@ class GlobalData(BaseSDK):
     def get_web_properties(
         self,
         *,
-        webproperty_ids: Nullable[List[str]],
+        asset_webproperty_list_input_body: Union[
+            models.AssetWebpropertyListInputBody,
+            models.AssetWebpropertyListInputBodyTypedDict,
+        ],
         organization_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3GlobaldataAssetWebpropertyListResponse:
+    ) -> models.V3GlobaldataAssetWebpropertyListPostResponse:
         r"""Get multiple web properties
 
         Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
-        :param webproperty_ids: A list of web property identifiers.
+        :param asset_webproperty_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1041,27 +1502,36 @@ class GlobalData(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3GlobaldataAssetWebpropertyListRequest(
+        request = models.V3GlobaldataAssetWebpropertyListPostRequest(
             organization_id=organization_id,
-            webproperty_ids=webproperty_ids,
+            asset_webproperty_list_input_body=utils.get_pydantic_model(
+                asset_webproperty_list_input_body, models.AssetWebpropertyListInputBody
+            ),
         )
 
         req = self._build_request(
-            method="GET",
+            method="POST",
             path="/v3/global/asset/webproperty",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/vnd.censys.api.v3.webproperty.v1+json",
             http_headers=http_headers,
-            _globals=models.V3GlobaldataAssetWebpropertyListGlobals(
+            _globals=models.V3GlobaldataAssetWebpropertyListPostGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_webproperty_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetWebpropertyListInputBody,
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -1077,7 +1547,7 @@ class GlobalData(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v3-globaldata-asset-webproperty-list",
+                operation_id="v3-globaldata-asset-webproperty-list-post",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -1090,7 +1560,7 @@ class GlobalData(BaseSDK):
         if utils.match_response(
             http_res, "200", "application/vnd.censys.api.v3.webproperty.v1+json"
         ):
-            return models.V3GlobaldataAssetWebpropertyListResponse(
+            return models.V3GlobaldataAssetWebpropertyListPostResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeListWebpropertyAsset, http_res
                 ),
@@ -1111,18 +1581,21 @@ class GlobalData(BaseSDK):
     async def get_web_properties_async(
         self,
         *,
-        webproperty_ids: Nullable[List[str]],
+        asset_webproperty_list_input_body: Union[
+            models.AssetWebpropertyListInputBody,
+            models.AssetWebpropertyListInputBodyTypedDict,
+        ],
         organization_id: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3GlobaldataAssetWebpropertyListResponse:
+    ) -> models.V3GlobaldataAssetWebpropertyListPostResponse:
         r"""Get multiple web properties
 
         Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
-        :param webproperty_ids: A list of web property identifiers.
+        :param asset_webproperty_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1139,27 +1612,36 @@ class GlobalData(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3GlobaldataAssetWebpropertyListRequest(
+        request = models.V3GlobaldataAssetWebpropertyListPostRequest(
             organization_id=organization_id,
-            webproperty_ids=webproperty_ids,
+            asset_webproperty_list_input_body=utils.get_pydantic_model(
+                asset_webproperty_list_input_body, models.AssetWebpropertyListInputBody
+            ),
         )
 
         req = self._build_request_async(
-            method="GET",
+            method="POST",
             path="/v3/global/asset/webproperty",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
-            request_body_required=False,
+            request_body_required=True,
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/vnd.censys.api.v3.webproperty.v1+json",
             http_headers=http_headers,
-            _globals=models.V3GlobaldataAssetWebpropertyListGlobals(
+            _globals=models.V3GlobaldataAssetWebpropertyListPostGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.asset_webproperty_list_input_body,
+                False,
+                False,
+                "json",
+                models.AssetWebpropertyListInputBody,
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -1175,7 +1657,7 @@ class GlobalData(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v3-globaldata-asset-webproperty-list",
+                operation_id="v3-globaldata-asset-webproperty-list-post",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -1188,7 +1670,7 @@ class GlobalData(BaseSDK):
         if utils.match_response(
             http_res, "200", "application/vnd.censys.api.v3.webproperty.v1+json"
         ):
-            return models.V3GlobaldataAssetWebpropertyListResponse(
+            return models.V3GlobaldataAssetWebpropertyListPostResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeListWebpropertyAsset, http_res
                 ),
@@ -1420,9 +1902,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataScansRescanResponse:
-        r"""Create a tracked rescan
+        r"""Live Rescan: Initiate a new rescan
 
-        Create a new tracked rescan for a known service or web property. Rescans are used to update information for previously discovered targets. The scan will be queued. The response will contain a scan ID that you can use with the [get tracked scan details endpoint](https://docs.censys.com/reference/v3-globaldata-scans-get#/) to monitor its status and results.<br><br>This endpoint is available to all Enterprise customers.
+        Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
 
         :param scans_rescan_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1527,9 +2009,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataScansRescanResponse:
-        r"""Create a tracked rescan
+        r"""Live Rescan: Initiate a new rescan
 
-        Create a new tracked rescan for a known service or web property. Rescans are used to update information for previously discovered targets. The scan will be queued. The response will contain a scan ID that you can use with the [get tracked scan details endpoint](https://docs.censys.com/reference/v3-globaldata-scans-get#/) to monitor its status and results.<br><br>This endpoint is available to all Enterprise customers.
+        Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
 
         :param scans_rescan_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1632,10 +2114,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataScansGetResponse:
-        r"""Get tracked scan details
+        r"""Get scan status
 
-        Retrieve the current status and results of a tracked scan by its ID.
-        This endpoint works for both discovery scans and rescans.
+        Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
 
         :param scan_id: The unique identifier of the tracked scan
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -1731,10 +2212,9 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataScansGetResponse:
-        r"""Get tracked scan details
+        r"""Get scan status
 
-        Retrieve the current status and results of a tracked scan by its ID.
-        This endpoint works for both discovery scans and rescans.
+        Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
 
         :param scan_id: The unique identifier of the tracked scan
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
@@ -2034,6 +2514,228 @@ class GlobalData(BaseSDK):
 
         raise models.SDKError("Unexpected response received", http_res)
 
+    def convert_legacy_search_queries(
+        self,
+        *,
+        search_convert_query_input_body: Union[
+            models.SearchConvertQueryInputBody,
+            models.SearchConvertQueryInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataSearchConvertResponse:
+        r"""Convert Legacy Search queries to Platform queries
+
+        Convert Censys Search Language queries used in Legacy Search into Censys Query Language (CenQL) queries for use in the Platform.<br><br>Reference the [documentation on CenQL](https://docs.censys.com/docs/censys-query-language) for more information about query syntax.
+
+        :param search_convert_query_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataSearchConvertRequest(
+            organization_id=organization_id,
+            search_convert_query_input_body=utils.get_pydantic_model(
+                search_convert_query_input_body, models.SearchConvertQueryInputBody
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/global/search/convert",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataSearchConvertGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.search_convert_query_input_body,
+                False,
+                False,
+                "json",
+                models.SearchConvertQueryInputBody,
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-search-convert",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "4XX", "500", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataSearchConvertResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListSearchConvertQueryResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def convert_legacy_search_queries_async(
+        self,
+        *,
+        search_convert_query_input_body: Union[
+            models.SearchConvertQueryInputBody,
+            models.SearchConvertQueryInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataSearchConvertResponse:
+        r"""Convert Legacy Search queries to Platform queries
+
+        Convert Censys Search Language queries used in Legacy Search into Censys Query Language (CenQL) queries for use in the Platform.<br><br>Reference the [documentation on CenQL](https://docs.censys.com/docs/censys-query-language) for more information about query syntax.
+
+        :param search_convert_query_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3GlobaldataSearchConvertRequest(
+            organization_id=organization_id,
+            search_convert_query_input_body=utils.get_pydantic_model(
+                search_convert_query_input_body, models.SearchConvertQueryInputBody
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/global/search/convert",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataSearchConvertGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.search_convert_query_input_body,
+                False,
+                False,
+                "json",
+                models.SearchConvertQueryInputBody,
+            ),
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-search-convert",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "4XX", "500", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataSearchConvertResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeListSearchConvertQueryResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
     def search(
         self,
         *,
@@ -2233,204 +2935,6 @@ class GlobalData(BaseSDK):
             return models.V3GlobaldataSearchQueryResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeSearchQueryResponse, http_res
-                ),
-                headers=utils.get_response_headers(http_res.headers),
-            )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
-            raise models.ErrorModel(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-
-        raise models.SDKError("Unexpected response received", http_res)
-
-    def get_tracked_scan_threat_hunting(
-        self,
-        *,
-        scan_id: str,
-        organization_id: Optional[str] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3ThreathuntingScansGetResponse:
-        r"""Get tracked scan details
-
-        Retrieve the current status and results of a tracked scan by its ID.
-        This endpoint works for both discovery scans and rescans.
-
-        :param scan_id: The unique identifier of the tracked scan
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.V3ThreathuntingScansGetRequest(
-            organization_id=organization_id,
-            scan_id=scan_id,
-        )
-
-        req = self._build_request(
-            method="GET",
-            path="/v3/threat-hunting/scans/{scan_id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/vnd.censys.api.v3.trackedscan.v1+json",
-            http_headers=http_headers,
-            _globals=models.V3ThreathuntingScansGetGlobals(
-                organization_id=self.sdk_configuration.globals.organization_id,
-            ),
-            security=self.sdk_configuration.security,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="v3-threathunting-scans-get",
-                oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(
-            http_res, "200", "application/vnd.censys.api.v3.trackedscan.v1+json"
-        ):
-            return models.V3ThreathuntingScansGetResponse(
-                result=unmarshal_json_response(
-                    models.ResponseEnvelopeTrackedScan, http_res
-                ),
-                headers=utils.get_response_headers(http_res.headers),
-            )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
-            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
-            raise models.ErrorModel(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-
-        raise models.SDKError("Unexpected response received", http_res)
-
-    async def get_tracked_scan_threat_hunting_async(
-        self,
-        *,
-        scan_id: str,
-        organization_id: Optional[str] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V3ThreathuntingScansGetResponse:
-        r"""Get tracked scan details
-
-        Retrieve the current status and results of a tracked scan by its ID.
-        This endpoint works for both discovery scans and rescans.
-
-        :param scan_id: The unique identifier of the tracked scan
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.V3ThreathuntingScansGetRequest(
-            organization_id=organization_id,
-            scan_id=scan_id,
-        )
-
-        req = self._build_request_async(
-            method="GET",
-            path="/v3/threat-hunting/scans/{scan_id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/vnd.censys.api.v3.trackedscan.v1+json",
-            http_headers=http_headers,
-            _globals=models.V3ThreathuntingScansGetGlobals(
-                organization_id=self.sdk_configuration.globals.organization_id,
-            ),
-            security=self.sdk_configuration.security,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="v3-threathunting-scans-get",
-                oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(
-            http_res, "200", "application/vnd.censys.api.v3.trackedscan.v1+json"
-        ):
-            return models.V3ThreathuntingScansGetResponse(
-                result=unmarshal_json_response(
-                    models.ResponseEnvelopeTrackedScan, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )

@@ -4,6 +4,10 @@ from __future__ import annotations
 from .activemq import Activemq, ActivemqTypedDict
 from .amqp import Amqp, AmqpTypedDict
 from .anyconnect import AnyConnect, AnyConnectTypedDict
+from .asteriskmanagerinterface import (
+    AsteriskManagerInterface,
+    AsteriskManagerInterfaceTypedDict,
+)
 from .attribute import Attribute, AttributeTypedDict
 from .bacnet import Bacnet, BacnetTypedDict
 from .certificate import Certificate, CertificateTypedDict
@@ -69,6 +73,7 @@ from .onc import Onc, OncTypedDict
 from .onvif import Onvif, OnvifTypedDict
 from .opcua import OpcUa, OpcUaTypedDict
 from .openvpn import Openvpn, OpenvpnTypedDict
+from .openvpnmgmt import OpenvpnMgmt, OpenvpnMgmtTypedDict
 from .oracle import Oracle, OracleTypedDict
 from .pcanywhere import PcAnywhere, PcAnywhereTypedDict
 from .pgbouncer import Pgbouncer, PgbouncerTypedDict
@@ -148,6 +153,7 @@ class ServiceTypedDict(TypedDict):
     activemq: NotRequired[ActivemqTypedDict]
     amqp: NotRequired[AmqpTypedDict]
     any_connect: NotRequired[AnyConnectTypedDict]
+    asterisk_manager_interface: NotRequired[AsteriskManagerInterfaceTypedDict]
     bacnet: NotRequired[BacnetTypedDict]
     banner: NotRequired[str]
     banner_hash_sha256: NotRequired[str]
@@ -219,6 +225,7 @@ class ServiceTypedDict(TypedDict):
     onvif: NotRequired[OnvifTypedDict]
     opc_ua: NotRequired[OpcUaTypedDict]
     openvpn: NotRequired[OpenvpnTypedDict]
+    openvpn_mgmt: NotRequired[OpenvpnMgmtTypedDict]
     operating_systems: NotRequired[Nullable[List[AttributeTypedDict]]]
     oracle: NotRequired[OracleTypedDict]
     pc_anywhere: NotRequired[PcAnywhereTypedDict]
@@ -286,6 +293,8 @@ class Service(BaseModel):
     amqp: Optional[Amqp] = None
 
     any_connect: Optional[AnyConnect] = None
+
+    asterisk_manager_interface: Optional[AsteriskManagerInterface] = None
 
     bacnet: Optional[Bacnet] = None
 
@@ -429,6 +438,8 @@ class Service(BaseModel):
 
     openvpn: Optional[Openvpn] = None
 
+    openvpn_mgmt: Optional[OpenvpnMgmt] = None
+
     operating_systems: OptionalNullable[List[Attribute]] = UNSET
 
     oracle: Optional[Oracle] = None
@@ -553,6 +564,7 @@ class Service(BaseModel):
             "activemq",
             "amqp",
             "any_connect",
+            "asterisk_manager_interface",
             "bacnet",
             "banner",
             "banner_hash_sha256",
@@ -624,6 +636,7 @@ class Service(BaseModel):
             "onvif",
             "opc_ua",
             "openvpn",
+            "openvpn_mgmt",
             "operating_systems",
             "oracle",
             "pc_anywhere",

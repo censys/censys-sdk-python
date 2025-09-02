@@ -4,6 +4,10 @@ from __future__ import annotations
 from .activemq import Activemq, ActivemqTypedDict
 from .amqp import Amqp, AmqpTypedDict
 from .anyconnect import AnyConnect, AnyConnectTypedDict
+from .asteriskmanagerinterface import (
+    AsteriskManagerInterface,
+    AsteriskManagerInterfaceTypedDict,
+)
 from .bacnet import Bacnet, BacnetTypedDict
 from .checkpointtopology import CheckpointTopology, CheckpointTopologyTypedDict
 from .chromecast import Chromecast, ChromecastTypedDict
@@ -63,6 +67,7 @@ from .onc import Onc, OncTypedDict
 from .onvif import Onvif, OnvifTypedDict
 from .opcua import OpcUa, OpcUaTypedDict
 from .openvpn import Openvpn, OpenvpnTypedDict
+from .openvpnmgmt import OpenvpnMgmt, OpenvpnMgmtTypedDict
 from .oracle import Oracle, OracleTypedDict
 from .pcanywhere import PcAnywhere, PcAnywhereTypedDict
 from .pgbouncer import Pgbouncer, PgbouncerTypedDict
@@ -139,6 +144,7 @@ class ServiceScanTypedDict(TypedDict):
     activemq: NotRequired[ActivemqTypedDict]
     amqp: NotRequired[AmqpTypedDict]
     any_connect: NotRequired[AnyConnectTypedDict]
+    asterisk_manager_interface: NotRequired[AsteriskManagerInterfaceTypedDict]
     bacnet: NotRequired[BacnetTypedDict]
     banner: NotRequired[str]
     banner_hash_sha256: NotRequired[str]
@@ -202,6 +208,7 @@ class ServiceScanTypedDict(TypedDict):
     onvif: NotRequired[OnvifTypedDict]
     opc_ua: NotRequired[OpcUaTypedDict]
     openvpn: NotRequired[OpenvpnTypedDict]
+    openvpn_mgmt: NotRequired[OpenvpnMgmtTypedDict]
     oracle: NotRequired[OracleTypedDict]
     pc_anywhere: NotRequired[PcAnywhereTypedDict]
     pgbouncer: NotRequired[PgbouncerTypedDict]
@@ -265,6 +272,8 @@ class ServiceScan(BaseModel):
     amqp: Optional[Amqp] = None
 
     any_connect: Optional[AnyConnect] = None
+
+    asterisk_manager_interface: Optional[AsteriskManagerInterface] = None
 
     bacnet: Optional[Bacnet] = None
 
@@ -392,6 +401,8 @@ class ServiceScan(BaseModel):
 
     openvpn: Optional[Openvpn] = None
 
+    openvpn_mgmt: Optional[OpenvpnMgmt] = None
+
     oracle: Optional[Oracle] = None
 
     pc_anywhere: Optional[PcAnywhere] = None
@@ -508,6 +519,7 @@ class ServiceScan(BaseModel):
             "activemq",
             "amqp",
             "any_connect",
+            "asterisk_manager_interface",
             "bacnet",
             "banner",
             "banner_hash_sha256",
@@ -571,6 +583,7 @@ class ServiceScan(BaseModel):
             "onvif",
             "opc_ua",
             "openvpn",
+            "openvpn_mgmt",
             "oracle",
             "pc_anywhere",
             "pgbouncer",
