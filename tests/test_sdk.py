@@ -19,7 +19,6 @@ def sdk_client():
         organization_id=org_id
     )
 
-
 class TestGlobalData:
     """Test suite for Global Data functionality."""
 
@@ -38,7 +37,34 @@ class TestGlobalData:
                 "00000002741c89f06524afbbb4720876bc173aca3a6ce344e08584859b9ac34e",
                 "000000033b547e13ee216c65b0ff50237f0decef12acb76fce0a96afa9c70d50"
             ]
-            res = platform.global_data.get_certificates(certificate_ids=cert_ids)
+            res = platform.global_data.get_certificates(
+                asset_certificate_list_input_body={
+                    "certificate_ids": cert_ids
+                }
+            )
+            assert res is not None
+            assert res.result is not None
+
+    def test_certificates_list_raw(self, sdk_client):
+        """Test getting multiple certificates in raw format."""
+        with sdk_client as platform:
+            cert_ids = [
+                "00000002741c89f06524afbbb4720876bc173aca3a6ce344e08584859b9ac34e",
+                "000000033b547e13ee216c65b0ff50237f0decef12acb76fce0a96afa9c70d50"
+            ]
+            res = platform.global_data.get_certificates_raw(
+                asset_certificate_list_input_body={
+                    "certificate_ids": cert_ids
+                }
+            )
+            assert res is not None
+            assert res.result is not None
+
+    def test_certificate_raw(self, sdk_client):
+        """Test getting a single certificate in raw format."""
+        with sdk_client as platform:
+            cert_id = "00000002741c89f06524afbbb4720876bc173aca3a6ce344e08584859b9ac34e"
+            res = platform.global_data.get_certificate_raw(certificate_id=cert_id)
             assert res is not None
             assert res.result is not None
 
@@ -46,7 +72,11 @@ class TestGlobalData:
         """Test getting multiple hosts."""
         with sdk_client as platform:
             host_ids = ["1.1.1.1", "8.8.8.8"]
-            res = platform.global_data.get_hosts(host_ids=host_ids)
+            res = platform.global_data.get_hosts(
+                asset_host_list_input_body={
+                    "host_ids": host_ids
+                }
+            )
             assert res is not None
             assert res.result is not None
 
@@ -88,7 +118,11 @@ class TestGlobalData:
                 "104.236.29.250:443",
                 "78.133.74.135:49152"
             ]
-            res = platform.global_data.get_web_properties(webproperty_ids=web_property_ids)
+            res = platform.global_data.get_web_properties(
+                asset_webproperty_list_input_body={
+                    "webproperty_ids": web_property_ids
+                }
+            )
             assert res is not None
             assert res.result is not None
 
