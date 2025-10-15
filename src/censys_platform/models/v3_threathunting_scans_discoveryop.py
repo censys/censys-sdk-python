@@ -29,7 +29,7 @@ class V3ThreathuntingScansDiscoveryGlobals(BaseModel):
 class V3ThreathuntingScansDiscoveryRequestTypedDict(TypedDict):
     scans_discovery_input_body: ScansDiscoveryInputBodyTypedDict
     organization_id: NotRequired[str]
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3ThreathuntingScansDiscoveryRequest(BaseModel):
@@ -42,7 +42,7 @@ class V3ThreathuntingScansDiscoveryRequest(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3ThreathuntingScansDiscoveryResponseTypedDict(TypedDict):

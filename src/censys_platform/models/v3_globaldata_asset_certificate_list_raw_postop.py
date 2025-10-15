@@ -29,7 +29,7 @@ class V3GlobaldataAssetCertificateListRawPostGlobals(BaseModel):
 class V3GlobaldataAssetCertificateListRawPostRequestTypedDict(TypedDict):
     asset_certificate_list_input_body: AssetCertificateListInputBodyTypedDict
     organization_id: NotRequired[str]
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3GlobaldataAssetCertificateListRawPostRequest(BaseModel):
@@ -42,7 +42,7 @@ class V3GlobaldataAssetCertificateListRawPostRequest(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3GlobaldataAssetCertificateListRawPostResponseTypedDict(TypedDict):

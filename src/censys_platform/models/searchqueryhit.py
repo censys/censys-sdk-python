@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 from .certificateasset import CertificateAsset, CertificateAssetTypedDict
-from .hostasset import HostAsset, HostAssetTypedDict
+from .hostassetwithmatchedservices import (
+    HostAssetWithMatchedServices,
+    HostAssetWithMatchedServicesTypedDict,
+)
 from .webpropertyasset import WebpropertyAsset, WebpropertyAssetTypedDict
 from censys_platform.types import BaseModel
 from typing import Optional
@@ -11,13 +14,13 @@ from typing_extensions import NotRequired, TypedDict
 
 class SearchQueryHitTypedDict(TypedDict):
     certificate_v1: NotRequired[CertificateAssetTypedDict]
-    host_v1: NotRequired[HostAssetTypedDict]
+    host_v1: NotRequired[HostAssetWithMatchedServicesTypedDict]
     webproperty_v1: NotRequired[WebpropertyAssetTypedDict]
 
 
 class SearchQueryHit(BaseModel):
     certificate_v1: Optional[CertificateAsset] = None
 
-    host_v1: Optional[HostAsset] = None
+    host_v1: Optional[HostAssetWithMatchedServices] = None
 
     webproperty_v1: Optional[WebpropertyAsset] = None

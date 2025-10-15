@@ -17,7 +17,7 @@ class SearchQueryInputBodyTypedDict(TypedDict):
     query: str
     r"""CenQL query string to search upon"""
     fields: NotRequired[Nullable[List[str]]]
-    r"""specify fields to return in response and ignore others"""
+    r"""Specify fields to only return in the response. If you provide fields and omit `host.services.port`, `host.services.transport_protocol`, and `host.services.protocol`, then `matched_services` will not be returned in the response."""
     page_size: NotRequired[Nullable[int]]
     r"""amount of results to return per page"""
     page_token: NotRequired[str]
@@ -29,7 +29,7 @@ class SearchQueryInputBody(BaseModel):
     r"""CenQL query string to search upon"""
 
     fields: OptionalNullable[List[str]] = UNSET
-    r"""specify fields to return in response and ignore others"""
+    r"""Specify fields to only return in the response. If you provide fields and omit `host.services.port`, `host.services.transport_protocol`, and `host.services.protocol`, then `matched_services` will not be returned in the response."""
 
     page_size: OptionalNullable[int] = UNSET
     r"""amount of results to return per page"""

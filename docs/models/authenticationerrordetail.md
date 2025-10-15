@@ -1,0 +1,12 @@
+# AuthenticationErrorDetail
+
+
+## Fields
+
+| Field                                                           | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `code`                                                          | *Optional[int]*                                                 | :heavy_minus_sign:                                              | HTTP status code                                                | 401                                                             |
+| `message`                                                       | *Optional[str]*                                                 | :heavy_minus_sign:                                              | Human-readable message describing the error occurrence          | Access credentials are invalid                                  |
+| `reason`                                                        | *Optional[str]*                                                 | :heavy_minus_sign:                                              | Human-readable explanation of the underlying cause of the error | Access token is not active                                      |
+| `request`                                                       | *Optional[str]*                                                 | :heavy_minus_sign:                                              | N/A                                                             |                                                                 |
+| `status`                                                        | *Optional[str]*                                                 | :heavy_minus_sign:                                              | HTTP status message associated with the error                   | Unauthorized                                                    |
