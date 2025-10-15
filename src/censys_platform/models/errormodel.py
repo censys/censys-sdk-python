@@ -4,6 +4,7 @@ from __future__ import annotations
 from .errordetail import ErrorDetail
 from censys_platform.models import SDKBaseError
 from censys_platform.types import BaseModel, OptionalNullable, UNSET
+from dataclasses import dataclass, field
 import httpx
 from typing import List, Optional
 
@@ -28,8 +29,9 @@ class ErrorModelData(BaseModel):
     r"""A URI reference to human-readable documentation for the error."""
 
 
+@dataclass(unsafe_hash=True)
 class ErrorModel(SDKBaseError):
-    data: ErrorModelData
+    data: ErrorModelData = field(hash=False)
 
     def __init__(
         self,
@@ -39,4 +41,4 @@ class ErrorModel(SDKBaseError):
     ):
         message = body or raw_response.text
         super().__init__(message, raw_response, body)
-        self.data = data
+        object.__setattr__(self, "data", data)

@@ -26,7 +26,7 @@ class V3ThreathuntingGetHostObservationsWithCertificateRequestTypedDict(TypedDic
     certificate_id: str
     r"""SHA-256 hash of the certificate"""
     organization_id: NotRequired[str]
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
     start_time: NotRequired[str]
     r"""Only show ranges ending at or after this time (ISO 8601)"""
     end_time: NotRequired[str]
@@ -51,7 +51,7 @@ class V3ThreathuntingGetHostObservationsWithCertificateRequest(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
     start_time: Annotated[
         Optional[str],

@@ -5,7 +5,13 @@ from censys_platform import models, utils
 from censys_platform._hooks import HookContext
 from censys_platform.types import BaseModel, OptionalNullable, UNSET
 from censys_platform.utils.unmarshal_json_response import unmarshal_json_response
+from enum import Enum
 from typing import Any, Mapping, Optional, Union, cast
+
+
+class DeleteAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_PROBLEM_PLUS_JSON = "application/problem+json"
 
 
 class Collections(BaseSDK):
@@ -26,7 +32,7 @@ class Collections(BaseSDK):
 
         List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
 
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param page_token: page token for the requested page of collection results
         :param page_size: amount of results to return per page
         :param retries: Override the default retry configuration for this method
@@ -82,7 +88,7 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -98,7 +104,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -125,7 +136,7 @@ class Collections(BaseSDK):
 
         List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
 
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param page_token: page token for the requested page of collection results
         :param page_size: amount of results to return per page
         :param retries: Override the default retry configuration for this method
@@ -181,7 +192,7 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -197,7 +208,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -225,7 +241,7 @@ class Collections(BaseSDK):
 
         Create a new collection.
 
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_create_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -288,7 +304,7 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-create",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -304,7 +320,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -332,7 +353,7 @@ class Collections(BaseSDK):
 
         Create a new collection.
 
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_create_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -395,7 +416,7 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-create",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -411,7 +432,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -431,6 +457,7 @@ class Collections(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        accept_header_override: Optional[DeleteAcceptEnum] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudDeleteResponse:
         r"""Delete a collection
@@ -438,10 +465,11 @@ class Collections(BaseSDK):
         Delete a collection.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param accept_header_override: Override the default accept header for this method
         :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
@@ -469,7 +497,9 @@ class Collections(BaseSDK):
             request_has_path_params=True,
             request_has_query_params=True,
             user_agent_header="user-agent",
-            accept_header_value="application/problem+json",
+            accept_header_value=accept_header_override.value
+            if accept_header_override is not None
+            else "application/json;q=1, application/problem+json;q=0",
             http_headers=http_headers,
             _globals=models.V3CollectionsCrudDeleteGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
@@ -491,11 +521,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-delete",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -504,7 +534,12 @@ class Collections(BaseSDK):
             return models.V3CollectionsCrudDeleteResponse(
                 headers=utils.get_response_headers(http_res.headers)
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -524,6 +559,7 @@ class Collections(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        accept_header_override: Optional[DeleteAcceptEnum] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3CollectionsCrudDeleteResponse:
         r"""Delete a collection
@@ -531,10 +567,11 @@ class Collections(BaseSDK):
         Delete a collection.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param accept_header_override: Override the default accept header for this method
         :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
@@ -562,7 +599,9 @@ class Collections(BaseSDK):
             request_has_path_params=True,
             request_has_query_params=True,
             user_agent_header="user-agent",
-            accept_header_value="application/problem+json",
+            accept_header_value=accept_header_override.value
+            if accept_header_override is not None
+            else "application/json;q=1, application/problem+json;q=0",
             http_headers=http_headers,
             _globals=models.V3CollectionsCrudDeleteGlobals(
                 organization_id=self.sdk_configuration.globals.organization_id,
@@ -584,11 +623,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-delete",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -597,7 +636,12 @@ class Collections(BaseSDK):
             return models.V3CollectionsCrudDeleteResponse(
                 headers=utils.get_response_headers(http_res.headers)
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -624,7 +668,7 @@ class Collections(BaseSDK):
         Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -677,11 +721,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -693,7 +737,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -720,7 +769,7 @@ class Collections(BaseSDK):
         Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -773,11 +822,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -789,7 +838,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -819,7 +873,7 @@ class Collections(BaseSDK):
         Update a collection's name, description, and/or query.
 
         :param collection_uid: The UID for the collection
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_update_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -883,11 +937,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-update",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -899,7 +953,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -929,7 +988,7 @@ class Collections(BaseSDK):
         Update a collection's name, description, and/or query.
 
         :param collection_uid: The UID for the collection
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_update_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -993,11 +1052,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-crud-update",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1009,7 +1068,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1089,11 +1153,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-list-events",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1105,7 +1169,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1185,11 +1254,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-list-events",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1201,7 +1270,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1232,7 +1306,7 @@ class Collections(BaseSDK):
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param search_aggregate_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1295,11 +1369,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-search-aggregate",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1311,7 +1385,14 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "422"], "application/problem+json"
+        ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1342,7 +1423,7 @@ class Collections(BaseSDK):
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param search_aggregate_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1405,11 +1486,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-search-aggregate",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1421,7 +1502,14 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "422"], "application/problem+json"
+        ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1448,11 +1536,11 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsSearchQueryResponse:
         r"""Run a search query within a collection
 
-        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
+        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
 
         :param collection_uid: The UID for the collection
         :param search_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1515,11 +1603,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-search-query",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1531,7 +1619,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1558,11 +1651,11 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsSearchQueryResponse:
         r"""Run a search query within a collection
 
-        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
+        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
 
         :param collection_uid: The UID for the collection
         :param search_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1625,11 +1718,11 @@ class Collections(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-collections-search-query",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1641,7 +1734,12 @@ class Collections(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):

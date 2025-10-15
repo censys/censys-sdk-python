@@ -48,6 +48,7 @@ from .ldap import Ldap, LdapTypedDict
 from .lpd import Lpd, LpdTypedDict
 from .mdns import Mdns, MdnsTypedDict
 from .memcached import Memcached, MemcachedTypedDict
+from .mikrotikwinbox import MikrotikWinbox, MikrotikWinboxTypedDict
 from .minecraft import Minecraft, MinecraftTypedDict
 from .mms import Mms, MmsTypedDict
 from .modbus import Modbus, ModbusTypedDict
@@ -189,6 +190,7 @@ class ServiceScanTypedDict(TypedDict):
     lpd: NotRequired[LpdTypedDict]
     mdns: NotRequired[MdnsTypedDict]
     memcached: NotRequired[MemcachedTypedDict]
+    mikrotik_winbox: NotRequired[MikrotikWinboxTypedDict]
     minecraft: NotRequired[MinecraftTypedDict]
     mms: NotRequired[MmsTypedDict]
     modbus: NotRequired[ModbusTypedDict]
@@ -362,6 +364,8 @@ class ServiceScan(BaseModel):
     mdns: Optional[Mdns] = None
 
     memcached: Optional[Memcached] = None
+
+    mikrotik_winbox: Optional[MikrotikWinbox] = None
 
     minecraft: Optional[Minecraft] = None
 
@@ -564,6 +568,7 @@ class ServiceScan(BaseModel):
             "lpd",
             "mdns",
             "memcached",
+            "mikrotik_winbox",
             "minecraft",
             "mms",
             "modbus",

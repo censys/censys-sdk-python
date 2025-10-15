@@ -25,12 +25,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateListPostResponse:
-        r"""Get multiple certificates
+        r"""Retrieve multiple certificates
 
-        Retrieve information about multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve information about multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param asset_certificate_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -92,11 +92,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-list-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -110,7 +110,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -135,12 +140,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateListPostResponse:
-        r"""Get multiple certificates
+        r"""Retrieve multiple certificates
 
-        Retrieve information about multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve information about multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param asset_certificate_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -202,11 +207,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-list-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -220,7 +225,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -245,12 +255,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateListRawPostResponse:
-        r"""Get multiple certificates in PEM format
+        r"""Retrieve multiple certificates in PEM format
 
-        Retrieve the raw PEM-encoded format for multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve the raw PEM-encoded format for multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param asset_certificate_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -312,11 +322,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-list-raw-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "404", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -328,7 +338,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "404"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -353,12 +368,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetCertificateListRawPostResponse:
-        r"""Get multiple certificates in PEM format
+        r"""Retrieve multiple certificates in PEM format
 
-        Retrieve the raw PEM-encoded format for multiple certificates. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve the raw PEM-encoded format for multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param asset_certificate_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -420,11 +435,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-list-raw-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "404", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -436,7 +451,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "404"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -463,7 +483,7 @@ class GlobalData(BaseSDK):
         Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -516,11 +536,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -534,7 +554,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -561,7 +586,7 @@ class GlobalData(BaseSDK):
         Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -614,11 +639,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -632,7 +657,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -659,7 +689,7 @@ class GlobalData(BaseSDK):
         Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -712,11 +742,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-raw",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             stream=True,
             retry_config=retry_config,
         )
@@ -726,7 +756,13 @@ class GlobalData(BaseSDK):
             return models.V3GlobaldataAssetCertificateRawResponse(
                 result=http_res, headers=utils.get_response_headers(http_res.headers)
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            http_res_text = utils.stream_to_text(http_res)
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res, http_res_text
+            )
+            raise models.AuthenticationError(response_data, http_res, http_res_text)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             http_res_text = utils.stream_to_text(http_res)
             response_data = unmarshal_json_response(
                 models.ErrorModelData, http_res, http_res_text
@@ -757,7 +793,7 @@ class GlobalData(BaseSDK):
         Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -810,11 +846,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-certificate-raw",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             stream=True,
             retry_config=retry_config,
         )
@@ -824,7 +860,13 @@ class GlobalData(BaseSDK):
             return models.V3GlobaldataAssetCertificateRawResponse(
                 result=http_res, headers=utils.get_response_headers(http_res.headers)
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res, http_res_text
+            )
+            raise models.AuthenticationError(response_data, http_res, http_res_text)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             http_res_text = await utils.stream_to_text_async(http_res)
             response_data = unmarshal_json_response(
                 models.ErrorModelData, http_res, http_res_text
@@ -852,12 +894,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostListPostResponse:
-        r"""Get multiple hosts
+        r"""Retrieve multiple hosts
 
-        Retrieve information about multiple hosts. A host ID is its IP address.
+        Retrieve information about multiple hosts. You can retrieve up to 100 hosts per call. A host ID is its IP address.
 
         :param asset_host_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -919,7 +961,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-list-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -937,7 +979,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -961,12 +1008,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetHostListPostResponse:
-        r"""Get multiple hosts
+        r"""Retrieve multiple hosts
 
-        Retrieve information about multiple hosts. A host ID is its IP address.
+        Retrieve information about multiple hosts. You can retrieve up to 100 hosts per call. A host ID is its IP address.
 
         :param asset_host_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1028,7 +1075,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-list-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1046,7 +1093,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1074,7 +1126,7 @@ class GlobalData(BaseSDK):
         Retrieve information about a single host. A host ID is its IP address.
 
         :param host_id: The IP address of a host.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a host at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1129,11 +1181,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1147,7 +1199,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1175,7 +1232,7 @@ class GlobalData(BaseSDK):
         Retrieve information about a single host. A host ID is its IP address.
 
         :param host_id: The IP address of a host.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a host at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1230,11 +1287,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1248,7 +1305,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1274,12 +1336,12 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
         r"""Get host event history
 
-        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will only be reflected in the `scan` object. It will not be shown in the `service_scanned diff` object.
+        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will be reflected in the `scan` object.
 
         :param host_id: The IP address of a host.
         :param start_time: Start time of the host timeline. Equivalent to the To field in the event history UI. This must be the timestamp closest to the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 2 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
         :param end_time: End time of the host timeline. Equivalent to the From field in the event history UI. This must be the timestamp furthest from the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 1 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1334,7 +1396,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-timeline",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1352,7 +1414,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1378,12 +1445,12 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
         r"""Get host event history
 
-        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will only be reflected in the `scan` object. It will not be shown in the `service_scanned diff` object.
+        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will be reflected in the `scan` object.
 
         :param host_id: The IP address of a host.
         :param start_time: Start time of the host timeline. Equivalent to the To field in the event history UI. This must be the timestamp closest to the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 2 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
         :param end_time: End time of the host timeline. Equivalent to the From field in the event history UI. This must be the timestamp furthest from the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 1 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1438,7 +1505,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-host-timeline",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1456,7 +1523,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1481,12 +1553,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetWebpropertyListPostResponse:
-        r"""Get multiple web properties
+        r"""Retrieve multiple web properties
 
-        Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
+        Retrieve information about multiple web properties. You can retrieve up to 100 web properties per call. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param asset_webproperty_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1548,7 +1620,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty-list-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1566,7 +1638,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1591,12 +1668,12 @@ class GlobalData(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3GlobaldataAssetWebpropertyListPostResponse:
-        r"""Get multiple web properties
+        r"""Retrieve multiple web properties
 
-        Retrieve information about multiple web properties. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
+        Retrieve information about multiple web properties. You can retrieve up to 100 web properties per call. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param asset_webproperty_list_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1658,7 +1735,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty-list-post",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1676,7 +1753,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1704,7 +1786,7 @@ class GlobalData(BaseSDK):
         Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param webproperty_id: A web property identifier.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a webproperty at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1759,11 +1841,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1777,7 +1859,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "422"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1805,7 +1892,7 @@ class GlobalData(BaseSDK):
         Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
 
         :param webproperty_id: A web property identifier.
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a webproperty at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1860,11 +1947,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-asset-webproperty",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1878,7 +1965,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "422"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1907,7 +1999,7 @@ class GlobalData(BaseSDK):
         Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
 
         :param scans_rescan_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1969,7 +2061,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-scans-rescan",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -1985,7 +2077,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -2014,7 +2111,7 @@ class GlobalData(BaseSDK):
         Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
 
         :param scans_rescan_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2076,7 +2173,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-scans-rescan",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -2092,7 +2189,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -2119,7 +2221,7 @@ class GlobalData(BaseSDK):
         Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
 
         :param scan_id: The unique identifier of the tracked scan
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2172,11 +2274,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-scans-get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -2190,7 +2292,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -2217,7 +2324,7 @@ class GlobalData(BaseSDK):
         Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
 
         :param scan_id: The unique identifier of the tracked scan
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2270,11 +2377,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-scans-get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "404", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -2288,7 +2395,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -2317,7 +2429,7 @@ class GlobalData(BaseSDK):
         Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param search_aggregate_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2379,11 +2491,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-aggregate",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -2395,7 +2507,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "422"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -2424,7 +2541,7 @@ class GlobalData(BaseSDK):
         Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param search_aggregate_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2486,11 +2603,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-aggregate",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["401", "403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -2502,7 +2619,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, ["403", "422"], "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -2532,7 +2654,7 @@ class GlobalData(BaseSDK):
         Convert Censys Search Language queries used in Legacy Search into Censys Query Language (CenQL) queries for use in the Platform.<br><br>Reference the [documentation on CenQL](https://docs.censys.com/docs/censys-query-language) for more information about query syntax.
 
         :param search_convert_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2594,11 +2716,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-convert",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "4XX", "500", "5XX"],
+            error_status_codes=["401", "403", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -2610,7 +2732,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, "401", "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "500", "application/problem+json"):
@@ -2643,7 +2770,7 @@ class GlobalData(BaseSDK):
         Convert Censys Search Language queries used in Legacy Search into Censys Query Language (CenQL) queries for use in the Platform.<br><br>Reference the [documentation on CenQL](https://docs.censys.com/docs/censys-query-language) for more information about query syntax.
 
         :param search_convert_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2705,11 +2832,11 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-convert",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "4XX", "500", "5XX"],
+            error_status_codes=["401", "403", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -2721,7 +2848,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, "401", "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "500", "application/problem+json"):
@@ -2750,10 +2882,10 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataSearchQueryResponse:
         r"""Run a search query
 
-        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
+        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
 
         :param search_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2815,7 +2947,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-query",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -2831,7 +2963,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -2857,10 +2994,10 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataSearchQueryResponse:
         r"""Run a search query
 
-        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.
+        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
 
         :param search_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2922,7 +3059,7 @@ class GlobalData(BaseSDK):
                 config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="v3-globaldata-search-query",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
@@ -2938,7 +3075,12 @@ class GlobalData(BaseSDK):
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )
-        if utils.match_response(http_res, ["401", "403"], "application/problem+json"):
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "403", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):

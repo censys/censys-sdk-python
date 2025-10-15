@@ -31,7 +31,7 @@ from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class TransportProtocol(str, Enum):
+class EndpointScanStateTransportProtocol(str, Enum):
     UNKNOWN = ""
     TCP = "tcp"
     UDP = "udp"
@@ -65,7 +65,7 @@ class EndpointScanStateTypedDict(TypedDict):
     scada_view: NotRequired[ScadaViewTypedDict]
     scan_time: NotRequired[str]
     screenshots: NotRequired[Nullable[List[ScreenshotTypedDict]]]
-    transport_protocol: NotRequired[TransportProtocol]
+    transport_protocol: NotRequired[EndpointScanStateTransportProtocol]
 
 
 class EndpointScanState(BaseModel):
@@ -119,7 +119,7 @@ class EndpointScanState(BaseModel):
 
     screenshots: OptionalNullable[List[Screenshot]] = UNSET
 
-    transport_protocol: Optional[TransportProtocol] = None
+    transport_protocol: Optional[EndpointScanStateTransportProtocol] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

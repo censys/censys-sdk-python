@@ -35,6 +35,11 @@ if TYPE_CHECKING:
     )
     from .attribute import Attribute, AttributeTypedDict, Source
     from .auth import Auth, AuthTypedDict
+    from .authenticationerror import AuthenticationError, AuthenticationErrorData
+    from .authenticationerrordetail import (
+        AuthenticationErrorDetail,
+        AuthenticationErrorDetailTypedDict,
+    )
     from .authorityinfoaccess import AuthorityInfoAccess, AuthorityInfoAccessTypedDict
     from .autonomoussystem import AutonomousSystem, AutonomousSystemTypedDict
     from .bacnet import Bacnet, BacnetTypedDict
@@ -299,8 +304,8 @@ if TYPE_CHECKING:
     from .endpointscanned import EndpointScanned, EndpointScannedTypedDict
     from .endpointscanstate import (
         EndpointScanState,
+        EndpointScanStateTransportProtocol,
         EndpointScanStateTypedDict,
-        TransportProtocol,
     )
     from .epmd import Epmd, EpmdTypedDict
     from .epss import Epss, EpssTypedDict
@@ -349,6 +354,10 @@ if TYPE_CHECKING:
     )
     from .host import Host, HostTypedDict
     from .hostasset import HostAsset, HostAssetTypedDict
+    from .hostassetwithmatchedservices import (
+        HostAssetWithMatchedServices,
+        HostAssetWithMatchedServicesTypedDict,
+    )
     from .hostdns import HostDNS, HostDNSTypedDict
     from .hostdns_forwardresolution import (
         HostDNSForwardResolution,
@@ -479,6 +488,11 @@ if TYPE_CHECKING:
     from .locationupdated import LocationUpdated, LocationUpdatedTypedDict
     from .lpd import Lpd, LpdTypedDict
     from .lpdmessage import LpdMessage, LpdMessageTypedDict
+    from .matchedservice import (
+        MatchedService,
+        MatchedServiceTypedDict,
+        TransportProtocol,
+    )
     from .mdns import Mdns, MdnsTypedDict
     from .mdnsresult import MdnsResult, MdnsResultTypedDict
     from .mediacapabilities import MediaCapabilities, MediaCapabilitiesTypedDict
@@ -487,6 +501,7 @@ if TYPE_CHECKING:
     from .members import Members, MembersTypedDict
     from .memcached import Memcached, MemcachedTypedDict
     from .metrics import Metrics, MetricsTypedDict
+    from .mikrotikwinbox import MikrotikWinbox, MikrotikWinboxTypedDict
     from .minecraft import Minecraft, MinecraftTypedDict
     from .mms import Mms, MmsTypedDict
     from .modbus import Modbus, ModbusTypedDict
@@ -1222,6 +1237,10 @@ __all__ = [
     "AttributeTypedDict",
     "Auth",
     "AuthTypedDict",
+    "AuthenticationError",
+    "AuthenticationErrorData",
+    "AuthenticationErrorDetail",
+    "AuthenticationErrorDetailTypedDict",
     "AuthorityInfoAccess",
     "AuthorityInfoAccessTypedDict",
     "Automatable",
@@ -1448,6 +1467,7 @@ __all__ = [
     "ElfFileTypedDict",
     "EndpointScan",
     "EndpointScanState",
+    "EndpointScanStateTransportProtocol",
     "EndpointScanStateTypedDict",
     "EndpointScanTransportProtocol",
     "EndpointScanTypedDict",
@@ -1528,6 +1548,8 @@ __all__ = [
     "Host",
     "HostAsset",
     "HostAssetTypedDict",
+    "HostAssetWithMatchedServices",
+    "HostAssetWithMatchedServicesTypedDict",
     "HostDNS",
     "HostDNSForwardResolution",
     "HostDNSForwardResolutionTypedDict",
@@ -1663,6 +1685,8 @@ __all__ = [
     "LpdMessage",
     "LpdMessageTypedDict",
     "LpdTypedDict",
+    "MatchedService",
+    "MatchedServiceTypedDict",
     "Mdns",
     "MdnsResult",
     "MdnsResultTypedDict",
@@ -1679,6 +1703,8 @@ __all__ = [
     "MemcachedTypedDict",
     "Metrics",
     "MetricsTypedDict",
+    "MikrotikWinbox",
+    "MikrotikWinboxTypedDict",
     "Minecraft",
     "MinecraftTypedDict",
     "Mms",
@@ -2451,6 +2477,10 @@ _dynamic_imports: dict[str, str] = {
     "Source": ".attribute",
     "Auth": ".auth",
     "AuthTypedDict": ".auth",
+    "AuthenticationError": ".authenticationerror",
+    "AuthenticationErrorData": ".authenticationerror",
+    "AuthenticationErrorDetail": ".authenticationerrordetail",
+    "AuthenticationErrorDetailTypedDict": ".authenticationerrordetail",
     "AuthorityInfoAccess": ".authorityinfoaccess",
     "AuthorityInfoAccessTypedDict": ".authorityinfoaccess",
     "AutonomousSystem": ".autonomoussystem",
@@ -2697,8 +2727,8 @@ _dynamic_imports: dict[str, str] = {
     "EndpointScanned": ".endpointscanned",
     "EndpointScannedTypedDict": ".endpointscanned",
     "EndpointScanState": ".endpointscanstate",
+    "EndpointScanStateTransportProtocol": ".endpointscanstate",
     "EndpointScanStateTypedDict": ".endpointscanstate",
-    "TransportProtocol": ".endpointscanstate",
     "Epmd": ".epmd",
     "EpmdTypedDict": ".epmd",
     "Epss": ".epss",
@@ -2772,6 +2802,8 @@ _dynamic_imports: dict[str, str] = {
     "HostTypedDict": ".host",
     "HostAsset": ".hostasset",
     "HostAssetTypedDict": ".hostasset",
+    "HostAssetWithMatchedServices": ".hostassetwithmatchedservices",
+    "HostAssetWithMatchedServicesTypedDict": ".hostassetwithmatchedservices",
     "HostDNS": ".hostdns",
     "HostDNSTypedDict": ".hostdns",
     "HostDNSForwardResolution": ".hostdns_forwardresolution",
@@ -2908,6 +2940,9 @@ _dynamic_imports: dict[str, str] = {
     "LpdTypedDict": ".lpd",
     "LpdMessage": ".lpdmessage",
     "LpdMessageTypedDict": ".lpdmessage",
+    "MatchedService": ".matchedservice",
+    "MatchedServiceTypedDict": ".matchedservice",
+    "TransportProtocol": ".matchedservice",
     "Mdns": ".mdns",
     "MdnsTypedDict": ".mdns",
     "MdnsResult": ".mdnsresult",
@@ -2924,6 +2959,8 @@ _dynamic_imports: dict[str, str] = {
     "MemcachedTypedDict": ".memcached",
     "Metrics": ".metrics",
     "MetricsTypedDict": ".metrics",
+    "MikrotikWinbox": ".mikrotikwinbox",
+    "MikrotikWinboxTypedDict": ".mikrotikwinbox",
     "Minecraft": ".minecraft",
     "MinecraftTypedDict": ".minecraft",
     "Mms": ".mms",

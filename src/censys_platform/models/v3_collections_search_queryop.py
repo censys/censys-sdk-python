@@ -33,7 +33,7 @@ class V3CollectionsSearchQueryRequestTypedDict(TypedDict):
     r"""The UID for the collection"""
     search_query_input_body: SearchQueryInputBodyTypedDict
     organization_id: NotRequired[str]
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3CollectionsSearchQueryRequest(BaseModel):
@@ -51,7 +51,7 @@ class V3CollectionsSearchQueryRequest(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3CollectionsSearchQueryResponseTypedDict(TypedDict):

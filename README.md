@@ -144,6 +144,7 @@ with SDK(
 </br>
 
 The same SDK client can also be used to make asynchronous requests by importing asyncio.
+
 ```python
 # Asynchronous Example
 import asyncio
@@ -190,21 +191,20 @@ asyncio.run(main())
 
 ### [global_data](docs/sdks/globaldata/README.md)
 
-* [get_certificates](docs/sdks/globaldata/README.md#get_certificates) - Get multiple certificates
-* [get_certificates_raw](docs/sdks/globaldata/README.md#get_certificates_raw) - Get multiple certificates in PEM format
+* [get_certificates](docs/sdks/globaldata/README.md#get_certificates) - Retrieve multiple certificates
+* [get_certificates_raw](docs/sdks/globaldata/README.md#get_certificates_raw) - Retrieve multiple certificates in PEM format
 * [get_certificate](docs/sdks/globaldata/README.md#get_certificate) - Get a certificate
 * [get_certificate_raw](docs/sdks/globaldata/README.md#get_certificate_raw) - Get a certificate in PEM format
-* [get_hosts](docs/sdks/globaldata/README.md#get_hosts) - Get multiple hosts
+* [get_hosts](docs/sdks/globaldata/README.md#get_hosts) - Retrieve multiple hosts
 * [get_host](docs/sdks/globaldata/README.md#get_host) - Get a host
 * [get_host_timeline](docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
-* [get_web_properties](docs/sdks/globaldata/README.md#get_web_properties) - Get multiple web properties
+* [get_web_properties](docs/sdks/globaldata/README.md#get_web_properties) - Retrieve multiple web properties
 * [get_web_property](docs/sdks/globaldata/README.md#get_web_property) - Get a web property
 * [create_tracked_scan](docs/sdks/globaldata/README.md#create_tracked_scan) - Live Rescan: Initiate a new rescan
 * [get_tracked_scan](docs/sdks/globaldata/README.md#get_tracked_scan) - Get scan status
 * [aggregate](docs/sdks/globaldata/README.md#aggregate) - Aggregate results for a search query
 * [convert_legacy_search_queries](docs/sdks/globaldata/README.md#convert_legacy_search_queries) - Convert Legacy Search queries to Platform queries
 * [search](docs/sdks/globaldata/README.md#search) - Run a search query
-
 
 ### [threat_hunting](docs/sdks/threathunting/README.md)
 
@@ -337,18 +337,15 @@ with SDK(
         print(e.raw_response)
 
         # Depending on the method different errors may be thrown
-        if isinstance(e, models.ErrorModel):
-            print(e.data.detail)  # Optional[str]
-            print(e.data.errors)  # OptionalNullable[List[censys_platform.ErrorDetail]]
-            print(e.data.instance)  # Optional[str]
-            print(e.data.status)  # Optional[int]
-            print(e.data.title)  # Optional[str]
+        if isinstance(e, models.AuthenticationError):
+            print(e.data.error)  # Optional[censys_platform.AuthenticationErrorDetail]
 ```
 
 ### Error Classes
 **Primary errors:**
 * [`SDKBaseError`](./src/censys_platform/models/sdkbaseerror.py): The base class for HTTP error responses.
-  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): Request does not contain a valid Authorization token.
+  * [`AuthenticationError`](./src/censys_platform/models/authenticationerror.py): Request does not contain a valid Authorization token. Status code `401`.
+  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): User does not have permission to access this data.
 
 <details><summary>Less common errors (5)</summary>
 

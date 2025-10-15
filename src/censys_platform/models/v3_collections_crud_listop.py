@@ -24,7 +24,7 @@ class V3CollectionsCrudListGlobals(BaseModel):
 
 class V3CollectionsCrudListRequestTypedDict(TypedDict):
     organization_id: NotRequired[str]
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
     page_token: NotRequired[str]
     r"""page token for the requested page of collection results"""
     page_size: NotRequired[int]
@@ -36,7 +36,7 @@ class V3CollectionsCrudListRequest(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-set-your-organization-id) for more information."""
+    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
     page_token: Annotated[
         Optional[str],
