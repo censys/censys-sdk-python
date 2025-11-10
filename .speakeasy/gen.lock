@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 67a9f5069f046c1aed6b8d00da11b24c
-  docVersion: 1.0.46
-  speakeasyVersion: 1.642.2
-  generationVersion: 2.731.6
-  releaseVersion: 0.10.0
-  configChecksum: 54e99477f220c8d3c18b17cbb9e4bc79
+  docChecksum: 51293df5670a844828d8d598f0a5aed4
+  docVersion: 1.0.48
+  speakeasyVersion: 1.653.0
+  generationVersion: 2.748.0
+  releaseVersion: 0.11.0
+  configChecksum: 0f7903c225eaadc89427a7b7d8cc0f60
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
@@ -15,7 +15,7 @@ features:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.23.0
+    core: 5.23.5
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.0
@@ -25,7 +25,7 @@ features:
     globalSecurity: 3.0.4
     globalSecurityCallbacks: 1.0.0
     globalSecurityFlattening: 1.0.0
-    globalServerURLs: 3.1.1
+    globalServerURLs: 3.2.0
     globals: 3.0.0
     ignores: 3.0.1
     methodArguments: 1.0.2
@@ -61,9 +61,11 @@ generatedFiles:
   - docs/models/authorityinfoaccess.md
   - docs/models/automatable.md
   - docs/models/autonomoussystem.md
+  - docs/models/autoreplenishconfig.md
   - docs/models/availability.md
   - docs/models/bacnet.md
   - docs/models/basicconstraints.md
+  - docs/models/byrole.md
   - docs/models/cabforganizationid.md
   - docs/models/capabilities.md
   - docs/models/certificate.md
@@ -105,6 +107,8 @@ generatedFiles:
   - docs/models/countcondition.md
   - docs/models/cpe.md
   - docs/models/cpelifecycle.md
+  - docs/models/creditexpiration.md
+  - docs/models/creditusagereport.md
   - docs/models/crestroncp3.md
   - docs/models/crestrondinap2.md
   - docs/models/crudcreateinputbody.md
@@ -239,6 +243,7 @@ generatedFiles:
   - docs/models/imap.md
   - docs/models/integrity.md
   - docs/models/internal/globals.md
+  - docs/models/invitememberinputbody.md
   - docs/models/iota.md
   - docs/models/ipmi.md
   - docs/models/ipmicapabilities.md
@@ -263,6 +268,10 @@ generatedFiles:
   - docs/models/jarmscan.md
   - docs/models/jarmscanned.md
   - docs/models/jarmscantransportprotocol.md
+  - docs/models/jenkins.md
+  - docs/models/jenkinsbuild.md
+  - docs/models/jenkinsjob.md
+  - docs/models/jenkinslabel.md
   - docs/models/kev.md
   - docs/models/kevsource.md
   - docs/models/keyalgorithm.md
@@ -297,6 +306,7 @@ generatedFiles:
   - docs/models/mediacapabilities.md
   - docs/models/mediaprofile.md
   - docs/models/mediastreaming.md
+  - docs/models/membercounts.md
   - docs/models/members.md
   - docs/models/memcached.md
   - docs/models/metrics.md
@@ -343,6 +353,7 @@ generatedFiles:
   - docs/models/ntp.md
   - docs/models/ntpntpheader.md
   - docs/models/ntrip.md
+  - docs/models/ntripdatastream.md
   - docs/models/oldstatus.md
   - docs/models/ollama.md
   - docs/models/ollamamodel.md
@@ -363,7 +374,13 @@ generatedFiles:
   - docs/models/oracle.md
   - docs/models/oracledescriptor.md
   - docs/models/organization.md
+  - docs/models/organizationcredits.md
+  - docs/models/organizationdetails.md
+  - docs/models/organizationmember.md
+  - docs/models/organizationmemberslist.md
+  - docs/models/organizationpreferences.md
   - docs/models/othername.md
+  - docs/models/paginationinfo.md
   - docs/models/pantiltzoomcapabilities.md
   - docs/models/parsestatus.md
   - docs/models/pcanywhere.md
@@ -430,6 +447,7 @@ generatedFiles:
   - docs/models/responseenvelopecertificateasset.md
   - docs/models/responseenvelopecollection.md
   - docs/models/responseenvelopecollectioneventsresponse.md
+  - docs/models/responseenvelopecreditusagereport.md
   - docs/models/responseenvelopehostasset.md
   - docs/models/responseenvelopehostobservationresponse.md
   - docs/models/responseenvelopehosttimeline.md
@@ -439,6 +457,9 @@ generatedFiles:
   - docs/models/responseenvelopelistrawcertificateresponse.md
   - docs/models/responseenvelopelistsearchconvertqueryresponse.md
   - docs/models/responseenvelopelistwebpropertyasset.md
+  - docs/models/responseenvelopeorganizationcredits.md
+  - docs/models/responseenvelopeorganizationdetails.md
+  - docs/models/responseenvelopeorganizationmemberslist.md
   - docs/models/responseenvelopesearchaggregateresponse.md
   - docs/models/responseenvelopesearchqueryresponse.md
   - docs/models/responseenvelopetrackedscan.md
@@ -458,6 +479,7 @@ generatedFiles:
   - docs/models/rocketmqclusterinfo.md
   - docs/models/rocketmqresponseheader.md
   - docs/models/rocketmqtopiclist.md
+  - docs/models/roles.md
   - docs/models/rootstore.md
   - docs/models/rootstorechain.md
   - docs/models/routeupdated.md
@@ -526,6 +548,7 @@ generatedFiles:
   - docs/models/snmpsystemservices.md
   - docs/models/socks.md
   - docs/models/source.md
+  - docs/models/sourceusagebreakdown.md
   - docs/models/spice.md
   - docs/models/ssdp.md
   - docs/models/ssh.md
@@ -573,6 +596,7 @@ generatedFiles:
   - docs/models/type.md
   - docs/models/unitronicspcom.md
   - docs/models/unrecognizedpublickey.md
+  - docs/models/updatememberroleinputbody.md
   - docs/models/upnp.md
   - docs/models/upnpdevice.md
   - docs/models/upnpservice.md
@@ -581,6 +605,22 @@ generatedFiles:
   - docs/models/userinteraction.md
   - docs/models/usernotice.md
   - docs/models/utils/retryconfig.md
+  - docs/models/v3accountmanagementinviteusertoorgrequest.md
+  - docs/models/v3accountmanagementinviteusertoorgresponse.md
+  - docs/models/v3accountmanagementlistorgmembersrequest.md
+  - docs/models/v3accountmanagementlistorgmembersresponse.md
+  - docs/models/v3accountmanagementmembercreditsusagerequest.md
+  - docs/models/v3accountmanagementmembercreditsusageresponse.md
+  - docs/models/v3accountmanagementorgcreditsrequest.md
+  - docs/models/v3accountmanagementorgcreditsresponse.md
+  - docs/models/v3accountmanagementorgcreditsusagerequest.md
+  - docs/models/v3accountmanagementorgcreditsusageresponse.md
+  - docs/models/v3accountmanagementorgdetailsrequest.md
+  - docs/models/v3accountmanagementorgdetailsresponse.md
+  - docs/models/v3accountmanagementremoveorgmemberrequest.md
+  - docs/models/v3accountmanagementremoveorgmemberresponse.md
+  - docs/models/v3accountmanagementupdateorgmemberrequest.md
+  - docs/models/v3accountmanagementupdateorgmemberresponse.md
   - docs/models/v3collectionscrudcreateglobals.md
   - docs/models/v3collectionscrudcreaterequest.md
   - docs/models/v3collectionscrudcreateresponse.md
@@ -690,6 +730,7 @@ generatedFiles:
   - docs/models/zeromqgreeting.md
   - docs/models/zeromqhandshake.md
   - docs/models/zlint.md
+  - docs/sdks/accountmanagement/README.md
   - docs/sdks/collections/README.md
   - docs/sdks/globaldata/README.md
   - docs/sdks/threathunting/README.md
@@ -704,6 +745,7 @@ generatedFiles:
   - src/censys_platform/_hooks/sdkhooks.py
   - src/censys_platform/_hooks/types.py
   - src/censys_platform/_version.py
+  - src/censys_platform/account_management.py
   - src/censys_platform/basesdk.py
   - src/censys_platform/collections.py
   - src/censys_platform/global_data.py
@@ -726,6 +768,7 @@ generatedFiles:
   - src/censys_platform/models/authenticationerrordetail.py
   - src/censys_platform/models/authorityinfoaccess.py
   - src/censys_platform/models/autonomoussystem.py
+  - src/censys_platform/models/autoreplenishconfig.py
   - src/censys_platform/models/bacnet.py
   - src/censys_platform/models/basicconstraints.py
   - src/censys_platform/models/cabforganizationid.py
@@ -765,6 +808,8 @@ generatedFiles:
   - src/censys_platform/models/countcondition.py
   - src/censys_platform/models/cpe.py
   - src/censys_platform/models/cpe_lifecycle.py
+  - src/censys_platform/models/creditexpiration.py
+  - src/censys_platform/models/creditusagereport.py
   - src/censys_platform/models/crestroncp3.py
   - src/censys_platform/models/crestrondinap2.py
   - src/censys_platform/models/crudcreateinputbody.py
@@ -887,6 +932,7 @@ generatedFiles:
   - src/censys_platform/models/imap.py
   - src/censys_platform/models/internal/__init__.py
   - src/censys_platform/models/internal/globals.py
+  - src/censys_platform/models/invitememberinputbody.py
   - src/censys_platform/models/iota.py
   - src/censys_platform/models/ipmi.py
   - src/censys_platform/models/ipmi_capabilities.py
@@ -910,6 +956,10 @@ generatedFiles:
   - src/censys_platform/models/ja4tscanscan.py
   - src/censys_platform/models/jarmscan.py
   - src/censys_platform/models/jarmscanned.py
+  - src/censys_platform/models/jenkins.py
+  - src/censys_platform/models/jenkins_build.py
+  - src/censys_platform/models/jenkins_job.py
+  - src/censys_platform/models/jenkins_label.py
   - src/censys_platform/models/kev.py
   - src/censys_platform/models/keyalgorithm.py
   - src/censys_platform/models/keyusage.py
@@ -942,6 +992,7 @@ generatedFiles:
   - src/censys_platform/models/mediacapabilities.py
   - src/censys_platform/models/mediaprofile.py
   - src/censys_platform/models/mediastreaming.py
+  - src/censys_platform/models/membercounts.py
   - src/censys_platform/models/members.py
   - src/censys_platform/models/memcached.py
   - src/censys_platform/models/metrics.py
@@ -988,6 +1039,7 @@ generatedFiles:
   - src/censys_platform/models/ntp.py
   - src/censys_platform/models/ntp_ntpheader.py
   - src/censys_platform/models/ntrip.py
+  - src/censys_platform/models/ntrip_datastream.py
   - src/censys_platform/models/ollama.py
   - src/censys_platform/models/ollama_model.py
   - src/censys_platform/models/onc.py
@@ -1006,7 +1058,13 @@ generatedFiles:
   - src/censys_platform/models/oracle.py
   - src/censys_platform/models/oracle_descriptor.py
   - src/censys_platform/models/organization.py
+  - src/censys_platform/models/organizationcredits.py
+  - src/censys_platform/models/organizationdetails.py
+  - src/censys_platform/models/organizationmember.py
+  - src/censys_platform/models/organizationmemberslist.py
+  - src/censys_platform/models/organizationpreferences.py
   - src/censys_platform/models/othername.py
+  - src/censys_platform/models/paginationinfo.py
   - src/censys_platform/models/pantiltzoomcapabilities.py
   - src/censys_platform/models/pcanywhere.py
   - src/censys_platform/models/pcanywhere_status.py
@@ -1064,6 +1122,7 @@ generatedFiles:
   - src/censys_platform/models/responseenvelopecertificateasset.py
   - src/censys_platform/models/responseenvelopecollection.py
   - src/censys_platform/models/responseenvelopecollectioneventsresponse.py
+  - src/censys_platform/models/responseenvelopecreditusagereport.py
   - src/censys_platform/models/responseenvelopehostasset.py
   - src/censys_platform/models/responseenvelopehostobservationresponse.py
   - src/censys_platform/models/responseenvelopehosttimeline.py
@@ -1073,6 +1132,9 @@ generatedFiles:
   - src/censys_platform/models/responseenvelopelistrawcertificateresponse.py
   - src/censys_platform/models/responseenvelopelistsearchconvertqueryresponse.py
   - src/censys_platform/models/responseenvelopelistwebpropertyasset.py
+  - src/censys_platform/models/responseenvelopeorganizationcredits.py
+  - src/censys_platform/models/responseenvelopeorganizationdetails.py
+  - src/censys_platform/models/responseenvelopeorganizationmemberslist.py
   - src/censys_platform/models/responseenvelopesearchaggregateresponse.py
   - src/censys_platform/models/responseenvelopesearchqueryresponse.py
   - src/censys_platform/models/responseenvelopetrackedscan.py
@@ -1150,6 +1212,7 @@ generatedFiles:
   - src/censys_platform/models/snmp_system.py
   - src/censys_platform/models/snmp_system_services.py
   - src/censys_platform/models/socks.py
+  - src/censys_platform/models/sourceusagebreakdown.py
   - src/censys_platform/models/spice.py
   - src/censys_platform/models/ssdp.py
   - src/censys_platform/models/ssh.py
@@ -1184,12 +1247,21 @@ generatedFiles:
   - src/censys_platform/models/trackedscan_task.py
   - src/censys_platform/models/unitronicspcom.py
   - src/censys_platform/models/unrecognizedpublickey.py
+  - src/censys_platform/models/updatememberroleinputbody.py
   - src/censys_platform/models/upnp.py
   - src/censys_platform/models/upnp_device.py
   - src/censys_platform/models/upnp_service.py
   - src/censys_platform/models/upnp_specversion.py
   - src/censys_platform/models/user.py
   - src/censys_platform/models/usernotice.py
+  - src/censys_platform/models/v3_accountmanagement_invite_user_to_orgop.py
+  - src/censys_platform/models/v3_accountmanagement_list_org_membersop.py
+  - src/censys_platform/models/v3_accountmanagement_member_credits_usageop.py
+  - src/censys_platform/models/v3_accountmanagement_org_credits_usageop.py
+  - src/censys_platform/models/v3_accountmanagement_org_creditsop.py
+  - src/censys_platform/models/v3_accountmanagement_org_detailsop.py
+  - src/censys_platform/models/v3_accountmanagement_remove_org_memberop.py
+  - src/censys_platform/models/v3_accountmanagement_update_org_memberop.py
   - src/censys_platform/models/v3_collections_crud_createop.py
   - src/censys_platform/models/v3_collections_crud_deleteop.py
   - src/censys_platform/models/v3_collections_crud_getop.py
@@ -1721,6 +1793,111 @@ examples:
         "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-org-details:
+    speakeasy-default-v3-accountmanagement-org-details:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+        query:
+          include_member_counts: false
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-org-credits:
+    speakeasy-default-v3-accountmanagement-org-credits:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-org-credits-usage:
+    speakeasy-default-v3-accountmanagement-org-credits-usage:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+        query:
+          date: "2025-11-01"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-invite-user-to-org:
+    speakeasy-default-v3-accountmanagement-invite-user-to-org:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+      requestBody:
+        application/json: {"email": "user@example.com"}
+      responses:
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-list-org-members:
+    speakeasy-default-v3-accountmanagement-list-org-members:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+        query:
+          page_size: 10
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-remove-org-member:
+    speakeasy-default-v3-accountmanagement-remove-org-member:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+          user_id: "11111111-2222-3333-4444-555555555555"
+      responses:
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-update-org-member:
+    speakeasy-default-v3-accountmanagement-update-org-member:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+          user_id: "11111111-2222-3333-4444-555555555555"
+      requestBody:
+        application/json: {"roles": null}
+      responses:
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-accountmanagement-member-credits-usage:
+    speakeasy-default-v3-accountmanagement-member-credits-usage:
+      parameters:
+        path:
+          organization_id: "11111111-2222-3333-4444-555555555555"
+          user_id: "11111111-2222-3333-4444-555555555555"
+        query:
+          date: "2025-11-01"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "400":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
 examplesVersion: 1.0.2
 generatedTests: {}

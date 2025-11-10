@@ -42,6 +42,7 @@ if TYPE_CHECKING:
     )
     from .authorityinfoaccess import AuthorityInfoAccess, AuthorityInfoAccessTypedDict
     from .autonomoussystem import AutonomousSystem, AutonomousSystemTypedDict
+    from .autoreplenishconfig import AutoReplenishConfig, AutoReplenishConfigTypedDict
     from .bacnet import Bacnet, BacnetTypedDict
     from .basicconstraints import BasicConstraints, BasicConstraintsTypedDict
     from .cabforganizationid import CabfOrganizationID, CabfOrganizationIDTypedDict
@@ -122,6 +123,8 @@ if TYPE_CHECKING:
     from .countcondition import CountCondition, CountConditionTypedDict
     from .cpe import Cpe, CpeTypedDict
     from .cpe_lifecycle import CPELifeCycle, CPELifeCycleTypedDict
+    from .creditexpiration import CreditExpiration, CreditExpirationTypedDict
+    from .creditusagereport import CreditUsageReport, CreditUsageReportTypedDict
     from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
     from .crestrondinap2 import CrestronDinAp2, CrestronDinAp2TypedDict
     from .crudcreateinputbody import CrudCreateInputBody, CrudCreateInputBodyTypedDict
@@ -391,6 +394,10 @@ if TYPE_CHECKING:
     from .ike_v2 import IkeV2, IkeV2TypedDict
     from .imagecapabilities import ImageCapabilities, ImageCapabilitiesTypedDict
     from .imap import Imap, ImapTypedDict
+    from .invitememberinputbody import (
+        InviteMemberInputBody,
+        InviteMemberInputBodyTypedDict,
+    )
     from .iota import Iota, IotaTypedDict
     from .ipmi import Ipmi, IpmiTypedDict
     from .ipmi_capabilities import IpmiCapabilities, IpmiCapabilitiesTypedDict
@@ -444,6 +451,10 @@ if TYPE_CHECKING:
     from .ja4tscanscan import Ja4TScanScan, Ja4TScanScanTypedDict
     from .jarmscan import JarmScan, JarmScanTransportProtocol, JarmScanTypedDict
     from .jarmscanned import JarmScanned, JarmScannedTypedDict
+    from .jenkins import Jenkins, JenkinsTypedDict
+    from .jenkins_build import JenkinsBuild, JenkinsBuildTypedDict
+    from .jenkins_job import JenkinsJob, JenkinsJobTypedDict
+    from .jenkins_label import JenkinsLabel, JenkinsLabelTypedDict
     from .kev import KEVSource, Kev, KevTypedDict
     from .keyalgorithm import KeyAlgorithm, KeyAlgorithmTypedDict
     from .keyusage import KeyUsage, KeyUsageTypedDict
@@ -498,6 +509,12 @@ if TYPE_CHECKING:
     from .mediacapabilities import MediaCapabilities, MediaCapabilitiesTypedDict
     from .mediaprofile import MediaProfile, MediaProfileTypedDict
     from .mediastreaming import MediaStreaming, MediaStreamingTypedDict
+    from .membercounts import (
+        ByRole,
+        ByRoleTypedDict,
+        MemberCounts,
+        MemberCountsTypedDict,
+    )
     from .members import Members, MembersTypedDict
     from .memcached import Memcached, MemcachedTypedDict
     from .metrics import Metrics, MetricsTypedDict
@@ -571,6 +588,7 @@ if TYPE_CHECKING:
     from .ntp import Ntp, NtpTypedDict
     from .ntp_ntpheader import NTPNTPHeader, NTPNTPHeaderTypedDict
     from .ntrip import Ntrip, NtripTypedDict
+    from .ntrip_datastream import NtripDataStream, NtripDataStreamTypedDict
     from .ollama import Ollama, OllamaTypedDict
     from .ollama_model import OllamaModel, OllamaModelTypedDict
     from .onc import Onc, OncTypedDict
@@ -592,7 +610,19 @@ if TYPE_CHECKING:
     from .oracle import Oracle, OracleTypedDict
     from .oracle_descriptor import OracleDescriptor, OracleDescriptorTypedDict
     from .organization import Organization, OrganizationTypedDict
+    from .organizationcredits import OrganizationCredits, OrganizationCreditsTypedDict
+    from .organizationdetails import OrganizationDetails, OrganizationDetailsTypedDict
+    from .organizationmember import OrganizationMember, OrganizationMemberTypedDict
+    from .organizationmemberslist import (
+        OrganizationMembersList,
+        OrganizationMembersListTypedDict,
+    )
+    from .organizationpreferences import (
+        OrganizationPreferences,
+        OrganizationPreferencesTypedDict,
+    )
     from .othername import OtherName, OtherNameTypedDict
+    from .paginationinfo import PaginationInfo, PaginationInfoTypedDict
     from .pantiltzoomcapabilities import (
         PanTiltZoomCapabilities,
         PanTiltZoomCapabilitiesTypedDict,
@@ -705,6 +735,10 @@ if TYPE_CHECKING:
         ResponseEnvelopeCollectionEventsResponse,
         ResponseEnvelopeCollectionEventsResponseTypedDict,
     )
+    from .responseenvelopecreditusagereport import (
+        ResponseEnvelopeCreditUsageReport,
+        ResponseEnvelopeCreditUsageReportTypedDict,
+    )
     from .responseenvelopehostasset import (
         ResponseEnvelopeHostAsset,
         ResponseEnvelopeHostAssetTypedDict,
@@ -740,6 +774,18 @@ if TYPE_CHECKING:
     from .responseenvelopelistwebpropertyasset import (
         ResponseEnvelopeListWebpropertyAsset,
         ResponseEnvelopeListWebpropertyAssetTypedDict,
+    )
+    from .responseenvelopeorganizationcredits import (
+        ResponseEnvelopeOrganizationCredits,
+        ResponseEnvelopeOrganizationCreditsTypedDict,
+    )
+    from .responseenvelopeorganizationdetails import (
+        ResponseEnvelopeOrganizationDetails,
+        ResponseEnvelopeOrganizationDetailsTypedDict,
+    )
+    from .responseenvelopeorganizationmemberslist import (
+        ResponseEnvelopeOrganizationMembersList,
+        ResponseEnvelopeOrganizationMembersListTypedDict,
     )
     from .responseenvelopesearchaggregateresponse import (
         ResponseEnvelopeSearchAggregateResponse,
@@ -906,6 +952,10 @@ if TYPE_CHECKING:
     from .snmp_system import SnmpSystem, SnmpSystemTypedDict
     from .snmp_system_services import SnmpSystemServices, SnmpSystemServicesTypedDict
     from .socks import Socks, SocksTypedDict
+    from .sourceusagebreakdown import (
+        SourceUsageBreakdown,
+        SourceUsageBreakdownTypedDict,
+    )
     from .spice import Spice, SpiceTypedDict
     from .ssdp import Ssdp, SsdpTypedDict
     from .ssh import SSH, SSHTypedDict
@@ -965,12 +1015,65 @@ if TYPE_CHECKING:
         UnrecognizedPublicKey,
         UnrecognizedPublicKeyTypedDict,
     )
+    from .updatememberroleinputbody import (
+        Roles,
+        UpdateMemberRoleInputBody,
+        UpdateMemberRoleInputBodyTypedDict,
+    )
     from .upnp import Upnp, UpnpTypedDict
     from .upnp_device import UpnpDevice, UpnpDeviceTypedDict
     from .upnp_service import UpnpService, UpnpServiceTypedDict
     from .upnp_specversion import UpnpSpecVersion, UpnpSpecVersionTypedDict
     from .user import User, UserTypedDict
     from .usernotice import UserNotice, UserNoticeTypedDict
+    from .v3_accountmanagement_invite_user_to_orgop import (
+        V3AccountmanagementInviteUserToOrgRequest,
+        V3AccountmanagementInviteUserToOrgRequestTypedDict,
+        V3AccountmanagementInviteUserToOrgResponse,
+        V3AccountmanagementInviteUserToOrgResponseTypedDict,
+    )
+    from .v3_accountmanagement_list_org_membersop import (
+        V3AccountmanagementListOrgMembersRequest,
+        V3AccountmanagementListOrgMembersRequestTypedDict,
+        V3AccountmanagementListOrgMembersResponse,
+        V3AccountmanagementListOrgMembersResponseTypedDict,
+    )
+    from .v3_accountmanagement_member_credits_usageop import (
+        V3AccountmanagementMemberCreditsUsageRequest,
+        V3AccountmanagementMemberCreditsUsageRequestTypedDict,
+        V3AccountmanagementMemberCreditsUsageResponse,
+        V3AccountmanagementMemberCreditsUsageResponseTypedDict,
+    )
+    from .v3_accountmanagement_org_credits_usageop import (
+        V3AccountmanagementOrgCreditsUsageRequest,
+        V3AccountmanagementOrgCreditsUsageRequestTypedDict,
+        V3AccountmanagementOrgCreditsUsageResponse,
+        V3AccountmanagementOrgCreditsUsageResponseTypedDict,
+    )
+    from .v3_accountmanagement_org_creditsop import (
+        V3AccountmanagementOrgCreditsRequest,
+        V3AccountmanagementOrgCreditsRequestTypedDict,
+        V3AccountmanagementOrgCreditsResponse,
+        V3AccountmanagementOrgCreditsResponseTypedDict,
+    )
+    from .v3_accountmanagement_org_detailsop import (
+        V3AccountmanagementOrgDetailsRequest,
+        V3AccountmanagementOrgDetailsRequestTypedDict,
+        V3AccountmanagementOrgDetailsResponse,
+        V3AccountmanagementOrgDetailsResponseTypedDict,
+    )
+    from .v3_accountmanagement_remove_org_memberop import (
+        V3AccountmanagementRemoveOrgMemberRequest,
+        V3AccountmanagementRemoveOrgMemberRequestTypedDict,
+        V3AccountmanagementRemoveOrgMemberResponse,
+        V3AccountmanagementRemoveOrgMemberResponseTypedDict,
+    )
+    from .v3_accountmanagement_update_org_memberop import (
+        V3AccountmanagementUpdateOrgMemberRequest,
+        V3AccountmanagementUpdateOrgMemberRequestTypedDict,
+        V3AccountmanagementUpdateOrgMemberResponse,
+        V3AccountmanagementUpdateOrgMemberResponseTypedDict,
+    )
     from .v3_collections_crud_createop import (
         V3CollectionsCrudCreateGlobals,
         V3CollectionsCrudCreateGlobalsTypedDict,
@@ -1243,6 +1346,8 @@ __all__ = [
     "AuthenticationErrorDetailTypedDict",
     "AuthorityInfoAccess",
     "AuthorityInfoAccessTypedDict",
+    "AutoReplenishConfig",
+    "AutoReplenishConfigTypedDict",
     "Automatable",
     "AutonomousSystem",
     "AutonomousSystemTypedDict",
@@ -1251,6 +1356,8 @@ __all__ = [
     "BacnetTypedDict",
     "BasicConstraints",
     "BasicConstraintsTypedDict",
+    "ByRole",
+    "ByRoleTypedDict",
     "CPELifeCycle",
     "CPELifeCycleTypedDict",
     "CVSSComponents",
@@ -1342,6 +1449,10 @@ __all__ = [
     "CountConditionTypedDict",
     "Cpe",
     "CpeTypedDict",
+    "CreditExpiration",
+    "CreditExpirationTypedDict",
+    "CreditUsageReport",
+    "CreditUsageReportTypedDict",
     "CrestronCp3",
     "CrestronCp3TypedDict",
     "CrestronDinAp2",
@@ -1584,6 +1695,8 @@ __all__ = [
     "Imap",
     "ImapTypedDict",
     "Integrity",
+    "InviteMemberInputBody",
+    "InviteMemberInputBodyTypedDict",
     "Iota",
     "IotaTypedDict",
     "Ipmi",
@@ -1631,6 +1744,14 @@ __all__ = [
     "JarmScanTypedDict",
     "JarmScanned",
     "JarmScannedTypedDict",
+    "Jenkins",
+    "JenkinsBuild",
+    "JenkinsBuildTypedDict",
+    "JenkinsJob",
+    "JenkinsJobTypedDict",
+    "JenkinsLabel",
+    "JenkinsLabelTypedDict",
+    "JenkinsTypedDict",
     "KEVSource",
     "Kev",
     "KevTypedDict",
@@ -1697,6 +1818,8 @@ __all__ = [
     "MediaProfileTypedDict",
     "MediaStreaming",
     "MediaStreamingTypedDict",
+    "MemberCounts",
+    "MemberCountsTypedDict",
     "Members",
     "MembersTypedDict",
     "Memcached",
@@ -1788,6 +1911,8 @@ __all__ = [
     "Ntp",
     "NtpTypedDict",
     "Ntrip",
+    "NtripDataStream",
+    "NtripDataStreamTypedDict",
     "NtripTypedDict",
     "OldStatus",
     "Ollama",
@@ -1827,9 +1952,21 @@ __all__ = [
     "OracleDescriptorTypedDict",
     "OracleTypedDict",
     "Organization",
+    "OrganizationCredits",
+    "OrganizationCreditsTypedDict",
+    "OrganizationDetails",
+    "OrganizationDetailsTypedDict",
+    "OrganizationMember",
+    "OrganizationMemberTypedDict",
+    "OrganizationMembersList",
+    "OrganizationMembersListTypedDict",
+    "OrganizationPreferences",
+    "OrganizationPreferencesTypedDict",
     "OrganizationTypedDict",
     "OtherName",
     "OtherNameTypedDict",
+    "PaginationInfo",
+    "PaginationInfoTypedDict",
     "PanTiltZoomCapabilities",
     "PanTiltZoomCapabilitiesTypedDict",
     "ParseStatus",
@@ -1955,6 +2092,8 @@ __all__ = [
     "ResponseEnvelopeCollectionEventsResponse",
     "ResponseEnvelopeCollectionEventsResponseTypedDict",
     "ResponseEnvelopeCollectionTypedDict",
+    "ResponseEnvelopeCreditUsageReport",
+    "ResponseEnvelopeCreditUsageReportTypedDict",
     "ResponseEnvelopeHostAsset",
     "ResponseEnvelopeHostAssetTypedDict",
     "ResponseEnvelopeHostObservationResponse",
@@ -1973,6 +2112,12 @@ __all__ = [
     "ResponseEnvelopeListSearchConvertQueryResponseTypedDict",
     "ResponseEnvelopeListWebpropertyAsset",
     "ResponseEnvelopeListWebpropertyAssetTypedDict",
+    "ResponseEnvelopeOrganizationCredits",
+    "ResponseEnvelopeOrganizationCreditsTypedDict",
+    "ResponseEnvelopeOrganizationDetails",
+    "ResponseEnvelopeOrganizationDetailsTypedDict",
+    "ResponseEnvelopeOrganizationMembersList",
+    "ResponseEnvelopeOrganizationMembersListTypedDict",
     "ResponseEnvelopeSearchAggregateResponse",
     "ResponseEnvelopeSearchAggregateResponseTypedDict",
     "ResponseEnvelopeSearchQueryResponse",
@@ -2010,6 +2155,7 @@ __all__ = [
     "RocketmqTopicList",
     "RocketmqTopicListTypedDict",
     "RocketmqTypedDict",
+    "Roles",
     "RootStore",
     "RootStoreChain",
     "RootStoreChainTypedDict",
@@ -2149,6 +2295,8 @@ __all__ = [
     "Socks",
     "SocksTypedDict",
     "Source",
+    "SourceUsageBreakdown",
+    "SourceUsageBreakdownTypedDict",
     "Spice",
     "SpiceTypedDict",
     "Ssdp",
@@ -2223,6 +2371,8 @@ __all__ = [
     "UnitronicsPcomTypedDict",
     "UnrecognizedPublicKey",
     "UnrecognizedPublicKeyTypedDict",
+    "UpdateMemberRoleInputBody",
+    "UpdateMemberRoleInputBodyTypedDict",
     "Upnp",
     "UpnpDevice",
     "UpnpDeviceTypedDict",
@@ -2236,6 +2386,38 @@ __all__ = [
     "UserNotice",
     "UserNoticeTypedDict",
     "UserTypedDict",
+    "V3AccountmanagementInviteUserToOrgRequest",
+    "V3AccountmanagementInviteUserToOrgRequestTypedDict",
+    "V3AccountmanagementInviteUserToOrgResponse",
+    "V3AccountmanagementInviteUserToOrgResponseTypedDict",
+    "V3AccountmanagementListOrgMembersRequest",
+    "V3AccountmanagementListOrgMembersRequestTypedDict",
+    "V3AccountmanagementListOrgMembersResponse",
+    "V3AccountmanagementListOrgMembersResponseTypedDict",
+    "V3AccountmanagementMemberCreditsUsageRequest",
+    "V3AccountmanagementMemberCreditsUsageRequestTypedDict",
+    "V3AccountmanagementMemberCreditsUsageResponse",
+    "V3AccountmanagementMemberCreditsUsageResponseTypedDict",
+    "V3AccountmanagementOrgCreditsRequest",
+    "V3AccountmanagementOrgCreditsRequestTypedDict",
+    "V3AccountmanagementOrgCreditsResponse",
+    "V3AccountmanagementOrgCreditsResponseTypedDict",
+    "V3AccountmanagementOrgCreditsUsageRequest",
+    "V3AccountmanagementOrgCreditsUsageRequestTypedDict",
+    "V3AccountmanagementOrgCreditsUsageResponse",
+    "V3AccountmanagementOrgCreditsUsageResponseTypedDict",
+    "V3AccountmanagementOrgDetailsRequest",
+    "V3AccountmanagementOrgDetailsRequestTypedDict",
+    "V3AccountmanagementOrgDetailsResponse",
+    "V3AccountmanagementOrgDetailsResponseTypedDict",
+    "V3AccountmanagementRemoveOrgMemberRequest",
+    "V3AccountmanagementRemoveOrgMemberRequestTypedDict",
+    "V3AccountmanagementRemoveOrgMemberResponse",
+    "V3AccountmanagementRemoveOrgMemberResponseTypedDict",
+    "V3AccountmanagementUpdateOrgMemberRequest",
+    "V3AccountmanagementUpdateOrgMemberRequestTypedDict",
+    "V3AccountmanagementUpdateOrgMemberResponse",
+    "V3AccountmanagementUpdateOrgMemberResponseTypedDict",
     "V3CollectionsCrudCreateGlobals",
     "V3CollectionsCrudCreateGlobalsTypedDict",
     "V3CollectionsCrudCreateRequest",
@@ -2485,6 +2667,8 @@ _dynamic_imports: dict[str, str] = {
     "AuthorityInfoAccessTypedDict": ".authorityinfoaccess",
     "AutonomousSystem": ".autonomoussystem",
     "AutonomousSystemTypedDict": ".autonomoussystem",
+    "AutoReplenishConfig": ".autoreplenishconfig",
+    "AutoReplenishConfigTypedDict": ".autoreplenishconfig",
     "Bacnet": ".bacnet",
     "BacnetTypedDict": ".bacnet",
     "BasicConstraints": ".basicconstraints",
@@ -2568,6 +2752,10 @@ _dynamic_imports: dict[str, str] = {
     "CpeTypedDict": ".cpe",
     "CPELifeCycle": ".cpe_lifecycle",
     "CPELifeCycleTypedDict": ".cpe_lifecycle",
+    "CreditExpiration": ".creditexpiration",
+    "CreditExpirationTypedDict": ".creditexpiration",
+    "CreditUsageReport": ".creditusagereport",
+    "CreditUsageReportTypedDict": ".creditusagereport",
     "CrestronCp3": ".crestroncp3",
     "CrestronCp3TypedDict": ".crestroncp3",
     "CrestronDinAp2": ".crestrondinap2",
@@ -2839,6 +3027,8 @@ _dynamic_imports: dict[str, str] = {
     "ImageCapabilitiesTypedDict": ".imagecapabilities",
     "Imap": ".imap",
     "ImapTypedDict": ".imap",
+    "InviteMemberInputBody": ".invitememberinputbody",
+    "InviteMemberInputBodyTypedDict": ".invitememberinputbody",
     "Iota": ".iota",
     "IotaTypedDict": ".iota",
     "Ipmi": ".ipmi",
@@ -2886,6 +3076,14 @@ _dynamic_imports: dict[str, str] = {
     "JarmScanTypedDict": ".jarmscan",
     "JarmScanned": ".jarmscanned",
     "JarmScannedTypedDict": ".jarmscanned",
+    "Jenkins": ".jenkins",
+    "JenkinsTypedDict": ".jenkins",
+    "JenkinsBuild": ".jenkins_build",
+    "JenkinsBuildTypedDict": ".jenkins_build",
+    "JenkinsJob": ".jenkins_job",
+    "JenkinsJobTypedDict": ".jenkins_job",
+    "JenkinsLabel": ".jenkins_label",
+    "JenkinsLabelTypedDict": ".jenkins_label",
     "KEVSource": ".kev",
     "Kev": ".kev",
     "KevTypedDict": ".kev",
@@ -2953,6 +3151,10 @@ _dynamic_imports: dict[str, str] = {
     "MediaProfileTypedDict": ".mediaprofile",
     "MediaStreaming": ".mediastreaming",
     "MediaStreamingTypedDict": ".mediastreaming",
+    "ByRole": ".membercounts",
+    "ByRoleTypedDict": ".membercounts",
+    "MemberCounts": ".membercounts",
+    "MemberCountsTypedDict": ".membercounts",
     "Members": ".members",
     "MembersTypedDict": ".members",
     "Memcached": ".memcached",
@@ -3044,6 +3246,8 @@ _dynamic_imports: dict[str, str] = {
     "NTPNTPHeaderTypedDict": ".ntp_ntpheader",
     "Ntrip": ".ntrip",
     "NtripTypedDict": ".ntrip",
+    "NtripDataStream": ".ntrip_datastream",
+    "NtripDataStreamTypedDict": ".ntrip_datastream",
     "Ollama": ".ollama",
     "OllamaTypedDict": ".ollama",
     "OllamaModel": ".ollama_model",
@@ -3080,8 +3284,20 @@ _dynamic_imports: dict[str, str] = {
     "OracleDescriptorTypedDict": ".oracle_descriptor",
     "Organization": ".organization",
     "OrganizationTypedDict": ".organization",
+    "OrganizationCredits": ".organizationcredits",
+    "OrganizationCreditsTypedDict": ".organizationcredits",
+    "OrganizationDetails": ".organizationdetails",
+    "OrganizationDetailsTypedDict": ".organizationdetails",
+    "OrganizationMember": ".organizationmember",
+    "OrganizationMemberTypedDict": ".organizationmember",
+    "OrganizationMembersList": ".organizationmemberslist",
+    "OrganizationMembersListTypedDict": ".organizationmemberslist",
+    "OrganizationPreferences": ".organizationpreferences",
+    "OrganizationPreferencesTypedDict": ".organizationpreferences",
     "OtherName": ".othername",
     "OtherNameTypedDict": ".othername",
+    "PaginationInfo": ".paginationinfo",
+    "PaginationInfoTypedDict": ".paginationinfo",
     "PanTiltZoomCapabilities": ".pantiltzoomcapabilities",
     "PanTiltZoomCapabilitiesTypedDict": ".pantiltzoomcapabilities",
     "PcAnywhere": ".pcanywhere",
@@ -3198,6 +3414,8 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeCollectionTypedDict": ".responseenvelopecollection",
     "ResponseEnvelopeCollectionEventsResponse": ".responseenvelopecollectioneventsresponse",
     "ResponseEnvelopeCollectionEventsResponseTypedDict": ".responseenvelopecollectioneventsresponse",
+    "ResponseEnvelopeCreditUsageReport": ".responseenvelopecreditusagereport",
+    "ResponseEnvelopeCreditUsageReportTypedDict": ".responseenvelopecreditusagereport",
     "ResponseEnvelopeHostAsset": ".responseenvelopehostasset",
     "ResponseEnvelopeHostAssetTypedDict": ".responseenvelopehostasset",
     "ResponseEnvelopeHostObservationResponse": ".responseenvelopehostobservationresponse",
@@ -3216,6 +3434,12 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeListSearchConvertQueryResponseTypedDict": ".responseenvelopelistsearchconvertqueryresponse",
     "ResponseEnvelopeListWebpropertyAsset": ".responseenvelopelistwebpropertyasset",
     "ResponseEnvelopeListWebpropertyAssetTypedDict": ".responseenvelopelistwebpropertyasset",
+    "ResponseEnvelopeOrganizationCredits": ".responseenvelopeorganizationcredits",
+    "ResponseEnvelopeOrganizationCreditsTypedDict": ".responseenvelopeorganizationcredits",
+    "ResponseEnvelopeOrganizationDetails": ".responseenvelopeorganizationdetails",
+    "ResponseEnvelopeOrganizationDetailsTypedDict": ".responseenvelopeorganizationdetails",
+    "ResponseEnvelopeOrganizationMembersList": ".responseenvelopeorganizationmemberslist",
+    "ResponseEnvelopeOrganizationMembersListTypedDict": ".responseenvelopeorganizationmemberslist",
     "ResponseEnvelopeSearchAggregateResponse": ".responseenvelopesearchaggregateresponse",
     "ResponseEnvelopeSearchAggregateResponseTypedDict": ".responseenvelopesearchaggregateresponse",
     "ResponseEnvelopeSearchQueryResponse": ".responseenvelopesearchqueryresponse",
@@ -3395,6 +3619,8 @@ _dynamic_imports: dict[str, str] = {
     "SnmpSystemServicesTypedDict": ".snmp_system_services",
     "Socks": ".socks",
     "SocksTypedDict": ".socks",
+    "SourceUsageBreakdown": ".sourceusagebreakdown",
+    "SourceUsageBreakdownTypedDict": ".sourceusagebreakdown",
     "Spice": ".spice",
     "SpiceTypedDict": ".spice",
     "Ssdp": ".ssdp",
@@ -3467,6 +3693,9 @@ _dynamic_imports: dict[str, str] = {
     "UnitronicsPcomTypedDict": ".unitronicspcom",
     "UnrecognizedPublicKey": ".unrecognizedpublickey",
     "UnrecognizedPublicKeyTypedDict": ".unrecognizedpublickey",
+    "Roles": ".updatememberroleinputbody",
+    "UpdateMemberRoleInputBody": ".updatememberroleinputbody",
+    "UpdateMemberRoleInputBodyTypedDict": ".updatememberroleinputbody",
     "Upnp": ".upnp",
     "UpnpTypedDict": ".upnp",
     "UpnpDevice": ".upnp_device",
@@ -3479,6 +3708,38 @@ _dynamic_imports: dict[str, str] = {
     "UserTypedDict": ".user",
     "UserNotice": ".usernotice",
     "UserNoticeTypedDict": ".usernotice",
+    "V3AccountmanagementInviteUserToOrgRequest": ".v3_accountmanagement_invite_user_to_orgop",
+    "V3AccountmanagementInviteUserToOrgRequestTypedDict": ".v3_accountmanagement_invite_user_to_orgop",
+    "V3AccountmanagementInviteUserToOrgResponse": ".v3_accountmanagement_invite_user_to_orgop",
+    "V3AccountmanagementInviteUserToOrgResponseTypedDict": ".v3_accountmanagement_invite_user_to_orgop",
+    "V3AccountmanagementListOrgMembersRequest": ".v3_accountmanagement_list_org_membersop",
+    "V3AccountmanagementListOrgMembersRequestTypedDict": ".v3_accountmanagement_list_org_membersop",
+    "V3AccountmanagementListOrgMembersResponse": ".v3_accountmanagement_list_org_membersop",
+    "V3AccountmanagementListOrgMembersResponseTypedDict": ".v3_accountmanagement_list_org_membersop",
+    "V3AccountmanagementMemberCreditsUsageRequest": ".v3_accountmanagement_member_credits_usageop",
+    "V3AccountmanagementMemberCreditsUsageRequestTypedDict": ".v3_accountmanagement_member_credits_usageop",
+    "V3AccountmanagementMemberCreditsUsageResponse": ".v3_accountmanagement_member_credits_usageop",
+    "V3AccountmanagementMemberCreditsUsageResponseTypedDict": ".v3_accountmanagement_member_credits_usageop",
+    "V3AccountmanagementOrgCreditsUsageRequest": ".v3_accountmanagement_org_credits_usageop",
+    "V3AccountmanagementOrgCreditsUsageRequestTypedDict": ".v3_accountmanagement_org_credits_usageop",
+    "V3AccountmanagementOrgCreditsUsageResponse": ".v3_accountmanagement_org_credits_usageop",
+    "V3AccountmanagementOrgCreditsUsageResponseTypedDict": ".v3_accountmanagement_org_credits_usageop",
+    "V3AccountmanagementOrgCreditsRequest": ".v3_accountmanagement_org_creditsop",
+    "V3AccountmanagementOrgCreditsRequestTypedDict": ".v3_accountmanagement_org_creditsop",
+    "V3AccountmanagementOrgCreditsResponse": ".v3_accountmanagement_org_creditsop",
+    "V3AccountmanagementOrgCreditsResponseTypedDict": ".v3_accountmanagement_org_creditsop",
+    "V3AccountmanagementOrgDetailsRequest": ".v3_accountmanagement_org_detailsop",
+    "V3AccountmanagementOrgDetailsRequestTypedDict": ".v3_accountmanagement_org_detailsop",
+    "V3AccountmanagementOrgDetailsResponse": ".v3_accountmanagement_org_detailsop",
+    "V3AccountmanagementOrgDetailsResponseTypedDict": ".v3_accountmanagement_org_detailsop",
+    "V3AccountmanagementRemoveOrgMemberRequest": ".v3_accountmanagement_remove_org_memberop",
+    "V3AccountmanagementRemoveOrgMemberRequestTypedDict": ".v3_accountmanagement_remove_org_memberop",
+    "V3AccountmanagementRemoveOrgMemberResponse": ".v3_accountmanagement_remove_org_memberop",
+    "V3AccountmanagementRemoveOrgMemberResponseTypedDict": ".v3_accountmanagement_remove_org_memberop",
+    "V3AccountmanagementUpdateOrgMemberRequest": ".v3_accountmanagement_update_org_memberop",
+    "V3AccountmanagementUpdateOrgMemberRequestTypedDict": ".v3_accountmanagement_update_org_memberop",
+    "V3AccountmanagementUpdateOrgMemberResponse": ".v3_accountmanagement_update_org_memberop",
+    "V3AccountmanagementUpdateOrgMemberResponseTypedDict": ".v3_accountmanagement_update_org_memberop",
     "V3CollectionsCrudCreateGlobals": ".v3_collections_crud_createop",
     "V3CollectionsCrudCreateGlobalsTypedDict": ".v3_collections_crud_createop",
     "V3CollectionsCrudCreateRequest": ".v3_collections_crud_createop",

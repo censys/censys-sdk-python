@@ -8,6 +8,7 @@ from .fortigate import Fortigate, FortigateTypedDict
 from .graphql import Graphql, GraphqlTypedDict
 from .http import HTTP, HTTPTypedDict
 from .ivantiavalanche import IvantiAvalanche, IvantiAvalancheTypedDict
+from .jenkins import Jenkins, JenkinsTypedDict
 from .kubernetes import Kubernetes, KubernetesTypedDict
 from .ollama import Ollama, OllamaTypedDict
 from .opendirectory import OpenDirectory, OpenDirectoryTypedDict
@@ -54,6 +55,7 @@ class EndpointScanTypedDict(TypedDict):
     ip: NotRequired[str]
     is_success: NotRequired[bool]
     ivanti_avalanche: NotRequired[IvantiAvalancheTypedDict]
+    jenkins: NotRequired[JenkinsTypedDict]
     kubernetes: NotRequired[KubernetesTypedDict]
     ollama: NotRequired[OllamaTypedDict]
     open_directory: NotRequired[OpenDirectoryTypedDict]
@@ -97,6 +99,8 @@ class EndpointScan(BaseModel):
     is_success: Optional[bool] = None
 
     ivanti_avalanche: Optional[IvantiAvalanche] = None
+
+    jenkins: Optional[Jenkins] = None
 
     kubernetes: Optional[Kubernetes] = None
 
@@ -144,6 +148,7 @@ class EndpointScan(BaseModel):
             "ip",
             "is_success",
             "ivanti_avalanche",
+            "jenkins",
             "kubernetes",
             "ollama",
             "open_directory",

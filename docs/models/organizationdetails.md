@@ -1,0 +1,12 @@
+# OrganizationDetails
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `created_at`                                                                     | [date](https://docs.python.org/3/library/datetime.html#date-objects)             | :heavy_minus_sign:                                                               | The date and time the organization was created.                                  |
+| `member_counts`                                                                  | [Optional[models.MemberCounts]](../models/membercounts.md)                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `name`                                                                           | *str*                                                                            | :heavy_check_mark:                                                               | The name of the organization.                                                    |
+| `preferences`                                                                    | [Optional[models.OrganizationPreferences]](../models/organizationpreferences.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `uid`                                                                            | *str*                                                                            | :heavy_check_mark:                                                               | The ID of a Censys organization.                                                 |

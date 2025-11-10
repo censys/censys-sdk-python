@@ -1,0 +1,15 @@
+# OrganizationMember
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `created_at`                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | The date and time the user was created.                              |
+| `email`                                                              | *str*                                                                | :heavy_check_mark:                                                   | The email of the user.                                               |
+| `first_login_time`                                                   | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | The date and time the user first logged in.                          |
+| `first_name`                                                         | *str*                                                                | :heavy_check_mark:                                                   | The first name of the user.                                          |
+| `last_name`                                                          | *str*                                                                | :heavy_check_mark:                                                   | The last name of the user.                                           |
+| `latest_login_time`                                                  | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | The date and time the user last logged in.                           |
+| `roles`                                                              | List[*str*]                                                          | :heavy_check_mark:                                                   | The roles this member has in the organization.                       |
+| `uid`                                                                | *str*                                                                | :heavy_check_mark:                                                   | The ID of a Censys user.                                             |
