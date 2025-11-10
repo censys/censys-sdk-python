@@ -16,12 +16,15 @@ from typing import Any, Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
 
 if TYPE_CHECKING:
+    from censys_platform.account_management import AccountManagement
     from censys_platform.collections import Collections
     from censys_platform.global_data import GlobalData
     from censys_platform.threat_hunting import ThreatHunting
 
 
 class SDK(BaseSDK):
+    account_management: "AccountManagement"
+    r"""Endpoints related to the Account Management product"""
     collections: "Collections"
     r"""Endpoints related to the Collections product"""
     global_data: "GlobalData"
@@ -29,6 +32,10 @@ class SDK(BaseSDK):
     threat_hunting: "ThreatHunting"
     r"""Endpoints related to the Threat Hunting product"""
     _sub_sdk_map = {
+        "account_management": (
+            "censys_platform.account_management",
+            "AccountManagement",
+        ),
         "collections": ("censys_platform.collections", "Collections"),
         "global_data": ("censys_platform.global_data", "GlobalData"),
         "threat_hunting": ("censys_platform.threat_hunting", "ThreatHunting"),

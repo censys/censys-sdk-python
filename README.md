@@ -178,6 +178,17 @@ asyncio.run(main())
 <details open>
 <summary>Available methods</summary>
 
+### [account_management](docs/sdks/accountmanagement/README.md)
+
+* [get_organization_details](docs/sdks/accountmanagement/README.md#get_organization_details) - Get organization details
+* [get_organization_credits](docs/sdks/accountmanagement/README.md#get_organization_credits) - Get organization credit statistics
+* [get_organization_credit_usage](docs/sdks/accountmanagement/README.md#get_organization_credit_usage) - Get organization credit usage
+* [invite_user_to_organization](docs/sdks/accountmanagement/README.md#invite_user_to_organization) - Invite user to organization
+* [list_organization_members](docs/sdks/accountmanagement/README.md#list_organization_members) - List organization members
+* [remove_organization_member](docs/sdks/accountmanagement/README.md#remove_organization_member) - Remove member from organization
+* [update_organization_member](docs/sdks/accountmanagement/README.md#update_organization_member) - Update a member's roles in an organization
+* [get_member_credit_usage](docs/sdks/accountmanagement/README.md#get_member_credit_usage) - Get member credit usage
+
 ### [collections](docs/sdks/collections/README.md)
 
 * [list](docs/sdks/collections/README.md#list) - List collections
@@ -221,7 +232,7 @@ asyncio.run(main())
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `organization_id` to `` at SDK initialization and then you do not have to pass the same value on calls to operations like `list`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `organization_id` to `` at SDK initialization and then you do not have to pass the same value on calls to operations like `get_organization_details`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -243,7 +254,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
+    res = sdk.account_management.get_organization_details(organization_id="11111111-2222-3333-4444-555555555555", include_member_counts=False)
 
     # Handle response
     print(res)
@@ -263,11 +274,10 @@ from censys_platform.utils import BackoffStrategy, RetryConfig
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(page_token="<next_page_token>", page_size=1,
+    res = sdk.account_management.get_organization_details(organization_id="11111111-2222-3333-4444-555555555555", include_member_counts=False,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Handle response
@@ -283,11 +293,10 @@ from censys_platform.utils import BackoffStrategy, RetryConfig
 
 with SDK(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
-    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
+    res = sdk.account_management.get_organization_details(organization_id="11111111-2222-3333-4444-555555555555", include_member_counts=False)
 
     # Handle response
     print(res)
@@ -316,13 +325,12 @@ from censys_platform import SDK, models
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
     res = None
     try:
 
-        res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
+        res = sdk.account_management.get_organization_details(organization_id="11111111-2222-3333-4444-555555555555", include_member_counts=False)
 
         # Handle response
         print(res)
@@ -344,8 +352,8 @@ with SDK(
 ### Error Classes
 **Primary errors:**
 * [`SDKBaseError`](./src/censys_platform/models/sdkbaseerror.py): The base class for HTTP error responses.
+  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): Generic error.
   * [`AuthenticationError`](./src/censys_platform/models/authenticationerror.py): Request does not contain a valid Authorization token. Status code `401`.
-  * [`ErrorModel`](./src/censys_platform/models/errormodel.py): User does not have permission to access this data.
 
 <details><summary>Less common errors (5)</summary>
 
@@ -375,11 +383,10 @@ from censys_platform import SDK
 
 with SDK(
     server_url="https://api.platform.censys.io",
-    organization_id="11111111-2222-3333-4444-555555555555",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
+    res = sdk.account_management.get_organization_details(organization_id="11111111-2222-3333-4444-555555555555", include_member_counts=False)
 
     # Handle response
     print(res)
@@ -486,10 +493,9 @@ from censys_platform import SDK
 
 with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
-    organization_id="11111111-2222-3333-4444-555555555555",
 ) as sdk:
 
-    res = sdk.collections.list(page_token="<next_page_token>", page_size=1)
+    res = sdk.account_management.get_organization_details(organization_id="11111111-2222-3333-4444-555555555555", include_member_counts=False)
 
     # Handle response
     print(res)
