@@ -29,7 +29,7 @@ class V3GlobaldataSearchAggregateGlobals(BaseModel):
 class V3GlobaldataSearchAggregateRequestTypedDict(TypedDict):
     search_aggregate_input_body: SearchAggregateInputBodyTypedDict
     organization_id: NotRequired[str]
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
+    r"""The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3GlobaldataSearchAggregateRequest(BaseModel):
@@ -42,7 +42,7 @@ class V3GlobaldataSearchAggregateRequest(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
+    r"""The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
 
 class V3GlobaldataSearchAggregateResponseTypedDict(TypedDict):
