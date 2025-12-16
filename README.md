@@ -178,18 +178,19 @@ asyncio.run(main())
 <details open>
 <summary>Available methods</summary>
 
-### [account_management](docs/sdks/accountmanagement/README.md)
+### [AccountManagement](docs/sdks/accountmanagement/README.md)
 
 * [get_organization_details](docs/sdks/accountmanagement/README.md#get_organization_details) - Get organization details
-* [get_organization_credits](docs/sdks/accountmanagement/README.md#get_organization_credits) - Get organization credit statistics
+* [get_organization_credits](docs/sdks/accountmanagement/README.md#get_organization_credits) - Get organization credit details
 * [get_organization_credit_usage](docs/sdks/accountmanagement/README.md#get_organization_credit_usage) - Get organization credit usage
 * [invite_user_to_organization](docs/sdks/accountmanagement/README.md#invite_user_to_organization) - Invite user to organization
 * [list_organization_members](docs/sdks/accountmanagement/README.md#list_organization_members) - List organization members
 * [remove_organization_member](docs/sdks/accountmanagement/README.md#remove_organization_member) - Remove member from organization
 * [update_organization_member](docs/sdks/accountmanagement/README.md#update_organization_member) - Update a member's roles in an organization
 * [get_member_credit_usage](docs/sdks/accountmanagement/README.md#get_member_credit_usage) - Get member credit usage
+* [get_user_credits](docs/sdks/accountmanagement/README.md#get_user_credits) - Get Free user credit details
 
-### [collections](docs/sdks/collections/README.md)
+### [Collections](docs/sdks/collections/README.md)
 
 * [list](docs/sdks/collections/README.md#list) - List collections
 * [create](docs/sdks/collections/README.md#create) - Create a collection
@@ -200,7 +201,7 @@ asyncio.run(main())
 * [aggregate](docs/sdks/collections/README.md#aggregate) - Aggregate results for a search query within a collection
 * [search](docs/sdks/collections/README.md#search) - Run a search query within a collection
 
-### [global_data](docs/sdks/globaldata/README.md)
+### [GlobalData](docs/sdks/globaldata/README.md)
 
 * [get_certificates](docs/sdks/globaldata/README.md#get_certificates) - Retrieve multiple certificates
 * [get_certificates_raw](docs/sdks/globaldata/README.md#get_certificates_raw) - Retrieve multiple certificates in PEM format
@@ -217,11 +218,12 @@ asyncio.run(main())
 * [convert_legacy_search_queries](docs/sdks/globaldata/README.md#convert_legacy_search_queries) - Convert Legacy Search queries to Platform queries
 * [search](docs/sdks/globaldata/README.md#search) - Run a search query
 
-### [threat_hunting](docs/sdks/threathunting/README.md)
+### [ThreatHunting](docs/sdks/threathunting/README.md)
 
 * [get_host_observations_with_certificate](docs/sdks/threathunting/README.md#get_host_observations_with_certificate) - Get host history for a certificate
 * [create_tracked_scan](docs/sdks/threathunting/README.md#create_tracked_scan) - Live Discovery: Initiate a new scan
 * [get_tracked_scan_threat_hunting](docs/sdks/threathunting/README.md#get_tracked_scan_threat_hunting) - Get scan status
+* [list_threats](docs/sdks/threathunting/README.md#list_threats) - List active threats
 * [value_counts](docs/sdks/threathunting/README.md#value_counts) - CensEye: Retrieve value counts to discover pivots
 
 </details>

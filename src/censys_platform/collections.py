@@ -72,6 +72,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -176,6 +177,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -288,6 +290,7 @@ class Collections(BaseSDK):
                 "json",
                 Optional[models.CrudCreateInputBody],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -400,6 +403,7 @@ class Collections(BaseSDK):
                 "json",
                 Optional[models.CrudCreateInputBody],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -505,6 +509,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -607,6 +612,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -705,6 +711,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -806,6 +813,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -921,6 +929,7 @@ class Collections(BaseSDK):
                 "json",
                 Optional[models.CrudUpdateInputBody],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1036,6 +1045,7 @@ class Collections(BaseSDK):
                 "json",
                 Optional[models.CrudUpdateInputBody],
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1137,6 +1147,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1238,6 +1249,7 @@ class Collections(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1353,6 +1365,7 @@ class Collections(BaseSDK):
                 "json",
                 models.SearchAggregateInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1470,6 +1483,7 @@ class Collections(BaseSDK):
                 "json",
                 models.SearchAggregateInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1587,6 +1601,7 @@ class Collections(BaseSDK):
                 "json",
                 models.SearchQueryInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1702,6 +1717,7 @@ class Collections(BaseSDK):
                 "json",
                 models.SearchQueryInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 

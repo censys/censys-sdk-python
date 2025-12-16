@@ -76,6 +76,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetCertificateListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -191,6 +192,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetCertificateListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -306,6 +308,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetCertificateListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -419,6 +422,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetCertificateListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -520,6 +524,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -623,6 +628,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -726,6 +732,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -830,6 +837,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -945,6 +953,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetHostListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1059,6 +1068,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetHostListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1165,6 +1175,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1271,6 +1282,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1380,6 +1392,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1489,6 +1502,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1604,6 +1618,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetWebpropertyListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1719,6 +1734,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.AssetWebpropertyListInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1825,6 +1841,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -1931,6 +1948,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2045,6 +2063,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.ScansRescanInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2157,6 +2176,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.ScansRescanInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2258,6 +2278,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2361,6 +2382,7 @@ class GlobalData(BaseSDK):
                 organization_id=self.sdk_configuration.globals.organization_id,
             ),
             security=self.sdk_configuration.security,
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2429,7 +2451,7 @@ class GlobalData(BaseSDK):
         Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param search_aggregate_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2475,6 +2497,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.SearchAggregateInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2541,7 +2564,7 @@ class GlobalData(BaseSDK):
         Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
 
         :param search_aggregate_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2587,6 +2610,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.SearchAggregateInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2700,6 +2724,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.SearchConvertQueryInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2816,6 +2841,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.SearchConvertQueryInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2885,7 +2911,7 @@ class GlobalData(BaseSDK):
         Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
 
         :param search_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2931,6 +2957,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.SearchQueryInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 
@@ -2997,7 +3024,7 @@ class GlobalData(BaseSDK):
         Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
 
         :param search_query_input_body:
-        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -3043,6 +3070,7 @@ class GlobalData(BaseSDK):
                 "json",
                 models.SearchQueryInputBody,
             ),
+            allow_empty_value=None,
             timeout_ms=timeout_ms,
         )
 

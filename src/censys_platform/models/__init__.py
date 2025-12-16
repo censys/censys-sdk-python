@@ -795,9 +795,17 @@ if TYPE_CHECKING:
         ResponseEnvelopeSearchQueryResponse,
         ResponseEnvelopeSearchQueryResponseTypedDict,
     )
+    from .responseenvelopethreatslistresponse import (
+        ResponseEnvelopeThreatsListResponse,
+        ResponseEnvelopeThreatsListResponseTypedDict,
+    )
     from .responseenvelopetrackedscan import (
         ResponseEnvelopeTrackedScan,
         ResponseEnvelopeTrackedScanTypedDict,
+    )
+    from .responseenvelopeusercredits import (
+        ResponseEnvelopeUserCredits,
+        ResponseEnvelopeUserCreditsTypedDict,
     )
     from .responseenvelopevaluecountsresponse import (
         ResponseEnvelopeValueCountsResponse,
@@ -983,6 +991,9 @@ if TYPE_CHECKING:
     from .threat_actor import ThreatActor, ThreatActorTypedDict
     from .threat_details import ThreatDetails, ThreatDetailsTypedDict
     from .threat_malware import ThreatMalware, ThreatMalwareTypedDict
+    from .threatlistitem import ThreatListItem, ThreatListItemTypedDict
+    from .threatreference import ThreatReference, ThreatReferenceTypedDict
+    from .threatslistresponse import ThreatsListResponse, ThreatsListResponseTypedDict
     from .tibia import Tibia, TibiaTypedDict
     from .tls import TLS, TLSTypedDict, VersionSelected
     from .tls_chain import TLSChain, TLSChainTypedDict
@@ -1025,6 +1036,7 @@ if TYPE_CHECKING:
     from .upnp_service import UpnpService, UpnpServiceTypedDict
     from .upnp_specversion import UpnpSpecVersion, UpnpSpecVersionTypedDict
     from .user import User, UserTypedDict
+    from .usercredits import UserCredits, UserCreditsTypedDict
     from .usernotice import UserNotice, UserNoticeTypedDict
     from .v3_accountmanagement_invite_user_to_orgop import (
         V3AccountmanagementInviteUserToOrgRequest,
@@ -1073,6 +1085,10 @@ if TYPE_CHECKING:
         V3AccountmanagementUpdateOrgMemberRequestTypedDict,
         V3AccountmanagementUpdateOrgMemberResponse,
         V3AccountmanagementUpdateOrgMemberResponseTypedDict,
+    )
+    from .v3_accountmanagement_user_creditsop import (
+        V3AccountmanagementUserCreditsResponse,
+        V3AccountmanagementUserCreditsResponseTypedDict,
     )
     from .v3_collections_crud_createop import (
         V3CollectionsCrudCreateGlobals,
@@ -1276,6 +1292,14 @@ if TYPE_CHECKING:
         V3ThreathuntingScansGetRequestTypedDict,
         V3ThreathuntingScansGetResponse,
         V3ThreathuntingScansGetResponseTypedDict,
+    )
+    from .v3_threathunting_threats_listop import (
+        V3ThreathuntingThreatsListGlobals,
+        V3ThreathuntingThreatsListGlobalsTypedDict,
+        V3ThreathuntingThreatsListRequest,
+        V3ThreathuntingThreatsListRequestTypedDict,
+        V3ThreathuntingThreatsListResponse,
+        V3ThreathuntingThreatsListResponseTypedDict,
     )
     from .v3_threathunting_value_countsop import (
         V3ThreathuntingValueCountsGlobals,
@@ -2122,8 +2146,12 @@ __all__ = [
     "ResponseEnvelopeSearchAggregateResponseTypedDict",
     "ResponseEnvelopeSearchQueryResponse",
     "ResponseEnvelopeSearchQueryResponseTypedDict",
+    "ResponseEnvelopeThreatsListResponse",
+    "ResponseEnvelopeThreatsListResponseTypedDict",
     "ResponseEnvelopeTrackedScan",
     "ResponseEnvelopeTrackedScanTypedDict",
+    "ResponseEnvelopeUserCredits",
+    "ResponseEnvelopeUserCreditsTypedDict",
     "ResponseEnvelopeValueCountsResponse",
     "ResponseEnvelopeValueCountsResponseTypedDict",
     "ResponseEnvelopeWebpropertyAsset",
@@ -2342,10 +2370,16 @@ __all__ = [
     "ThreatActorTypedDict",
     "ThreatDetails",
     "ThreatDetailsTypedDict",
+    "ThreatListItem",
+    "ThreatListItemTypedDict",
     "ThreatMalware",
     "ThreatMalwareTypedDict",
+    "ThreatReference",
+    "ThreatReferenceTypedDict",
     "ThreatSource",
     "ThreatTypedDict",
+    "ThreatsListResponse",
+    "ThreatsListResponseTypedDict",
     "Tibia",
     "TibiaTypedDict",
     "TorServiceDescriptor",
@@ -2382,6 +2416,8 @@ __all__ = [
     "UpnpSpecVersionTypedDict",
     "UpnpTypedDict",
     "User",
+    "UserCredits",
+    "UserCreditsTypedDict",
     "UserInteraction",
     "UserNotice",
     "UserNoticeTypedDict",
@@ -2418,6 +2454,8 @@ __all__ = [
     "V3AccountmanagementUpdateOrgMemberRequestTypedDict",
     "V3AccountmanagementUpdateOrgMemberResponse",
     "V3AccountmanagementUpdateOrgMemberResponseTypedDict",
+    "V3AccountmanagementUserCreditsResponse",
+    "V3AccountmanagementUserCreditsResponseTypedDict",
     "V3CollectionsCrudCreateGlobals",
     "V3CollectionsCrudCreateGlobalsTypedDict",
     "V3CollectionsCrudCreateRequest",
@@ -2568,6 +2606,12 @@ __all__ = [
     "V3ThreathuntingScansGetRequestTypedDict",
     "V3ThreathuntingScansGetResponse",
     "V3ThreathuntingScansGetResponseTypedDict",
+    "V3ThreathuntingThreatsListGlobals",
+    "V3ThreathuntingThreatsListGlobalsTypedDict",
+    "V3ThreathuntingThreatsListRequest",
+    "V3ThreathuntingThreatsListRequestTypedDict",
+    "V3ThreathuntingThreatsListResponse",
+    "V3ThreathuntingThreatsListResponseTypedDict",
     "V3ThreathuntingValueCountsGlobals",
     "V3ThreathuntingValueCountsGlobalsTypedDict",
     "V3ThreathuntingValueCountsRequest",
@@ -3444,8 +3488,12 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeSearchAggregateResponseTypedDict": ".responseenvelopesearchaggregateresponse",
     "ResponseEnvelopeSearchQueryResponse": ".responseenvelopesearchqueryresponse",
     "ResponseEnvelopeSearchQueryResponseTypedDict": ".responseenvelopesearchqueryresponse",
+    "ResponseEnvelopeThreatsListResponse": ".responseenvelopethreatslistresponse",
+    "ResponseEnvelopeThreatsListResponseTypedDict": ".responseenvelopethreatslistresponse",
     "ResponseEnvelopeTrackedScan": ".responseenvelopetrackedscan",
     "ResponseEnvelopeTrackedScanTypedDict": ".responseenvelopetrackedscan",
+    "ResponseEnvelopeUserCredits": ".responseenvelopeusercredits",
+    "ResponseEnvelopeUserCreditsTypedDict": ".responseenvelopeusercredits",
     "ResponseEnvelopeValueCountsResponse": ".responseenvelopevaluecountsresponse",
     "ResponseEnvelopeValueCountsResponseTypedDict": ".responseenvelopevaluecountsresponse",
     "ResponseEnvelopeWebpropertyAsset": ".responseenvelopewebpropertyasset",
@@ -3664,6 +3712,12 @@ _dynamic_imports: dict[str, str] = {
     "ThreatDetailsTypedDict": ".threat_details",
     "ThreatMalware": ".threat_malware",
     "ThreatMalwareTypedDict": ".threat_malware",
+    "ThreatListItem": ".threatlistitem",
+    "ThreatListItemTypedDict": ".threatlistitem",
+    "ThreatReference": ".threatreference",
+    "ThreatReferenceTypedDict": ".threatreference",
+    "ThreatsListResponse": ".threatslistresponse",
+    "ThreatsListResponseTypedDict": ".threatslistresponse",
     "Tibia": ".tibia",
     "TibiaTypedDict": ".tibia",
     "TLS": ".tls",
@@ -3706,6 +3760,8 @@ _dynamic_imports: dict[str, str] = {
     "UpnpSpecVersionTypedDict": ".upnp_specversion",
     "User": ".user",
     "UserTypedDict": ".user",
+    "UserCredits": ".usercredits",
+    "UserCreditsTypedDict": ".usercredits",
     "UserNotice": ".usernotice",
     "UserNoticeTypedDict": ".usernotice",
     "V3AccountmanagementInviteUserToOrgRequest": ".v3_accountmanagement_invite_user_to_orgop",
@@ -3740,6 +3796,8 @@ _dynamic_imports: dict[str, str] = {
     "V3AccountmanagementUpdateOrgMemberRequestTypedDict": ".v3_accountmanagement_update_org_memberop",
     "V3AccountmanagementUpdateOrgMemberResponse": ".v3_accountmanagement_update_org_memberop",
     "V3AccountmanagementUpdateOrgMemberResponseTypedDict": ".v3_accountmanagement_update_org_memberop",
+    "V3AccountmanagementUserCreditsResponse": ".v3_accountmanagement_user_creditsop",
+    "V3AccountmanagementUserCreditsResponseTypedDict": ".v3_accountmanagement_user_creditsop",
     "V3CollectionsCrudCreateGlobals": ".v3_collections_crud_createop",
     "V3CollectionsCrudCreateGlobalsTypedDict": ".v3_collections_crud_createop",
     "V3CollectionsCrudCreateRequest": ".v3_collections_crud_createop",
@@ -3893,6 +3951,12 @@ _dynamic_imports: dict[str, str] = {
     "V3ThreathuntingScansGetRequestTypedDict": ".v3_threathunting_scans_getop",
     "V3ThreathuntingScansGetResponse": ".v3_threathunting_scans_getop",
     "V3ThreathuntingScansGetResponseTypedDict": ".v3_threathunting_scans_getop",
+    "V3ThreathuntingThreatsListGlobals": ".v3_threathunting_threats_listop",
+    "V3ThreathuntingThreatsListGlobalsTypedDict": ".v3_threathunting_threats_listop",
+    "V3ThreathuntingThreatsListRequest": ".v3_threathunting_threats_listop",
+    "V3ThreathuntingThreatsListRequestTypedDict": ".v3_threathunting_threats_listop",
+    "V3ThreathuntingThreatsListResponse": ".v3_threathunting_threats_listop",
+    "V3ThreathuntingThreatsListResponseTypedDict": ".v3_threathunting_threats_listop",
     "V3ThreathuntingValueCountsGlobals": ".v3_threathunting_value_countsop",
     "V3ThreathuntingValueCountsGlobalsTypedDict": ".v3_threathunting_value_countsop",
     "V3ThreathuntingValueCountsRequest": ".v3_threathunting_value_countsop",

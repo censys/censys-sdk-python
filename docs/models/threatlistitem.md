@@ -1,0 +1,15 @@
+# ThreatListItem
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `added_at`                                                           | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | The date and time when the threat was added.                         |
+| `count`                                                              | *int*                                                                | :heavy_check_mark:                                                   | Total count of assets affected by this threat.                       |
+| `description`                                                        | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Detailed description of the threat.                                  |
+| `host_count`                                                         | *int*                                                                | :heavy_check_mark:                                                   | Number of hosts affected by this threat.                             |
+| `id`                                                                 | *str*                                                                | :heavy_check_mark:                                                   | Unique identifier of the threat.                                     |
+| `name`                                                               | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | Human-readable name of the threat.                                   |
+| `references`                                                         | List[[models.ThreatReference](../models/threatreference.md)]         | :heavy_minus_sign:                                                   | External reference links for the threat.                             |
+| `web_count`                                                          | *int*                                                                | :heavy_check_mark:                                                   | Number of web properties affected by this threat.                    |

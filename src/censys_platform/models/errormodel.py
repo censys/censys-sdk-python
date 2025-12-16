@@ -12,19 +12,14 @@ from typing import List, Optional
 class ErrorModelData(BaseModel):
     detail: Optional[str] = None
     r"""A human-readable explanation specific to this occurrence of the problem."""
-
     errors: OptionalNullable[List[ErrorDetail]] = UNSET
     r"""Optional list of individual error details"""
-
     instance: Optional[str] = None
     r"""A URI reference that identifies the specific occurrence of the problem."""
-
     status: Optional[int] = None
     r"""HTTP status code"""
-
     title: Optional[str] = None
     r"""A short, human-readable summary of the problem type. This value should not change between occurrences of the error."""
-
     type: Optional[str] = "about:blank"
     r"""A URI reference to human-readable documentation for the error."""
 

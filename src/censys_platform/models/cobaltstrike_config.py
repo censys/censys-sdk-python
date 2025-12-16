@@ -15,6 +15,7 @@ class CobaltStrikeConfigTypedDict(TypedDict):
     cookie_beacon: NotRequired[int]
     crypto_scheme: NotRequired[int]
     dns: NotRequired[bool]
+    host_header: NotRequired[str]
     http_get: NotRequired[CobaltStrikeHTTPConfigTypedDict]
     http_post: NotRequired[CobaltStrikeHTTPConfigTypedDict]
     jitter: NotRequired[int]
@@ -35,6 +36,8 @@ class CobaltStrikeConfig(BaseModel):
     crypto_scheme: Optional[int] = None
 
     dns: Optional[bool] = None
+
+    host_header: Optional[str] = None
 
     http_get: Optional[CobaltStrikeHTTPConfig] = None
 

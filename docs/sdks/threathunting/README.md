@@ -1,5 +1,4 @@
 # ThreatHunting
-(*threat_hunting*)
 
 ## Overview
 
@@ -10,6 +9,7 @@ Endpoints related to the Threat Hunting product
 * [get_host_observations_with_certificate](#get_host_observations_with_certificate) - Get host history for a certificate
 * [create_tracked_scan](#create_tracked_scan) - Live Discovery: Initiate a new scan
 * [get_tracked_scan_threat_hunting](#get_tracked_scan_threat_hunting) - Get scan status
+* [list_threats](#list_threats) - List active threats
 * [value_counts](#value_counts) - CensEye: Retrieve value counts to discover pivots
 
 ## get_host_observations_with_certificate
@@ -152,6 +152,49 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_threats
+
+Retrieve a list of active threats observed by Censys by aggregating threat IDs across hosts and web properties. Threats are active if their fingerprint has been identified on hosts or web properties by Censys scans. This information is also available on the [Explore Threats page in the Platform web UI](https://platform.censys.io/threats).
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-threathunting-threats-list" method="get" path="/v3/threat-hunting/threats" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.threat_hunting.list_threats(query="*")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          | Example                                                                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |                                                                                                                                                                                                                      |
+| `query`                                                                                                                                                                                                              | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | Optional CenQL filter to constrain threats list                                                                                                                                                                      | *                                                                                                                                                                                                                    |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |                                                                                                                                                                                                                      |
+
+### Response
+
+**[models.V3ThreathuntingThreatsListResponse](../../models/v3threathuntingthreatslistresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 422                   | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## value_counts

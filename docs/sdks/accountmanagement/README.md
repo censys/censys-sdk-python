@@ -1,5 +1,4 @@
 # AccountManagement
-(*account_management*)
 
 ## Overview
 
@@ -8,13 +7,14 @@ Endpoints related to the Account Management product
 ### Available Operations
 
 * [get_organization_details](#get_organization_details) - Get organization details
-* [get_organization_credits](#get_organization_credits) - Get organization credit statistics
+* [get_organization_credits](#get_organization_credits) - Get organization credit details
 * [get_organization_credit_usage](#get_organization_credit_usage) - Get organization credit usage
 * [invite_user_to_organization](#invite_user_to_organization) - Invite user to organization
 * [list_organization_members](#list_organization_members) - List organization members
 * [remove_organization_member](#remove_organization_member) - Remove member from organization
 * [update_organization_member](#update_organization_member) - Update a member's roles in an organization
 * [get_member_credit_usage](#get_member_credit_usage) - Get member credit usage
+* [get_user_credits](#get_user_credits) - Get Free user credit details
 
 ## get_organization_details
 
@@ -356,4 +356,44 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_user_credits
+
+Retrieve your Free user account credit balance and refresh information. To retrieve the credit balance for a Starter or Enterprise account, use the [get organization credit details endpoint](https://docs.censys.com/reference/v3-accountmanagement-org-credits).<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-accountmanagement-user-credits" method="get" path="/v3/accounts/users/credits" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.account_management.get_user_credits()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.V3AccountmanagementUserCreditsResponse](../../models/v3accountmanagementusercreditsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 404                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
