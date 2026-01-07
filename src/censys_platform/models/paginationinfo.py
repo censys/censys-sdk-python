@@ -8,14 +8,14 @@ from typing_extensions import NotRequired, TypedDict
 
 class PaginationInfoTypedDict(TypedDict):
     page_size: int
-    r"""The number of members requested per page."""
+    r"""The number of results requested per page."""
     next_page_token: NotRequired[str]
     r"""The token to use to retrieve the next page of results."""
 
 
 class PaginationInfo(BaseModel):
     page_size: int
-    r"""The number of members requested per page."""
+    r"""The number of results requested per page."""
 
     next_page_token: Optional[str] = None
     r"""The token to use to retrieve the next page of results."""

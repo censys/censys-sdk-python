@@ -10,6 +10,8 @@ from typing_extensions import NotRequired, TypedDict
 class CreditExpirationTypedDict(TypedDict):
     balance: int
     r"""The current balance of the credit expiration."""
+    initial_balance: int
+    r"""The initial balance of the credit expiration (i.e. how much was purchased)."""
     created_at: NotRequired[datetime]
     r"""The date and time the credit expiration was created."""
     expires_at: NotRequired[datetime]
@@ -19,6 +21,9 @@ class CreditExpirationTypedDict(TypedDict):
 class CreditExpiration(BaseModel):
     balance: int
     r"""The current balance of the credit expiration."""
+
+    initial_balance: int
+    r"""The initial balance of the credit expiration (i.e. how much was purchased)."""
 
     created_at: Optional[datetime] = None
     r"""The date and time the credit expiration was created."""
