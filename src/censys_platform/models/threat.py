@@ -24,6 +24,7 @@ class ThreatSource(str, Enum):
     RECOG = "recog"
     WAPPALYZER = "wappalyzer"
     THIRD_PARTY = "third_party"
+    HTML_META_EXTRACTOR = "html_meta_extractor"
 
 
 class ThreatTypedDict(TypedDict):

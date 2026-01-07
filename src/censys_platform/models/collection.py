@@ -5,7 +5,8 @@ from censys_platform.types import BaseModel, Nullable, UNSET_SENTINEL
 from datetime import datetime
 from enum import Enum
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class CollectionStatus(str, Enum):
@@ -37,6 +38,8 @@ class CollectionTypedDict(TypedDict):
     status: CollectionStatus
     status_reason: Nullable[StatusReason]
     total_assets: int
+    created_by: NotRequired[str]
+    r"""The ID of a Censys user who created the collection."""
 
 
 class Collection(BaseModel):
@@ -60,9 +63,12 @@ class Collection(BaseModel):
 
     total_assets: int
 
+    created_by: Optional[str] = None
+    r"""The ID of a Censys user who created the collection."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["created_by"]
         nullable_fields = ["status_reason"]
         null_default_fields = []
 

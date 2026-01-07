@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 from .http_favicon import HTTPFavicon, HTTPFaviconTypedDict
+from .http_redirectchainlink import (
+    HTTPRedirectChainLink,
+    HTTPRedirectChainLinkTypedDict,
+)
 from .http_repeatedheaders import HTTPRepeatedHeaders, HTTPRepeatedHeadersTypedDict
 from censys_platform.types import (
     BaseModel,
@@ -32,6 +36,8 @@ class HTTPTypedDict(TypedDict):
     r"""The title of the HTML page: the inner contents of the <title> tag in the response body, if present."""
     protocol: NotRequired[str]
     r"""The protocol field of the response, which includes the claimed HTTP version number."""
+    redirect_chain: NotRequired[Nullable[List[HTTPRedirectChainLinkTypedDict]]]
+    r"""If the scan redirects, the list of followup scans performed"""
     status_code: NotRequired[int]
     r"""A 3-digit integer result code indicating the result of the services.http.request."""
     status_reason: NotRequired[str]
@@ -68,6 +74,9 @@ class HTTP(BaseModel):
     protocol: Optional[str] = None
     r"""The protocol field of the response, which includes the claimed HTTP version number."""
 
+    redirect_chain: OptionalNullable[List[HTTPRedirectChainLink]] = UNSET
+    r"""If the scan redirects, the list of followup scans performed"""
+
     status_code: Optional[int] = None
     r"""A 3-digit integer result code indicating the result of the services.http.request."""
 
@@ -92,12 +101,18 @@ class HTTP(BaseModel):
             "html_tags",
             "html_title",
             "protocol",
+            "redirect_chain",
             "status_code",
             "status_reason",
             "supported_versions",
             "uri",
         ]
-        nullable_fields = ["favicons", "html_tags", "supported_versions"]
+        nullable_fields = [
+            "favicons",
+            "html_tags",
+            "redirect_chain",
+            "supported_versions",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

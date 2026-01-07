@@ -4,6 +4,7 @@ from __future__ import annotations
 from .chromedevtools import ChromeDevtools, ChromeDevtoolsTypedDict
 from .cobaltstrike import CobaltStrike, CobaltStrikeTypedDict
 from .elasticsearch import ElasticSearch, ElasticSearchTypedDict
+from .extractedendpointdata import ExtractedEndpointData, ExtractedEndpointDataTypedDict
 from .fortigate import Fortigate, FortigateTypedDict
 from .graphql import Graphql, GraphqlTypedDict
 from .http import HTTP, HTTPTypedDict
@@ -47,6 +48,7 @@ class EndpointScanStateTypedDict(TypedDict):
     cobalt_strike: NotRequired[CobaltStrikeTypedDict]
     elasticsearch: NotRequired[ElasticSearchTypedDict]
     endpoint_type: NotRequired[str]
+    extracted: NotRequired[ExtractedEndpointDataTypedDict]
     fortigate: NotRequired[FortigateTypedDict]
     graphql: NotRequired[GraphqlTypedDict]
     hostname: NotRequired[str]
@@ -82,6 +84,8 @@ class EndpointScanState(BaseModel):
     elasticsearch: Optional[ElasticSearch] = None
 
     endpoint_type: Optional[str] = None
+
+    extracted: Optional[ExtractedEndpointData] = None
 
     fortigate: Optional[Fortigate] = None
 
@@ -134,6 +138,7 @@ class EndpointScanState(BaseModel):
             "cobalt_strike",
             "elasticsearch",
             "endpoint_type",
+            "extracted",
             "fortigate",
             "graphql",
             "hostname",
