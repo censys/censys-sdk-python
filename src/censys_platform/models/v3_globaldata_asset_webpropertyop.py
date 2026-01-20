@@ -5,9 +5,10 @@ from .responseenvelopewebpropertyasset import (
     ResponseEnvelopeWebpropertyAsset,
     ResponseEnvelopeWebpropertyAssetTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
 from censys_platform.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 from datetime import datetime
+from pydantic import model_serializer
 from typing import Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -21,6 +22,22 @@ class V3GlobaldataAssetWebpropertyGlobals(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["organization_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class V3GlobaldataAssetWebpropertyRequestTypedDict(TypedDict):
@@ -49,6 +66,22 @@ class V3GlobaldataAssetWebpropertyRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
     r"""RFC3339 Timestamp to view a webproperty at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time"""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["organization_id", "at_time"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class V3GlobaldataAssetWebpropertyResponseTypedDict(TypedDict):

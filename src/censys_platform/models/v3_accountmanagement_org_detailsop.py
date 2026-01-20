@@ -5,8 +5,9 @@ from .responseenvelopeorganizationdetails import (
     ResponseEnvelopeOrganizationDetails,
     ResponseEnvelopeOrganizationDetailsTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
 from censys_platform.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
+from pydantic import model_serializer
 from typing import Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -29,6 +30,22 @@ class V3AccountmanagementOrgDetailsRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = False
     r"""Whether to include how many members are in this organization, split by role."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["include_member_counts"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class V3AccountmanagementOrgDetailsResponseTypedDict(TypedDict):

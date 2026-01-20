@@ -5,7 +5,8 @@ from .elasticsearch_resultsnodeinfo_nodes_nodedata_nodesettings_node import (
     ElasticSearchResultsNodeInfoNodesNodeDataNodeSettingsNode,
     ElasticSearchResultsNodeInfoNodesNodeDataNodeSettingsNodeTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -21,3 +22,19 @@ class ElasticSearchResultsNodeInfoNodesNodeDataNodeSettings(BaseModel):
     cluster_name: Optional[str] = None
 
     node: Optional[ElasticSearchResultsNodeInfoNodesNodeDataNodeSettingsNode] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["cluster_name", "node"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

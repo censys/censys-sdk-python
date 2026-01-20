@@ -5,8 +5,9 @@ from .responseenvelopethreatslistresponse import (
     ResponseEnvelopeThreatsListResponse,
     ResponseEnvelopeThreatsListResponseTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
 from censys_platform.utils import FieldMetadata, QueryParamMetadata
+from pydantic import model_serializer
 from typing import Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -20,6 +21,22 @@ class V3ThreathuntingThreatsListGlobals(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["organization_id"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class V3ThreathuntingThreatsListRequestTypedDict(TypedDict):
@@ -41,6 +58,22 @@ class V3ThreathuntingThreatsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
     r"""Optional CenQL filter to constrain threats list"""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["organization_id", "query"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class V3ThreathuntingThreatsListResponseTypedDict(TypedDict):

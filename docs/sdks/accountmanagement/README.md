@@ -7,14 +7,15 @@ Endpoints related to the Account Management product
 ### Available Operations
 
 * [get_organization_details](#get_organization_details) - Get organization details
-* [get_organization_credits](#get_organization_credits) - Get organization credit details
+* [get_organization_credits](#get_organization_credits) - Get organization credit balance
 * [get_organization_credit_usage](#get_organization_credit_usage) - Get organization credit usage
 * [invite_user_to_organization](#invite_user_to_organization) - Invite user to organization
 * [list_organization_members](#list_organization_members) - List organization members
 * [remove_organization_member](#remove_organization_member) - Remove member from organization
 * [update_organization_member](#update_organization_member) - Update a member's roles in an organization
-* [get_member_credit_usage](#get_member_credit_usage) - Get member credit usage
-* [get_user_credits](#get_user_credits) - Get Free user credit details
+* [get_member_credit_usage](#get_member_credit_usage) - Get organization member credit usage
+* [get_user_credits](#get_user_credits) - Get Free user credit balance
+* [get_user_credits_usage](#get_user_credits_usage) - Get Free user credit usage
 
 ## get_organization_details
 
@@ -101,20 +102,26 @@ with SDK(
 
 ## get_organization_credit_usage
 
-Retrieve credit consumption information for an organization for a specific day.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
+Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
 
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="v3-accountmanagement-org-credits-usage" method="get" path="/v3/accounts/organizations/{organization_id}/credits/usage" -->
 ```python
 from censys_platform import SDK
+from datetime import date
 
 
 with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.account_management.get_organization_credit_usage(organization_id="11111111-2222-3333-4444-555555555555", date_="2025-11-01")
+    res = sdk.account_management.get_organization_credit_usage(request={
+        "organization_id": "11111111-2222-3333-4444-555555555555",
+        "date_": "2025-11-01",
+        "start_date": date.fromisoformat("2025-11-01"),
+        "end_date": date.fromisoformat("2025-12-01"),
+    })
 
     # Handle response
     print(res)
@@ -123,11 +130,10 @@ with SDK(
 
 ### Parameters
 
-| Parameter                                                                                                                                                                              | Type                                                                                                                                                                                   | Required                                                                                                                                                                               | Description                                                                                                                                                                            | Example                                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organization_id`                                                                                                                                                                      | *str*                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                     | The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. | 11111111-2222-3333-4444-555555555555                                                                                                                                                   |
-| `date_`                                                                                                                                                                                | *str*                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                     | The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06).                                                                                                          | 2025-11-01                                                                                                                                                                             |
-| `retries`                                                                                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                     | Configuration to override the default retry behavior of the client.                                                                                                                    |                                                                                                                                                                                        |
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                     | [models.V3AccountmanagementOrgCreditsUsageRequest](../../models/v3accountmanagementorgcreditsusagerequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
+| `retries`                                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                              | :heavy_minus_sign:                                                                                            | Configuration to override the default retry behavior of the client.                                           |
 
 ### Response
 
@@ -317,20 +323,27 @@ with SDK(
 
 ## get_member_credit_usage
 
-Retrieve credit consumption information for an organization member for a specific day.<br><br>This endpoint does not cost any credits to execute.
+Retrieve credit consumption information for an organization member over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
 
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="v3-accountmanagement-member-credits-usage" method="get" path="/v3/accounts/organizations/{organization_id}/members/{user_id}/credits/usage" -->
 ```python
 from censys_platform import SDK
+from datetime import date
 
 
 with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.account_management.get_member_credit_usage(organization_id="11111111-2222-3333-4444-555555555555", user_id="11111111-2222-3333-4444-555555555555", date_="2025-11-01")
+    res = sdk.account_management.get_member_credit_usage(request={
+        "organization_id": "11111111-2222-3333-4444-555555555555",
+        "user_id": "11111111-2222-3333-4444-555555555555",
+        "date_": "2025-11-01",
+        "start_date": date.fromisoformat("2025-11-01"),
+        "end_date": date.fromisoformat("2025-12-01"),
+    })
 
     # Handle response
     print(res)
@@ -339,12 +352,10 @@ with SDK(
 
 ### Parameters
 
-| Parameter                                                                                                                                                                              | Type                                                                                                                                                                                   | Required                                                                                                                                                                               | Description                                                                                                                                                                            | Example                                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organization_id`                                                                                                                                                                      | *str*                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                     | The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. | 11111111-2222-3333-4444-555555555555                                                                                                                                                   |
-| `user_id`                                                                                                                                                                              | *str*                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                     | The ID of a Censys user. You can obtain a user's ID by listing members of an organization.                                                                                             | 11111111-2222-3333-4444-555555555555                                                                                                                                                   |
-| `date_`                                                                                                                                                                                | *str*                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                     | The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06).                                                                                                          | 2025-11-01                                                                                                                                                                             |
-| `retries`                                                                                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                     | Configuration to override the default retry behavior of the client.                                                                                                                    |                                                                                                                                                                                        |
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                           | [models.V3AccountmanagementMemberCreditsUsageRequest](../../models/v3accountmanagementmembercreditsusagerequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
+| `retries`                                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                    | :heavy_minus_sign:                                                                                                  | Configuration to override the default retry behavior of the client.                                                 |
 
 ### Response
 
@@ -360,7 +371,7 @@ with SDK(
 
 ## get_user_credits
 
-Retrieve your Free user account credit balance and refresh information. To retrieve the credit balance for a Starter or Enterprise account, use the [get organization credit details endpoint](https://docs.censys.com/reference/v3-accountmanagement-org-credits).<br><br>This endpoint does not cost any credits to execute.
+Retrieve your Free user account credit balance and refresh information. To retrieve the credit balance for a Starter or Enterprise account, use the [get organization credit balance endpoint](https://docs.censys.com/reference/v3-accountmanagement-org-credits).<br><br>This endpoint does not cost any credits to execute.
 
 ### Example Usage
 
@@ -389,6 +400,52 @@ with SDK(
 ### Response
 
 **[models.V3AccountmanagementUserCreditsResponse](../../models/v3accountmanagementusercreditsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 404                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_user_credits_usage
+
+Retrieve your Free user account credit consumption information over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-accountmanagement-user-credits-usage" method="get" path="/v3/accounts/users/credits/usage" -->
+```python
+import censys_platform
+from censys_platform import SDK
+from datetime import date
+
+
+with SDK(
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.account_management.get_user_credits_usage(granularity=censys_platform.V3AccountmanagementUserCreditsUsageQueryParamGranularity.DAILY, date_="2025-11-01", start_date=date.fromisoformat("2025-11-01"), end_date=date.fromisoformat("2025-12-01"))
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                            | Type                                                                                                                                                                                                                                                                                 | Required                                                                                                                                                                                                                                                                             | Description                                                                                                                                                                                                                                                                          | Example                                                                                                                                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `granularity`                                                                                                                                                                                                                                                                        | [models.V3AccountmanagementUserCreditsUsageQueryParamGranularity](../../models/v3accountmanagementusercreditsusagequeryparamgranularity.md)                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                                                   | Whether to break down credit usage on a daily or monthly basis.                                                                                                                                                                                                                      | daily                                                                                                                                                                                                                                                                                |
+| `date_`                                                                                                                                                                                                                                                                              | *Optional[str]*                                                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                                                   | The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06). This field is deprecated and will be removed in a future version. Use start_date and end_date instead. The date must be on or after 2025-01-01 (the earliest date available for credit usage reports). | 2025-11-01                                                                                                                                                                                                                                                                           |
+| `start_date`                                                                                                                                                                                                                                                                         | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                                                                   | The start date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-01). Must be on or after 2025-01-01 (the earliest date available for credit usage reports).                                                                                                           | 2025-11-01                                                                                                                                                                                                                                                                           |
+| `end_date`                                                                                                                                                                                                                                                                           | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                                                                   | The end date for the credit usage report in YYYY-MM-DD format (e.g., 2025-12-01). If omitted, will default to today's date. The date range (end_date - start_date) cannot exceed 365 days (1 year).                                                                                  | 2025-12-01                                                                                                                                                                                                                                                                           |
+| `retries`                                                                                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                      |
+
+### Response
+
+**[models.V3AccountmanagementUserCreditsUsageResponse](../../models/v3accountmanagementusercreditsusageresponse.md)**
 
 ### Errors
 

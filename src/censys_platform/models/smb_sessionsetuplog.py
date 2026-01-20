@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 from .smb_headerlog import SmbHeaderLog, SmbHeaderLogTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -22,3 +23,21 @@ class SmbSessionSetupLog(BaseModel):
     setup_flags: Optional[int] = None
 
     target_name: Optional[str] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["header_log", "negotiate_flags", "setup_flags", "target_name"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

@@ -8,7 +8,8 @@ from .ssh_algorithmselection import (
 from .ssh_endpointid import SSHEndpointID, SSHEndpointIDTypedDict
 from .ssh_kexinitmessage import SSHKexInitMessage, SSHKexInitMessageTypedDict
 from .ssh_serverhostkey import SSHServerHostKey, SSHServerHostKeyTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -31,3 +32,27 @@ class SSH(BaseModel):
     kex_init_message: Optional[SSHKexInitMessage] = None
 
     server_host_key: Optional[SSHServerHostKey] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "algorithm_selection",
+                "endpoint_id",
+                "hassh_fingerprint",
+                "kex_init_message",
+                "server_host_key",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

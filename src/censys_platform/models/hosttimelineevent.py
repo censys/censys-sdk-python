@@ -9,7 +9,8 @@ from .reversednsresolved import ReverseDNSResolved, ReverseDNSResolvedTypedDict
 from .routeupdated import RouteUpdated, RouteUpdatedTypedDict
 from .servicescanned import ServiceScanned, ServiceScannedTypedDict
 from .whoisupdated import WhoisUpdated, WhoisUpdatedTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -44,3 +45,31 @@ class HostTimelineEvent(BaseModel):
     service_scanned: Optional[ServiceScanned] = None
 
     whois_updated: Optional[WhoisUpdated] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "endpoint_scanned",
+                "event_time",
+                "forward_dns_resolved",
+                "jarm_scanned",
+                "location_updated",
+                "reverse_dns_resolved",
+                "route_updated",
+                "service_scanned",
+                "whois_updated",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

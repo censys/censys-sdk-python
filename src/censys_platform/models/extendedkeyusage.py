@@ -211,95 +211,92 @@ class ExtendedKeyUsage(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "any",
-            "apple_code_signing",
-            "apple_code_signing_development",
-            "apple_code_signing_third_party",
-            "apple_crypto_development_env",
-            "apple_crypto_env",
-            "apple_crypto_maintenance_env",
-            "apple_crypto_production_env",
-            "apple_crypto_qos",
-            "apple_crypto_test_env",
-            "apple_crypto_tier0_qos",
-            "apple_crypto_tier1_qos",
-            "apple_crypto_tier2_qos",
-            "apple_crypto_tier3_qos",
-            "apple_ichat_encryption",
-            "apple_ichat_signing",
-            "apple_resource_signing",
-            "apple_software_update_signing",
-            "apple_system_identity",
-            "client_auth",
-            "code_signing",
-            "dvcs",
-            "eap_over_lan",
-            "eap_over_ppp",
-            "email_protection",
-            "ipsec_end_system",
-            "ipsec_intermediate_system_usage",
-            "ipsec_tunnel",
-            "ipsec_user",
-            "microsoft_ca_exchange",
-            "microsoft_cert_trust_list_signing",
-            "microsoft_csp_signature",
-            "microsoft_document_signing",
-            "microsoft_drm",
-            "microsoft_drm_individualization",
-            "microsoft_efs_recovery",
-            "microsoft_embedded_nt_crypto",
-            "microsoft_encrypted_file_system",
-            "microsoft_enrollment_agent",
-            "microsoft_kernel_mode_code_signing",
-            "microsoft_key_recovery_21",
-            "microsoft_key_recovery_3",
-            "microsoft_license_server",
-            "microsoft_licenses",
-            "microsoft_lifetime_signing",
-            "microsoft_mobile_device_software",
-            "microsoft_nt5_crypto",
-            "microsoft_oem_whql_crypto",
-            "microsoft_qualified_subordinate",
-            "microsoft_root_list_signer",
-            "microsoft_server_gated_crypto",
-            "microsoft_sgc_serialized",
-            "microsoft_smart_display",
-            "microsoft_smartcard_logon",
-            "microsoft_system_health",
-            "microsoft_system_health_loophole",
-            "microsoft_timestamp_signing",
-            "microsoft_whql_crypto",
-            "netscape_server_gated_crypto",
-            "ocsp_signing",
-            "sbgp_cert_aa_service_auth",
-            "server_auth",
-            "time_stamping",
-            "unknown",
-        ]
-        nullable_fields = ["unknown"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "any",
+                "apple_code_signing",
+                "apple_code_signing_development",
+                "apple_code_signing_third_party",
+                "apple_crypto_development_env",
+                "apple_crypto_env",
+                "apple_crypto_maintenance_env",
+                "apple_crypto_production_env",
+                "apple_crypto_qos",
+                "apple_crypto_test_env",
+                "apple_crypto_tier0_qos",
+                "apple_crypto_tier1_qos",
+                "apple_crypto_tier2_qos",
+                "apple_crypto_tier3_qos",
+                "apple_ichat_encryption",
+                "apple_ichat_signing",
+                "apple_resource_signing",
+                "apple_software_update_signing",
+                "apple_system_identity",
+                "client_auth",
+                "code_signing",
+                "dvcs",
+                "eap_over_lan",
+                "eap_over_ppp",
+                "email_protection",
+                "ipsec_end_system",
+                "ipsec_intermediate_system_usage",
+                "ipsec_tunnel",
+                "ipsec_user",
+                "microsoft_ca_exchange",
+                "microsoft_cert_trust_list_signing",
+                "microsoft_csp_signature",
+                "microsoft_document_signing",
+                "microsoft_drm",
+                "microsoft_drm_individualization",
+                "microsoft_efs_recovery",
+                "microsoft_embedded_nt_crypto",
+                "microsoft_encrypted_file_system",
+                "microsoft_enrollment_agent",
+                "microsoft_kernel_mode_code_signing",
+                "microsoft_key_recovery_21",
+                "microsoft_key_recovery_3",
+                "microsoft_license_server",
+                "microsoft_licenses",
+                "microsoft_lifetime_signing",
+                "microsoft_mobile_device_software",
+                "microsoft_nt5_crypto",
+                "microsoft_oem_whql_crypto",
+                "microsoft_qualified_subordinate",
+                "microsoft_root_list_signer",
+                "microsoft_server_gated_crypto",
+                "microsoft_sgc_serialized",
+                "microsoft_smart_display",
+                "microsoft_smartcard_logon",
+                "microsoft_system_health",
+                "microsoft_system_health_loophole",
+                "microsoft_timestamp_signing",
+                "microsoft_whql_crypto",
+                "netscape_server_gated_crypto",
+                "ocsp_signing",
+                "sbgp_cert_aa_service_auth",
+                "server_auth",
+                "time_stamping",
+                "unknown",
+            ]
+        )
+        nullable_fields = set(["unknown"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

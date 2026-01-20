@@ -5,7 +5,8 @@ from .ssh_algorithmselection_directionalgorithms import (
     SSHAlgorithmSelectionDirectionAlgorithms,
     SSHAlgorithmSelectionDirectionAlgorithmsTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -33,3 +34,26 @@ class SSHAlgorithmSelection(BaseModel):
     server_to_client_alg_group: Optional[SSHAlgorithmSelectionDirectionAlgorithms] = (
         None
     )
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "client_to_server_alg_group",
+                "host_key_algorithm",
+                "kex_algorithm",
+                "server_to_client_alg_group",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

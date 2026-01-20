@@ -5,18 +5,36 @@ from .responseenvelopecreditusagereport import (
     ResponseEnvelopeCreditUsageReport,
     ResponseEnvelopeCreditUsageReportTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
 from censys_platform.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
+from datetime import date
+from enum import Enum
 import pydantic
-from typing import Dict, List
-from typing_extensions import Annotated, TypedDict
+from pydantic import model_serializer
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
+
+
+class QueryParamGranularity(str, Enum):
+    r"""Whether to break down credit usage on a daily or monthly basis."""
+
+    DAILY = "daily"
+    MONTHLY = "monthly"
 
 
 class V3AccountmanagementOrgCreditsUsageRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
-    date_: str
-    r"""The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06)."""
+    date_: NotRequired[str]
+    r"""The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06). This field is deprecated and will be removed in a future version. Use start_date and end_date instead. The date must be on or after 2025-01-01 (the earliest date available for credit usage reports)."""
+    start_date: NotRequired[date]
+    r"""The start date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-01). Must be on or after 2025-01-01 (the earliest date available for credit usage reports)."""
+    end_date: NotRequired[date]
+    r"""The end date for the credit usage report in YYYY-MM-DD format (e.g., 2025-12-01). If omitted, will default to today's date. The date range (end_date - start_date) cannot exceed 365 days (1 year)."""
+    granularity: QueryParamGranularity
+    r"""Whether to break down credit usage on a daily or monthly basis."""
+    include_consumer_breakdown: NotRequired[bool]
+    r"""Whether to include a breakdown of individual users' consumption in the credit usage report."""
 
 
 class V3AccountmanagementOrgCreditsUsageRequest(BaseModel):
@@ -26,11 +44,53 @@ class V3AccountmanagementOrgCreditsUsageRequest(BaseModel):
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
     date_: Annotated[
-        str,
+        Optional[str],
         pydantic.Field(alias="date"),
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
-    ]
-    r"""The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06)."""
+    ] = None
+    r"""The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06). This field is deprecated and will be removed in a future version. Use start_date and end_date instead. The date must be on or after 2025-01-01 (the earliest date available for credit usage reports)."""
+
+    start_date: Annotated[
+        Optional[date],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = None
+    r"""The start date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-01). Must be on or after 2025-01-01 (the earliest date available for credit usage reports)."""
+
+    end_date: Annotated[
+        Optional[date],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = None
+    r"""The end date for the credit usage report in YYYY-MM-DD format (e.g., 2025-12-01). If omitted, will default to today's date. The date range (end_date - start_date) cannot exceed 365 days (1 year)."""
+
+    granularity: Annotated[
+        QueryParamGranularity,
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = QueryParamGranularity.DAILY
+    r"""Whether to break down credit usage on a daily or monthly basis."""
+
+    include_consumer_breakdown: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = False
+    r"""Whether to include a breakdown of individual users' consumption in the credit usage report."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["date", "start_date", "end_date", "include_consumer_breakdown"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class V3AccountmanagementOrgCreditsUsageResponseTypedDict(TypedDict):

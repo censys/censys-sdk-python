@@ -4,7 +4,8 @@ from __future__ import annotations
 from .nodeinfov0 import NodeInfoV0, NodeInfoV0TypedDict
 from .nodeinfov1 import NodeInfoV1, NodeInfoV1TypedDict
 from .nodeinfov2 import NodeInfoV2, NodeInfoV2TypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -21,3 +22,19 @@ class Iota(BaseModel):
     v1_info: Optional[NodeInfoV1] = None
 
     v2_info: Optional[NodeInfoV2] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["v0_info", "v1_info", "v2_info"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

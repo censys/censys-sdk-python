@@ -75,45 +75,42 @@ class CertificateParsed(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "extensions",
-            "issuer",
-            "issuer_dn",
-            "ja4x",
-            "redacted",
-            "serial_number",
-            "serial_number_hex",
-            "signature",
-            "subject",
-            "subject_dn",
-            "subject_key_info",
-            "unknown_extensions",
-            "validity_period",
-            "version",
-        ]
-        nullable_fields = ["unknown_extensions"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "extensions",
+                "issuer",
+                "issuer_dn",
+                "ja4x",
+                "redacted",
+                "serial_number",
+                "serial_number_hex",
+                "signature",
+                "subject",
+                "subject_dn",
+                "subject_key_info",
+                "unknown_extensions",
+                "validity_period",
+                "version",
+            ]
+        )
+        nullable_fields = set(["unknown_extensions"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

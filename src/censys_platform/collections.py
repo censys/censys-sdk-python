@@ -30,7 +30,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudListResponse:
         r"""List collections
 
-        List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
+        List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param page_token: page token for the requested page of collection results
@@ -135,7 +135,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudListResponse:
         r"""List collections
 
-        List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
+        List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param page_token: page token for the requested page of collection results
@@ -241,7 +241,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudCreateResponse:
         r"""Create a collection
 
-        Create a new collection.
+        Create a new collection.<br><br>This endpoint does not cost credits to execute.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_create_input_body:
@@ -354,7 +354,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudCreateResponse:
         r"""Create a collection
 
-        Create a new collection.
+        Create a new collection.<br><br>This endpoint does not cost credits to execute.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_create_input_body:
@@ -466,7 +466,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudDeleteResponse:
         r"""Delete a collection
 
-        Delete a collection.
+        Delete a collection.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -569,7 +569,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudDeleteResponse:
         r"""Delete a collection
 
-        Delete a collection.
+        Delete a collection.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -671,7 +671,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudGetResponse:
         r"""Get a collection
 
-        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.
+        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -773,7 +773,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudGetResponse:
         r"""Get a collection
 
-        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.
+        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -878,7 +878,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudUpdateResponse:
         r"""Update a collection
 
-        Update a collection's name, description, and/or query.
+        Update a collection's name, description, and/or query.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -994,7 +994,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudUpdateResponse:
         r"""Update a collection
 
-        Update a collection's name, description, and/or query.
+        Update a collection's name, description, and/or query.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1109,7 +1109,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsListEventsResponse:
         r"""Get a collection's events
 
-        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.
+        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.<br><br>This endpoint does not cost credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1211,7 +1211,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsListEventsResponse:
         r"""Get a collection's events
 
-        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.
+        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.<br><br>This endpoint does not cost credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
