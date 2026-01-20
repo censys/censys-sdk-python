@@ -5,8 +5,9 @@ from .responseenvelopeorganizationmemberslist import (
     ResponseEnvelopeOrganizationMembersList,
     ResponseEnvelopeOrganizationMembersListTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
 from censys_platform.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
+from pydantic import model_serializer
 from typing import Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
@@ -37,6 +38,22 @@ class V3AccountmanagementListOrgMembersRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
     r"""Pagination token for retrieving the next page of results"""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["page_size", "page_token"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
 
 
 class V3AccountmanagementListOrgMembersResponseTypedDict(TypedDict):

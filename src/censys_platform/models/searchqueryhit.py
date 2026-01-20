@@ -7,7 +7,8 @@ from .hostassetwithmatchedservices import (
     HostAssetWithMatchedServicesTypedDict,
 )
 from .webpropertyasset import WebpropertyAsset, WebpropertyAssetTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -24,3 +25,19 @@ class SearchQueryHit(BaseModel):
     host_v1: Optional[HostAssetWithMatchedServices] = None
 
     webproperty_v1: Optional[WebpropertyAsset] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["certificate_v1", "host_v1", "webproperty_v1"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

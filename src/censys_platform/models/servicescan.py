@@ -33,6 +33,7 @@ from .ethereum import Ethereum, EthereumTypedDict
 from .fox import Fox, FoxTypedDict
 from .ftp import Ftp, FtpTypedDict
 from .gearman import Gearman, GearmanTypedDict
+from .hajime import Hajime, HajimeTypedDict
 from .hidvertx import HidVertx, HidVertxTypedDict
 from .hikvision import Hikvision, HikvisionTypedDict
 from .ibmnje import Ibmnje, IbmnjeTypedDict
@@ -173,6 +174,7 @@ class ServiceScanTypedDict(TypedDict):
     fox: NotRequired[FoxTypedDict]
     ftp: NotRequired[FtpTypedDict]
     gearman: NotRequired[GearmanTypedDict]
+    hajime: NotRequired[HajimeTypedDict]
     hid_vertx: NotRequired[HidVertxTypedDict]
     hikvision: NotRequired[HikvisionTypedDict]
     ibmnje: NotRequired[IbmnjeTypedDict]
@@ -330,6 +332,8 @@ class ServiceScan(BaseModel):
     ftp: Optional[Ftp] = None
 
     gearman: Optional[Gearman] = None
+
+    hajime: Optional[Hajime] = None
 
     hid_vertx: Optional[HidVertx] = None
 
@@ -519,155 +523,153 @@ class ServiceScan(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "activemq",
-            "amqp",
-            "any_connect",
-            "asterisk_manager_interface",
-            "bacnet",
-            "banner",
-            "banner_hash_sha256",
-            "checkpoint_topology",
-            "chromecast",
-            "cisco_ipsla",
-            "cmore",
-            "coap",
-            "crestron_cp3",
-            "crestron_din_ap2",
-            "cwmp",
-            "darkcomet",
-            "darkgate",
-            "dcerpc",
-            "dhcpdiscover",
-            "dnp3",
-            "dns",
-            "dtls",
-            "dvr_ip",
-            "eip",
-            "elf_file",
-            "epmd",
-            "etcd",
-            "ethereum",
-            "fox",
-            "ftp",
-            "gearman",
-            "hid_vertx",
-            "hikvision",
-            "ibmnje",
-            "ike",
-            "imap",
-            "iota",
-            "ip",
-            "ipmi",
-            "ipp",
-            "is_success",
-            "iscsi",
-            "krpc",
-            "l2tp",
-            "ldap",
-            "lpd",
-            "mdns",
-            "memcached",
-            "mikrotik_winbox",
-            "minecraft",
-            "mms",
-            "modbus",
-            "monero_p2p",
-            "mongodb",
-            "mqtt",
-            "mssql",
-            "murmur",
-            "mysql",
-            "nats_io",
-            "nbd",
-            "nfs_mountd",
-            "nmea",
-            "ntp",
-            "ntrip",
-            "onc",
-            "onvif",
-            "opc_ua",
-            "openvpn",
-            "openvpn_mgmt",
-            "oracle",
-            "pc_anywhere",
-            "pgbouncer",
-            "pop3",
-            "port",
-            "portmap",
-            "postgres",
-            "pptp",
-            "profinet_cm",
-            "protocol",
-            "rdate",
-            "rdp",
-            "realport",
-            "redis",
-            "redline",
-            "redlion_crimson",
-            "representative_info",
-            "rifatron",
-            "ripple",
-            "rlogin",
-            "rocketmq",
-            "rtsp",
-            "s7",
-            "sap_router",
-            "scan_time",
-            "scpi",
-            "screenshots",
-            "ser2net",
-            "seven_days_to_die",
-            "sip",
-            "skinny",
-            "smb",
-            "smtp",
-            "snmp",
-            "socks",
-            "spice",
-            "ssdp",
-            "ssh",
-            "steam",
-            "tacacs_plus",
-            "team_viewer",
-            "telnet",
-            "tibia",
-            "tls",
-            "tplink_kasa",
-            "transport_protocol",
-            "unitronics_pcom",
-            "upnp",
-            "ventrilo",
-            "vnc",
-            "weblogic_t3",
-            "winrm",
-            "ws_discovery",
-            "x11",
-            "zeromq",
-        ]
-        nullable_fields = ["screenshots"]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "activemq",
+                "amqp",
+                "any_connect",
+                "asterisk_manager_interface",
+                "bacnet",
+                "banner",
+                "banner_hash_sha256",
+                "checkpoint_topology",
+                "chromecast",
+                "cisco_ipsla",
+                "cmore",
+                "coap",
+                "crestron_cp3",
+                "crestron_din_ap2",
+                "cwmp",
+                "darkcomet",
+                "darkgate",
+                "dcerpc",
+                "dhcpdiscover",
+                "dnp3",
+                "dns",
+                "dtls",
+                "dvr_ip",
+                "eip",
+                "elf_file",
+                "epmd",
+                "etcd",
+                "ethereum",
+                "fox",
+                "ftp",
+                "gearman",
+                "hajime",
+                "hid_vertx",
+                "hikvision",
+                "ibmnje",
+                "ike",
+                "imap",
+                "iota",
+                "ip",
+                "ipmi",
+                "ipp",
+                "is_success",
+                "iscsi",
+                "krpc",
+                "l2tp",
+                "ldap",
+                "lpd",
+                "mdns",
+                "memcached",
+                "mikrotik_winbox",
+                "minecraft",
+                "mms",
+                "modbus",
+                "monero_p2p",
+                "mongodb",
+                "mqtt",
+                "mssql",
+                "murmur",
+                "mysql",
+                "nats_io",
+                "nbd",
+                "nfs_mountd",
+                "nmea",
+                "ntp",
+                "ntrip",
+                "onc",
+                "onvif",
+                "opc_ua",
+                "openvpn",
+                "openvpn_mgmt",
+                "oracle",
+                "pc_anywhere",
+                "pgbouncer",
+                "pop3",
+                "port",
+                "portmap",
+                "postgres",
+                "pptp",
+                "profinet_cm",
+                "protocol",
+                "rdate",
+                "rdp",
+                "realport",
+                "redis",
+                "redline",
+                "redlion_crimson",
+                "representative_info",
+                "rifatron",
+                "ripple",
+                "rlogin",
+                "rocketmq",
+                "rtsp",
+                "s7",
+                "sap_router",
+                "scan_time",
+                "scpi",
+                "screenshots",
+                "ser2net",
+                "seven_days_to_die",
+                "sip",
+                "skinny",
+                "smb",
+                "smtp",
+                "snmp",
+                "socks",
+                "spice",
+                "ssdp",
+                "ssh",
+                "steam",
+                "tacacs_plus",
+                "team_viewer",
+                "telnet",
+                "tibia",
+                "tls",
+                "tplink_kasa",
+                "transport_protocol",
+                "unitronics_pcom",
+                "upnp",
+                "ventrilo",
+                "vnc",
+                "weblogic_t3",
+                "winrm",
+                "ws_discovery",
+                "x11",
+                "zeromq",
+            ]
+        )
+        nullable_fields = set(["screenshots"])
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

@@ -4,7 +4,8 @@ from __future__ import annotations
 from .etcd_v2 import EtcdV2, EtcdV2TypedDict
 from .etcd_v3 import EtcdV3, EtcdV3TypedDict
 from .etcd_version import EtcdVersion, EtcdVersionTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -21,3 +22,19 @@ class Etcd(BaseModel):
     v3: Optional[EtcdV3] = None
 
     version: Optional[EtcdVersion] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["v2", "v3", "version"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

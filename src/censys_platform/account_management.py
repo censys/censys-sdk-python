@@ -3,10 +3,11 @@
 from .basesdk import BaseSDK
 from censys_platform import models, utils
 from censys_platform._hooks import HookContext
-from censys_platform.types import OptionalNullable, UNSET
+from censys_platform.types import BaseModel, OptionalNullable, UNSET
 from censys_platform.utils.unmarshal_json_response import unmarshal_json_response
+from datetime import date
 from enum import Enum
-from typing import Any, Mapping, Optional, Union
+from typing import Any, Mapping, Optional, Union, cast
 
 
 class InviteUserToOrganizationAcceptEnum(str, Enum):
@@ -238,7 +239,7 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementOrgCreditsResponse:
-        r"""Get organization credit details
+        r"""Get organization credit balance
 
         Retrieve credit balance and expiration information for an organization. <br><br>Credits expire 12 months after they are acquired.<br><br>This endpoint does not cost any credits to execute.
 
@@ -336,7 +337,7 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementOrgCreditsResponse:
-        r"""Get organization credit details
+        r"""Get organization credit balance
 
         Retrieve credit balance and expiration information for an organization. <br><br>Credits expire 12 months after they are acquired.<br><br>This endpoint does not cost any credits to execute.
 
@@ -428,8 +429,10 @@ class AccountManagement(BaseSDK):
     def get_organization_credit_usage(
         self,
         *,
-        organization_id: str,
-        date_: str,
+        request: Union[
+            models.V3AccountmanagementOrgCreditsUsageRequest,
+            models.V3AccountmanagementOrgCreditsUsageRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -437,10 +440,9 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgCreditsUsageResponse:
         r"""Get organization credit usage
 
-        Retrieve credit consumption information for an organization for a specific day.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
 
-        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param date_: The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06).
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -456,10 +458,11 @@ class AccountManagement(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3AccountmanagementOrgCreditsUsageRequest(
-            organization_id=organization_id,
-            date_=date_,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3AccountmanagementOrgCreditsUsageRequest
+            )
+        request = cast(models.V3AccountmanagementOrgCreditsUsageRequest, request)
 
         req = self._build_request(
             method="GET",
@@ -529,8 +532,10 @@ class AccountManagement(BaseSDK):
     async def get_organization_credit_usage_async(
         self,
         *,
-        organization_id: str,
-        date_: str,
+        request: Union[
+            models.V3AccountmanagementOrgCreditsUsageRequest,
+            models.V3AccountmanagementOrgCreditsUsageRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -538,10 +543,9 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgCreditsUsageResponse:
         r"""Get organization credit usage
 
-        Retrieve credit consumption information for an organization for a specific day.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
 
-        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param date_: The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06).
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -557,10 +561,11 @@ class AccountManagement(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3AccountmanagementOrgCreditsUsageRequest(
-            organization_id=organization_id,
-            date_=date_,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3AccountmanagementOrgCreditsUsageRequest
+            )
+        request = cast(models.V3AccountmanagementOrgCreditsUsageRequest, request)
 
         req = self._build_request_async(
             method="GET",
@@ -1496,21 +1501,20 @@ class AccountManagement(BaseSDK):
     def get_member_credit_usage(
         self,
         *,
-        organization_id: str,
-        user_id: str,
-        date_: str,
+        request: Union[
+            models.V3AccountmanagementMemberCreditsUsageRequest,
+            models.V3AccountmanagementMemberCreditsUsageRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementMemberCreditsUsageResponse:
-        r"""Get member credit usage
+        r"""Get organization member credit usage
 
-        Retrieve credit consumption information for an organization member for a specific day.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit consumption information for an organization member over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
 
-        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
-        :param date_: The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06).
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1526,11 +1530,11 @@ class AccountManagement(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3AccountmanagementMemberCreditsUsageRequest(
-            organization_id=organization_id,
-            user_id=user_id,
-            date_=date_,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3AccountmanagementMemberCreditsUsageRequest
+            )
+        request = cast(models.V3AccountmanagementMemberCreditsUsageRequest, request)
 
         req = self._build_request(
             method="GET",
@@ -1600,21 +1604,20 @@ class AccountManagement(BaseSDK):
     async def get_member_credit_usage_async(
         self,
         *,
-        organization_id: str,
-        user_id: str,
-        date_: str,
+        request: Union[
+            models.V3AccountmanagementMemberCreditsUsageRequest,
+            models.V3AccountmanagementMemberCreditsUsageRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementMemberCreditsUsageResponse:
-        r"""Get member credit usage
+        r"""Get organization member credit usage
 
-        Retrieve credit consumption information for an organization member for a specific day.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit consumption information for an organization member over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
 
-        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
-        :param date_: The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06).
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1630,11 +1633,11 @@ class AccountManagement(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V3AccountmanagementMemberCreditsUsageRequest(
-            organization_id=organization_id,
-            user_id=user_id,
-            date_=date_,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3AccountmanagementMemberCreditsUsageRequest
+            )
+        request = cast(models.V3AccountmanagementMemberCreditsUsageRequest, request)
 
         req = self._build_request_async(
             method="GET",
@@ -1709,9 +1712,9 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementUserCreditsResponse:
-        r"""Get Free user credit details
+        r"""Get Free user credit balance
 
-        Retrieve your Free user account credit balance and refresh information. To retrieve the credit balance for a Starter or Enterprise account, use the [get organization credit details endpoint](https://docs.censys.com/reference/v3-accountmanagement-org-credits).<br><br>This endpoint does not cost any credits to execute.
+        Retrieve your Free user account credit balance and refresh information. To retrieve the credit balance for a Starter or Enterprise account, use the [get organization credit balance endpoint](https://docs.censys.com/reference/v3-accountmanagement-org-credits).<br><br>This endpoint does not cost any credits to execute.
 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1798,9 +1801,9 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementUserCreditsResponse:
-        r"""Get Free user credit details
+        r"""Get Free user credit balance
 
-        Retrieve your Free user account credit balance and refresh information. To retrieve the credit balance for a Starter or Enterprise account, use the [get organization credit details endpoint](https://docs.censys.com/reference/v3-accountmanagement-org-credits).<br><br>This endpoint does not cost any credits to execute.
+        Retrieve your Free user account credit balance and refresh information. To retrieve the credit balance for a Starter or Enterprise account, use the [get organization credit balance endpoint](https://docs.censys.com/reference/v3-accountmanagement-org-credits).<br><br>This endpoint does not cost any credits to execute.
 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1859,6 +1862,216 @@ class AccountManagement(BaseSDK):
             return models.V3AccountmanagementUserCreditsResponse(
                 result=unmarshal_json_response(
                     models.ResponseEnvelopeUserCredits, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "404", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def get_user_credits_usage(
+        self,
+        *,
+        granularity: models.V3AccountmanagementUserCreditsUsageQueryParamGranularity = models.V3AccountmanagementUserCreditsUsageQueryParamGranularity.DAILY,
+        date_: Optional[str] = None,
+        start_date: Optional[date] = None,
+        end_date: Optional[date] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3AccountmanagementUserCreditsUsageResponse:
+        r"""Get Free user credit usage
+
+        Retrieve your Free user account credit consumption information over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
+
+        :param granularity: Whether to break down credit usage on a daily or monthly basis.
+        :param date_: The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06). This field is deprecated and will be removed in a future version. Use start_date and end_date instead. The date must be on or after 2025-01-01 (the earliest date available for credit usage reports).
+        :param start_date: The start date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-01). Must be on or after 2025-01-01 (the earliest date available for credit usage reports).
+        :param end_date: The end date for the credit usage report in YYYY-MM-DD format (e.g., 2025-12-01). If omitted, will default to today's date. The date range (end_date - start_date) cannot exceed 365 days (1 year).
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3AccountmanagementUserCreditsUsageRequest(
+            date_=date_,
+            start_date=start_date,
+            end_date=end_date,
+            granularity=granularity,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/accounts/users/credits/usage",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-accountmanagement-user-credits-usage",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "404", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3AccountmanagementUserCreditsUsageResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeCreditUsageReport, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(http_res, "404", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def get_user_credits_usage_async(
+        self,
+        *,
+        granularity: models.V3AccountmanagementUserCreditsUsageQueryParamGranularity = models.V3AccountmanagementUserCreditsUsageQueryParamGranularity.DAILY,
+        date_: Optional[str] = None,
+        start_date: Optional[date] = None,
+        end_date: Optional[date] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3AccountmanagementUserCreditsUsageResponse:
+        r"""Get Free user credit usage
+
+        Retrieve your Free user account credit consumption information over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
+
+        :param granularity: Whether to break down credit usage on a daily or monthly basis.
+        :param date_: The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06). This field is deprecated and will be removed in a future version. Use start_date and end_date instead. The date must be on or after 2025-01-01 (the earliest date available for credit usage reports).
+        :param start_date: The start date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-01). Must be on or after 2025-01-01 (the earliest date available for credit usage reports).
+        :param end_date: The end date for the credit usage report in YYYY-MM-DD format (e.g., 2025-12-01). If omitted, will default to today's date. The date range (end_date - start_date) cannot exceed 365 days (1 year).
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3AccountmanagementUserCreditsUsageRequest(
+            date_=date_,
+            start_date=start_date,
+            end_date=end_date,
+            granularity=granularity,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/accounts/users/credits/usage",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-accountmanagement-user-credits-usage",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["401", "404", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3AccountmanagementUserCreditsUsageResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeCreditUsageReport, http_res
                 ),
                 headers=utils.get_response_headers(http_res.headers),
             )

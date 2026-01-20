@@ -5,7 +5,8 @@ from .dhcpdiscover_ipaddress import (
     DhcpdiscoverIPAddress,
     DhcpdiscoverIPAddressTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -70,3 +71,41 @@ class DhcpdiscoverDeviceInfo(BaseModel):
     video_input_channels: Optional[int] = None
 
     video_output_channels: Optional[int] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "alarm_input_channels",
+                "alarm_output_channels",
+                "device_class",
+                "device_id",
+                "device_type",
+                "http_port",
+                "ipv4_address",
+                "ipv6_address",
+                "machine_group",
+                "machine_name",
+                "manufacturer",
+                "port",
+                "remote_video_input_channels",
+                "serial_number",
+                "unlogin_func_mask",
+                "vendor",
+                "version",
+                "video_input_channels",
+                "video_output_channels",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

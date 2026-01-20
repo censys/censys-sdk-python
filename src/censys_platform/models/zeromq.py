@@ -3,7 +3,8 @@
 from __future__ import annotations
 from .zeromq_greeting import ZeromqGreeting, ZeromqGreetingTypedDict
 from .zeromq_handshake import ZeromqHandshake, ZeromqHandshakeTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Dict, Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -23,3 +24,21 @@ class Zeromq(BaseModel):
     subscription_data: Optional[str] = None
 
     subscription_match: Optional[Dict[str, bool]] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["greeting", "handshake", "subscription_data", "subscription_match"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

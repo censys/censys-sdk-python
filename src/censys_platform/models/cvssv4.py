@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 from .cvssv4_components import CVSSv4Components, CVSSv4ComponentsTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -23,3 +24,19 @@ class CVSSv4(BaseModel):
 
     vector: Optional[str] = None
     r"""The path, method, or scenario used to exploit the vulnerability. Each section represents components that contribute to the overall CVSS score."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["components", "score", "vector"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

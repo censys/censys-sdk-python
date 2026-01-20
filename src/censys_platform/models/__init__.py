@@ -124,7 +124,15 @@ if TYPE_CHECKING:
     from .cpe import Cpe, CpeTypedDict
     from .cpe_lifecycle import CPELifeCycle, CPELifeCycleTypedDict
     from .creditexpiration import CreditExpiration, CreditExpirationTypedDict
-    from .creditusagereport import CreditUsageReport, CreditUsageReportTypedDict
+    from .creditusagereport import (
+        CreditUsageReport,
+        CreditUsageReportTypedDict,
+        Granularity,
+    )
+    from .creditusagereportperiod import (
+        CreditUsageReportPeriod,
+        CreditUsageReportPeriodTypedDict,
+    )
     from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
     from .crestrondinap2 import CrestronDinAp2, CrestronDinAp2TypedDict
     from .crudcreateinputbody import CrudCreateInputBody, CrudCreateInputBodyTypedDict
@@ -360,6 +368,7 @@ if TYPE_CHECKING:
     from .generalnames import GeneralNames, GeneralNamesTypedDict
     from .generalsubtreeip import GeneralSubtreeIP, GeneralSubtreeIPTypedDict
     from .graphql import Graphql, GraphqlTypedDict
+    from .hajime import Hajime, HajimeTypedDict
     from .hidvertx import HidVertx, HidVertxTypedDict
     from .hikvision import Hikvision, HikvisionTypedDict
     from .hikvision_platform import HikvisionPlatform, HikvisionPlatformTypedDict
@@ -1068,12 +1077,14 @@ if TYPE_CHECKING:
         V3AccountmanagementListOrgMembersResponseTypedDict,
     )
     from .v3_accountmanagement_member_credits_usageop import (
+        V3AccountmanagementMemberCreditsUsageQueryParamGranularity,
         V3AccountmanagementMemberCreditsUsageRequest,
         V3AccountmanagementMemberCreditsUsageRequestTypedDict,
         V3AccountmanagementMemberCreditsUsageResponse,
         V3AccountmanagementMemberCreditsUsageResponseTypedDict,
     )
     from .v3_accountmanagement_org_credits_usageop import (
+        QueryParamGranularity,
         V3AccountmanagementOrgCreditsUsageRequest,
         V3AccountmanagementOrgCreditsUsageRequestTypedDict,
         V3AccountmanagementOrgCreditsUsageResponse,
@@ -1102,6 +1113,13 @@ if TYPE_CHECKING:
         V3AccountmanagementUpdateOrgMemberRequestTypedDict,
         V3AccountmanagementUpdateOrgMemberResponse,
         V3AccountmanagementUpdateOrgMemberResponseTypedDict,
+    )
+    from .v3_accountmanagement_user_credits_usageop import (
+        V3AccountmanagementUserCreditsUsageQueryParamGranularity,
+        V3AccountmanagementUserCreditsUsageRequest,
+        V3AccountmanagementUserCreditsUsageRequestTypedDict,
+        V3AccountmanagementUserCreditsUsageResponse,
+        V3AccountmanagementUserCreditsUsageResponseTypedDict,
     )
     from .v3_accountmanagement_user_creditsop import (
         V3AccountmanagementUserCreditsResponse,
@@ -1493,6 +1511,8 @@ __all__ = [
     "CreditExpiration",
     "CreditExpirationTypedDict",
     "CreditUsageReport",
+    "CreditUsageReportPeriod",
+    "CreditUsageReportPeriodTypedDict",
     "CreditUsageReportTypedDict",
     "CrestronCp3",
     "CrestronCp3TypedDict",
@@ -1687,6 +1707,7 @@ __all__ = [
     "GeneralNamesTypedDict",
     "GeneralSubtreeIP",
     "GeneralSubtreeIPTypedDict",
+    "Granularity",
     "Graphql",
     "GraphqlTypedDict",
     "HTTP",
@@ -1698,6 +1719,8 @@ __all__ = [
     "HTTPRepeatedHeaders",
     "HTTPRepeatedHeadersTypedDict",
     "HTTPTypedDict",
+    "Hajime",
+    "HajimeTypedDict",
     "HidVertx",
     "HidVertxTypedDict",
     "Hikvision",
@@ -2088,6 +2111,7 @@ __all__ = [
     "QcStatementsQcType",
     "QcStatementsQcTypeTypedDict",
     "QcStatementsTypedDict",
+    "QueryParamGranularity",
     "RCode",
     "RSACryptographicKey",
     "RSACryptographicKeyTypedDict",
@@ -2456,6 +2480,7 @@ __all__ = [
     "V3AccountmanagementListOrgMembersRequestTypedDict",
     "V3AccountmanagementListOrgMembersResponse",
     "V3AccountmanagementListOrgMembersResponseTypedDict",
+    "V3AccountmanagementMemberCreditsUsageQueryParamGranularity",
     "V3AccountmanagementMemberCreditsUsageRequest",
     "V3AccountmanagementMemberCreditsUsageRequestTypedDict",
     "V3AccountmanagementMemberCreditsUsageResponse",
@@ -2482,6 +2507,11 @@ __all__ = [
     "V3AccountmanagementUpdateOrgMemberResponseTypedDict",
     "V3AccountmanagementUserCreditsResponse",
     "V3AccountmanagementUserCreditsResponseTypedDict",
+    "V3AccountmanagementUserCreditsUsageQueryParamGranularity",
+    "V3AccountmanagementUserCreditsUsageRequest",
+    "V3AccountmanagementUserCreditsUsageRequestTypedDict",
+    "V3AccountmanagementUserCreditsUsageResponse",
+    "V3AccountmanagementUserCreditsUsageResponseTypedDict",
     "V3CollectionsCrudCreateGlobals",
     "V3CollectionsCrudCreateGlobalsTypedDict",
     "V3CollectionsCrudCreateRequest",
@@ -2826,6 +2856,9 @@ _dynamic_imports: dict[str, str] = {
     "CreditExpirationTypedDict": ".creditexpiration",
     "CreditUsageReport": ".creditusagereport",
     "CreditUsageReportTypedDict": ".creditusagereport",
+    "Granularity": ".creditusagereport",
+    "CreditUsageReportPeriod": ".creditusagereportperiod",
+    "CreditUsageReportPeriodTypedDict": ".creditusagereportperiod",
     "CrestronCp3": ".crestroncp3",
     "CrestronCp3TypedDict": ".crestroncp3",
     "CrestronDinAp2": ".crestrondinap2",
@@ -3054,6 +3087,8 @@ _dynamic_imports: dict[str, str] = {
     "GeneralSubtreeIPTypedDict": ".generalsubtreeip",
     "Graphql": ".graphql",
     "GraphqlTypedDict": ".graphql",
+    "Hajime": ".hajime",
+    "HajimeTypedDict": ".hajime",
     "HidVertx": ".hidvertx",
     "HidVertxTypedDict": ".hidvertx",
     "Hikvision": ".hikvision",
@@ -3807,10 +3842,12 @@ _dynamic_imports: dict[str, str] = {
     "V3AccountmanagementListOrgMembersRequestTypedDict": ".v3_accountmanagement_list_org_membersop",
     "V3AccountmanagementListOrgMembersResponse": ".v3_accountmanagement_list_org_membersop",
     "V3AccountmanagementListOrgMembersResponseTypedDict": ".v3_accountmanagement_list_org_membersop",
+    "V3AccountmanagementMemberCreditsUsageQueryParamGranularity": ".v3_accountmanagement_member_credits_usageop",
     "V3AccountmanagementMemberCreditsUsageRequest": ".v3_accountmanagement_member_credits_usageop",
     "V3AccountmanagementMemberCreditsUsageRequestTypedDict": ".v3_accountmanagement_member_credits_usageop",
     "V3AccountmanagementMemberCreditsUsageResponse": ".v3_accountmanagement_member_credits_usageop",
     "V3AccountmanagementMemberCreditsUsageResponseTypedDict": ".v3_accountmanagement_member_credits_usageop",
+    "QueryParamGranularity": ".v3_accountmanagement_org_credits_usageop",
     "V3AccountmanagementOrgCreditsUsageRequest": ".v3_accountmanagement_org_credits_usageop",
     "V3AccountmanagementOrgCreditsUsageRequestTypedDict": ".v3_accountmanagement_org_credits_usageop",
     "V3AccountmanagementOrgCreditsUsageResponse": ".v3_accountmanagement_org_credits_usageop",
@@ -3831,6 +3868,11 @@ _dynamic_imports: dict[str, str] = {
     "V3AccountmanagementUpdateOrgMemberRequestTypedDict": ".v3_accountmanagement_update_org_memberop",
     "V3AccountmanagementUpdateOrgMemberResponse": ".v3_accountmanagement_update_org_memberop",
     "V3AccountmanagementUpdateOrgMemberResponseTypedDict": ".v3_accountmanagement_update_org_memberop",
+    "V3AccountmanagementUserCreditsUsageQueryParamGranularity": ".v3_accountmanagement_user_credits_usageop",
+    "V3AccountmanagementUserCreditsUsageRequest": ".v3_accountmanagement_user_credits_usageop",
+    "V3AccountmanagementUserCreditsUsageRequestTypedDict": ".v3_accountmanagement_user_credits_usageop",
+    "V3AccountmanagementUserCreditsUsageResponse": ".v3_accountmanagement_user_credits_usageop",
+    "V3AccountmanagementUserCreditsUsageResponseTypedDict": ".v3_accountmanagement_user_credits_usageop",
     "V3AccountmanagementUserCreditsResponse": ".v3_accountmanagement_user_creditsop",
     "V3AccountmanagementUserCreditsResponseTypedDict": ".v3_accountmanagement_user_creditsop",
     "V3CollectionsCrudCreateGlobals": ".v3_collections_crud_createop",

@@ -5,7 +5,8 @@ from .ipmi_capabilities import IpmiCapabilities, IpmiCapabilitiesTypedDict
 from .ipmi_commandpayload import IpmiCommandPayload, IpmiCommandPayloadTypedDict
 from .ipmi_rmcpheader import IpmiRMCPHeader, IpmiRMCPHeaderTypedDict
 from .ipmi_sessionheader import IpmiSessionHeader, IpmiSessionHeaderTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -30,3 +31,21 @@ class Ipmi(BaseModel):
     rmcp_header: Optional[IpmiRMCPHeader] = None
 
     session_header: Optional[IpmiSessionHeader] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            ["capabilities", "command_payload", "raw", "rmcp_header", "session_header"]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

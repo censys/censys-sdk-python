@@ -95,52 +95,51 @@ class CertificateExtensions(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "authority_info_access",
-            "authority_key_id",
-            "basic_constraints",
-            "cabf_organization_id",
-            "certificate_policies",
-            "crl_distribution_points",
-            "ct_poison",
-            "extended_key_usage",
-            "issuer_alt_name",
-            "key_usage",
-            "name_constraints",
-            "qc_statements",
-            "signed_certificate_timestamps",
-            "subject_alt_name",
-            "subject_key_id",
-            "tor_service_descriptors",
-        ]
-        nullable_fields = [
-            "certificate_policies",
-            "crl_distribution_points",
-            "signed_certificate_timestamps",
-            "tor_service_descriptors",
-        ]
-        null_default_fields = []
-
+        optional_fields = set(
+            [
+                "authority_info_access",
+                "authority_key_id",
+                "basic_constraints",
+                "cabf_organization_id",
+                "certificate_policies",
+                "crl_distribution_points",
+                "ct_poison",
+                "extended_key_usage",
+                "issuer_alt_name",
+                "key_usage",
+                "name_constraints",
+                "qc_statements",
+                "signed_certificate_timestamps",
+                "subject_alt_name",
+                "subject_key_id",
+                "tor_service_descriptors",
+            ]
+        )
+        nullable_fields = set(
+            [
+                "certificate_policies",
+                "crl_distribution_points",
+                "signed_certificate_timestamps",
+                "tor_service_descriptors",
+            ]
+        )
         serialized = handler(self)
-
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
-            serialized.pop(k, None)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
+            if val != UNSET_SENTINEL:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
+                    m[k] = val
 
         return m

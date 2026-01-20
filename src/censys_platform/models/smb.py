@@ -5,7 +5,8 @@ from .smb_negotiationlog import SmbNegotiationLog, SmbNegotiationLogTypedDict
 from .smb_sessionsetuplog import SmbSessionSetupLog, SmbSessionSetupLogTypedDict
 from .smb_smbcapabilities import SmbSmbCapabilities, SmbSmbCapabilitiesTypedDict
 from .smb_smbversions import SmbSmbVersions, SmbSmbVersionsTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -48,3 +49,31 @@ class Smb(BaseModel):
     smb_version: Optional[SmbSmbVersions] = None
 
     smbv1_support: Optional[bool] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "group_name",
+                "has_ntlm",
+                "native_os",
+                "negotiation_log",
+                "ntlm",
+                "session_setup_log",
+                "smb_capabilities",
+                "smb_version",
+                "smbv1_support",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

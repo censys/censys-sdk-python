@@ -9,7 +9,8 @@ from .elasticsearch_resultsnodeinfo_clustercombinedinfo_indices_store import (
     ElasticSearchResultsNodeInfoClusterCombinedInfoIndicesStore,
     ElasticSearchResultsNodeInfoClusterCombinedInfoIndicesStoreTypedDict,
 )
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -30,3 +31,19 @@ class ElasticSearchResultsNodeInfoClusterCombinedInfoIndices(BaseModel):
     docs: Optional[ElasticSearchResultsNodeInfoClusterCombinedInfoIndicesDocs] = None
 
     store: Optional[ElasticSearchResultsNodeInfoClusterCombinedInfoIndicesStore] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(["count", "docs", "store"])
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m

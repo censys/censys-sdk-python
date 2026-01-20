@@ -17,7 +17,7 @@ Endpoints related to the Collections product
 
 ## list
 
-List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.
+List all collections for an organization. Retrieved information includes collection ID, name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
 
 ### Example Usage
 
@@ -61,7 +61,7 @@ with SDK(
 
 ## create
 
-Create a new collection.
+Create a new collection.<br><br>This endpoint does not cost credits to execute.
 
 ### Example Usage
 
@@ -108,7 +108,7 @@ with SDK(
 
 ## delete
 
-Delete a collection.
+Delete a collection.<br><br>This endpoint does not cost credits to execute.
 
 ### Example Usage
 
@@ -151,7 +151,7 @@ with SDK(
 
 ## get
 
-Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.
+Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
 
 ### Example Usage
 
@@ -194,7 +194,7 @@ with SDK(
 
 ## update
 
-Update a collection's name, description, and/or query.
+Update a collection's name, description, and/or query.<br><br>This endpoint does not cost credits to execute.
 
 ### Example Usage
 
@@ -242,7 +242,7 @@ with SDK(
 
 ## list_events
 
-Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.
+Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.<br><br>This endpoint does not cost credits to execute.
 
 ### Example Usage
 

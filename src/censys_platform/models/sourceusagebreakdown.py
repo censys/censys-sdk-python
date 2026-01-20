@@ -7,14 +7,24 @@ from typing_extensions import TypedDict
 
 class SourceUsageBreakdownTypedDict(TypedDict):
     api: int
-    r"""The amount of credits consumed through the PlatformAPI."""
+    r"""The amount of credits consumed through the Platform API."""
+    auto_replenishment: int
+    r"""The amount of credits consumed through auto-replenishment."""
+    other: int
+    r"""The amount of credits consumed through other operations."""
     ui: int
     r"""The amount of credits consumed through the Platform UI."""
 
 
 class SourceUsageBreakdown(BaseModel):
     api: int
-    r"""The amount of credits consumed through the PlatformAPI."""
+    r"""The amount of credits consumed through the Platform API."""
+
+    auto_replenishment: int
+    r"""The amount of credits consumed through auto-replenishment."""
+
+    other: int
+    r"""The amount of credits consumed through other operations."""
 
     ui: int
     r"""The amount of credits consumed through the Platform UI."""

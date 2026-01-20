@@ -6,7 +6,8 @@ from .rdp_connectresponse import RdpConnectResponse, RdpConnectResponseTypedDict
 from .rdp_protocolflags import RdpProtocolFlags, RdpProtocolFlagsTypedDict
 from .rdp_securityprotocol import RdpSecurityProtocol, RdpSecurityProtocolTypedDict
 from .rdp_version import RdpVersion, RdpVersionTypedDict
-from censys_platform.types import BaseModel
+from censys_platform.types import BaseModel, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
@@ -35,3 +36,29 @@ class Rdp(BaseModel):
     x224_cc_pdu_dstref: Optional[int] = None
 
     x224_cc_pdu_srcref: Optional[int] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = set(
+            [
+                "certificate_info",
+                "connect_response",
+                "protocol_flags",
+                "selected_security_protocol",
+                "version",
+                "x224_cc_pdu_dstref",
+                "x224_cc_pdu_srcref",
+            ]
+        )
+        serialized = handler(self)
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+
+            if val != UNSET_SENTINEL:
+                if val is not None or k not in optional_fields:
+                    m[k] = val
+
+        return m
