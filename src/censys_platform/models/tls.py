@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .tls_chain import TLSChain, TLSChainTypedDict
 from .tls_versiondata import TLSVersionData, TLSVersionDataTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -11,12 +12,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class VersionSelected(str, Enum):
+class VersionSelected(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""Certificate version v1(0), v2(1), v3(2)."""
 
     UNKNOWN = ""
@@ -65,6 +66,15 @@ class TLS(BaseModel):
     r"""Certificate version v1(0), v2(1), v3(2)."""
 
     versions: OptionalNullable[List[TLSVersionData]] = UNSET
+
+    @field_serializer("version_selected")
+    def serialize_version_selected(self, value):
+        if isinstance(value, str):
+            try:
+                return models.VersionSelected(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

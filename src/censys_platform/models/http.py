@@ -7,6 +7,7 @@ from .http_redirectchainlink import (
     HTTPRedirectChainLinkTypedDict,
 )
 from .http_repeatedheaders import HTTPRepeatedHeaders, HTTPRepeatedHeadersTypedDict
+from .networklog import NetworkLog, NetworkLogTypedDict
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -34,6 +35,7 @@ class HTTPTypedDict(TypedDict):
     r"""A list of the <title> and <meta> tags from services.http.response.body."""
     html_title: NotRequired[str]
     r"""The title of the HTML page: the inner contents of the <title> tag in the response body, if present."""
+    network_log: NotRequired[NetworkLogTypedDict]
     protocol: NotRequired[str]
     r"""The protocol field of the response, which includes the claimed HTTP version number."""
     redirect_chain: NotRequired[Nullable[List[HTTPRedirectChainLinkTypedDict]]]
@@ -71,6 +73,8 @@ class HTTP(BaseModel):
     html_title: Optional[str] = None
     r"""The title of the HTML page: the inner contents of the <title> tag in the response body, if present."""
 
+    network_log: Optional[NetworkLog] = None
+
     protocol: Optional[str] = None
     r"""The protocol field of the response, which includes the claimed HTTP version number."""
 
@@ -101,6 +105,7 @@ class HTTP(BaseModel):
                 "headers",
                 "html_tags",
                 "html_title",
+                "network_log",
                 "protocol",
                 "redirect_chain",
                 "status_code",

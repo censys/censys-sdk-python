@@ -4,6 +4,7 @@ from __future__ import annotations
 from .cvss import Cvss, CvssTypedDict
 from .evidence import Evidence, EvidenceTypedDict
 from .metrics import Metrics, MetricsTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -12,18 +13,18 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class RiskSource(str, Enum):
+class RiskSource(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     CENSYS = "censys"
     CVE = "cve"
 
 
-class Severity(str, Enum):
+class Severity(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     LOW = "low"
     MEDIUM = "medium"
@@ -31,7 +32,7 @@ class Severity(str, Enum):
     CRITICAL = "critical"
 
 
-class RiskSource1(str, Enum):
+class RiskSource1(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
@@ -73,6 +74,33 @@ class Risk(BaseModel):
     source: Optional[RiskSource1] = None
 
     year: Optional[int] = None
+
+    @field_serializer("risk_source")
+    def serialize_risk_source(self, value):
+        if isinstance(value, str):
+            try:
+                return models.RiskSource(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("severity")
+    def serialize_severity(self, value):
+        if isinstance(value, str):
+            try:
+                return models.Severity(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("source")
+    def serialize_source(self, value):
+        if isinstance(value, str):
+            try:
+                return models.RiskSource1(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

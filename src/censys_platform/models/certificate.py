@@ -6,6 +6,7 @@ from .certificaterevocation import CertificateRevocation, CertificateRevocationT
 from .ct import Ct, CtTypedDict
 from .validation import Validation, ValidationTypedDict
 from .zlint import ZLint, ZLintTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -14,19 +15,19 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class ParseStatus(str, Enum):
+class ParseStatus(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     SUCCESS = "success"
     FAIL = "fail"
     CORRUPTED = "corrupted"
 
 
-class ValidationLevel(str, Enum):
+class ValidationLevel(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""The extent to which the certificate's issuer validated the identity of the entity requesting the certificate. Options include Domain validated (DV), Organization Validated (OV), or Extended Validation (EV)."""
 
     UNKNOWN = ""
@@ -141,6 +142,24 @@ class Certificate(BaseModel):
     r"""The extent to which the certificate's issuer validated the identity of the entity requesting the certificate. Options include Domain validated (DV), Organization Validated (OV), or Extended Validation (EV)."""
 
     zlint: Optional[ZLint] = None
+
+    @field_serializer("parse_status")
+    def serialize_parse_status(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ParseStatus(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("validation_level")
+    def serialize_validation_level(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ValidationLevel(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

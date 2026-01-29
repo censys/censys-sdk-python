@@ -4,6 +4,7 @@ from __future__ import annotations
 from .cpe import Cpe, CpeTypedDict
 from .cpe_lifecycle import CPELifeCycle, CPELifeCycleTypedDict
 from .evidence import Evidence, EvidenceTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -12,12 +13,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class Source(str, Enum):
+class Source(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
@@ -68,6 +69,15 @@ class Attribute(BaseModel):
     vendor: Optional[str] = None
 
     version: Optional[str] = None
+
+    @field_serializer("source")
+    def serialize_source(self, value):
+        if isinstance(value, str):
+            try:
+                return models.Source(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

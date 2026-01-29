@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .dns_edns import DNSEDNS, DNSEDNSTypedDict
 from .dns_resourcerecord import DNSResourceRecord, DNSResourceRecordTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -11,12 +12,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class RCode(str, Enum):
+class RCode(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""A enumerated field indicating the result of the request. The most common values are defined in RFC 1035."""
 
     UNKNOWN = ""
@@ -41,7 +42,7 @@ class RCode(str, Enum):
     BAD_COOKIE = "bad_cookie"
 
 
-class ServerType(str, Enum):
+class ServerType(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""An enumerated value indicating the behavior of the server. An AUTHORITATIVE server fulfills requests for domain names it controls, which are not listed by the server. FORWARDING and RECURSIVE_RESOLVER servers fulfill requests indirectly for domain names they do not control. A RECURSIVE_RESOLVER will query ip.parrotdns.com itself, resulting in its own IP address being present in the dns.answers.response field."""
 
     UNKNOWN = ""
@@ -95,6 +96,24 @@ class DNS(BaseModel):
     r"""An enumerated value indicating the behavior of the server. An AUTHORITATIVE server fulfills requests for domain names it controls, which are not listed by the server. FORWARDING and RECURSIVE_RESOLVER servers fulfill requests indirectly for domain names they do not control. A RECURSIVE_RESOLVER will query ip.parrotdns.com itself, resulting in its own IP address being present in the dns.answers.response field."""
 
     version: Optional[str] = None
+
+    @field_serializer("r_code")
+    def serialize_r_code(self, value):
+        if isinstance(value, str):
+            try:
+                return models.RCode(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("server_type")
+    def serialize_server_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ServerType(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

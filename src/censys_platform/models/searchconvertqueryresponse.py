@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .alternativequery import AlternativeQuery, AlternativeQueryTypedDict
 from .convertqueryerror import ConvertQueryError, ConvertQueryErrorTypedDict
+from censys_platform import utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -16,7 +17,7 @@ from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class SearchConvertQueryResponseTargets(str, Enum):
+class SearchConvertQueryResponseTargets(str, Enum, metaclass=utils.OpenEnumMeta):
     HOST = "host"
     WEB = "web"
     CERT = "cert"
