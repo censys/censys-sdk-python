@@ -5,6 +5,7 @@ from .evidence import Evidence, EvidenceTypedDict
 from .threat_actor import ThreatActor, ThreatActorTypedDict
 from .threat_details import ThreatDetails, ThreatDetailsTypedDict
 from .threat_malware import ThreatMalware, ThreatMalwareTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -13,12 +14,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class ThreatSource(str, Enum):
+class ThreatSource(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
@@ -60,6 +61,15 @@ class Threat(BaseModel):
     tactic: OptionalNullable[List[str]] = UNSET
 
     type: OptionalNullable[List[str]] = UNSET
+
+    @field_serializer("source")
+    def serialize_source(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ThreatSource(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

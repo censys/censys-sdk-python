@@ -121,6 +121,7 @@ from .winrm import Winrm, WinrmTypedDict
 from .wsdiscovery import WsDiscovery, WsDiscoveryTypedDict
 from .x11 import X11, X11TypedDict
 from .zeromq import Zeromq, ZeromqTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -129,12 +130,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class ServiceScanTransportProtocol(str, Enum):
+class ServiceScanTransportProtocol(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     TCP = "tcp"
     UDP = "udp"
@@ -520,6 +521,15 @@ class ServiceScan(BaseModel):
     x11: Optional[X11] = None
 
     zeromq: Optional[Zeromq] = None
+
+    @field_serializer("transport_protocol")
+    def serialize_transport_protocol(self, value):
+        if isinstance(value, str):
+            try:
+                return models.ServiceScanTransportProtocol(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

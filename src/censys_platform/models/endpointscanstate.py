@@ -20,6 +20,7 @@ from .prometheustarget import PrometheusTarget, PrometheusTargetTypedDict
 from .redlionweb import RedlionWeb, RedlionWebTypedDict
 from .scadaview import ScadaView, ScadaViewTypedDict
 from .screenshot import Screenshot, ScreenshotTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -28,12 +29,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class EndpointScanStateTransportProtocol(str, Enum):
+class EndpointScanStateTransportProtocol(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     TCP = "tcp"
     UDP = "udp"
@@ -128,6 +129,15 @@ class EndpointScanState(BaseModel):
     screenshots: OptionalNullable[List[Screenshot]] = UNSET
 
     transport_protocol: Optional[EndpointScanStateTransportProtocol] = None
+
+    @field_serializer("transport_protocol")
+    def serialize_transport_protocol(self, value):
+        if isinstance(value, str):
+            try:
+                return models.EndpointScanStateTransportProtocol(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

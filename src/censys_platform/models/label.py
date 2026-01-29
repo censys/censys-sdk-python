@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .evidence import Evidence, EvidenceTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -10,12 +11,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class LabelSource(str, Enum):
+class LabelSource(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
@@ -39,6 +40,15 @@ class Label(BaseModel):
     source: Optional[LabelSource] = None
 
     value: Optional[str] = None
+
+    @field_serializer("source")
+    def serialize_source(self, value):
+        if isinstance(value, str):
+            try:
+                return models.LabelSource(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

@@ -602,6 +602,11 @@ if TYPE_CHECKING:
     from .nbd import Nbd, NbdTypedDict
     from .network import Network, NetworkTypedDict
     from .networkcapabilities import NetworkCapabilities, NetworkCapabilitiesTypedDict
+    from .networklog import NetworkLog, NetworkLogTypedDict
+    from .networklog_resourceinfo import (
+        NetworkLogResourceInfo,
+        NetworkLogResourceInfoTypedDict,
+    )
     from .nfsmountd import NfsMountd, NfsMountdTypedDict
     from .nmea import Nmea, NmeaTypedDict
     from .nmea_nmeamessage import NmeaNmeaMessage, NmeaNmeaMessageTypedDict
@@ -1962,6 +1967,10 @@ __all__ = [
     "Network",
     "NetworkCapabilities",
     "NetworkCapabilitiesTypedDict",
+    "NetworkLog",
+    "NetworkLogResourceInfo",
+    "NetworkLogResourceInfoTypedDict",
+    "NetworkLogTypedDict",
     "NetworkTypedDict",
     "NewStatus",
     "NfsMountd",
@@ -3337,6 +3346,10 @@ _dynamic_imports: dict[str, str] = {
     "NetworkTypedDict": ".network",
     "NetworkCapabilities": ".networkcapabilities",
     "NetworkCapabilitiesTypedDict": ".networkcapabilities",
+    "NetworkLog": ".networklog",
+    "NetworkLogTypedDict": ".networklog",
+    "NetworkLogResourceInfo": ".networklog_resourceinfo",
+    "NetworkLogResourceInfoTypedDict": ".networklog_resourceinfo",
     "NfsMountd": ".nfsmountd",
     "NfsMountdTypedDict": ".nfsmountd",
     "Nmea": ".nmea",

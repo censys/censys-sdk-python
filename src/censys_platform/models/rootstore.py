@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .rootstore_chain import RootStoreChain, RootStoreChainTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -10,12 +11,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class Type(str, Enum):
+class Type(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""The certificate's type. Options include root, intermediate, or leaf."""
 
     UNKNOWN = ""
@@ -67,6 +68,15 @@ class RootStore(BaseModel):
 
     type: Optional[Type] = None
     r"""The certificate's type. Options include root, intermediate, or leaf."""
+
+    @field_serializer("type")
+    def serialize_type(self, value):
+        if isinstance(value, str):
+            try:
+                return models.Type(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

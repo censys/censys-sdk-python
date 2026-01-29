@@ -6,15 +6,16 @@ from .creditusagereportperiod import (
     CreditUsageReportPeriodTypedDict,
 )
 from .sourceusagebreakdown import SourceUsageBreakdown, SourceUsageBreakdownTypedDict
+from censys_platform import models, utils
 from censys_platform.types import BaseModel, Nullable, UNSET_SENTINEL
 from datetime import datetime
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class Granularity(str, Enum):
+class Granularity(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""The granularity of the report."""
 
     DAILY = "daily"
@@ -72,6 +73,15 @@ class CreditUsageReport(BaseModel):
 
     granularity: Optional[Granularity] = Granularity.DAILY
     r"""The granularity of the report."""
+
+    @field_serializer("granularity")
+    def serialize_granularity(self, value):
+        if isinstance(value, str):
+            try:
+                return models.Granularity(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

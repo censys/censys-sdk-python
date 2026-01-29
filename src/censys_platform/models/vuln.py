@@ -5,6 +5,7 @@ from .cwe import Cwe, CweTypedDict
 from .evidence import Evidence, EvidenceTypedDict
 from .kev import Kev, KevTypedDict
 from .metrics import Metrics, MetricsTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -13,18 +14,18 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class VulnRiskSource(str, Enum):
+class VulnRiskSource(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     CENSYS = "censys"
     CVE = "cve"
 
 
-class VulnSeverity(str, Enum):
+class VulnSeverity(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     LOW = "low"
     MEDIUM = "medium"
@@ -32,7 +33,7 @@ class VulnSeverity(str, Enum):
     CRITICAL = "critical"
 
 
-class VulnSource(str, Enum):
+class VulnSource(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     CENSYS = "censys"
     RECOG = "recog"
@@ -77,6 +78,33 @@ class Vuln(BaseModel):
     source: Optional[VulnSource] = None
 
     year: Optional[int] = None
+
+    @field_serializer("risk_source")
+    def serialize_risk_source(self, value):
+        if isinstance(value, str):
+            try:
+                return models.VulnRiskSource(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("severity")
+    def serialize_severity(self, value):
+        if isinstance(value, str):
+            try:
+                return models.VulnSeverity(value)
+            except ValueError:
+                return value
+        return value
+
+    @field_serializer("source")
+    def serialize_source(self, value):
+        if isinstance(value, str):
+            try:
+                return models.VulnSource(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

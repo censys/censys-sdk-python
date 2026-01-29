@@ -20,6 +20,7 @@ from .redlionweb import RedlionWeb, RedlionWebTypedDict
 from .scadaview import ScadaView, ScadaViewTypedDict
 from .screenshot import Screenshot, ScreenshotTypedDict
 from .tls import TLS, TLSTypedDict
+from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
     Nullable,
@@ -28,12 +29,12 @@ from censys_platform.types import (
     UNSET_SENTINEL,
 )
 from enum import Enum
-from pydantic import model_serializer
+from pydantic import field_serializer, model_serializer
 from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
-class EndpointScanTransportProtocol(str, Enum):
+class EndpointScanTransportProtocol(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = ""
     TCP = "tcp"
     UDP = "udp"
@@ -131,6 +132,15 @@ class EndpointScan(BaseModel):
     tls: Optional[TLS] = None
 
     transport_protocol: Optional[EndpointScanTransportProtocol] = None
+
+    @field_serializer("transport_protocol")
+    def serialize_transport_protocol(self, value):
+        if isinstance(value, str):
+            try:
+                return models.EndpointScanTransportProtocol(value)
+            except ValueError:
+                return value
+        return value
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
