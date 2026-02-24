@@ -65,7 +65,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_certificates_raw
@@ -112,7 +113,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_certificate
@@ -155,7 +157,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_certificate_raw
@@ -198,7 +201,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_hosts
@@ -247,7 +251,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_host
@@ -292,7 +297,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_host_timeline
@@ -338,7 +344,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_web_properties
@@ -387,7 +394,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_web_property
@@ -432,7 +440,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 422                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## create_tracked_scan
@@ -482,7 +491,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_tracked_scan
@@ -525,7 +535,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## aggregate
@@ -572,7 +583,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 422                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## convert_legacy_search_queries
@@ -621,7 +633,7 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403                   | application/problem+json   |
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
@@ -671,5 +683,6 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

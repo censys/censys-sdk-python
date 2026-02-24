@@ -1,0 +1,9 @@
+# RustdeskRendezvousTestNatResponse
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `config_update`                                                                                | [Optional[models.RustdeskRendezvousConfigUpdate]](../models/rustdeskrendezvousconfigupdate.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `port`                                                                                         | *Optional[int]*                                                                                | :heavy_minus_sign:                                                                             | N/A                                                                                            |

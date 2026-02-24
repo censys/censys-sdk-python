@@ -57,6 +57,7 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_organization_credits
@@ -98,6 +99,7 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_organization_credit_usage
@@ -145,6 +147,7 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## invite_user_to_organization
@@ -188,7 +191,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 403, 404, 409, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## list_organization_members
@@ -231,7 +235,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## remove_organization_member
@@ -274,6 +279,7 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 403, 404, 409, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update_organization_member
@@ -318,7 +324,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404, 409, 422    | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_member_credit_usage
@@ -367,6 +374,7 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_user_credits
@@ -407,6 +415,7 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 404                        | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_user_credits_usage
@@ -452,5 +461,6 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 404                        | application/problem+json   |
+| models.ErrorModel          | 400, 404                   | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

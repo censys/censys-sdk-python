@@ -1,0 +1,10 @@
+# FlashSocketPolicy
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `allow_access_from`                                                                            | List[[models.FlashSocketPolicyAllowAccessFrom](../models/flashsocketpolicyallowaccessfrom.md)] | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `policy`                                                                                       | *Optional[str]*                                                                                | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `site_control`                                                                                 | *Optional[str]*                                                                                | :heavy_minus_sign:                                                                             | N/A                                                                                            |

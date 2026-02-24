@@ -7,6 +7,7 @@
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `autonomous_system`                                  | [Optional[models.Routing]](../models/routing.md)     | :heavy_minus_sign:                                   | N/A                                                  |
 | `dns`                                                | [Optional[models.HostDNS]](../models/hostdns.md)     | :heavy_minus_sign:                                   | N/A                                                  |
+| `greynoise`                                          | [Optional[models.Greynoise]](../models/greynoise.md) | :heavy_minus_sign:                                   | N/A                                                  |
 | `hardware`                                           | [Optional[models.Attribute]](../models/attribute.md) | :heavy_minus_sign:                                   | N/A                                                  |
 | `ip`                                                 | *Optional[str]*                                      | :heavy_minus_sign:                                   | N/A                                                  |
 | `labels`                                             | List[[models.Label](../models/label.md)]             | :heavy_minus_sign:                                   | N/A                                                  |

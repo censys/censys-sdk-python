@@ -10,6 +10,7 @@ from typing_extensions import NotRequired, TypedDict
 class ScreenshotTypedDict(TypedDict):
     extracted_text: NotRequired[str]
     handle: NotRequired[str]
+    palsimhash: NotRequired[str]
     phash: NotRequired[str]
 
 
@@ -18,11 +19,13 @@ class Screenshot(BaseModel):
 
     handle: Optional[str] = None
 
+    palsimhash: Optional[str] = None
+
     phash: Optional[str] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["extracted_text", "handle", "phash"])
+        optional_fields = set(["extracted_text", "handle", "palsimhash", "phash"])
         serialized = handler(self)
         m = {}
 

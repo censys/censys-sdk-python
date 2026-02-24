@@ -42,3 +42,9 @@ class ElfFile(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    ElfFile.model_rebuild()
+except NameError:
+    pass

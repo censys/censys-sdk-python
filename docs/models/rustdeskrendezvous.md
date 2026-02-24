@@ -1,0 +1,10 @@
+# RustdeskRendezvous
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `key_exchange`                                                                                       | [Optional[models.RustdeskRendezvousKeyExchange]](../models/rustdeskrendezvouskeyexchange.md)         | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `message_type`                                                                                       | *Optional[str]*                                                                                      | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `test_nat_response`                                                                                  | [Optional[models.RustdeskRendezvousTestNatResponse]](../models/rustdeskrendezvoustestnatresponse.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

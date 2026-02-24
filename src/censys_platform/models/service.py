@@ -33,9 +33,11 @@ from .endpointscanstate import EndpointScanState, EndpointScanStateTypedDict
 from .epmd import Epmd, EpmdTypedDict
 from .etcd import Etcd, EtcdTypedDict
 from .ethereum import Ethereum, EthereumTypedDict
+from .flashsocketpolicy import FlashSocketPolicy, FlashSocketPolicyTypedDict
 from .fox import Fox, FoxTypedDict
 from .ftp import Ftp, FtpTypedDict
 from .gearman import Gearman, GearmanTypedDict
+from .gemini import Gemini, GeminiTypedDict
 from .hajime import Hajime, HajimeTypedDict
 from .hidvertx import HidVertx, HidVertxTypedDict
 from .hikvision import Hikvision, HikvisionTypedDict
@@ -53,7 +55,10 @@ from .l2tp import L2Tp, L2TpTypedDict
 from .label import Label, LabelTypedDict
 from .ldap import Ldap, LdapTypedDict
 from .lpd import Lpd, LpdTypedDict
+from .mavlink import Mavlink, MavlinkTypedDict
 from .mdns import Mdns, MdnsTypedDict
+from .melsec import Melsec, MelsecTypedDict
+from .memberlist import Memberlist, MemberlistTypedDict
 from .memcached import Memcached, MemcachedTypedDict
 from .mikrotikwinbox import MikrotikWinbox, MikrotikWinboxTypedDict
 from .minecraft import Minecraft, MinecraftTypedDict
@@ -96,7 +101,11 @@ from .ripple import Ripple, RippleTypedDict
 from .risk import Risk, RiskTypedDict
 from .rlogin import Rlogin, RloginTypedDict
 from .rocketmq import Rocketmq, RocketmqTypedDict
+from .routerosapi import RouterosAPI, RouterosAPITypedDict
 from .rtsp import Rtsp, RtspTypedDict
+from .rustdeskheartbeat import RustdeskHeartbeat, RustdeskHeartbeatTypedDict
+from .rustdeskrelay import RustdeskRelay, RustdeskRelayTypedDict
+from .rustdeskrendezvous import RustdeskRendezvous, RustdeskRendezvousTypedDict
 from .s7 import S7, S7TypedDict
 from .saprouter import SapRouter, SapRouterTypedDict
 from .scpi import Scpi, ScpiTypedDict
@@ -185,9 +194,11 @@ class ServiceTypedDict(TypedDict):
     etcd: NotRequired[EtcdTypedDict]
     ethereum: NotRequired[EthereumTypedDict]
     exposures: NotRequired[Nullable[List[RiskTypedDict]]]
+    flash_socket_policy: NotRequired[FlashSocketPolicyTypedDict]
     fox: NotRequired[FoxTypedDict]
     ftp: NotRequired[FtpTypedDict]
     gearman: NotRequired[GearmanTypedDict]
+    gemini: NotRequired[GeminiTypedDict]
     hajime: NotRequired[HajimeTypedDict]
     hardware: NotRequired[Nullable[List[AttributeTypedDict]]]
     hid_vertx: NotRequired[HidVertxTypedDict]
@@ -207,7 +218,10 @@ class ServiceTypedDict(TypedDict):
     labels: NotRequired[Nullable[List[LabelTypedDict]]]
     ldap: NotRequired[LdapTypedDict]
     lpd: NotRequired[LpdTypedDict]
+    mavlink: NotRequired[MavlinkTypedDict]
     mdns: NotRequired[MdnsTypedDict]
+    melsec: NotRequired[MelsecTypedDict]
+    memberlist: NotRequired[MemberlistTypedDict]
     memcached: NotRequired[MemcachedTypedDict]
     mikrotik_winbox: NotRequired[MikrotikWinboxTypedDict]
     minecraft: NotRequired[MinecraftTypedDict]
@@ -253,7 +267,11 @@ class ServiceTypedDict(TypedDict):
     ripple: NotRequired[RippleTypedDict]
     rlogin: NotRequired[RloginTypedDict]
     rocketmq: NotRequired[RocketmqTypedDict]
+    routeros_api: NotRequired[RouterosAPITypedDict]
     rtsp: NotRequired[RtspTypedDict]
+    rustdesk_heartbeat: NotRequired[RustdeskHeartbeatTypedDict]
+    rustdesk_relay: NotRequired[RustdeskRelayTypedDict]
+    rustdesk_rendezvous: NotRequired[RustdeskRendezvousTypedDict]
     s7: NotRequired[S7TypedDict]
     sap_router: NotRequired[SapRouterTypedDict]
     scan_time: NotRequired[str]
@@ -357,11 +375,15 @@ class Service(BaseModel):
 
     exposures: OptionalNullable[List[Risk]] = UNSET
 
+    flash_socket_policy: Optional[FlashSocketPolicy] = None
+
     fox: Optional[Fox] = None
 
     ftp: Optional[Ftp] = None
 
     gearman: Optional[Gearman] = None
+
+    gemini: Optional[Gemini] = None
 
     hajime: Optional[Hajime] = None
 
@@ -401,7 +423,13 @@ class Service(BaseModel):
 
     lpd: Optional[Lpd] = None
 
+    mavlink: Optional[Mavlink] = None
+
     mdns: Optional[Mdns] = None
+
+    melsec: Optional[Melsec] = None
+
+    memberlist: Optional[Memberlist] = None
 
     memcached: Optional[Memcached] = None
 
@@ -493,7 +521,15 @@ class Service(BaseModel):
 
     rocketmq: Optional[Rocketmq] = None
 
+    routeros_api: Optional[RouterosAPI] = None
+
     rtsp: Optional[Rtsp] = None
+
+    rustdesk_heartbeat: Optional[RustdeskHeartbeat] = None
+
+    rustdesk_relay: Optional[RustdeskRelay] = None
+
+    rustdesk_rendezvous: Optional[RustdeskRendezvous] = None
 
     s7: Optional[S7] = None
 
@@ -612,9 +648,11 @@ class Service(BaseModel):
                 "etcd",
                 "ethereum",
                 "exposures",
+                "flash_socket_policy",
                 "fox",
                 "ftp",
                 "gearman",
+                "gemini",
                 "hajime",
                 "hardware",
                 "hid_vertx",
@@ -634,7 +672,10 @@ class Service(BaseModel):
                 "labels",
                 "ldap",
                 "lpd",
+                "mavlink",
                 "mdns",
+                "melsec",
+                "memberlist",
                 "memcached",
                 "mikrotik_winbox",
                 "minecraft",
@@ -680,7 +721,11 @@ class Service(BaseModel):
                 "ripple",
                 "rlogin",
                 "rocketmq",
+                "routeros_api",
                 "rtsp",
+                "rustdesk_heartbeat",
+                "rustdesk_relay",
+                "rustdesk_rendezvous",
                 "s7",
                 "sap_router",
                 "scan_time",

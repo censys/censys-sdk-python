@@ -19,7 +19,7 @@ class SearchQueryInputBodyTypedDict(TypedDict):
     fields: NotRequired[Nullable[List[str]]]
     r"""Specify fields to only return in the response. If you provide fields and omit `host.services.port`, `host.services.transport_protocol`, and `host.services.protocol`, then `matched_services` will not be returned in the response."""
     page_size: NotRequired[Nullable[int]]
-    r"""amount of results to return per page"""
+    r"""Number of results to return to per page. The default and maximum is 100."""
     page_token: NotRequired[str]
     r"""page token for the requested page of search results"""
 
@@ -32,7 +32,7 @@ class SearchQueryInputBody(BaseModel):
     r"""Specify fields to only return in the response. If you provide fields and omit `host.services.port`, `host.services.transport_protocol`, and `host.services.protocol`, then `matched_services` will not be returned in the response."""
 
     page_size: OptionalNullable[int] = UNSET
-    r"""amount of results to return per page"""
+    r"""Number of results to return to per page. The default and maximum is 100."""
 
     page_token: Optional[str] = None
     r"""page token for the requested page of search results"""

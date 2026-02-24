@@ -66,3 +66,9 @@ class SnmpEngine(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    SnmpEngine.model_rebuild()
+except NameError:
+    pass

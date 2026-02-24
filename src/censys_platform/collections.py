@@ -93,7 +93,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -110,7 +110,10 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, "403", "application/problem+json"):
+        if utils.match_response(http_res, ["400", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -198,7 +201,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -215,7 +218,10 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, "403", "application/problem+json"):
+        if utils.match_response(http_res, ["400", "403"], "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -284,7 +290,7 @@ class Collections(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.crud_create_input_body,
+                request.crud_create_input_body if request is not None else None,
                 False,
                 True,
                 "json",
@@ -311,7 +317,17 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=[
+                "400",
+                "401",
+                "403",
+                "409",
+                "412",
+                "422",
+                "4XX",
+                "500",
+                "5XX",
+            ],
             retry_config=retry_config,
         )
 
@@ -328,7 +344,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, "403", "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "409", "412", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -397,7 +418,7 @@ class Collections(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.crud_create_input_body,
+                request.crud_create_input_body if request is not None else None,
                 False,
                 True,
                 "json",
@@ -424,7 +445,17 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "4XX", "5XX"],
+            error_status_codes=[
+                "400",
+                "401",
+                "403",
+                "409",
+                "412",
+                "422",
+                "4XX",
+                "500",
+                "5XX",
+            ],
             retry_config=retry_config,
         )
 
@@ -441,7 +472,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, "403", "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "409", "412", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -530,7 +566,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -544,7 +580,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -633,7 +674,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -647,7 +688,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -732,7 +778,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -749,7 +795,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -834,7 +885,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -851,7 +902,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -923,7 +979,7 @@ class Collections(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.crud_update_input_body,
+                request.crud_update_input_body if request is not None else None,
                 False,
                 True,
                 "json",
@@ -950,7 +1006,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "412", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -967,7 +1023,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404", "412"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1039,7 +1100,7 @@ class Collections(BaseSDK):
             ),
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.crud_update_input_body,
+                request.crud_update_input_body if request is not None else None,
                 False,
                 True,
                 "json",
@@ -1066,7 +1127,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "412", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1083,7 +1144,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404", "412"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1168,7 +1234,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "422", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1185,7 +1251,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1270,7 +1341,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "422", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1287,7 +1358,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1386,7 +1462,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "422", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1404,8 +1480,11 @@ class Collections(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["403", "404", "422"], "application/problem+json"
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
         ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1504,7 +1583,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "422", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1522,8 +1601,11 @@ class Collections(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["403", "404", "422"], "application/problem+json"
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
         ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1622,7 +1704,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "422", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1639,7 +1721,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
@@ -1738,7 +1825,7 @@ class Collections(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "403", "404", "4XX", "5XX"],
+            error_status_codes=["400", "401", "403", "404", "422", "4XX", "500", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1755,7 +1842,12 @@ class Collections(BaseSDK):
                 models.AuthenticationErrorData, http_res
             )
             raise models.AuthenticationError(response_data, http_res)
-        if utils.match_response(http_res, ["403", "404"], "application/problem+json"):
+        if utils.match_response(
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
