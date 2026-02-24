@@ -17,6 +17,7 @@ jobs:
     uses: ./.github/workflows/speakeasy_sdk_publish.yaml
     with:
       target: censys-sdk-python
+      poetry_version: 1.8.2
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       pypi_token: ${{ secrets.PYPI_TOKEN }}
