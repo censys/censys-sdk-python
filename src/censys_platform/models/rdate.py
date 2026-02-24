@@ -30,3 +30,9 @@ class Rdate(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    Rdate.model_rebuild()
+except NameError:
+    pass

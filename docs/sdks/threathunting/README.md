@@ -58,7 +58,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## create_tracked_scan
@@ -108,7 +109,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_tracked_scan_threat_hunting
@@ -151,7 +153,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## list_threats
@@ -194,7 +197,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 422                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## value_counts
@@ -251,5 +255,6 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

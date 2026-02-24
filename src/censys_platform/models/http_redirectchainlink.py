@@ -22,6 +22,7 @@ class HTTPRedirectChainLinkTypedDict(TypedDict):
     path: NotRequired[str]
     port: NotRequired[int]
     reason: NotRequired[str]
+    scheme: NotRequired[str]
     transport_protocol: NotRequired[HTTPRedirectChainLinkTransportProtocol]
 
 
@@ -33,6 +34,8 @@ class HTTPRedirectChainLink(BaseModel):
     port: Optional[int] = None
 
     reason: Optional[str] = None
+
+    scheme: Optional[str] = None
 
     transport_protocol: Optional[HTTPRedirectChainLinkTransportProtocol] = None
 
@@ -48,7 +51,7 @@ class HTTPRedirectChainLink(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = set(
-            ["hostname", "path", "port", "reason", "transport_protocol"]
+            ["hostname", "path", "port", "reason", "scheme", "transport_protocol"]
         )
         serialized = handler(self)
         m = {}

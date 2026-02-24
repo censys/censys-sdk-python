@@ -56,7 +56,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403                   | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## create
@@ -103,7 +104,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403                        | application/problem+json   |
+| models.ErrorModel          | 400, 403, 409, 412, 422    | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## delete
@@ -146,7 +148,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get
@@ -189,7 +192,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update
@@ -237,7 +241,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404, 412         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## list_events
@@ -286,7 +291,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## aggregate
@@ -334,7 +340,8 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## search
@@ -384,5 +391,6 @@ with SDK(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 403, 404                   | application/problem+json   |
+| models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

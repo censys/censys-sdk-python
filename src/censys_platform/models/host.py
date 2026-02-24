@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .attribute import Attribute, AttributeTypedDict
+from .greynoise import Greynoise, GreynoiseTypedDict
 from .hostdns import HostDNS, HostDNSTypedDict
 from .label import Label, LabelTypedDict
 from .location import Location, LocationTypedDict
@@ -23,6 +24,7 @@ from typing_extensions import NotRequired, TypedDict
 class HostTypedDict(TypedDict):
     autonomous_system: NotRequired[RoutingTypedDict]
     dns: NotRequired[HostDNSTypedDict]
+    greynoise: NotRequired[GreynoiseTypedDict]
     hardware: NotRequired[AttributeTypedDict]
     ip: NotRequired[str]
     labels: NotRequired[Nullable[List[LabelTypedDict]]]
@@ -37,6 +39,8 @@ class Host(BaseModel):
     autonomous_system: Optional[Routing] = None
 
     dns: Optional[HostDNS] = None
+
+    greynoise: Optional[Greynoise] = None
 
     hardware: Optional[Attribute] = None
 
@@ -60,6 +64,7 @@ class Host(BaseModel):
             [
                 "autonomous_system",
                 "dns",
+                "greynoise",
                 "hardware",
                 "ip",
                 "labels",

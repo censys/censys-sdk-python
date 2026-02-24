@@ -47,3 +47,9 @@ class IpmiRMCPHeaderMessageClass(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    IpmiRMCPHeaderMessageClass.model_rebuild()
+except NameError:
+    pass

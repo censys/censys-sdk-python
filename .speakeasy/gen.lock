@@ -1,44 +1,44 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 133adc6bd5fd663ffb80f3e0b4509d77
-  docVersion: 1.0.71
-  speakeasyVersion: 1.700.2
-  generationVersion: 2.801.2
-  releaseVersion: 0.12.4
-  configChecksum: a3186fbd4582b8547c35695d3eb76735
+  docChecksum: 2cef9678551dc29234432a9acdf838a9
+  docVersion: 1.0.77
+  speakeasyVersion: 1.725.0
+  generationVersion: 2.836.5
+  releaseVersion: 0.13.0
+  configChecksum: 9bf1d94a6d1745e0a5b7f4d8877b2c45
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: cc48e3b5-1c6f-42ab-b2c5-5cf2bdd54ab3
-  pristine_commit_hash: 15c77a369b5f26ce5f4069e4f7ebfb0dc79b0d63
-  pristine_tree_hash: b37aa486ed21a24c4554c2300476d02d80a34e19
+  generation_id: 2a8a011f-9f8d-47be-a567-e044bcbf0e78
+  pristine_commit_hash: 37f1276b5fe2e83f236faaf11948083962948592
+  pristine_tree_hash: b58508d253543ec9d099eb3e1f66209639261f99
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.0.0
-    constsAndDefaults: 1.0.5
-    core: 5.23.18
+    constsAndDefaults: 1.0.6
+    core: 6.0.12
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.2
     examples: 3.0.2
     flattening: 3.1.1
-    globalSecurity: 3.0.4
+    globalSecurity: 3.0.5
     globalSecurityCallbacks: 1.0.0
     globalSecurityFlattening: 1.0.0
     globalServerURLs: 3.2.0
     globals: 3.0.0
     ignores: 3.0.1
     methodArguments: 1.0.2
-    nameOverrides: 3.0.1
+    nameOverrides: 3.0.3
     nullables: 1.0.2
-    responseFormat: 1.0.1
-    retries: 3.0.3
+    responseFormat: 1.1.0
+    retries: 3.0.4
     sdkHooks: 1.2.1
-    unions: 3.1.2
+    unions: 3.1.4
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -736,6 +736,14 @@ trackedFiles:
     id: 5931cb4896c1
     last_write_checksum: sha1:4d5ad4a39f006c3eb2b312f848973b126d58a787
     pristine_git_object: caad5e498f6fabb1cb14346463e53e1b80fa52b1
+  docs/models/flashsocketpolicy.md:
+    id: c59a67dcb20d
+    last_write_checksum: sha1:1466581057023611aa2c9d024b077a8b3b923d81
+    pristine_git_object: 293abb671012a039f8984c505f9f2acdb957ec85
+  docs/models/flashsocketpolicyallowaccessfrom.md:
+    id: df1510f10ff1
+    last_write_checksum: sha1:7ad49150b2351a37cc090f1936d8419068c069bb
+    pristine_git_object: 87bb7d3333f13aaf5c20871c157c01125657e52b
   docs/models/floatvalue.md:
     id: ccd13dd334eb
     last_write_checksum: sha1:3f556df2f987dca463d2bf0e2e35ce0c0bdd5a7d
@@ -760,6 +768,10 @@ trackedFiles:
     id: 3cc4a188873c
     last_write_checksum: sha1:1f03d551fe4405702dfbd485b4073c31157f7277
     pristine_git_object: c2bcf7cc6b2f4fb31163485acee3d18c25956b4d
+  docs/models/gemini.md:
+    id: cfd11344966a
+    last_write_checksum: sha1:df74c05fe48183e0d4de88780bbae072734a9d8f
+    pristine_git_object: 5eb1a3ebe7986fca01926dfd6da9caa6601ebc41
   docs/models/generalnames.md:
     id: 88cde77f8ce5
     last_write_checksum: sha1:83f6dd6f786652498fd42a522abcb9504fe9fbf4
@@ -776,6 +788,14 @@ trackedFiles:
     id: f5f6f14c319d
     last_write_checksum: sha1:db73108b963d7eeb39716c45dddf8caaefc77212
     pristine_git_object: 8b789973738d3a19b2dac344572cd2a59facd0d5
+  docs/models/greynoise.md:
+    id: 05b5c2c444cd
+    last_write_checksum: sha1:eed550aca7660aabbb18b5be7cbac77e2661b8b4
+    pristine_git_object: 40127f5459fad0ea12c8901341b15a6457acbc07
+  docs/models/greynoisetag.md:
+    id: 378e0d490fab
+    last_write_checksum: sha1:53800a2d43d8c0ec6c6b53f850978e643b28f422
+    pristine_git_object: b3a34fbf544d547f1f566ccd74e49f22ef2bd6f9
   docs/models/hajime.md:
     id: 9fa4f21e634d
     last_write_checksum: sha1:1e5645a99d860bf8dfe115214c5f00412437985c
@@ -798,8 +818,8 @@ trackedFiles:
     pristine_git_object: 79714ab8ee9939e65f5c17a34a487f876cc4dd9c
   docs/models/host.md:
     id: 367b20a15480
-    last_write_checksum: sha1:8d397e0955b6dc91c88aafd6f915ac2d4e0c6d9e
-    pristine_git_object: 3d6f8205f9f158e2fbafcc64828884d13a657a0c
+    last_write_checksum: sha1:4e6ece7677845d6fde66ee220af79588991d921a
+    pristine_git_object: d2533d3c24adb768f019caf8f28b48266cd05e73
   docs/models/hostasset.md:
     id: 190aa05f4e16
     last_write_checksum: sha1:a491b23dd492b42b65aa4e389323dc136eab8c63
@@ -858,8 +878,8 @@ trackedFiles:
     pristine_git_object: 6a9461229a2b87161635b073e6007d66044070d6
   docs/models/httpredirectchainlink.md:
     id: 181e28b37e66
-    last_write_checksum: sha1:5effe255f64eb7bc761b3bc792e9d58d45f35aef
-    pristine_git_object: d9e696f278db9c4cf537024c6d66ce0589913f99
+    last_write_checksum: sha1:fb05819db5df942382f0fd1ae54e686b0a087435
+    pristine_git_object: a4f6ac2e17331d3c8fa2c2a4d99c9fbe3d9127b6
   docs/models/httpredirectchainlinktransportprotocol.md:
     id: 49a3925246e8
     last_write_checksum: sha1:404fbd830807b808d459d1a678198639a4a5216d
@@ -1132,6 +1152,14 @@ trackedFiles:
     id: d4515aa8453a
     last_write_checksum: sha1:06d4d27dd8a8678723dd7114e015f624ca754fa1
     pristine_git_object: 591d50f3876b1073ea7b85fdfdb64dad1e92f32b
+  docs/models/mavlink.md:
+    id: bca55986e653
+    last_write_checksum: sha1:57fd3675f6ef4ad7505dec3ae281a7f38d672428
+    pristine_git_object: 9f336047362e06528a3639cd8b11d690e1e0e004
+  docs/models/mavlinkframe.md:
+    id: f7e9dcf86cd9
+    last_write_checksum: sha1:d66515b7d01bac233ea34ddac170c7fbb75121db
+    pristine_git_object: 7b7c1e734e5a6898db00023118ed67c856f41266
   docs/models/mdns.md:
     id: 1bb52ed0b212
     last_write_checksum: sha1:1e77d1e7d85e1fc269701003a9e6111835b78825
@@ -1152,10 +1180,22 @@ trackedFiles:
     id: 6856dda74bc4
     last_write_checksum: sha1:7dd1bc3206bfc5a8c311f4e6c0a70310f223747d
     pristine_git_object: 0670b86690ed4396b7ac66887f5ca60f3502bbd2
+  docs/models/melsec.md:
+    id: d80ce6c3f108
+    last_write_checksum: sha1:9970350ce7b81668b8a7e83ea1d91fad8b2a9135
+    pristine_git_object: 12eb86c9d88c5d66a07d9f6fc3047ca12a10b03c
   docs/models/membercounts.md:
     id: 5ec71168d650
     last_write_checksum: sha1:b85e28e71420b8ea3238dd3c10a3f494e7f9d3ba
     pristine_git_object: 51b5fb7f06caf47e9667a9501b245e1ba3396d9b
+  docs/models/memberlist.md:
+    id: ca0e4e461d67
+    last_write_checksum: sha1:c038c53f5dc5143f32de3f5f994b46983c430a07
+    pristine_git_object: 5dcd63d7735c51806447a905cef83a1416615c54
+  docs/models/memberlistnodeinfo.md:
+    id: 23ef6051eff2
+    last_write_checksum: sha1:f045dd9057016029a4443c15b3a1d9ac20144c5c
+    pristine_git_object: 8315796b6b0fd36e8fd02cd196bd5d42f6701d29
   docs/models/members.md:
     id: d835bf11e016
     last_write_checksum: sha1:7ad739c81a6f13d39a27098950106e3187ca92cd
@@ -1876,6 +1916,10 @@ trackedFiles:
     id: b0d14fab66f9
     last_write_checksum: sha1:7fdf2f3db729f64f73ff46d60d0dd21a247dec0e
     pristine_git_object: ef932478c92ea6920763d36e8ffe1e5ef8d2e5e5
+  docs/models/routerosapi.md:
+    id: 5ad5964160e1
+    last_write_checksum: sha1:d2801bfab752f9178b49fe3e5b551e58a585e733
+    pristine_git_object: d728ee86406a01b2c6220f663b7aa2399b8ae9b7
   docs/models/routeupdated.md:
     id: dabaa4298d07
     last_write_checksum: sha1:d321bebe43ca51fdd0083a9c57cd553c669f450a
@@ -1896,6 +1940,34 @@ trackedFiles:
     id: 54f0194570d7
     last_write_checksum: sha1:4f9ed5f792358ccafbcfb6707026adf3e0acdb15
     pristine_git_object: 18d6c5f8fc01fd4effc9015e9d44b760449e5857
+  docs/models/rustdeskheartbeat.md:
+    id: 892992c2e435
+    last_write_checksum: sha1:9c44872f393779123afdf123358eb5243677af03
+    pristine_git_object: 980d42a26e59322c70e995c6206137f810507d1e
+  docs/models/rustdeskheartbeatregisterpeerresponse.md:
+    id: b546caceb6ac
+    last_write_checksum: sha1:d9dfb07a1e75c340ca498dbefbaaadb3be7e12ee
+    pristine_git_object: cd38ae913787fafc4637a7d64337d57f127a8ec4
+  docs/models/rustdeskrelay.md:
+    id: 96a26920ba1f
+    last_write_checksum: sha1:882543e3afcf1c3960f0682e233adef225a3b8a2
+    pristine_git_object: c033980765fe0961cfde6cf398ecc63cd4a5b087
+  docs/models/rustdeskrendezvous.md:
+    id: c2e6ade251ce
+    last_write_checksum: sha1:306c365d1165669b1fe4c30a1e5dea29f4047fcc
+    pristine_git_object: d1e51d11b4194941a8b9939be914ef5e161ae25c
+  docs/models/rustdeskrendezvousconfigupdate.md:
+    id: dcfa8aeef26f
+    last_write_checksum: sha1:e8571129cc2a1fad73e76e269e36f845afd1f9e3
+    pristine_git_object: 23af7de3021943d40fafc51377192f1d80978154
+  docs/models/rustdeskrendezvouskeyexchange.md:
+    id: 6f38ad7544be
+    last_write_checksum: sha1:708b484bbe9c49b1c15279d8121899605fc0bd50
+    pristine_git_object: fdb6772a0bfe03a8a21fe92793fa1a284364142d
+  docs/models/rustdeskrendezvoustestnatresponse.md:
+    id: 2def9ed47046
+    last_write_checksum: sha1:0323db651dd7e5e944116380b9b1558704967330
+    pristine_git_object: 83ca91bc7e96abf418de4391b18535c1f58871bd
   docs/models/s7.md:
     id: 257d9ae4ccbf
     last_write_checksum: sha1:a3b4e2571ada0d8169b06462a14980338eac4976
@@ -1950,8 +2022,8 @@ trackedFiles:
     pristine_git_object: 01116b510f9212ec61784b96517b5ea914b0819c
   docs/models/screenshot.md:
     id: 87af18a0a2fd
-    last_write_checksum: sha1:55e4d6528c74de9eb7e5223e5ddcc53cc11a4634
-    pristine_git_object: 97adf0dee1dc2f5cf41404540625c355940a080b
+    last_write_checksum: sha1:85f27ae6c4e3d513b456371a8ebe36e5f421a7ac
+    pristine_git_object: b083481c250aec767051856b0448bc8ddde827b5
   docs/models/searchaggregateinputbody.md:
     id: 2034edf6e8b7
     last_write_checksum: sha1:072dfe4467e166ef2b75d4e3c97a18231370d446
@@ -1986,8 +2058,8 @@ trackedFiles:
     pristine_git_object: 9421fc6fd561aa8aa2d8c07145ea4745d5f7798b
   docs/models/searchqueryinputbody.md:
     id: 02f08f37bdf6
-    last_write_checksum: sha1:63e373e16c49fec7bd16035ecf10adc002353a99
-    pristine_git_object: f0c20567ac23cfc421edd1bcad74bdd9f23624b2
+    last_write_checksum: sha1:2835a13e90cc08bd789e69a4f6038248336166b6
+    pristine_git_object: 743a7731e0952d0430ef6408d558d6c472ea7a38
   docs/models/searchqueryresponse.md:
     id: fb6b0986ba66
     last_write_checksum: sha1:b7bff8da06f733cd442d415ff08f4312aeb3eb51
@@ -2026,8 +2098,8 @@ trackedFiles:
     pristine_git_object: e6f00cc1cb14bfc9139ac98eae6022b582da1895
   docs/models/service.md:
     id: d38041323049
-    last_write_checksum: sha1:2a1b04d9cdcc175313a7b2e9262ab66678ed6cc2
-    pristine_git_object: 9416ec5689555eca9b14d7e8e46e665f4b96467a
+    last_write_checksum: sha1:ef51aa161a48190ad83ebe8b6d4b720d3b6873da
+    pristine_git_object: 22ec9f49e4d31fabfc85322b29a1cc1ccf967813
   docs/models/serviceid.md:
     id: 78670c733096
     last_write_checksum: sha1:4388c75f08f99206fc758d5d47396f1a13fd37e1
@@ -2038,8 +2110,8 @@ trackedFiles:
     pristine_git_object: d4efd3a1544fbdb6abab868b5d03cc03deceddb4
   docs/models/servicescan.md:
     id: 5079b5eb4109
-    last_write_checksum: sha1:63b174aea6f7c4a35acf1370eae405b31821567b
-    pristine_git_object: 0c000a9bdcb278e44e348ecc6e19b18ff3ff1efb
+    last_write_checksum: sha1:b37b3cfcf84829d9f8ba919693e4fbcdfe64fe6c
+    pristine_git_object: 93687f1364b482f2947e22021919e81ede15c6d1
   docs/models/servicescanned.md:
     id: 8783aac64d52
     last_write_checksum: sha1:95fa8c18ec2267c5969827ee2576a45c793fc904
@@ -2918,20 +2990,20 @@ trackedFiles:
     pristine_git_object: 924281f1d76d2c334d0d8c8329b518fef8f41798
   docs/sdks/accountmanagement/README.md:
     id: 5ecc19ffd434
-    last_write_checksum: sha1:9bbfbab1c604d80c3549ab501899e427861f8407
-    pristine_git_object: 6125e5c643e2c7ec8c9f582251355db9d6aaf27f
+    last_write_checksum: sha1:6158ea9897139b88623065a82f3f426686039674
+    pristine_git_object: 7d5aff9b18d011a6e257e53d83c88d8d47a4e4d8
   docs/sdks/collections/README.md:
     id: 7985e64efccf
-    last_write_checksum: sha1:a475df9b5d470aa83fe95a7c2edd37a309ca5005
-    pristine_git_object: f620a9fb9e9b80c94a76ddeade7fcce27964ba53
+    last_write_checksum: sha1:a48cfce79adcb96db2e4161a5824dc8814e4ff7e
+    pristine_git_object: 3e61ad2b6d77ddb109bacccd5de70d83e97c8cf0
   docs/sdks/globaldata/README.md:
     id: 0c68886632e6
-    last_write_checksum: sha1:c8f777dc327fd79a72022cd627f5314e59f31e5c
-    pristine_git_object: b2ef5cc921ea4f2c406809dce4743a9211ae0fde
+    last_write_checksum: sha1:e306ee2378933f21750975d2d9434ec04e1f5efc
+    pristine_git_object: 4b35440d500338f47d0640832dd287e1f0f79e7c
   docs/sdks/threathunting/README.md:
     id: 9d697938ee45
-    last_write_checksum: sha1:a691e078e534286de3ed1955554e6e00d8a8cda2
-    pristine_git_object: 4d1b4e7b731d408808c7f86e2725d0ed9919adaa
+    last_write_checksum: sha1:dd67ab8b1f0ec0d2cbd3d9d5f0caeb5765684359
+    pristine_git_object: b700bf4182e900d4ed68587286cde63c70da7882
   poetry.toml:
     id: a81ade82122a
     last_write_checksum: sha1:2242305e29dc6921bdf5b200aea5d4bf67830230
@@ -2942,12 +3014,12 @@ trackedFiles:
     pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
   pylintrc:
     id: 7ce8b9f946e6
-    last_write_checksum: sha1:021d728ef83b3b03a2cfdd33725924f7862ec67d
-    pristine_git_object: 451f601a6382e06ed064d9e37bb0d2581bd472e9
+    last_write_checksum: sha1:61536c2d1403a4738b52bda4167d4f100a5aa62b
+    pristine_git_object: e6ed56e03acaeeb18fe569517c72c3429615c191
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:64a5ae4c2766e77363d0cb14ed045d12c9c2d33f
-    pristine_git_object: a39f186e9f8aad4837ff70cd97e156debe578463
+    last_write_checksum: sha1:ef90876976f0833ca32919793dc8a8228b0b8468
+    pristine_git_object: 6c35b32b3b4cbcb6fa5f08ffd89b297fcfe956f7
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -2974,32 +3046,32 @@ trackedFiles:
     pristine_git_object: 352d3691d91c2d0ba0f05b48b56d4df5ce520098
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:f58d46d54b73a8008ec34d95c377d58b423821f2
-    pristine_git_object: 3b6b423d575a0988f0234a6d6d190149c4e65d73
+    last_write_checksum: sha1:229f98f4712ae66a3d691dac3e3ac9a25d23e6f5
+    pristine_git_object: 21c2607c269222fae8a5126d8b989ed534612bee
   src/censys_platform/account_management.py:
     id: 09993862b047
-    last_write_checksum: sha1:c635ab159be95add3d429513fb91143876bfc731
-    pristine_git_object: 97bdf5cfc697a5b3b9f9b5c0d400f87a0eba22b5
+    last_write_checksum: sha1:8c463369fda5bd1e76e021b26bfb99b492a2db90
+    pristine_git_object: f75ccc66c32ada0b45237f70e890ea34d2ba9537
   src/censys_platform/basesdk.py:
     id: a49fe6a31a15
     last_write_checksum: sha1:04e5f0a1e4b6a7db86eec781a31edb2dc9a61ba5
     pristine_git_object: aecdb5ca70b7d3674d45c29152c032e5feaf638d
   src/censys_platform/collections.py:
     id: e6d640c28668
-    last_write_checksum: sha1:a7086e51da9b5565c486d9397ed5c57ab364dd53
-    pristine_git_object: 23beebdc9f77f5117316ee6e58376851aac943c1
+    last_write_checksum: sha1:dba995a3215148254475870bf51096b5599bfbd8
+    pristine_git_object: cb2c83408f1a3ef08325bc7ba7fa4c0011140b1b
   src/censys_platform/global_data.py:
     id: 0eedbf9a2038
-    last_write_checksum: sha1:3b8c58bd5d8d1cf50b1d4d6054efe28816408832
-    pristine_git_object: 80b1dda7736b46a3bcf42ecef6a6dd632513d1a6
+    last_write_checksum: sha1:3ffd8225ac9b97381af8a1c9c79426fd3450c5bf
+    pristine_git_object: 6c2b62369021e6f28f8c16060d805942455c666f
   src/censys_platform/httpclient.py:
     id: 9378a19c2de6
     last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/censys_platform/models/__init__.py:
     id: 4c65ae1e4fed
-    last_write_checksum: sha1:aaecea428250a85d3c1a2fc7109faf64226db1d6
-    pristine_git_object: ab90863cfc3e68ee2fa20b333b10c317d4455f85
+    last_write_checksum: sha1:eebd3144ab67a2ea0846e2f0ac851527dadb15d3
+    pristine_git_object: 5ba2f0d371cef6181bef5767a29c9257a6ab69af
   src/censys_platform/models/activemq.py:
     id: c852b87bc559
     last_write_checksum: sha1:5d8f5fbd113473e04d2d5824f960aebd03c6e892
@@ -3494,8 +3566,8 @@ trackedFiles:
     pristine_git_object: ed0ccf8ef10e812aed2b976b4d6ad2efedfbfbfc
   src/censys_platform/models/elffile.py:
     id: d1dd279522b2
-    last_write_checksum: sha1:1e8c411d892bc5f3359f853ed2fe332ed8899fff
-    pristine_git_object: 0d436b8ee5214537a9c96f6ae6b8a656e9844731
+    last_write_checksum: sha1:5e6b2e074c3a5fb7a7e7da89120ff7bbf901cbe3
+    pristine_git_object: 9af18c6682675bdacffa5501885a5bd82bcc27c2
   src/censys_platform/models/endpointscan.py:
     id: e9034f3e14f9
     last_write_checksum: sha1:64dbbf1e463ad72d63c777519383425b858ea997
@@ -3600,6 +3672,14 @@ trackedFiles:
     id: 08d3cf003555
     last_write_checksum: sha1:1c63c2c370a4a228fc061988e73518245933ca9e
     pristine_git_object: 84a0136d69f4a5c1c06cc8c90b620ae6df7b1dd1
+  src/censys_platform/models/flashsocketpolicy.py:
+    id: 91b7edb2d936
+    last_write_checksum: sha1:557042d685da9ac3fd7678c9653701338ac72149
+    pristine_git_object: 0e0b93771854545ce8c13488dea8b02f8cca87b9
+  src/censys_platform/models/flashsocketpolicy_allowaccessfrom.py:
+    id: 4f6cf293dbcc
+    last_write_checksum: sha1:593e58d3c8e62d66a810154b8f17fe668a254dc0
+    pristine_git_object: 914c4dbf19e9965c20bdc73c21e60f29259be287
   src/censys_platform/models/floatvalue.py:
     id: 6560ee1eedb2
     last_write_checksum: sha1:809ae911b75c34abb2a9935ca53e35b00a393285
@@ -3624,6 +3704,10 @@ trackedFiles:
     id: 807b66e46ece
     last_write_checksum: sha1:d45183e562bc54c261c46378f640d4d5a9cd33bf
     pristine_git_object: 6860c6c85550bc3f2706c000aee5ef1e50859f60
+  src/censys_platform/models/gemini.py:
+    id: 8639712c02a4
+    last_write_checksum: sha1:a9331d0efc394f7b386d9ee689e975cba5f66ddc
+    pristine_git_object: 4819249d36154c75f28c73d5368c9d89eabc87b6
   src/censys_platform/models/generalnames.py:
     id: e1539bc45d09
     last_write_checksum: sha1:fbd893e4e7841d9033ee6c885451794d1f41a48c
@@ -3636,6 +3720,14 @@ trackedFiles:
     id: e91c41786b5a
     last_write_checksum: sha1:4bedf4f9df33ec3a8039bd6c24ad23e1900892f4
     pristine_git_object: 18b9a74ab5370ef2ab214c27343bbcb9de1f7099
+  src/censys_platform/models/greynoise.py:
+    id: fa0944ca7351
+    last_write_checksum: sha1:ef66b547c75ee4256e3d299882eb9b663b0686f0
+    pristine_git_object: 67f3afb99ed6320e7f38ad3d7c0ba38b63e4d879
+  src/censys_platform/models/greynoise_tag.py:
+    id: abc0daa9a41f
+    last_write_checksum: sha1:85a14b565938d796f5a4f45ca588715e35c3b084
+    pristine_git_object: c783f3271e5923e0d287eeb0c8a15e9b16890b40
   src/censys_platform/models/hajime.py:
     id: d87f2eaa6762
     last_write_checksum: sha1:2972d1dd45e18747ad34179a9da2e270771483db
@@ -3658,8 +3750,8 @@ trackedFiles:
     pristine_git_object: de8ef55df137f6791c10e9c75cd76d67c95f8ccc
   src/censys_platform/models/host.py:
     id: da29e37823ba
-    last_write_checksum: sha1:a727926b5b67e894b5c7d534bf9df036246965c0
-    pristine_git_object: c2fb6cf2e6805efbbec888417fa0e4ab174b915c
+    last_write_checksum: sha1:7ded862050ca0555f9867ce3d25b5d4a45cba7ae
+    pristine_git_object: 3cccb2d553cd8dbe1dab67c89a4a53cbd26d6bba
   src/censys_platform/models/hostasset.py:
     id: 0baafdd12d30
     last_write_checksum: sha1:77a79e251143f03d5b776ac3f621938a4d075a68
@@ -3710,8 +3802,8 @@ trackedFiles:
     pristine_git_object: cb8d1cb08d2ddd69c2caa6ad370ba233463f92b3
   src/censys_platform/models/http_redirectchainlink.py:
     id: f3cdca0b5525
-    last_write_checksum: sha1:17d6bbab2a897f94ea760e241e5bd7728a40a0b5
-    pristine_git_object: 8eccbf1dc79d999a0c0be4db96b5768bbb7c883f
+    last_write_checksum: sha1:e2a0959ec52569b89185cfe22cb50319c479d097
+    pristine_git_object: 9cb66d9f886ea1f27154c259fe042a6d63642293
   src/censys_platform/models/http_repeatedheaders.py:
     id: ab701e3cdc54
     last_write_checksum: sha1:23e848090ce9699d2e3123764c36aeaa6223abb7
@@ -3742,8 +3834,8 @@ trackedFiles:
     pristine_git_object: e8ae804d689cfd88eeb64d39d8c51fc55adb6c7f
   src/censys_platform/models/internal/__init__.py:
     id: cc54b3ba71dd
-    last_write_checksum: sha1:5beaf7e5a713d3eead465c6edcfdeb7f8076175c
-    pristine_git_object: e7070a1222c2ed3fa3f6f54e6f122cae7ff9a449
+    last_write_checksum: sha1:edd632cce10e07e4a1d336991fcb9c2efb21d55b
+    pristine_git_object: f4e9a8bf0f2f4f33c6814436a7be4f12ac8a5f26
   src/censys_platform/models/internal/globals.py:
     id: 15bfb7e58e84
     last_write_checksum: sha1:4456fa9b402718c2d833441354fce68efec9868a
@@ -3806,8 +3898,8 @@ trackedFiles:
     pristine_git_object: 5025efd1808ab603dc0f695cbfd34d087dd2e17d
   src/censys_platform/models/ipmi_rmcpheader_messageclass.py:
     id: 6ce098f00464
-    last_write_checksum: sha1:ca16d2e1f788cb735016f9c43cf74c64898732c2
-    pristine_git_object: 1eaf0131dd3eea99ad9d442dd3dd84b499dad548
+    last_write_checksum: sha1:df598356146fc75a5c8154e6591abfd4d73cb4f9
+    pristine_git_object: e619e9ab8ad609f678305a9f3bb2726a22aff5a0
   src/censys_platform/models/ipmi_sessionheader.py:
     id: 3981a0ef137f
     last_write_checksum: sha1:d7c309e98f21cf699f537fc2b953ddb0362492f4
@@ -3968,6 +4060,14 @@ trackedFiles:
     id: 8ac9ef9d68c0
     last_write_checksum: sha1:24637e6d3001d6232cb8f3991bcbef31b9bd875e
     pristine_git_object: 51da195281cb537be5851ebac308e83c944ebc0d
+  src/censys_platform/models/mavlink.py:
+    id: b3ca52b4c5af
+    last_write_checksum: sha1:483f581e87830b4acc56f4ab26a307d0934dcd61
+    pristine_git_object: e5b473a39089530e9053ee4375cad7049f1812b5
+  src/censys_platform/models/mavlink_frame.py:
+    id: f4cc87232917
+    last_write_checksum: sha1:2fff7c385e32a16d47855a60e803ac41b6fdd7de
+    pristine_git_object: 26c2669f4320a07f98308893dd8e0d8e7130351f
   src/censys_platform/models/mdns.py:
     id: 892cdc4aec3c
     last_write_checksum: sha1:c89153cb82c589d39dc84e121ed6b61c9cde5fff
@@ -3988,10 +4088,22 @@ trackedFiles:
     id: 72fc46d8eab3
     last_write_checksum: sha1:23771279638d6aa223e0d210a62ec47cb75a43db
     pristine_git_object: b2da5517d4f55e7f297e4467f1942d149f719680
+  src/censys_platform/models/melsec.py:
+    id: 101eb0d991c1
+    last_write_checksum: sha1:0b12e08e75014f6c2dae97fb504d276e54b032ef
+    pristine_git_object: 39617f8697881c6d9dfc70cab4e12257e9eebc09
   src/censys_platform/models/membercounts.py:
     id: 335b636f5618
     last_write_checksum: sha1:1187a80dc052cbf6a851d3bd08f1161f417c11f2
     pristine_git_object: d7122f2fe964927f9da4d2632cd4270ef7352206
+  src/censys_platform/models/memberlist.py:
+    id: 639063c698de
+    last_write_checksum: sha1:a578dda4acfddd1f409a535eebfefe3f8dca09fc
+    pristine_git_object: fa8666b4ea7af59118ba198270067b0cc9b5dc11
+  src/censys_platform/models/memberlist_nodeinfo.py:
+    id: 304da851ddce
+    last_write_checksum: sha1:bd4a5816ee6c9eed94b7950910246bc9967118d7
+    pristine_git_object: 3ece4556fe309ebaa489d13bcfd79f3268aa2253
   src/censys_platform/models/members.py:
     id: 891e74951b6e
     last_write_checksum: sha1:22686d494c9eff37c30ef3ab49dbb938a0d18d4f
@@ -4430,8 +4542,8 @@ trackedFiles:
     pristine_git_object: 676be7f1775133cda359da52dbda588edeffdd14
   src/censys_platform/models/rdate.py:
     id: 93c562f8ee31
-    last_write_checksum: sha1:b682bc31d73a82fccc614e96cbdf0b6455c3b92d
-    pristine_git_object: c3c69790ce4c49ba7bb94b6e00739990499bbb52
+    last_write_checksum: sha1:2fce36c9b7995a077fa05596c1ce7ebea91d8943
+    pristine_git_object: 2a4667682436cadce18a7eada417c9c75e7721e3
   src/censys_platform/models/rdp.py:
     id: 1ba23ccc8bc8
     last_write_checksum: sha1:bd680689ee8b5174e0c55463152825c67a26360b
@@ -4656,6 +4768,10 @@ trackedFiles:
     id: 223e62e08979
     last_write_checksum: sha1:922218816340f096ccd0bcb94e809fd662a710d8
     pristine_git_object: 81e1a95fa78dcecbf074c30d7378e2f3031a41f0
+  src/censys_platform/models/routerosapi.py:
+    id: 937d7a4c3c5f
+    last_write_checksum: sha1:130a4580146b366fde8b198c7194d71b7ed00dbd
+    pristine_git_object: 24cb36e9d0c3558893360d04da085729e6296b4d
   src/censys_platform/models/routeupdated.py:
     id: 8ab05bb6c682
     last_write_checksum: sha1:0101637328adaf67a058dd807448fba6a3a3eb98
@@ -4676,6 +4792,34 @@ trackedFiles:
     id: ef3576bdc22f
     last_write_checksum: sha1:a122ae0f14fe7683ba1fd8cb74557b4caae8b998
     pristine_git_object: a5ecbabb195c2c05a0325cf6b5ed554031006983
+  src/censys_platform/models/rustdeskheartbeat.py:
+    id: 7691d26367dd
+    last_write_checksum: sha1:6f0dd127710014f1085952b7c9166f66c5cc14cf
+    pristine_git_object: 53216beb420eca62c40d701df91632aa17c202be
+  src/censys_platform/models/rustdeskheartbeat_registerpeerresponse.py:
+    id: 62a0baee5060
+    last_write_checksum: sha1:8cefecf7474de599ad8804c8a20a2ed2aa7608aa
+    pristine_git_object: bd04e38ddf102acd077154e31c613362272dc3bf
+  src/censys_platform/models/rustdeskrelay.py:
+    id: 3c3a2303538c
+    last_write_checksum: sha1:5c2fd6ea7379aa5f832192d9a6c7f0f1b2f80a61
+    pristine_git_object: 7685cf6d962aae418ccbd627549956c850adb7e0
+  src/censys_platform/models/rustdeskrendezvous.py:
+    id: c34c9fb3e748
+    last_write_checksum: sha1:46d6084c4f7adb04b44790628d8ddfc602ea70e5
+    pristine_git_object: a09b306c6a06b8f0f03644986cea05afd0e249c2
+  src/censys_platform/models/rustdeskrendezvous_configupdate.py:
+    id: 938ff93c6526
+    last_write_checksum: sha1:103107b22982ec52174270f9f5c18d8be61c9a85
+    pristine_git_object: 5acd2cbc4e4f7177af42a7e0b7896872c36ca1e8
+  src/censys_platform/models/rustdeskrendezvous_keyexchange.py:
+    id: 18be645679c4
+    last_write_checksum: sha1:172c498e4f48cd67bbce16ad993bf6309eeeff6c
+    pristine_git_object: 6af5bfe5c0b4085fd2efb43428940e6c3621e922
+  src/censys_platform/models/rustdeskrendezvous_testnatresponse.py:
+    id: 1bd2271ebbcd
+    last_write_checksum: sha1:571dde709e6c30b0312cbb995f97d125cc8d73e2
+    pristine_git_object: f83d4277ab2f04a508fce576b9a488328b57a7eb
   src/censys_platform/models/s7.py:
     id: c92951a6fc78
     last_write_checksum: sha1:0684c47616d46ac9e42b55f632825a89236d1545
@@ -4714,8 +4858,8 @@ trackedFiles:
     pristine_git_object: 2719a197e9c3c1f7da286663865f77e770e3c6c0
   src/censys_platform/models/screenshot.py:
     id: 4a9a9422cbf2
-    last_write_checksum: sha1:f89249c1ab364a6582ec1d9fe2720bd05566cf78
-    pristine_git_object: e6331d3afe679006c2377003cffe98a4dc35032c
+    last_write_checksum: sha1:6ccb6b6b63963a94c6a0bc15d61ff29adb12cdb9
+    pristine_git_object: 03c73c28932321dfd587774cf221f1b5ca1cb757
   src/censys_platform/models/sdkbaseerror.py:
     id: 141f1bfca946
     last_write_checksum: sha1:a10977aed9914acfe6f63d2afbf4db656fc449d9
@@ -4754,8 +4898,8 @@ trackedFiles:
     pristine_git_object: 3732d3e1741a4ff8dd4e56cdd03c2b538d398f35
   src/censys_platform/models/searchqueryinputbody.py:
     id: 5a19fe64c4c3
-    last_write_checksum: sha1:2b0d648953845774d69e816b64d88857a56114eb
-    pristine_git_object: c9986a459389f2091a5026d4b7a65f261247e335
+    last_write_checksum: sha1:488d7574bf24d8a7ef4bbda2c0de6a1ce562a96b
+    pristine_git_object: ad572c5922b3f18294d96ec95381775a7f312411
   src/censys_platform/models/searchqueryresponse.py:
     id: a67e92fb07de
     last_write_checksum: sha1:ef529456c9318b0862ffdab6cbbd465aedd70ed7
@@ -4790,16 +4934,16 @@ trackedFiles:
     pristine_git_object: a7391bbf7b2dc4f949ac86ac6969dd4b84d2ce44
   src/censys_platform/models/service.py:
     id: 25dc1044897b
-    last_write_checksum: sha1:b6d433fc7b07070012711ab4cc81b0029362319e
-    pristine_git_object: 92db92f9511d251187e973f9b500d3ff72f6246e
+    last_write_checksum: sha1:3895eccac4a1b4081593d02e607a6f915dd4324b
+    pristine_git_object: 13c6f3742504895249bb4283c539224283b6fc7d
   src/censys_platform/models/serviceid.py:
     id: 52a5b098ac72
     last_write_checksum: sha1:1e7bf71c1365b3f352342f5de05fd85c63345b7a
     pristine_git_object: fb52b69a02398d69fe680fbbf1f9e131707cfd26
   src/censys_platform/models/servicescan.py:
     id: 24c47a42f886
-    last_write_checksum: sha1:c8c79161d1fb321a6251f001a9d14ead697cc025
-    pristine_git_object: 4de276e5b6983f15805d43b7ef69ff30f3195e74
+    last_write_checksum: sha1:e960651c4b5b62470a3fbc3afae66c55278e721c
+    pristine_git_object: d282885d43dc975953bdd579b0cf5149302d5ea1
   src/censys_platform/models/servicescanned.py:
     id: 7a118692950e
     last_write_checksum: sha1:026ccd1b0189bfba2baa9b352deaefb55c4bce36
@@ -4862,8 +5006,8 @@ trackedFiles:
     pristine_git_object: b67e4cef99edfb29221441fe4950c4440fe7dc26
   src/censys_platform/models/snmp_engine.py:
     id: 00b89f797e90
-    last_write_checksum: sha1:44e028898365c866e93aebaddea943408a1342ab
-    pristine_git_object: 53e78ba9b100e18c69306335574627dad33a501e
+    last_write_checksum: sha1:f9bfbd7bb8ea947178782d98e4a039115ffd9a9b
+    pristine_git_object: 7977e44a760cff72cd5ad959f3395abf582f6f01
   src/censys_platform/models/snmp_interfaces.py:
     id: 2d639901b28b
     last_write_checksum: sha1:b6fe501512d2832b69370a74fc8d7dc2e5287b21
@@ -5322,8 +5466,8 @@ trackedFiles:
     pristine_git_object: 5db48844a430af6402eb7ffaba0d9fcd30cf0724
   src/censys_platform/threat_hunting.py:
     id: 970de984d111
-    last_write_checksum: sha1:b0115f835efac61827a5c737ea11110d739571af
-    pristine_git_object: 510c0e4fb757bed2a3170e666b504554af6c3dae
+    last_write_checksum: sha1:172973ba567603208025764e1826027047fa84a4
+    pristine_git_object: ea0e874df851bfd11d283d58e45e32039bab47ca
   src/censys_platform/types/__init__.py:
     id: 40a6abbc737a
     last_write_checksum: sha1:140ebdd01a46f92ffc710c52c958c4eba3cf68ed
@@ -5334,8 +5478,8 @@ trackedFiles:
     pristine_git_object: a9a640a1a7048736383f96c67c6290c86bf536ee
   src/censys_platform/utils/__init__.py:
     id: 76ac94c422c2
-    last_write_checksum: sha1:398211d49b762a067ec6d10197a4b11dfd258ff5
-    pristine_git_object: c906e1e0192e9017fc13851eb23fc0c2753429c8
+    last_write_checksum: sha1:1970816f2234ecb8785798240b0edced961de971
+    pristine_git_object: 0498cb8dabf249b39609f81fb10cddc30f1b78b5
   src/censys_platform/utils/annotations.py:
     id: 259f8dfc4b83
     last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
@@ -5344,14 +5488,18 @@ trackedFiles:
     id: 45311463dfef
     last_write_checksum: sha1:c721e4123000e7dc61ec52b28a739439d9e17341
     pristine_git_object: a6c52cd61bbe2d459046c940ce5e8c469f2f0664
+  src/censys_platform/utils/dynamic_imports.py:
+    id: 01ddee0f294a
+    last_write_checksum: sha1:a1940c63feb8eddfd8026de53384baf5056d5dcc
+    pristine_git_object: 673edf82a97d0fea7295625d3e092ea369a36b79
   src/censys_platform/utils/enums.py:
     id: bd73b82ea938
     last_write_checksum: sha1:bc8c3c1285ae09ba8a094ee5c3d9c7f41fa1284d
     pristine_git_object: 3324e1bc2668c54c4d5f5a1a845675319757a828
   src/censys_platform/utils/eventstreaming.py:
     id: 79888c9b9f71
-    last_write_checksum: sha1:bababae5d54b7efc360db701daa49e18a92c2f3b
-    pristine_git_object: 0969899bfc491e5e408d05643525f347ea95e4fc
+    last_write_checksum: sha1:ffa870a25a7e4e2015bfd7a467ccd3aa1de97f0e
+    pristine_git_object: f2052fc22d9fd6c663ba3dce019fe234ca37108b
   src/censys_platform/utils/forms.py:
     id: e6173af8260d
     last_write_checksum: sha1:15fa7e9ab1611e062a9984cf06cb20969713d295
@@ -5378,12 +5526,12 @@ trackedFiles:
     pristine_git_object: 1de32b6d26f46590232f398fdba6ce0072f1659c
   src/censys_platform/utils/retries.py:
     id: d5aceef1f0a1
-    last_write_checksum: sha1:5b97ac4f59357d70c2529975d50364c88bcad607
-    pristine_git_object: 88a91b10cd2076b4a2c6cff2ac6bfaa5e3c5ad13
+    last_write_checksum: sha1:471372f5c5d1dd5583239c9cf3c75f1b636e5d87
+    pristine_git_object: af07d4e941007af4213c5ec9047ef8a2fca04e5e
   src/censys_platform/utils/security.py:
     id: 1559cefe0793
-    last_write_checksum: sha1:a17130ace2c0db6394f38dd941ad2b700cc755c8
-    pristine_git_object: 295a3f40031dbb40073ad227fd4a355660f97ab2
+    last_write_checksum: sha1:435dd8b180cefcd733e635b9fa45512da091d9c0
+    pristine_git_object: 17996bd54b8624009802fbbdf30bcb4225b8dfed
   src/censys_platform/utils/serializers.py:
     id: a3afe58d4a90
     last_write_checksum: sha1:ce1d8d7f500a9ccba0aeca5057cee9c271f4dfd7
@@ -5416,6 +5564,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-collections-crud-create:
     speakeasy-default-v3-collections-crud-create:
       parameters:
@@ -5431,6 +5583,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-collections-crud-delete:
     speakeasy-default-v3-collections-crud-delete:
       parameters:
@@ -5443,6 +5599,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-collections-crud-get:
     speakeasy-default-v3-collections-crud-get:
@@ -5458,6 +5618,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-collections-crud-update:
     speakeasy-default-v3-collections-crud-update:
@@ -5475,6 +5639,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-collections-list-events:
     speakeasy-default-v3-collections-list-events:
@@ -5495,6 +5663,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-collections-search-aggregate:
     speakeasy-default-v3-collections-search-aggregate:
       parameters:
@@ -5512,6 +5684,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-collections-search-query:
     speakeasy-default-v3-collections-search-query:
       parameters:
@@ -5528,6 +5704,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-certificate-list:
     speakeasy-default-v3-globaldata-asset-certificate-list:
@@ -5554,6 +5734,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-host-list:
     speakeasy-default-v3-globaldata-asset-host-list:
@@ -5582,6 +5766,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-host-timeline:
     speakeasy-default-v3-globaldata-asset-host-timeline:
       parameters:
@@ -5598,6 +5786,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-webproperty-list:
     speakeasy-default-v3-globaldata-asset-webproperty-list:
@@ -5626,6 +5818,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-search-aggregate:
     speakeasy-default-v3-globaldata-search-aggregate:
       parameters:
@@ -5640,6 +5836,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-search-query:
     speakeasy-default-v3-globaldata-search-query:
@@ -5656,6 +5856,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-threathunting-value-counts:
     speakeasy-default-v3-threathunting-value-counts:
       parameters:
@@ -5670,6 +5874,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-get-host-observations-with-certificate:
     speakeasy-default-v3-globaldata-get-host-observations-with-certificate:
@@ -5703,6 +5911,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-scans-get:
     speakeasy-default-v3-globaldata-scans-get:
       parameters:
@@ -5717,6 +5929,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-threathunting-scans-get:
     speakeasy-default-v3-threathunting-scans-get:
@@ -5733,6 +5949,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-threathunting-scans-discovery:
     speakeasy-default-v3-threathunting-scans-discovery:
       parameters:
@@ -5747,6 +5967,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-threathunting-get-host-observations-with-certificate:
     speakeasy-default-v3-threathunting-get-host-observations-with-certificate:
@@ -5768,6 +5992,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-certificate-list-post:
     speakeasy-default-v3-globaldata-asset-certificate-list-post:
       parameters:
@@ -5782,6 +6010,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-certificate-list-raw-post:
     speakeasy-default-v3-globaldata-asset-certificate-list-raw-post:
@@ -5798,6 +6030,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-certificate-raw:
     speakeasy-default-v3-globaldata-asset-certificate-raw:
       parameters:
@@ -5812,6 +6048,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-host-list-post:
     speakeasy-default-v3-globaldata-asset-host-list-post:
@@ -5828,6 +6068,10 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-asset-webproperty-list-post:
     speakeasy-default-v3-globaldata-asset-webproperty-list-post:
       parameters:
@@ -5842,6 +6086,10 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-globaldata-search-convert:
     speakeasy-default-v3-globaldata-search-convert:
@@ -5860,6 +6108,8 @@ examples:
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-org-details:
     speakeasy-default-v3-accountmanagement-org-details:
       parameters:
@@ -5874,6 +6124,8 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-org-credits:
     speakeasy-default-v3-accountmanagement-org-credits:
       parameters:
@@ -5885,6 +6137,8 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-org-credits-usage:
     speakeasy-default-v3-accountmanagement-org-credits-usage:
@@ -5904,6 +6158,8 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "400":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-invite-user-to-org:
     speakeasy-default-v3-accountmanagement-invite-user-to-org:
       parameters:
@@ -5915,6 +6171,8 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-list-org-members:
     speakeasy-default-v3-accountmanagement-list-org-members:
@@ -5930,6 +6188,8 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-remove-org-member:
     speakeasy-default-v3-accountmanagement-remove-org-member:
       parameters:
@@ -5940,6 +6200,8 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-update-org-member:
     speakeasy-default-v3-accountmanagement-update-org-member:
@@ -5953,6 +6215,8 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-member-credits-usage:
     speakeasy-default-v3-accountmanagement-member-credits-usage:
@@ -5972,6 +6236,8 @@ examples:
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "400":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-user-credits:
     speakeasy-default-v3-accountmanagement-user-credits:
       responses:
@@ -5980,6 +6246,8 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "404":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-threathunting-threats-list:
     speakeasy-default-v3-threathunting-threats-list:
@@ -5993,6 +6261,10 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
   v3-accountmanagement-user-credits-usage:
     speakeasy-default-v3-accountmanagement-user-credits-usage:
@@ -6008,6 +6280,10 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "404":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
 examplesVersion: 1.0.2
 generatedTests: {}
