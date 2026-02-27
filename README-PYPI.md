@@ -210,6 +210,7 @@ asyncio.run(main())
 * [get_certificate_raw](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_certificate_raw) - Get a certificate in PEM format
 * [get_hosts](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_hosts) - Retrieve multiple hosts
 * [get_host](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_host) - Get a host
+* [list_services_on_host](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_services_on_host) - Get service history for a host
 * [get_host_timeline](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
 * [get_web_properties](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_web_properties) - Retrieve multiple web properties
 * [get_web_property](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_web_property) - Get a web property

@@ -1,0 +1,12 @@
+# Stun
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `binding_error_response`                                                               | [Optional[models.StunBindingErrorResponse]](../models/stunbindingerrorresponse.md)     | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `binding_success_response`                                                             | [Optional[models.StunBindingSuccessResponse]](../models/stunbindingsuccessresponse.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `response_type`                                                                        | *Optional[int]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `response_type_name`                                                                   | *Optional[str]*                                                                        | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `turn`                                                                                 | [Optional[models.StunTurn]](../models/stunturn.md)                                     | :heavy_minus_sign:                                                                     | N/A                                                                                    |

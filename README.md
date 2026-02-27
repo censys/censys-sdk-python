@@ -210,6 +210,7 @@ asyncio.run(main())
 * [get_certificate_raw](docs/sdks/globaldata/README.md#get_certificate_raw) - Get a certificate in PEM format
 * [get_hosts](docs/sdks/globaldata/README.md#get_hosts) - Retrieve multiple hosts
 * [get_host](docs/sdks/globaldata/README.md#get_host) - Get a host
+* [list_services_on_host](docs/sdks/globaldata/README.md#list_services_on_host) - Get service history for a host
 * [get_host_timeline](docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
 * [get_web_properties](docs/sdks/globaldata/README.md#get_web_properties) - Retrieve multiple web properties
 * [get_web_property](docs/sdks/globaldata/README.md#get_web_property) - Get a web property

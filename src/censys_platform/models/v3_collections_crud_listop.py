@@ -5,8 +5,15 @@ from .responseenvelopelistcollectionsresponsev1 import (
     ResponseEnvelopeListCollectionsResponseV1,
     ResponseEnvelopeListCollectionsResponseV1TypedDict,
 )
-from censys_platform.types import BaseModel, UNSET_SENTINEL
+from censys_platform.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from censys_platform.utils import FieldMetadata, QueryParamMetadata
+from enum import Enum
 from pydantic import model_serializer
 from typing import Dict, List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
@@ -39,6 +46,13 @@ class V3CollectionsCrudListGlobals(BaseModel):
         return m
 
 
+class CollectionStatuses(str, Enum):
+    POPULATING = "populating"
+    ACTIVE = "active"
+    PAUSED = "paused"
+    ARCHIVED = "archived"
+
+
 class V3CollectionsCrudListRequestTypedDict(TypedDict):
     organization_id: NotRequired[str]
     r"""The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
@@ -46,6 +60,8 @@ class V3CollectionsCrudListRequestTypedDict(TypedDict):
     r"""page token for the requested page of collection results"""
     page_size: NotRequired[int]
     r"""amount of results to return per page"""
+    collection_statuses: NotRequired[Nullable[List[CollectionStatuses]]]
+    r"""statuses of collection for results to be filtered on."""
 
 
 class V3CollectionsCrudListRequest(BaseModel):
@@ -67,18 +83,35 @@ class V3CollectionsCrudListRequest(BaseModel):
     ] = None
     r"""amount of results to return per page"""
 
+    collection_statuses: Annotated[
+        OptionalNullable[List[CollectionStatuses]],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = UNSET
+    r"""statuses of collection for results to be filtered on."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["organization_id", "page_token", "page_size"])
+        optional_fields = set(
+            ["organization_id", "page_token", "page_size", "collection_statuses"]
+        )
+        nullable_fields = set(["collection_statuses"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
             if val != UNSET_SENTINEL:
-                if val is not None or k not in optional_fields:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
                     m[k] = val
 
         return m

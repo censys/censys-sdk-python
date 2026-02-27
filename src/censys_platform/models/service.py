@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .activemq import Activemq, ActivemqTypedDict
 from .amqp import Amqp, AmqpTypedDict
+from .anermacfforth import AnermaCfForth, AnermaCfForthTypedDict
 from .anyconnect import AnyConnect, AnyConnectTypedDict
 from .asteriskmanagerinterface import (
     AsteriskManagerInterface,
@@ -18,6 +19,7 @@ from .cmore import Cmore, CmoreTypedDict
 from .coap import Coap, CoapTypedDict
 from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
 from .crestrondinap2 import CrestronDinAp2, CrestronDinAp2TypedDict
+from .cursorontarget import CursorOnTarget, CursorOnTargetTypedDict
 from .cwmp import Cwmp, CwmpTypedDict
 from .darkcomet import Darkcomet, DarkcometTypedDict
 from .darkgate import Darkgate, DarkgateTypedDict
@@ -35,6 +37,7 @@ from .etcd import Etcd, EtcdTypedDict
 from .ethereum import Ethereum, EthereumTypedDict
 from .flashsocketpolicy import FlashSocketPolicy, FlashSocketPolicyTypedDict
 from .fox import Fox, FoxTypedDict
+from .frps import Frps, FrpsTypedDict
 from .ftp import Ftp, FtpTypedDict
 from .gearman import Gearman, GearmanTypedDict
 from .gemini import Gemini, GeminiTypedDict
@@ -42,6 +45,7 @@ from .hajime import Hajime, HajimeTypedDict
 from .hidvertx import HidVertx, HidVertxTypedDict
 from .hikvision import Hikvision, HikvisionTypedDict
 from .ibmnje import Ibmnje, IbmnjeTypedDict
+from .icap import Icap, IcapTypedDict
 from .ike import Ike, IkeTypedDict
 from .imap import Imap, ImapTypedDict
 from .iota import Iota, IotaTypedDict
@@ -122,6 +126,7 @@ from .spice import Spice, SpiceTypedDict
 from .ssdp import Ssdp, SsdpTypedDict
 from .ssh import SSH, SSHTypedDict
 from .steam import Steam, SteamTypedDict
+from .stun import Stun, StunTypedDict
 from .tacacsplus import TacacsPlus, TacacsPlusTypedDict
 from .teamviewer import TeamViewer, TeamViewerTypedDict
 from .telnet import Telnet, TelnetTypedDict
@@ -164,6 +169,7 @@ class ServiceTransportProtocol(str, Enum, metaclass=utils.OpenEnumMeta):
 class ServiceTypedDict(TypedDict):
     activemq: NotRequired[ActivemqTypedDict]
     amqp: NotRequired[AmqpTypedDict]
+    anerma_cf_forth: NotRequired[AnermaCfForthTypedDict]
     any_connect: NotRequired[AnyConnectTypedDict]
     asterisk_manager_interface: NotRequired[AsteriskManagerInterfaceTypedDict]
     bacnet: NotRequired[BacnetTypedDict]
@@ -178,6 +184,7 @@ class ServiceTypedDict(TypedDict):
     coap: NotRequired[CoapTypedDict]
     crestron_cp3: NotRequired[CrestronCp3TypedDict]
     crestron_din_ap2: NotRequired[CrestronDinAp2TypedDict]
+    cursor_on_target: NotRequired[CursorOnTargetTypedDict]
     cwmp: NotRequired[CwmpTypedDict]
     darkcomet: NotRequired[DarkcometTypedDict]
     darkgate: NotRequired[DarkgateTypedDict]
@@ -196,6 +203,7 @@ class ServiceTypedDict(TypedDict):
     exposures: NotRequired[Nullable[List[RiskTypedDict]]]
     flash_socket_policy: NotRequired[FlashSocketPolicyTypedDict]
     fox: NotRequired[FoxTypedDict]
+    frps: NotRequired[FrpsTypedDict]
     ftp: NotRequired[FtpTypedDict]
     gearman: NotRequired[GearmanTypedDict]
     gemini: NotRequired[GeminiTypedDict]
@@ -204,6 +212,7 @@ class ServiceTypedDict(TypedDict):
     hid_vertx: NotRequired[HidVertxTypedDict]
     hikvision: NotRequired[HikvisionTypedDict]
     ibmnje: NotRequired[IbmnjeTypedDict]
+    icap: NotRequired[IcapTypedDict]
     ike: NotRequired[IkeTypedDict]
     imap: NotRequired[ImapTypedDict]
     iota: NotRequired[IotaTypedDict]
@@ -290,6 +299,7 @@ class ServiceTypedDict(TypedDict):
     ssdp: NotRequired[SsdpTypedDict]
     ssh: NotRequired[SSHTypedDict]
     steam: NotRequired[SteamTypedDict]
+    stun: NotRequired[StunTypedDict]
     tacacs_plus: NotRequired[TacacsPlusTypedDict]
     team_viewer: NotRequired[TeamViewerTypedDict]
     telnet: NotRequired[TelnetTypedDict]
@@ -314,6 +324,8 @@ class Service(BaseModel):
     activemq: Optional[Activemq] = None
 
     amqp: Optional[Amqp] = None
+
+    anerma_cf_forth: Optional[AnermaCfForth] = None
 
     any_connect: Optional[AnyConnect] = None
 
@@ -342,6 +354,8 @@ class Service(BaseModel):
     crestron_cp3: Optional[CrestronCp3] = None
 
     crestron_din_ap2: Optional[CrestronDinAp2] = None
+
+    cursor_on_target: Optional[CursorOnTarget] = None
 
     cwmp: Optional[Cwmp] = None
 
@@ -379,6 +393,8 @@ class Service(BaseModel):
 
     fox: Optional[Fox] = None
 
+    frps: Optional[Frps] = None
+
     ftp: Optional[Ftp] = None
 
     gearman: Optional[Gearman] = None
@@ -394,6 +410,8 @@ class Service(BaseModel):
     hikvision: Optional[Hikvision] = None
 
     ibmnje: Optional[Ibmnje] = None
+
+    icap: Optional[Icap] = None
 
     ike: Optional[Ike] = None
 
@@ -567,6 +585,8 @@ class Service(BaseModel):
 
     steam: Optional[Steam] = None
 
+    stun: Optional[Stun] = None
+
     tacacs_plus: Optional[TacacsPlus] = None
 
     team_viewer: Optional[TeamViewer] = None
@@ -618,6 +638,7 @@ class Service(BaseModel):
             [
                 "activemq",
                 "amqp",
+                "anerma_cf_forth",
                 "any_connect",
                 "asterisk_manager_interface",
                 "bacnet",
@@ -632,6 +653,7 @@ class Service(BaseModel):
                 "coap",
                 "crestron_cp3",
                 "crestron_din_ap2",
+                "cursor_on_target",
                 "cwmp",
                 "darkcomet",
                 "darkgate",
@@ -650,6 +672,7 @@ class Service(BaseModel):
                 "exposures",
                 "flash_socket_policy",
                 "fox",
+                "frps",
                 "ftp",
                 "gearman",
                 "gemini",
@@ -658,6 +681,7 @@ class Service(BaseModel):
                 "hid_vertx",
                 "hikvision",
                 "ibmnje",
+                "icap",
                 "ike",
                 "imap",
                 "iota",
@@ -744,6 +768,7 @@ class Service(BaseModel):
                 "ssdp",
                 "ssh",
                 "steam",
+                "stun",
                 "tacacs_plus",
                 "team_viewer",
                 "telnet",

@@ -12,6 +12,7 @@ Endpoints related to the Global Data product
 * [get_certificate_raw](#get_certificate_raw) - Get a certificate in PEM format
 * [get_hosts](#get_hosts) - Retrieve multiple hosts
 * [get_host](#get_host) - Get a host
+* [list_services_on_host](#list_services_on_host) - Get service history for a host
 * [get_host_timeline](#get_host_timeline) - Get host event history
 * [get_web_properties](#get_web_properties) - Retrieve multiple web properties
 * [get_web_property](#get_web_property) - Get a web property
@@ -298,6 +299,58 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_services_on_host
+
+Retrieve historical service observations for a host. This endpoint returns time ranges during which services were detected on the host.<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account.<br><br>You can filter by port number, protocol, and transport protocol.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-service-on-host" method="get" path="/v3/global/asset/host/{host_id}/observations/services" -->
+```python
+import censys_platform
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.list_services_on_host(request={
+        "start_time": "2024-01-01T00:00:00Z",
+        "end_time": "2024-01-31T23:59:59Z",
+        "page_size": 50,
+        "port": 443,
+        "protocol": "HTTP",
+        "transport_protocol": censys_platform.QueryParamTransportProtocol.TCP,
+        "host_id": "8.8.8.8",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `request`                                                                                   | [models.V3GlobaldataServiceOnHostRequest](../../models/v3globaldataserviceonhostrequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
+
+### Response
+
+**[models.V3GlobaldataServiceOnHostResponse](../../models/v3globaldataserviceonhostresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404, 409         | application/problem+json   |
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
