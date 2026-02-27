@@ -6,7 +6,7 @@ from censys_platform._hooks import HookContext
 from censys_platform.types import BaseModel, OptionalNullable, UNSET
 from censys_platform.utils.unmarshal_json_response import unmarshal_json_response
 from enum import Enum
-from typing import Any, Mapping, Optional, Union, cast
+from typing import Any, List, Mapping, Optional, Union, cast
 
 
 class DeleteAcceptEnum(str, Enum):
@@ -23,6 +23,7 @@ class Collections(BaseSDK):
         organization_id: Optional[str] = None,
         page_token: Optional[str] = None,
         page_size: Optional[int] = None,
+        collection_statuses: OptionalNullable[List[models.CollectionStatuses]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -35,6 +36,7 @@ class Collections(BaseSDK):
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param page_token: page token for the requested page of collection results
         :param page_size: amount of results to return per page
+        :param collection_statuses: statuses of collection for results to be filtered on.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -54,6 +56,7 @@ class Collections(BaseSDK):
             organization_id=organization_id,
             page_token=page_token,
             page_size=page_size,
+            collection_statuses=collection_statuses,
         )
 
         req = self._build_request(
@@ -131,6 +134,7 @@ class Collections(BaseSDK):
         organization_id: Optional[str] = None,
         page_token: Optional[str] = None,
         page_size: Optional[int] = None,
+        collection_statuses: OptionalNullable[List[models.CollectionStatuses]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -143,6 +147,7 @@ class Collections(BaseSDK):
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param page_token: page token for the requested page of collection results
         :param page_size: amount of results to return per page
+        :param collection_statuses: statuses of collection for results to be filtered on.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -162,6 +167,7 @@ class Collections(BaseSDK):
             organization_id=organization_id,
             page_token=page_token,
             page_size=page_size,
+            collection_statuses=collection_statuses,
         )
 
         req = self._build_request_async(
