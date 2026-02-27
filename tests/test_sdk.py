@@ -1,4 +1,5 @@
 import os
+import time
 from datetime import date, datetime, timedelta, timezone
 
 import pytest
@@ -21,6 +22,12 @@ COLLECTION_QUERY = (
     " and host.services.port = 9100"
     " and host.autonomous_system.name = 'WORLDSTREAM'"
 )
+
+
+@pytest.fixture(autouse=True)
+def delay_between_tests():
+    yield
+    time.sleep(2)
 
 
 @pytest.fixture
@@ -171,18 +178,23 @@ class TestGlobalData_Search:
 class TestGlobalData_TrackedScans:
     def test_create_and_get_tracked_scan(self, sdk_client):
         with sdk_client as s:
-            create_res = s.global_data.create_tracked_scan(
-                scans_rescan_input_body={
-                    "target": {
-                        "service_id": {
-                            "ip": "1.1.1.1",
-                            "port": 80,
-                            "protocol": "HTTP",
-                            "transport_protocol": "tcp",
+            try:
+                create_res = s.global_data.create_tracked_scan(
+                    scans_rescan_input_body={
+                        "target": {
+                            "service_id": {
+                                "ip": "1.1.1.1",
+                                "port": 80,
+                                "protocol": "HTTP",
+                                "transport_protocol": "tcp",
+                            }
                         }
                     }
-                }
-            )
+                )
+            except models.SDKError as e:
+                if e.status_code == 429:
+                    pytest.skip("Rate limited (429)")
+                raise
             assert create_res is not None
             scan_id = create_res.result.result.tracked_scan_id
             assert scan_id is not None
@@ -288,10 +300,6 @@ class TestAccountManagement_Organization:
             )
             assert res is not None
 
-    @pytest.mark.xfail(
-        reason="TODO: fix optional response fields",
-        raises=Exception,
-    )
     def test_get_organization_credit_usage(self, sdk_client, org_id):
         with sdk_client as s:
             res = s.account_management.get_organization_credit_usage(
@@ -317,10 +325,6 @@ class TestAccountManagement_Members:
             )
             assert res is not None
 
-    @pytest.mark.xfail(
-        reason="TODO: fix optional response fields",
-        raises=Exception,
-    )
     def test_get_member_credit_usage(self, sdk_client, org_id):
         with sdk_client as s:
             members_res = s.account_management.list_organization_members(
@@ -351,10 +355,6 @@ class TestAccountManagement_User:
             res = s.account_management.get_user_credits()
             assert res is not None
 
-    @pytest.mark.xfail(
-        reason="TODO: fix optional response fields",
-        raises=Exception,
-    )
     def test_get_user_credits_usage(self, sdk_client):
         with sdk_client as s:
             res = s.account_management.get_user_credits_usage(
@@ -399,11 +399,16 @@ class TestThreatHunting:
 
     def test_create_and_get_tracked_scan(self, sdk_client):
         with sdk_client as s:
-            create_res = s.threat_hunting.create_tracked_scan(
-                scans_discovery_input_body={
-                    "target": {"host_port": {"ip": "1.1.1.1", "port": 443}}
-                }
-            )
+            try:
+                create_res = s.threat_hunting.create_tracked_scan(
+                    scans_discovery_input_body={
+                        "target": {"host_port": {"ip": "1.1.1.1", "port": 443}}
+                    }
+                )
+            except models.SDKError as e:
+                if e.status_code == 429:
+                    pytest.skip("Rate limited (429)")
+                raise
             assert create_res is not None
             scan_id = create_res.result.result.tracked_scan_id
             assert scan_id is not None
