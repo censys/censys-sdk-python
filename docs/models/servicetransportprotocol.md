@@ -1,5 +1,15 @@
 # ServiceTransportProtocol
 
+## Example Usage
+
+```python
+from censys_platform.models import ServiceTransportProtocol
+
+value = ServiceTransportProtocol.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

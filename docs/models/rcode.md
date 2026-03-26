@@ -2,6 +2,16 @@
 
 A enumerated field indicating the result of the request. The most common values are defined in RFC 1035.
 
+## Example Usage
+
+```python
+from censys_platform.models import RCode
+
+value = RCode.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

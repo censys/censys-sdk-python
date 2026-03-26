@@ -1,5 +1,15 @@
 # TransportProtocol
 
+## Example Usage
+
+```python
+from censys_platform.models import TransportProtocol
+
+value = TransportProtocol.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

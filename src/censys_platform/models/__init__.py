@@ -47,6 +47,13 @@ if TYPE_CHECKING:
     from .basicconstraints import BasicConstraints, BasicConstraintsTypedDict
     from .cabforganizationid import CabfOrganizationID, CabfOrganizationIDTypedDict
     from .capabilities import Capabilities, CapabilitiesTypedDict
+    from .censeyejob import CenseyeJob, CenseyeJobTypedDict, State
+    from .censeyeresult import CenseyeResult, CenseyeResultTypedDict
+    from .censeyeresultsresponse import (
+        CenseyeResultsResponse,
+        CenseyeResultsResponseTypedDict,
+    )
+    from .censeyetarget import CenseyeTarget, CenseyeTargetTypedDict
     from .certificate import (
         Certificate,
         CertificateTypedDict,
@@ -123,6 +130,10 @@ if TYPE_CHECKING:
     from .countcondition import CountCondition, CountConditionTypedDict
     from .cpe import Cpe, CpeTypedDict
     from .cpe_lifecycle import CPELifeCycle, CPELifeCycleTypedDict
+    from .createcenseyejobinputbody import (
+        CreateCenseyeJobInputBody,
+        CreateCenseyeJobInputBodyTypedDict,
+    )
     from .creditexpiration import CreditExpiration, CreditExpirationTypedDict
     from .creditusagereport import (
         CreditUsageReport,
@@ -625,7 +636,12 @@ if TYPE_CHECKING:
     from .natsio import NatsIo, NatsIoTypedDict
     from .nbd import Nbd, NbdTypedDict
     from .network import Network, NetworkTypedDict
+    from .network_mobileinfo import NetworkMobileInfo, NetworkMobileInfoTypedDict
     from .networkcapabilities import NetworkCapabilities, NetworkCapabilitiesTypedDict
+    from .networkclassification import (
+        NetworkClassification,
+        NetworkClassificationTypedDict,
+    )
     from .networklog import NetworkLog, NetworkLogTypedDict
     from .networklog_resourceinfo import (
         NetworkLogResourceInfo,
@@ -702,6 +718,13 @@ if TYPE_CHECKING:
     from .pptp import Pptp, PptpTypedDict
     from .pptp_responseinfo import PptpResponseInfo, PptpResponseInfoTypedDict
     from .pptp_version import PptpVersion, PptpVersionTypedDict
+    from .privacy import Privacy, PrivacyTypedDict
+    from .privacy_torinfo import PrivacyTorInfo, PrivacyTorInfoTypedDict
+    from .privacy_torinfo_relay import PrivacyTorInfoRelay, PrivacyTorInfoRelayTypedDict
+    from .privacy_torinfo_relay_exitpolicysummary import (
+        PrivacyTorInfoRelayExitPolicySummary,
+        PrivacyTorInfoRelayExitPolicySummaryTypedDict,
+    )
     from .profinetcm import ProfinetCm, ProfinetCmTypedDict
     from .prometheus import Prometheus, PrometheusTypedDict
     from .prometheus_response import PrometheusResponse, PrometheusResponseTypedDict
@@ -777,6 +800,29 @@ if TYPE_CHECKING:
         RepresentativeInfo,
         RepresentativeInfoReason,
         RepresentativeInfoTypedDict,
+    )
+    from .reputation import Reputation, ReputationTypedDict, ScoreLevel
+    from .reputation_evidence import ReputationEvidence, ReputationEvidenceTypedDict
+    from .reputation_evidence_externalsignal import (
+        ReputationEvidenceExternalSignal,
+        ReputationEvidenceExternalSignalTypedDict,
+        Tlp,
+    )
+    from .reputation_evidence_fieldvalue import (
+        ReputationEvidenceFieldValue,
+        ReputationEvidenceFieldValueTypedDict,
+    )
+    from .reputation_evidence_threat import (
+        ReputationEvidenceThreat,
+        ReputationEvidenceThreatTypedDict,
+    )
+    from .responseenvelopecenseyejob import (
+        ResponseEnvelopeCenseyeJob,
+        ResponseEnvelopeCenseyeJobTypedDict,
+    )
+    from .responseenvelopecenseyeresultsresponse import (
+        ResponseEnvelopeCenseyeResultsResponse,
+        ResponseEnvelopeCenseyeResultsResponseTypedDict,
     )
     from .responseenvelopecertificateasset import (
         ResponseEnvelopeCertificateAsset,
@@ -921,6 +967,12 @@ if TYPE_CHECKING:
         RustdeskRendezvousTestNatResponseTypedDict,
     )
     from .s7 import S7, S7TypedDict
+    from .sapient import Sapient, SapientTypedDict
+    from .sapient_error import SapientError, SapientErrorTypedDict
+    from .sapient_registrationack import (
+        SapientRegistrationAck,
+        SapientRegistrationAckTypedDict,
+    )
     from .saprouter import SapRouter, SapRouterTypedDict
     from .saprouter_clientinfo import SapRouterClientInfo, SapRouterClientInfoTypedDict
     from .saprouter_routerinfo import SapRouterRouterInfo, SapRouterRouterInfoTypedDict
@@ -1392,6 +1444,30 @@ if TYPE_CHECKING:
         V3GlobaldataServiceOnHostResponse,
         V3GlobaldataServiceOnHostResponseTypedDict,
     )
+    from .v3_threathunting_censeye_job_resultsop import (
+        V3ThreathuntingCenseyeJobResultsGlobals,
+        V3ThreathuntingCenseyeJobResultsGlobalsTypedDict,
+        V3ThreathuntingCenseyeJobResultsRequest,
+        V3ThreathuntingCenseyeJobResultsRequestTypedDict,
+        V3ThreathuntingCenseyeJobResultsResponse,
+        V3ThreathuntingCenseyeJobResultsResponseTypedDict,
+    )
+    from .v3_threathunting_censeye_jobs_createop import (
+        V3ThreathuntingCenseyeJobsCreateGlobals,
+        V3ThreathuntingCenseyeJobsCreateGlobalsTypedDict,
+        V3ThreathuntingCenseyeJobsCreateRequest,
+        V3ThreathuntingCenseyeJobsCreateRequestTypedDict,
+        V3ThreathuntingCenseyeJobsCreateResponse,
+        V3ThreathuntingCenseyeJobsCreateResponseTypedDict,
+    )
+    from .v3_threathunting_censeye_jobs_getop import (
+        V3ThreathuntingCenseyeJobsGetGlobals,
+        V3ThreathuntingCenseyeJobsGetGlobalsTypedDict,
+        V3ThreathuntingCenseyeJobsGetRequest,
+        V3ThreathuntingCenseyeJobsGetRequestTypedDict,
+        V3ThreathuntingCenseyeJobsGetResponse,
+        V3ThreathuntingCenseyeJobsGetResponseTypedDict,
+    )
     from .v3_threathunting_get_host_observations_with_certificateop import (
         V3ThreathuntingGetHostObservationsWithCertificateGlobals,
         V3ThreathuntingGetHostObservationsWithCertificateGlobalsTypedDict,
@@ -1527,6 +1603,14 @@ __all__ = [
     "CabfOrganizationIDTypedDict",
     "Capabilities",
     "CapabilitiesTypedDict",
+    "CenseyeJob",
+    "CenseyeJobTypedDict",
+    "CenseyeResult",
+    "CenseyeResultTypedDict",
+    "CenseyeResultsResponse",
+    "CenseyeResultsResponseTypedDict",
+    "CenseyeTarget",
+    "CenseyeTargetTypedDict",
     "Certificate",
     "CertificateAsset",
     "CertificateAssetTypedDict",
@@ -1600,6 +1684,8 @@ __all__ = [
     "CountConditionTypedDict",
     "Cpe",
     "CpeTypedDict",
+    "CreateCenseyeJobInputBody",
+    "CreateCenseyeJobInputBodyTypedDict",
     "CreditExpiration",
     "CreditExpirationTypedDict",
     "CreditUsageReport",
@@ -2090,10 +2176,14 @@ __all__ = [
     "Network",
     "NetworkCapabilities",
     "NetworkCapabilitiesTypedDict",
+    "NetworkClassification",
+    "NetworkClassificationTypedDict",
     "NetworkLog",
     "NetworkLogResourceInfo",
     "NetworkLogResourceInfoTypedDict",
     "NetworkLogTypedDict",
+    "NetworkMobileInfo",
+    "NetworkMobileInfoTypedDict",
     "NetworkTypedDict",
     "NewStatus",
     "NfsMountd",
@@ -2210,6 +2300,14 @@ __all__ = [
     "PptpTypedDict",
     "PptpVersion",
     "PptpVersionTypedDict",
+    "Privacy",
+    "PrivacyTorInfo",
+    "PrivacyTorInfoRelay",
+    "PrivacyTorInfoRelayExitPolicySummary",
+    "PrivacyTorInfoRelayExitPolicySummaryTypedDict",
+    "PrivacyTorInfoRelayTypedDict",
+    "PrivacyTorInfoTypedDict",
+    "PrivacyTypedDict",
     "PrivilegesRequired",
     "ProfinetCm",
     "ProfinetCmTypedDict",
@@ -2294,6 +2392,20 @@ __all__ = [
     "RepresentativeInfo",
     "RepresentativeInfoReason",
     "RepresentativeInfoTypedDict",
+    "Reputation",
+    "ReputationEvidence",
+    "ReputationEvidenceExternalSignal",
+    "ReputationEvidenceExternalSignalTypedDict",
+    "ReputationEvidenceFieldValue",
+    "ReputationEvidenceFieldValueTypedDict",
+    "ReputationEvidenceThreat",
+    "ReputationEvidenceThreatTypedDict",
+    "ReputationEvidenceTypedDict",
+    "ReputationTypedDict",
+    "ResponseEnvelopeCenseyeJob",
+    "ResponseEnvelopeCenseyeJobTypedDict",
+    "ResponseEnvelopeCenseyeResultsResponse",
+    "ResponseEnvelopeCenseyeResultsResponseTypedDict",
     "ResponseEnvelopeCertificateAsset",
     "ResponseEnvelopeCertificateAssetTypedDict",
     "ResponseEnvelopeCollection",
@@ -2425,6 +2537,12 @@ __all__ = [
     "SapRouterRouterVersionInfo",
     "SapRouterRouterVersionInfoTypedDict",
     "SapRouterTypedDict",
+    "Sapient",
+    "SapientError",
+    "SapientErrorTypedDict",
+    "SapientRegistrationAck",
+    "SapientRegistrationAckTypedDict",
+    "SapientTypedDict",
     "ScadaView",
     "ScadaViewTypedDict",
     "ScansDiscoveryInputBody",
@@ -2436,6 +2554,7 @@ __all__ = [
     "ScansRescanInputBodyTargetTypedDict",
     "ScansRescanInputBodyTypedDict",
     "Scope",
+    "ScoreLevel",
     "Scpi",
     "ScpiTypedDict",
     "Screenshot",
@@ -2535,6 +2654,7 @@ __all__ = [
     "SpiceTypedDict",
     "Ssdp",
     "SsdpTypedDict",
+    "State",
     "Status",
     "StatusChangeTypes",
     "StatusReason",
@@ -2602,6 +2722,7 @@ __all__ = [
     "ThreatsListResponseTypedDict",
     "Tibia",
     "TibiaTypedDict",
+    "Tlp",
     "TorServiceDescriptor",
     "TorServiceDescriptorTypedDict",
     "TplinkKasa",
@@ -2820,6 +2941,24 @@ __all__ = [
     "V3GlobaldataServiceOnHostRequestTypedDict",
     "V3GlobaldataServiceOnHostResponse",
     "V3GlobaldataServiceOnHostResponseTypedDict",
+    "V3ThreathuntingCenseyeJobResultsGlobals",
+    "V3ThreathuntingCenseyeJobResultsGlobalsTypedDict",
+    "V3ThreathuntingCenseyeJobResultsRequest",
+    "V3ThreathuntingCenseyeJobResultsRequestTypedDict",
+    "V3ThreathuntingCenseyeJobResultsResponse",
+    "V3ThreathuntingCenseyeJobResultsResponseTypedDict",
+    "V3ThreathuntingCenseyeJobsCreateGlobals",
+    "V3ThreathuntingCenseyeJobsCreateGlobalsTypedDict",
+    "V3ThreathuntingCenseyeJobsCreateRequest",
+    "V3ThreathuntingCenseyeJobsCreateRequestTypedDict",
+    "V3ThreathuntingCenseyeJobsCreateResponse",
+    "V3ThreathuntingCenseyeJobsCreateResponseTypedDict",
+    "V3ThreathuntingCenseyeJobsGetGlobals",
+    "V3ThreathuntingCenseyeJobsGetGlobalsTypedDict",
+    "V3ThreathuntingCenseyeJobsGetRequest",
+    "V3ThreathuntingCenseyeJobsGetRequestTypedDict",
+    "V3ThreathuntingCenseyeJobsGetResponse",
+    "V3ThreathuntingCenseyeJobsGetResponseTypedDict",
     "V3ThreathuntingGetHostObservationsWithCertificateGlobals",
     "V3ThreathuntingGetHostObservationsWithCertificateGlobalsTypedDict",
     "V3ThreathuntingGetHostObservationsWithCertificateRequest",
@@ -2955,6 +3094,15 @@ _dynamic_imports: dict[str, str] = {
     "CabfOrganizationIDTypedDict": ".cabforganizationid",
     "Capabilities": ".capabilities",
     "CapabilitiesTypedDict": ".capabilities",
+    "CenseyeJob": ".censeyejob",
+    "CenseyeJobTypedDict": ".censeyejob",
+    "State": ".censeyejob",
+    "CenseyeResult": ".censeyeresult",
+    "CenseyeResultTypedDict": ".censeyeresult",
+    "CenseyeResultsResponse": ".censeyeresultsresponse",
+    "CenseyeResultsResponseTypedDict": ".censeyeresultsresponse",
+    "CenseyeTarget": ".censeyetarget",
+    "CenseyeTargetTypedDict": ".censeyetarget",
     "Certificate": ".certificate",
     "CertificateTypedDict": ".certificate",
     "ParseStatus": ".certificate",
@@ -3030,6 +3178,8 @@ _dynamic_imports: dict[str, str] = {
     "CpeTypedDict": ".cpe",
     "CPELifeCycle": ".cpe_lifecycle",
     "CPELifeCycleTypedDict": ".cpe_lifecycle",
+    "CreateCenseyeJobInputBody": ".createcenseyejobinputbody",
+    "CreateCenseyeJobInputBodyTypedDict": ".createcenseyejobinputbody",
     "CreditExpiration": ".creditexpiration",
     "CreditExpirationTypedDict": ".creditexpiration",
     "CreditUsageReport": ".creditusagereport",
@@ -3549,8 +3699,12 @@ _dynamic_imports: dict[str, str] = {
     "NbdTypedDict": ".nbd",
     "Network": ".network",
     "NetworkTypedDict": ".network",
+    "NetworkMobileInfo": ".network_mobileinfo",
+    "NetworkMobileInfoTypedDict": ".network_mobileinfo",
     "NetworkCapabilities": ".networkcapabilities",
     "NetworkCapabilitiesTypedDict": ".networkcapabilities",
+    "NetworkClassification": ".networkclassification",
+    "NetworkClassificationTypedDict": ".networkclassification",
     "NetworkLog": ".networklog",
     "NetworkLogTypedDict": ".networklog",
     "NetworkLogResourceInfo": ".networklog_resourceinfo",
@@ -3666,6 +3820,14 @@ _dynamic_imports: dict[str, str] = {
     "PptpResponseInfoTypedDict": ".pptp_responseinfo",
     "PptpVersion": ".pptp_version",
     "PptpVersionTypedDict": ".pptp_version",
+    "Privacy": ".privacy",
+    "PrivacyTypedDict": ".privacy",
+    "PrivacyTorInfo": ".privacy_torinfo",
+    "PrivacyTorInfoTypedDict": ".privacy_torinfo",
+    "PrivacyTorInfoRelay": ".privacy_torinfo_relay",
+    "PrivacyTorInfoRelayTypedDict": ".privacy_torinfo_relay",
+    "PrivacyTorInfoRelayExitPolicySummary": ".privacy_torinfo_relay_exitpolicysummary",
+    "PrivacyTorInfoRelayExitPolicySummaryTypedDict": ".privacy_torinfo_relay_exitpolicysummary",
     "ProfinetCm": ".profinetcm",
     "ProfinetCmTypedDict": ".profinetcm",
     "Prometheus": ".prometheus",
@@ -3740,6 +3902,22 @@ _dynamic_imports: dict[str, str] = {
     "RepresentativeInfo": ".representativeinfo",
     "RepresentativeInfoReason": ".representativeinfo",
     "RepresentativeInfoTypedDict": ".representativeinfo",
+    "Reputation": ".reputation",
+    "ReputationTypedDict": ".reputation",
+    "ScoreLevel": ".reputation",
+    "ReputationEvidence": ".reputation_evidence",
+    "ReputationEvidenceTypedDict": ".reputation_evidence",
+    "ReputationEvidenceExternalSignal": ".reputation_evidence_externalsignal",
+    "ReputationEvidenceExternalSignalTypedDict": ".reputation_evidence_externalsignal",
+    "Tlp": ".reputation_evidence_externalsignal",
+    "ReputationEvidenceFieldValue": ".reputation_evidence_fieldvalue",
+    "ReputationEvidenceFieldValueTypedDict": ".reputation_evidence_fieldvalue",
+    "ReputationEvidenceThreat": ".reputation_evidence_threat",
+    "ReputationEvidenceThreatTypedDict": ".reputation_evidence_threat",
+    "ResponseEnvelopeCenseyeJob": ".responseenvelopecenseyejob",
+    "ResponseEnvelopeCenseyeJobTypedDict": ".responseenvelopecenseyejob",
+    "ResponseEnvelopeCenseyeResultsResponse": ".responseenvelopecenseyeresultsresponse",
+    "ResponseEnvelopeCenseyeResultsResponseTypedDict": ".responseenvelopecenseyeresultsresponse",
     "ResponseEnvelopeCertificateAsset": ".responseenvelopecertificateasset",
     "ResponseEnvelopeCertificateAssetTypedDict": ".responseenvelopecertificateasset",
     "ResponseEnvelopeCollection": ".responseenvelopecollection",
@@ -3849,6 +4027,12 @@ _dynamic_imports: dict[str, str] = {
     "RustdeskRendezvousTestNatResponseTypedDict": ".rustdeskrendezvous_testnatresponse",
     "S7": ".s7",
     "S7TypedDict": ".s7",
+    "Sapient": ".sapient",
+    "SapientTypedDict": ".sapient",
+    "SapientError": ".sapient_error",
+    "SapientErrorTypedDict": ".sapient_error",
+    "SapientRegistrationAck": ".sapient_registrationack",
+    "SapientRegistrationAckTypedDict": ".sapient_registrationack",
     "SapRouter": ".saprouter",
     "SapRouterTypedDict": ".saprouter",
     "SapRouterClientInfo": ".saprouter_clientinfo",
@@ -4273,6 +4457,24 @@ _dynamic_imports: dict[str, str] = {
     "V3GlobaldataServiceOnHostRequestTypedDict": ".v3_globaldata_service_on_hostop",
     "V3GlobaldataServiceOnHostResponse": ".v3_globaldata_service_on_hostop",
     "V3GlobaldataServiceOnHostResponseTypedDict": ".v3_globaldata_service_on_hostop",
+    "V3ThreathuntingCenseyeJobResultsGlobals": ".v3_threathunting_censeye_job_resultsop",
+    "V3ThreathuntingCenseyeJobResultsGlobalsTypedDict": ".v3_threathunting_censeye_job_resultsop",
+    "V3ThreathuntingCenseyeJobResultsRequest": ".v3_threathunting_censeye_job_resultsop",
+    "V3ThreathuntingCenseyeJobResultsRequestTypedDict": ".v3_threathunting_censeye_job_resultsop",
+    "V3ThreathuntingCenseyeJobResultsResponse": ".v3_threathunting_censeye_job_resultsop",
+    "V3ThreathuntingCenseyeJobResultsResponseTypedDict": ".v3_threathunting_censeye_job_resultsop",
+    "V3ThreathuntingCenseyeJobsCreateGlobals": ".v3_threathunting_censeye_jobs_createop",
+    "V3ThreathuntingCenseyeJobsCreateGlobalsTypedDict": ".v3_threathunting_censeye_jobs_createop",
+    "V3ThreathuntingCenseyeJobsCreateRequest": ".v3_threathunting_censeye_jobs_createop",
+    "V3ThreathuntingCenseyeJobsCreateRequestTypedDict": ".v3_threathunting_censeye_jobs_createop",
+    "V3ThreathuntingCenseyeJobsCreateResponse": ".v3_threathunting_censeye_jobs_createop",
+    "V3ThreathuntingCenseyeJobsCreateResponseTypedDict": ".v3_threathunting_censeye_jobs_createop",
+    "V3ThreathuntingCenseyeJobsGetGlobals": ".v3_threathunting_censeye_jobs_getop",
+    "V3ThreathuntingCenseyeJobsGetGlobalsTypedDict": ".v3_threathunting_censeye_jobs_getop",
+    "V3ThreathuntingCenseyeJobsGetRequest": ".v3_threathunting_censeye_jobs_getop",
+    "V3ThreathuntingCenseyeJobsGetRequestTypedDict": ".v3_threathunting_censeye_jobs_getop",
+    "V3ThreathuntingCenseyeJobsGetResponse": ".v3_threathunting_censeye_jobs_getop",
+    "V3ThreathuntingCenseyeJobsGetResponseTypedDict": ".v3_threathunting_censeye_jobs_getop",
     "V3ThreathuntingGetHostObservationsWithCertificateGlobals": ".v3_threathunting_get_host_observations_with_certificateop",
     "V3ThreathuntingGetHostObservationsWithCertificateGlobalsTypedDict": ".v3_threathunting_get_host_observations_with_certificateop",
     "V3ThreathuntingGetHostObservationsWithCertificateRequest": ".v3_threathunting_get_host_observations_with_certificateop",

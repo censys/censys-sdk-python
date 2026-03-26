@@ -1,5 +1,15 @@
 # ThreatSource
 
+## Example Usage
+
+```python
+from censys_platform.models import ThreatSource
+
+value = ThreatSource.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

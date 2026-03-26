@@ -1,5 +1,13 @@
 # StatusChangeTypes
 
+## Example Usage
+
+```python
+from censys_platform.models import StatusChangeTypes
+
+value = StatusChangeTypes.ACTIVE
+```
+
 
 ## Values
 

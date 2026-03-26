@@ -1,5 +1,15 @@
 # RejectType
 
+## Example Usage
+
+```python
+from censys_platform.models import RejectType
+
+value = RejectType.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

@@ -6,6 +6,9 @@ from .greynoise import Greynoise, GreynoiseTypedDict
 from .hostdns import HostDNS, HostDNSTypedDict
 from .label import Label, LabelTypedDict
 from .location import Location, LocationTypedDict
+from .networkclassification import NetworkClassification, NetworkClassificationTypedDict
+from .privacy import Privacy, PrivacyTypedDict
+from .reputation import Reputation, ReputationTypedDict
 from .routing import Routing, RoutingTypedDict
 from .service import Service, ServiceTypedDict
 from .whois import Whois, WhoisTypedDict
@@ -29,7 +32,12 @@ class HostTypedDict(TypedDict):
     ip: NotRequired[str]
     labels: NotRequired[Nullable[List[LabelTypedDict]]]
     location: NotRequired[LocationTypedDict]
+    network: NotRequired[Nullable[List[NetworkClassificationTypedDict]]]
+    r"""Information about what type of network the host belongs to."""
     operating_system: NotRequired[AttributeTypedDict]
+    privacy: NotRequired[Nullable[List[PrivacyTypedDict]]]
+    r"""Information about privacy services used by the IP, such as VPNs, Proxies, or Tor."""
+    reputation: NotRequired[ReputationTypedDict]
     service_count: NotRequired[int]
     services: NotRequired[Nullable[List[ServiceTypedDict]]]
     whois: NotRequired[WhoisTypedDict]
@@ -50,7 +58,15 @@ class Host(BaseModel):
 
     location: Optional[Location] = None
 
+    network: OptionalNullable[List[NetworkClassification]] = UNSET
+    r"""Information about what type of network the host belongs to."""
+
     operating_system: Optional[Attribute] = None
+
+    privacy: OptionalNullable[List[Privacy]] = UNSET
+    r"""Information about privacy services used by the IP, such as VPNs, Proxies, or Tor."""
+
+    reputation: Optional[Reputation] = None
 
     service_count: Optional[int] = None
 
@@ -69,19 +85,22 @@ class Host(BaseModel):
                 "ip",
                 "labels",
                 "location",
+                "network",
                 "operating_system",
+                "privacy",
+                "reputation",
                 "service_count",
                 "services",
                 "whois",
             ]
         )
-        nullable_fields = set(["labels", "services"])
+        nullable_fields = set(["labels", "network", "privacy", "services"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member

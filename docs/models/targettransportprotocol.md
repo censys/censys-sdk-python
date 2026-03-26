@@ -1,5 +1,13 @@
 # TargetTransportProtocol
 
+## Example Usage
+
+```python
+from censys_platform.models import TargetTransportProtocol
+
+value = TargetTransportProtocol.UNKNOWN
+```
+
 
 ## Values
 

@@ -2,6 +2,14 @@
 
 Filter by transport protocol
 
+## Example Usage
+
+```python
+from censys_platform.models import QueryParamTransportProtocol
+
+value = QueryParamTransportProtocol.TCP
+```
+
 
 ## Values
 
