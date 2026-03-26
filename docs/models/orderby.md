@@ -1,5 +1,13 @@
 # OrderBy
 
+## Example Usage
+
+```python
+from censys_platform.models import OrderBy
+
+value = OrderBy.PORT_ASC
+```
+
 
 ## Values
 

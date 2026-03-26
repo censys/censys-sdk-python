@@ -1,5 +1,15 @@
 # RiskSource1
 
+## Example Usage
+
+```python
+from censys_platform.models import RiskSource1
+
+value = RiskSource1.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

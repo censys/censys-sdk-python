@@ -1,5 +1,13 @@
 # CollectionStatuses
 
+## Example Usage
+
+```python
+from censys_platform.models import CollectionStatuses
+
+value = CollectionStatuses.POPULATING
+```
+
 
 ## Values
 

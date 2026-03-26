@@ -6,11 +6,154 @@ Endpoints related to the Threat Hunting product
 
 ### Available Operations
 
+* [create_censeye_job](#create_censeye_job) - CensEye: Create a pivot analysis job
+* [get_censeye_job](#get_censeye_job) - CensEye: Get job status
+* [get_censeye_job_results](#get_censeye_job_results) - CensEye: Get job results
 * [get_host_observations_with_certificate](#get_host_observations_with_certificate) - Get host history for a certificate
 * [create_tracked_scan](#create_tracked_scan) - Live Discovery: Initiate a new scan
 * [get_tracked_scan_threat_hunting](#get_tracked_scan_threat_hunting) - Get scan status
 * [list_threats](#list_threats) - List active threats
 * [value_counts](#value_counts) - CensEye: Retrieve value counts to discover pivots
+
+## create_censeye_job
+
+Create an asynchronous CensEye pivot analysis job for a host, web property, or certificate. The job extracts [default pivot fields](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#default-pivot-fields) from the target asset and counts matching documents for each field-value pair. Poll the job status endpoint to track progress, then retrieve results when complete.<br><br>To use this endpoint, your organization must have access to the Threat Hunting module.<br><br>This endpoint costs 44 credits to execute for a host, 28 credits to execute for a web property, and 7 credits to execute for a certificate.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-threathunting-censeye-jobs-create" method="post" path="/v3/threat-hunting/censeye/jobs" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.threat_hunting.create_censeye_job(create_censeye_job_input_body={
+        "target": {
+            "certificate_id": "3daf2843a77b6f4e6af43cd9b6f6746053b8c928e056e8a724808db8905a94cf",
+            "host_id": "8.8.8.8",
+            "webproperty_id": "example.com:443",
+        },
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `create_censeye_job_input_body`                                                                                                                                                                                      | [models.CreateCenseyeJobInputBody](../../models/createcenseyejobinputbody.md)                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3ThreathuntingCenseyeJobsCreateResponse](../../models/v3threathuntingcenseyejobscreateresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_censeye_job
+
+Retrieve the current status of a CensEye pivot analysis job. Use this to poll for completion before fetching results.<br><br>To use this endpoint, your organization must have access to the Threat Hunting module.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-threathunting-censeye-jobs-get" method="get" path="/v3/threat-hunting/censeye/jobs/{job_id}" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.threat_hunting.get_censeye_job(job_id="3c47b971-5db6-4a9e-8d59-14fc0486172b")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `job_id`                                                                                                                                                                                                             | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The unique identifier of the CensEye job.                                                                                                                                                                            |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3ThreathuntingCenseyeJobsGetResponse](../../models/v3threathuntingcenseyejobsgetresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_censeye_job_results
+
+Retrieve the results of a completed CensEye pivot analysis job. Each result contains a count and the field-value pairs that were analyzed. Results may be empty if the job is still running.<br><br>Results are paginated. Use the `next_page_token` from the response to fetch subsequent pages.<br><br>To use this endpoint, your organization must have access to the Threat Hunting module.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-threathunting-censeye-job-results" method="get" path="/v3/threat-hunting/censeye/jobs/{job_id}/results" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.threat_hunting.get_censeye_job_results(job_id="e58e9a0e-e104-42cf-9d0e-fe88713bc6e3", page_size=100)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `job_id`                                                                                                                                                                                                             | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The unique identifier of the CensEye job.                                                                                                                                                                            |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `page_size`                                                                                                                                                                                                          | *Optional[int]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | Number of results per page (max 100)                                                                                                                                                                                 |
+| `page_token`                                                                                                                                                                                                         | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | Pagination token from previous response                                                                                                                                                                              |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3ThreathuntingCenseyeJobResultsResponse](../../models/v3threathuntingcenseyejobresultsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get_host_observations_with_certificate
 
@@ -203,7 +346,7 @@ with SDK(
 
 ## value_counts
 
-Get counts of web assets for specific field-value pairs and combinations of field-value pairs. This is similar to the [CensEye functionality](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#/) available in the Platform web UI, but it allows you to define specific fields of interest rather than the [default fields](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#default-pivot-fields) leveraged by the tool in the UI.<br><br>Each array can only target fields within the same nested object. For example, you can combine `host.services.port=80` and `host.services.protocol=SSH` in the same array, but you cannot combine `host.services.port=80` and `host.location.country=”United States”` in the same array. You can input multiple arrays of objects in each API call.<br><br>To use this endpoint, your organization must have access to the Threat Hunting Module. This endpoint costs 1 credit per count condition (array of objects) included in the API call.
+Get counts of web assets for specific field-value pairs and combinations of field-value pairs. This is similar to the [CensEye functionality](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#/) available in the Platform web UI, but it allows you to define specific fields of interest rather than the [default fields](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#default-pivot-fields) leveraged by the tool in the UI.<br><br>Each array can only target fields within the same nested object and may contain at most 5 field-value pairs. For example, you can combine `host.services.port=80` and `host.services.protocol=SSH` in the same array, but you cannot combine `host.services.port=80` and `host.location.country="United States"` in the same array. You can input multiple arrays of objects in each API call.<br><br>To use this endpoint, your organization must have access to the Threat Hunting Module. This endpoint costs 1 credit per count condition (array of objects) included in the API call.
 
 ### Example Usage
 

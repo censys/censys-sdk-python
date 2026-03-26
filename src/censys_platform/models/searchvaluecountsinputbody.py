@@ -10,14 +10,14 @@ from typing_extensions import NotRequired, TypedDict
 
 class SearchValueCountsInputBodyTypedDict(TypedDict):
     and_count_conditions: Nullable[List[CountConditionTypedDict]]
-    r"""Groups of field-value pairs to count matches for."""
+    r"""Groups of field-value pairs to count matches for. Each group may contain up to 5 field-value pairs."""
     query: NotRequired[str]
     r"""CenQL query string to filter documents"""
 
 
 class SearchValueCountsInputBody(BaseModel):
     and_count_conditions: Nullable[List[CountCondition]]
-    r"""Groups of field-value pairs to count matches for."""
+    r"""Groups of field-value pairs to count matches for. Each group may contain up to 5 field-value pairs."""
 
     query: Optional[str] = None
     r"""CenQL query string to filter documents"""
@@ -31,7 +31,7 @@ class SearchValueCountsInputBody(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member

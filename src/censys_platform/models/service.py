@@ -111,6 +111,7 @@ from .rustdeskheartbeat import RustdeskHeartbeat, RustdeskHeartbeatTypedDict
 from .rustdeskrelay import RustdeskRelay, RustdeskRelayTypedDict
 from .rustdeskrendezvous import RustdeskRendezvous, RustdeskRendezvousTypedDict
 from .s7 import S7, S7TypedDict
+from .sapient import Sapient, SapientTypedDict
 from .saprouter import SapRouter, SapRouterTypedDict
 from .scpi import Scpi, ScpiTypedDict
 from .screenshot import Screenshot, ScreenshotTypedDict
@@ -283,6 +284,7 @@ class ServiceTypedDict(TypedDict):
     rustdesk_rendezvous: NotRequired[RustdeskRendezvousTypedDict]
     s7: NotRequired[S7TypedDict]
     sap_router: NotRequired[SapRouterTypedDict]
+    sapient: NotRequired[SapientTypedDict]
     scan_time: NotRequired[str]
     scpi: NotRequired[ScpiTypedDict]
     screenshots: NotRequired[Nullable[List[ScreenshotTypedDict]]]
@@ -553,6 +555,8 @@ class Service(BaseModel):
 
     sap_router: Optional[SapRouter] = None
 
+    sapient: Optional[Sapient] = None
+
     scan_time: Optional[str] = None
 
     scpi: Optional[Scpi] = None
@@ -752,6 +756,7 @@ class Service(BaseModel):
                 "rustdesk_rendezvous",
                 "s7",
                 "sap_router",
+                "sapient",
                 "scan_time",
                 "scpi",
                 "screenshots",
@@ -808,7 +813,7 @@ class Service(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields
                 and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member

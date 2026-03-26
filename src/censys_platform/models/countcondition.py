@@ -10,12 +10,12 @@ from typing_extensions import TypedDict
 
 class CountConditionTypedDict(TypedDict):
     field_value_pairs: Nullable[List[FieldValuePairTypedDict]]
-    r"""Field-value pairs to count matches for. Must target fields from the same nested object."""
+    r"""Field-value pairs to count matches for. Must target fields from the same nested object and may contain at most 5 pairs per group."""
 
 
 class CountCondition(BaseModel):
     field_value_pairs: Nullable[List[FieldValuePair]]
-    r"""Field-value pairs to count matches for. Must target fields from the same nested object."""
+    r"""Field-value pairs to count matches for. Must target fields from the same nested object and may contain at most 5 pairs per group."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -24,7 +24,7 @@ class CountCondition(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 m[k] = val

@@ -2,6 +2,16 @@
 
 Certificate version v1(0), v2(1), v3(2).
 
+## Example Usage
+
+```python
+from censys_platform.models import VersionSelected
+
+value = VersionSelected.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

@@ -1,5 +1,15 @@
 # StatusReason
 
+## Example Usage
+
+```python
+from censys_platform.models import StatusReason
+
+value = StatusReason.UNSPECIFIED
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 

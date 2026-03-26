@@ -3,23 +3,24 @@
 from __future__ import annotations
 from .serviceonhostrange import ServiceOnHostRange, ServiceOnHostRangeTypedDict
 from censys_platform.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import List
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import TypedDict
 
 
 class ServicesOnHostResponseTypedDict(TypedDict):
     next_page_token: str
+    r"""A token that can be used to retrieve the next page of ranges."""
     ranges: Nullable[List[ServiceOnHostRangeTypedDict]]
+    r"""The list of requested services."""
 
 
 class ServicesOnHostResponse(BaseModel):
-    next_page_token: Annotated[str, pydantic.Field(alias="NextPageToken")]
+    next_page_token: str
+    r"""A token that can be used to retrieve the next page of ranges."""
 
-    ranges: Annotated[
-        Nullable[List[ServiceOnHostRange]], pydantic.Field(alias="Ranges")
-    ]
+    ranges: Nullable[List[ServiceOnHostRange]]
+    r"""The list of requested services."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -28,15 +29,9 @@ class ServicesOnHostResponse(BaseModel):
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
-            val = serialized.get(k)
+            val = serialized.get(k, serialized.get(n))
 
             if val != UNSET_SENTINEL:
                 m[k] = val
 
         return m
-
-
-try:
-    ServicesOnHostResponse.model_rebuild()
-except NameError:
-    pass

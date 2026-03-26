@@ -2,6 +2,16 @@
 
 An enumerated value indicating the issuer-supplied reason for the revocation.
 
+## Example Usage
+
+```python
+from censys_platform.models import Reason
+
+value = Reason.UNKNOWN
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
+
 
 ## Values
 
