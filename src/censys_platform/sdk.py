@@ -17,6 +17,7 @@ import weakref
 
 if TYPE_CHECKING:
     from censys_platform.account_management import AccountManagement
+    from censys_platform.adversary_investigation import AdversaryInvestigation
     from censys_platform.collections import Collections
     from censys_platform.global_data import GlobalData
     from censys_platform.threat_hunting import ThreatHunting
@@ -30,7 +31,9 @@ class SDK(BaseSDK):
     global_data: "GlobalData"
     r"""Endpoints related to the Global Data product"""
     threat_hunting: "ThreatHunting"
-    r"""Endpoints related to the Threat Hunting product"""
+    r"""Endpoints related to the Adversary Investigation product"""
+    adversary_investigation: "AdversaryInvestigation"
+    r"""Endpoints related to the Adversary Investigation product"""
     _sub_sdk_map = {
         "account_management": (
             "censys_platform.account_management",
@@ -39,6 +42,10 @@ class SDK(BaseSDK):
         "collections": ("censys_platform.collections", "Collections"),
         "global_data": ("censys_platform.global_data", "GlobalData"),
         "threat_hunting": ("censys_platform.threat_hunting", "ThreatHunting"),
+        "adversary_investigation": (
+            "censys_platform.adversary_investigation",
+            "AdversaryInvestigation",
+        ),
     }
 
     def __init__(

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 75e289c62b5c116d278be94c442b86f5
-  docVersion: 1.0.88
+  docChecksum: fc7d44e9412e605c73e62861f2ebd7f6
+  docVersion: 1.0.89
   speakeasyVersion: 1.761.0
   generationVersion: 2.879.1
-  releaseVersion: 0.13.3
-  configChecksum: 3056047312b3f2be37addc3570da42f5
+  releaseVersion: 0.13.4
+  configChecksum: 4fa730900692030bcc35e125d3f19743
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: 2ba21d8f-6e90-4607-bac4-63f8c85af1fb
-  pristine_commit_hash: 5daddf1f5c3e1077e8ee9d60cb5fc5d76f318e86
-  pristine_tree_hash: 513978d2d9f6e9075929f5428734d571432f9ee3
+  generation_id: 4e4d5994-1c10-45ca-a29c-f45529f69d3e
+  pristine_commit_hash: 7a8fb1fc5cad9589fc734ce69f09e5a9404992b2
+  pristine_tree_hash: 0d0aaa8cec20b451e53a0b0a9fdd33aa5ee648d6
 features:
   python:
     acceptHeaders: 3.0.0
@@ -3224,6 +3224,10 @@ trackedFiles:
     id: 5ecc19ffd434
     last_write_checksum: sha1:6158ea9897139b88623065a82f3f426686039674
     pristine_git_object: 7d5aff9b18d011a6e257e53d83c88d8d47a4e4d8
+  docs/sdks/adversaryinvestigation/README.md:
+    id: 2dce02963bd0
+    last_write_checksum: sha1:73299f91c822a272b408e2d53a2410db8d296601
+    pristine_git_object: 7ab47d4ff98bf35f34dd6056c20b9431bf98550e
   docs/sdks/collections/README.md:
     id: 7985e64efccf
     last_write_checksum: sha1:1ba3f5a096d125f3ee3d8f9e90b806efd6ee57ae
@@ -3234,8 +3238,8 @@ trackedFiles:
     pristine_git_object: 14eb0315e424fd6316fbaad0d68949d6bbe67ac7
   docs/sdks/threathunting/README.md:
     id: 9d697938ee45
-    last_write_checksum: sha1:1216b795f336a3af5915fc9bfcfe38d828474f2b
-    pristine_git_object: f693c3b217575a4738b8fe4295fd9be4fa0a692f
+    last_write_checksum: sha1:35d6d43df4dedaa591e0d64631f223ee59fd334e
+    pristine_git_object: ec44cf1404362ad1e404ea113c9cc260c594d9c6
   poetry.toml:
     id: a81ade82122a
     last_write_checksum: sha1:2242305e29dc6921bdf5b200aea5d4bf67830230
@@ -3250,8 +3254,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:d57fb25ea309f292b721174801fa20d6d917f597
-    pristine_git_object: 6f6ba7313cc4bb41c2a4d3dee2f4396b49b2f2b4
+    last_write_checksum: sha1:de9a851a6f75fb42c701e59c199b51aad0073ba1
+    pristine_git_object: 2982d34e5a1025edb33dc48325fd87ec0e05f31a
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -3278,12 +3282,16 @@ trackedFiles:
     pristine_git_object: 352d3691d91c2d0ba0f05b48b56d4df5ce520098
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:65c5a1677e87a481e431f681700bc6ba84e8487f
-    pristine_git_object: 8350438bf7755169c5a7b4a8ac76e0db848b0073
+    last_write_checksum: sha1:07b86ba2da8203955afe10befb71eae028d850f3
+    pristine_git_object: d7f066591550fc40a15bf1caa9002401dd97c639
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:8c463369fda5bd1e76e021b26bfb99b492a2db90
     pristine_git_object: f75ccc66c32ada0b45237f70e890ea34d2ba9537
+  src/censys_platform/adversary_investigation.py:
+    id: "549148265347"
+    last_write_checksum: sha1:183604cb830887ec726d9f8499cae8be1152b4e0
+    pristine_git_object: 029b8e2c6cc4d332e4e1188fbcd585bc3c86de00
   src/censys_platform/basesdk.py:
     id: a49fe6a31a15
     last_write_checksum: sha1:ffcffead07f81c00345236170d6fc58ecc0ea339
@@ -5866,16 +5874,16 @@ trackedFiles:
     pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
   src/censys_platform/sdk.py:
     id: c6a66f4e541a
-    last_write_checksum: sha1:dc463df0fe787a4dac4beb23a72f5c00125cc960
-    pristine_git_object: 33cda9dd0e2c1df300e0416ca11df608fb014b4b
+    last_write_checksum: sha1:e6983c41bc65b86d7ad620a2c51265b510a6db0b
+    pristine_git_object: dbd34e71c8d06965db5c896b21ebf65b6d14c1de
   src/censys_platform/sdkconfiguration.py:
     id: 9a5457e0928e
     last_write_checksum: sha1:2478ec7f6faa820e9e434f1db369feecd22c8f5d
     pristine_git_object: 5db48844a430af6402eb7ffaba0d9fcd30cf0724
   src/censys_platform/threat_hunting.py:
     id: 970de984d111
-    last_write_checksum: sha1:9700e27cc37defcdcb9bda06b228883434be217d
-    pristine_git_object: 0b6bc485403ac049e70a56fe13fb0ace3e327a8b
+    last_write_checksum: sha1:a219b1eb9facf5138bf2eb3227fc50936ff274c5
+    pristine_git_object: 975811386ec538eed8ef9bb89ef9de57554ce192
   src/censys_platform/types/__init__.py:
     id: 40a6abbc737a
     last_write_checksum: sha1:140ebdd01a46f92ffc710c52c958c4eba3cf68ed
