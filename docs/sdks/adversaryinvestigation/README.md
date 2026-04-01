@@ -1,4 +1,4 @@
-# ThreatHunting
+# AdversaryInvestigation
 
 ## Overview
 
@@ -11,7 +11,6 @@ Endpoints related to the Adversary Investigation product
 * [get_censeye_job_results](#get_censeye_job_results) - CensEye: Get job results
 * [get_host_observations_with_certificate](#get_host_observations_with_certificate) - Get host history for a certificate
 * [create_tracked_scan](#create_tracked_scan) - Live Discovery: Initiate a new scan
-* [get_tracked_scan_threat_hunting](#get_tracked_scan_threat_hunting) - Get scan status
 * [list_threats](#list_threats) - List active threats
 * [value_counts](#value_counts) - CensEye: Retrieve value counts to discover pivots
 
@@ -31,7 +30,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.threat_hunting.create_censeye_job(create_censeye_job_input_body={
+    res = sdk.adversary_investigation.create_censeye_job(create_censeye_job_input_body={
         "target": {
             "certificate_id": "3daf2843a77b6f4e6af43cd9b6f6746053b8c928e056e8a724808db8905a94cf",
             "host_id": "8.8.8.8",
@@ -81,7 +80,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.threat_hunting.get_censeye_job(job_id="3c47b971-5db6-4a9e-8d59-14fc0486172b")
+    res = sdk.adversary_investigation.get_censeye_job(job_id="3c47b971-5db6-4a9e-8d59-14fc0486172b")
 
     # Handle response
     print(res)
@@ -125,7 +124,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.threat_hunting.get_censeye_job_results(job_id="e58e9a0e-e104-42cf-9d0e-fe88713bc6e3", page_size=100)
+    res = sdk.adversary_investigation.get_censeye_job_results(job_id="e58e9a0e-e104-42cf-9d0e-fe88713bc6e3", page_size=100)
 
     # Handle response
     print(res)
@@ -171,7 +170,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.threat_hunting.get_host_observations_with_certificate(request={
+    res = sdk.adversary_investigation.get_host_observations_with_certificate(request={
         "certificate_id": "55af8a301eb51abdaf7c31bec951638fe5a99d5d92117eca2be493026613fa46",
         "start_time": "2023-01-01T00:00:00Z",
         "end_time": "2023-12-31T23:59:59Z",
@@ -221,7 +220,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.threat_hunting.create_tracked_scan(scans_discovery_input_body={
+    res = sdk.adversary_investigation.create_tracked_scan(scans_discovery_input_body={
         "target": {
             "hostname_port": {
                 "hostname": "censys.io",
@@ -256,50 +255,6 @@ with SDK(
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## get_tracked_scan_threat_hunting
-
-Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
-
-### Example Usage
-
-<!-- UsageSnippet language="python" operationID="v3-threathunting-scans-get" method="get" path="/v3/threat-hunting/scans/{scan_id}" -->
-```python
-from censys_platform import SDK
-
-
-with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
-    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as sdk:
-
-    res = sdk.threat_hunting.get_tracked_scan_threat_hunting(scan_id="cd62e794-9f12-4c2f-b5b3-153853aaf8d9")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scan_id`                                                                                                                                                                                                            | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The unique identifier of the tracked scan                                                                                                                                                                            |
-| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
-| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
-
-### Response
-
-**[models.V3ThreathuntingScansGetResponse](../../models/v3threathuntingscansgetresponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.AuthenticationError | 401                        | application/json           |
-| models.ErrorModel          | 400, 403, 404              | application/problem+json   |
-| models.ErrorModel          | 500                        | application/problem+json   |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
 ## list_threats
 
 Retrieve a list of active threats observed by Censys by aggregating threat IDs across hosts and web properties. Threats are active if their fingerprint has been identified on hosts or web properties by Censys scans. This information is also available on the [Explore Threats page in the Platform web UI](https://platform.censys.io/threats).<br><br>This endpoint is available to organizations that have access to the Adversary Investigation module.
@@ -316,7 +271,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.threat_hunting.list_threats(query="*")
+    res = sdk.adversary_investigation.list_threats(query="*")
 
     # Handle response
     print(res)
@@ -360,7 +315,7 @@ with SDK(
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
-    res = sdk.threat_hunting.value_counts(search_value_counts_input_body={
+    res = sdk.adversary_investigation.value_counts(search_value_counts_input_body={
         "and_count_conditions": [
             {
                 "field_value_pairs": [

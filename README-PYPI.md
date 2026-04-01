@@ -191,6 +191,16 @@ asyncio.run(main())
 * [get_user_credits](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/accountmanagement/README.md#get_user_credits) - Get Free user credit balance
 * [get_user_credits_usage](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/accountmanagement/README.md#get_user_credits_usage) - Get Free user credit usage
 
+### [AdversaryInvestigation](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md)
+
+* [create_censeye_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#create_censeye_job) - CensEye: Create a pivot analysis job
+* [get_censeye_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_censeye_job) - CensEye: Get job status
+* [get_censeye_job_results](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_censeye_job_results) - CensEye: Get job results
+* [get_host_observations_with_certificate](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_host_observations_with_certificate) - Get host history for a certificate
+* [create_tracked_scan](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#create_tracked_scan) - Live Discovery: Initiate a new scan
+* [list_threats](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#list_threats) - List active threats
+* [value_counts](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#value_counts) - CensEye: Retrieve value counts to discover pivots
+
 ### [Collections](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/collections/README.md)
 
 * [list](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/collections/README.md#list) - List collections
@@ -359,8 +369,8 @@ with SDK(
 ### Error Classes
 **Primary errors:**
 * [`SDKBaseError`](https://github.com/censys/censys-sdk-python/blob/master/./src/censys_platform/models/sdkbaseerror.py): The base class for HTTP error responses.
-  * [`ErrorModel`](https://github.com/censys/censys-sdk-python/blob/master/./src/censys_platform/models/errormodel.py): Generic error.
-  * [`AuthenticationError`](https://github.com/censys/censys-sdk-python/blob/master/./src/censys_platform/models/authenticationerror.py): Request does not contain a valid Authorization token. Status code `401`.
+  * [`ErrorModel`](https://github.com/censys/censys-sdk-python/blob/master/./src/censys_platform/models/errormodel.py): *
+  * [`AuthenticationError`](https://github.com/censys/censys-sdk-python/blob/master/./src/censys_platform/models/authenticationerror.py): Request does not contain a valid Authorization token. Status code `401`. *
 
 <details><summary>Less common errors (5)</summary>
 
@@ -376,6 +386,8 @@ with SDK(
 * [`ResponseValidationError`](https://github.com/censys/censys-sdk-python/blob/master/./src/censys_platform/models/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
+
+\* Check [the method documentation](https://github.com/censys/censys-sdk-python/blob/master/#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
