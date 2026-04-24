@@ -232,6 +232,7 @@ asyncio.run(main())
 
 ### [ThreatHunting](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md)
 
+* [list_censeye_jobs](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#list_censeye_jobs) - CensEye: List jobs
 * [create_censeye_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#create_censeye_job) - CensEye: Create a pivot analysis job
 * [get_censeye_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_censeye_job) - CensEye: Get job status
 * [get_censeye_job_results](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_censeye_job_results) - CensEye: Get job results
