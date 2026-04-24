@@ -6,6 +6,7 @@ Endpoints related to the Adversary Investigation product
 
 ### Available Operations
 
+* [list_censeye_jobs](#list_censeye_jobs) - CensEye: List jobs
 * [create_censeye_job](#create_censeye_job) - CensEye: Create a pivot analysis job
 * [get_censeye_job](#get_censeye_job) - CensEye: Get job status
 * [get_censeye_job_results](#get_censeye_job_results) - CensEye: Get job results
@@ -15,9 +16,56 @@ Endpoints related to the Adversary Investigation product
 * [list_threats](#list_threats) - List active threats
 * [value_counts](#value_counts) - CensEye: Retrieve value counts to discover pivots
 
+## list_censeye_jobs
+
+List CensEye pivot analysis jobs for the current organization. Results are paginated. Optionally filter by asset (host, web property, or certificate).
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-threathunting-censeye-jobs-list" method="get" path="/v3/threat-hunting/censeye/jobs" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.threat_hunting.list_censeye_jobs(request={
+        "host_id": "8.8.8.8",
+        "webproperty_id": "example.com:443",
+        "certificate_id": "3daf2843a77b6f4e6af43cd9b6f6746053b8c928e056e8a724808db8905a94cf",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `request`                                                                                             | [models.V3ThreathuntingCenseyeJobsListRequest](../../models/v3threathuntingcenseyejobslistrequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
+| `retries`                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                      | :heavy_minus_sign:                                                                                    | Configuration to override the default retry behavior of the client.                                   |
+
+### Response
+
+**[models.V3ThreathuntingCenseyeJobsListResponse](../../models/v3threathuntingcenseyejobslistresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 409              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
 ## create_censeye_job
 
-Create an asynchronous CensEye pivot analysis job for a host, web property, or certificate. The job extracts default pivot fields from the target asset and counts matching documents for each field-value pair. Poll the job status endpoint to track progress, then retrieve results when complete.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.
+Create an asynchronous CensEye pivot analysis job for a host, web property, or certificate. The job extracts default pivot fields from the target asset and counts matching documents for each field-value pair. Poll the job status endpoint to track progress, then retrieve results when complete.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint costs 44 credits to execute for a host, 28 credits to execute for a web property, and 7 credits to execute for a certificate.
 
 ### Example Usage
 

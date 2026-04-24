@@ -11,6 +11,7 @@ from .http import HTTP, HTTPTypedDict
 from .ivantiavalanche import IvantiAvalanche, IvantiAvalancheTypedDict
 from .jenkins import Jenkins, JenkinsTypedDict
 from .kubernetes import Kubernetes, KubernetesTypedDict
+from .mcp import Mcp, McpTypedDict
 from .ollama import Ollama, OllamaTypedDict
 from .opendirectory import OpenDirectory, OpenDirectoryTypedDict
 from .plexmediaserver import PlexMediaServer, PlexMediaServerTypedDict
@@ -58,6 +59,7 @@ class EndpointScanStateTypedDict(TypedDict):
     ivanti_avalanche: NotRequired[IvantiAvalancheTypedDict]
     jenkins: NotRequired[JenkinsTypedDict]
     kubernetes: NotRequired[KubernetesTypedDict]
+    mcp: NotRequired[McpTypedDict]
     ollama: NotRequired[OllamaTypedDict]
     open_directory: NotRequired[OpenDirectoryTypedDict]
     path: NotRequired[str]
@@ -103,6 +105,8 @@ class EndpointScanState(BaseModel):
     jenkins: Optional[Jenkins] = None
 
     kubernetes: Optional[Kubernetes] = None
+
+    mcp: Optional[Mcp] = None
 
     ollama: Optional[Ollama] = None
 
@@ -158,6 +162,7 @@ class EndpointScanState(BaseModel):
                 "ivanti_avalanche",
                 "jenkins",
                 "kubernetes",
+                "mcp",
                 "ollama",
                 "open_directory",
                 "path",

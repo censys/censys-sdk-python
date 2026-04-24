@@ -232,6 +232,7 @@ asyncio.run(main())
 
 ### [ThreatHunting](docs/sdks/threathunting/README.md)
 
+* [list_censeye_jobs](docs/sdks/threathunting/README.md#list_censeye_jobs) - CensEye: List jobs
 * [create_censeye_job](docs/sdks/threathunting/README.md#create_censeye_job) - CensEye: Create a pivot analysis job
 * [get_censeye_job](docs/sdks/threathunting/README.md#get_censeye_job) - CensEye: Get job status
 * [get_censeye_job_results](docs/sdks/threathunting/README.md#get_censeye_job_results) - CensEye: Get job results

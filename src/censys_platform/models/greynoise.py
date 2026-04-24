@@ -19,6 +19,8 @@ class GreynoiseTypedDict(TypedDict):
     r"""The actor that was observed."""
     classification: NotRequired[str]
     r"""The classification of the IP address."""
+    last_observed_time: NotRequired[str]
+    r"""The last time the IP address was observed."""
     tags: NotRequired[Nullable[List[GreynoiseTagTypedDict]]]
     r"""The tags associated with the IP address."""
 
@@ -30,12 +32,15 @@ class Greynoise(BaseModel):
     classification: Optional[str] = None
     r"""The classification of the IP address."""
 
+    last_observed_time: Optional[str] = None
+    r"""The last time the IP address was observed."""
+
     tags: OptionalNullable[List[GreynoiseTag]] = UNSET
     r"""The tags associated with the IP address."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["actor", "classification", "tags"])
+        optional_fields = set(["actor", "classification", "last_observed_time", "tags"])
         nullable_fields = set(["tags"])
         serialized = handler(self)
         m = {}
