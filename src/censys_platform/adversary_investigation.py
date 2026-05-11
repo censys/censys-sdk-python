@@ -25,7 +25,7 @@ class AdversaryInvestigation(BaseSDK):
     ) -> models.V3ThreathuntingCenseyeJobsCreateResponse:
         r"""CensEye: Create a pivot analysis job
 
-        Create an asynchronous CensEye pivot analysis job for a host, web property, or certificate. The job extracts default pivot fields from the target asset and counts matching documents for each field-value pair. Poll the job status endpoint to track progress, then retrieve results when complete.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint costs 44 credits to execute for a host, 28 credits to execute for a web property, and 7 credits to execute for a certificate.
+        Create an asynchronous CensEye pivot analysis job for a host, web property, or certificate. The job extracts [default pivot fields](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#default-pivot-fields) from the target asset and counts matching documents for each field-value pair. Poll the job status endpoint to track progress, then retrieve results when complete.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint costs 44 credits to execute for a host, 28 credits to execute for a web property, and 7 credits to execute for a certificate.
 
         :param create_censeye_job_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -143,7 +143,7 @@ class AdversaryInvestigation(BaseSDK):
     ) -> models.V3ThreathuntingCenseyeJobsCreateResponse:
         r"""CensEye: Create a pivot analysis job
 
-        Create an asynchronous CensEye pivot analysis job for a host, web property, or certificate. The job extracts default pivot fields from the target asset and counts matching documents for each field-value pair. Poll the job status endpoint to track progress, then retrieve results when complete.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint costs 44 credits to execute for a host, 28 credits to execute for a web property, and 7 credits to execute for a certificate.
+        Create an asynchronous CensEye pivot analysis job for a host, web property, or certificate. The job extracts [default pivot fields](https://docs.censys.com/docs/platform-threat-hunting-use-censeye-to-build-detections#default-pivot-fields) from the target asset and counts matching documents for each field-value pair. Poll the job status endpoint to track progress, then retrieve results when complete.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint costs 44 credits to execute for a host, 28 credits to execute for a web property, and 7 credits to execute for a certificate.
 
         :param create_censeye_job_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.

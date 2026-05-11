@@ -1,0 +1,19 @@
+# CreateTagInputBodyPrivacy
+
+Tag visibility and management settings. `private` tags are only visible to and editable by organization admins. `shared` tags are visible to and editable by all organization members.
+
+## Example Usage
+
+```python
+from censys_platform.models import CreateTagInputBodyPrivacy
+
+value = CreateTagInputBodyPrivacy.PRIVATE
+```
+
+
+## Values
+
+| Name      | Value     |
+| --------- | --------- |
+| `PRIVATE` | private   |
+| `SHARED`  | shared    |

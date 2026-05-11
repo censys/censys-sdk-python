@@ -230,6 +230,17 @@ asyncio.run(main())
 * [convert_legacy_search_queries](docs/sdks/globaldata/README.md#convert_legacy_search_queries) - Convert Legacy Search queries to Platform queries
 * [search](docs/sdks/globaldata/README.md#search) - Run a search query
 
+### [TagsAndComments](docs/sdks/tagsandcomments/README.md)
+
+* [list_tags](docs/sdks/tagsandcomments/README.md#list_tags) - List tags
+* [create_tag](docs/sdks/tagsandcomments/README.md#create_tag) - Create a tag
+* [delete_tag](docs/sdks/tagsandcomments/README.md#delete_tag) - Delete a tag
+* [get_tag](docs/sdks/tagsandcomments/README.md#get_tag) - Get a tag
+* [update_tag](docs/sdks/tagsandcomments/README.md#update_tag) - Update a tag
+* [list_tag_assignments](docs/sdks/tagsandcomments/README.md#list_tag_assignments) - List tag assignments
+* [create_tag_assignment](docs/sdks/tagsandcomments/README.md#create_tag_assignment) - Create a tag assignment
+* [delete_tag_assignment](docs/sdks/tagsandcomments/README.md#delete_tag_assignment) - Delete a tag assignment
+
 ### [ThreatHunting](docs/sdks/threathunting/README.md)
 
 * [list_censeye_jobs](docs/sdks/threathunting/README.md#list_censeye_jobs) - CensEye: List jobs

@@ -6,16 +6,25 @@ from .hostassetwithmatchedservices import (
     HostAssetWithMatchedServices,
     HostAssetWithMatchedServicesTypedDict,
 )
+from .searchquerytaginfo import SearchQueryTagInfo, SearchQueryTagInfoTypedDict
 from .webpropertyasset import WebpropertyAsset, WebpropertyAssetTypedDict
-from censys_platform.types import BaseModel, UNSET_SENTINEL
+from censys_platform.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from pydantic import model_serializer
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
 class SearchQueryHitTypedDict(TypedDict):
     certificate_v1: NotRequired[CertificateAssetTypedDict]
     host_v1: NotRequired[HostAssetWithMatchedServicesTypedDict]
+    tags: NotRequired[Nullable[List[SearchQueryTagInfoTypedDict]]]
+    r"""Tags applied to this asset."""
     webproperty_v1: NotRequired[WebpropertyAssetTypedDict]
 
 
@@ -24,20 +33,32 @@ class SearchQueryHit(BaseModel):
 
     host_v1: Optional[HostAssetWithMatchedServices] = None
 
+    tags: OptionalNullable[List[SearchQueryTagInfo]] = UNSET
+    r"""Tags applied to this asset."""
+
     webproperty_v1: Optional[WebpropertyAsset] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["certificate_v1", "host_v1", "webproperty_v1"])
+        optional_fields = set(["certificate_v1", "host_v1", "tags", "webproperty_v1"])
+        nullable_fields = set(["tags"])
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k, serialized.get(n))
+            is_nullable_and_explicitly_set = (
+                k in nullable_fields
+                and (self.__pydantic_fields_set__.intersection({n}))  # pylint: disable=no-member
+            )
 
             if val != UNSET_SENTINEL:
-                if val is not None or k not in optional_fields:
+                if (
+                    val is not None
+                    or k not in optional_fields
+                    or is_nullable_and_explicitly_set
+                ):
                     m[k] = val
 
         return m

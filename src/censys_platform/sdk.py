@@ -20,6 +20,7 @@ if TYPE_CHECKING:
     from censys_platform.adversary_investigation import AdversaryInvestigation
     from censys_platform.collections import Collections
     from censys_platform.global_data import GlobalData
+    from censys_platform.tags_and_comments import TagsAndComments
     from censys_platform.threat_hunting import ThreatHunting
 
 
@@ -30,6 +31,8 @@ class SDK(BaseSDK):
     r"""Endpoints related to the Collections product"""
     global_data: "GlobalData"
     r"""Endpoints related to the Global Data product"""
+    tags_and_comments: "TagsAndComments"
+    r"""Endpoints related to asset tagging and commenting"""
     threat_hunting: "ThreatHunting"
     r"""Endpoints related to the Adversary Investigation product"""
     adversary_investigation: "AdversaryInvestigation"
@@ -41,6 +44,7 @@ class SDK(BaseSDK):
         ),
         "collections": ("censys_platform.collections", "Collections"),
         "global_data": ("censys_platform.global_data", "GlobalData"),
+        "tags_and_comments": ("censys_platform.tags_and_comments", "TagsAndComments"),
         "threat_hunting": ("censys_platform.threat_hunting", "ThreatHunting"),
         "adversary_investigation": (
             "censys_platform.adversary_investigation",
