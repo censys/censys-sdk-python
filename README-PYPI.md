@@ -230,6 +230,17 @@ asyncio.run(main())
 * [convert_legacy_search_queries](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#convert_legacy_search_queries) - Convert Legacy Search queries to Platform queries
 * [search](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#search) - Run a search query
 
+### [TagsAndComments](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md)
+
+* [list_tags](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#list_tags) - List tags
+* [create_tag](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#create_tag) - Create a tag
+* [delete_tag](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#delete_tag) - Delete a tag
+* [get_tag](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#get_tag) - Get a tag
+* [update_tag](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#update_tag) - Update a tag
+* [list_tag_assignments](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#list_tag_assignments) - List tag assignments
+* [create_tag_assignment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#create_tag_assignment) - Create a tag assignment
+* [delete_tag_assignment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#delete_tag_assignment) - Delete a tag assignment
+
 ### [ThreatHunting](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md)
 
 * [list_censeye_jobs](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#list_censeye_jobs) - CensEye: List jobs
