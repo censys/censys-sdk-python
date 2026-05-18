@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 8b5b5812db5f05a9cf51ce74fad49d41
-  docVersion: 1.0.100
-  speakeasyVersion: 1.762.0
-  generationVersion: 2.882.0
-  releaseVersion: 0.13.6
-  configChecksum: 41af2f6fdf8efda95da68e79c4984e38
+  docChecksum: ae0f03b6de5fb5075151e83fd7a36e3f
+  docVersion: 1.0.101
+  speakeasyVersion: 1.763.1
+  generationVersion: 2.884.4
+  releaseVersion: 0.13.7
+  configChecksum: 44c4dde0544f5e3f8e419bec0d5ccc0f
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: a380ef46-6565-4d7b-9f52-e4e02fc24cac
-  pristine_commit_hash: 91048b0a38688a35a56bbd75c5a3c2f15813bc07
-  pristine_tree_hash: 71dda2f3808ce02c465fb5f89411fd1daf764ba0
+  generation_id: 462a1455-ec6d-4dd4-9393-0c641cd82f12
+  pristine_commit_hash: 7cfbb592f96699555a40250a0629c03daf60b94b
+  pristine_tree_hash: 1993f669d592fc6a10743ada9758a7f2ea7d24a7
 features:
   python:
     acceptHeaders: 3.0.0
@@ -3466,8 +3466,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:ed3a15126cbbda58106c3282f7f922ddf0e0f2c0
-    pristine_git_object: a721f0dccef915ca0d9a211d21ac89a53f67aed0
+    last_write_checksum: sha1:55ee8067f8898204f790db7f5772b5ea111feaff
+    pristine_git_object: 3898cd0cdcaf66185abb92c7e6d8331edd439df0
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -3494,8 +3494,8 @@ trackedFiles:
     pristine_git_object: 352d3691d91c2d0ba0f05b48b56d4df5ce520098
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:d34c935bcb76837d8c5f4131203b36abb01da484
-    pristine_git_object: 160e79c5adc8dd5a8c9326d6d351d4f403256dca
+    last_write_checksum: sha1:a23cb359bf74a4ea03c0b954658d3c5e5d4beaa3
+    pristine_git_object: 8b8b5176ee858ac8bd26a538e1f185e1ad95ebf5
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:340747c581307813c6b906f764e336e31afeb031
