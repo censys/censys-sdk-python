@@ -9,7 +9,7 @@ from pydantic import field_serializer
 from typing_extensions import TypedDict
 
 
-class TagAssignmentAssetType(str, Enum, metaclass=utils.OpenEnumMeta):
+class AssetType(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""The inferred type of the asset."""
 
     HOST = "host"
@@ -18,50 +18,55 @@ class TagAssignmentAssetType(str, Enum, metaclass=utils.OpenEnumMeta):
     UNKNOWN = "unknown"
 
 
-class TagAssignmentTypedDict(TypedDict):
+class CommentTypedDict(TypedDict):
     asset_id: str
-    r"""The identifier of the tagged asset (host IP, certificate SHA-256 fingerprint, or web property domain/IP:port)."""
-    asset_type: TagAssignmentAssetType
+    r"""The identifier of the commented asset (host IP, certificate SHA-256 fingerprint, or web property domain/IP:port)."""
+    asset_type: AssetType
     r"""The inferred type of the asset."""
+    body: str
+    r"""The comment body text."""
     created_at: datetime
-    r"""RFC3339 timestamp when the assignment was created."""
+    r"""RFC3339 timestamp when the comment was created."""
     created_by: str
-    r"""The user ID of the user who created the assignment."""
+    r"""The user ID of the user who created the comment."""
     id: str
-    r"""The unique ID of the assignment."""
+    r"""The unique ID of the comment."""
     platform_ref: str
     r"""A direct URL to the asset in the Censys platform."""
-    tag_id: str
-    r"""The ID of the tag."""
+    updated_at: datetime
+    r"""RFC3339 timestamp when the comment was last updated."""
 
 
-class TagAssignment(BaseModel):
+class Comment(BaseModel):
     asset_id: str
-    r"""The identifier of the tagged asset (host IP, certificate SHA-256 fingerprint, or web property domain/IP:port)."""
+    r"""The identifier of the commented asset (host IP, certificate SHA-256 fingerprint, or web property domain/IP:port)."""
 
-    asset_type: TagAssignmentAssetType
+    asset_type: AssetType
     r"""The inferred type of the asset."""
 
+    body: str
+    r"""The comment body text."""
+
     created_at: datetime
-    r"""RFC3339 timestamp when the assignment was created."""
+    r"""RFC3339 timestamp when the comment was created."""
 
     created_by: str
-    r"""The user ID of the user who created the assignment."""
+    r"""The user ID of the user who created the comment."""
 
     id: str
-    r"""The unique ID of the assignment."""
+    r"""The unique ID of the comment."""
 
     platform_ref: str
     r"""A direct URL to the asset in the Censys platform."""
 
-    tag_id: str
-    r"""The ID of the tag."""
+    updated_at: datetime
+    r"""RFC3339 timestamp when the comment was last updated."""
 
     @field_serializer("asset_type")
     def serialize_asset_type(self, value):
         if isinstance(value, str):
             try:
-                return models.TagAssignmentAssetType(value)
+                return models.AssetType(value)
             except ValueError:
                 return value
         return value

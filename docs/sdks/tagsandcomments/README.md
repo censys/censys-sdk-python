@@ -6,6 +6,10 @@ Endpoints related to asset tagging and commenting
 
 ### Available Operations
 
+* [list_comments](#list_comments) - List comments
+* [create_comment](#create_comment) - Create a comment
+* [delete_comment](#delete_comment) - Delete a comment
+* [update_comment](#update_comment) - Update a comment
 * [list_tags](#list_tags) - List tags
 * [create_tag](#create_tag) - Create a tag
 * [delete_tag](#delete_tag) - Delete a tag
@@ -14,6 +18,187 @@ Endpoints related to asset tagging and commenting
 * [list_tag_assignments](#list_tag_assignments) - List tag assignments
 * [create_tag_assignment](#create_tag_assignment) - Create a tag assignment
 * [delete_tag_assignment](#delete_tag_assignment) - Delete a tag assignment
+
+## list_comments
+
+Retrieve a paginated list of comments in your organization. Use query parameters to filter by asset, creator, or creation time.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-comments-list-comments" method="get" path="/v3/comments" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.list_comments(request={})
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [models.V3CommentsListCommentsRequest](../../models/v3commentslistcommentsrequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+| `retries`                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                      | :heavy_minus_sign:                                                                    | Configuration to override the default retry behavior of the client.                   |
+
+### Response
+
+**[models.V3CommentsListCommentsResponse](../../models/v3commentslistcommentsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 422                   | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## create_comment
+
+Add a comment on an asset in your organization.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-comments-create-comment" method="post" path="/v3/comments" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.create_comment(create_comment_input_body={
+        "asset_id": "8.8.8.8",
+        "body": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `create_comment_input_body`                                                                                                                                                                                          | [models.CreateCommentInputBody](../../models/createcommentinputbody.md)                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3CommentsCreateCommentResponse](../../models/v3commentscreatecommentresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 422                   | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## delete_comment
+
+Delete a comment. Only the comment's creator or an organization admin can delete a comment. This action is permanent and cannot be undone.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-comments-delete-comment" method="delete" path="/v3/comments/{comment_id}" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.delete_comment(comment_id="e6faeec1-9f2b-49af-a7e6-119b37d54575")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `comment_id`                                                                                                                                                                                                         | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the comment to delete.                                                                                                                                                                                     |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3CommentsDeleteCommentResponse](../../models/v3commentsdeletecommentresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## update_comment
+
+Update the body of an existing comment. Only the comment's creator can update it.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-comments-update-comment" method="put" path="/v3/comments/{comment_id}" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.update_comment(comment_id="361c6ff7-2549-4a6d-b212-8ce011a86612", update_comment_input_body={
+        "body": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `comment_id`                                                                                                                                                                                                         | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the comment to update.                                                                                                                                                                                     |
+| `update_comment_input_body`                                                                                                                                                                                          | [models.UpdateCommentInputBody](../../models/updatecommentinputbody.md)                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3CommentsUpdateCommentResponse](../../models/v3commentsupdatecommentresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## list_tags
 

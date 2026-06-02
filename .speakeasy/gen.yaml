@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.13.7
+  version: 0.14.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -40,6 +40,7 @@ python:
   authors:
     - Speakeasy
   baseErrorName: SDKBaseError
+  bodyVariantOverloads: false
   clientServerStatusCodesAsErrors: true
   constFieldCasing: upper
   defaultErrorName: SDKError
@@ -69,8 +70,11 @@ python:
   license: ""
   maxMethodParams: 5
   methodArguments: infer-optional-args
+  methodTimeoutArgument: timeout-ms
+  methodTimeoutUnits: milliseconds
   moduleName: ""
   multipartArrayFormat: legacy
+  optionalDependencies: {}
   outputModelSuffix: output
   packageManager: poetry
   packageName: censys-platform

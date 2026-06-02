@@ -40,7 +40,7 @@ class V3TagsListTagsGlobals(BaseModel):
         return m
 
 
-class QueryParamOrderBy(str, Enum):
+class V3TagsListTagsQueryParamOrderBy(str, Enum):
     r"""Sort order. Supported values: name_asc, name_desc, created_at_asc, created_at_desc, updated_at_asc, updated_at_desc."""
 
     NAME_ASC = "name_asc"
@@ -65,7 +65,7 @@ class V3TagsListTagsRequestTypedDict(TypedDict):
     r"""Number of tags to return per page."""
     page_token: NotRequired[str]
     r"""Pagination token from a previous response to retrieve the next page of results."""
-    order_by: NotRequired[QueryParamOrderBy]
+    order_by: NotRequired[V3TagsListTagsQueryParamOrderBy]
     r"""Sort order. Supported values: name_asc, name_desc, created_at_asc, created_at_desc, updated_at_asc, updated_at_desc."""
     name: NotRequired[str]
     r"""Filter tags by name (exact match)."""
@@ -95,9 +95,9 @@ class V3TagsListTagsRequest(BaseModel):
     r"""Pagination token from a previous response to retrieve the next page of results."""
 
     order_by: Annotated[
-        Optional[QueryParamOrderBy],
+        Optional[V3TagsListTagsQueryParamOrderBy],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
-    ] = QueryParamOrderBy.NAME_ASC
+    ] = V3TagsListTagsQueryParamOrderBy.NAME_ASC
     r"""Sort order. Supported values: name_asc, name_desc, created_at_asc, created_at_desc, updated_at_asc, updated_at_desc."""
 
     name: Annotated[
