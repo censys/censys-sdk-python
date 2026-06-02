@@ -1,21 +1,19 @@
 # OrderBy
 
+Sort order. Supported values: create_time_asc, create_time_desc.
+
 ## Example Usage
 
 ```python
 from censys_platform.models import OrderBy
 
-value = OrderBy.PORT_ASC
+value = OrderBy.CREATE_TIME_ASC
 ```
 
 
 ## Values
 
-| Name                      | Value                     |
-| ------------------------- | ------------------------- |
-| `PORT_ASC`                | port ASC                  |
-| `PORT_DESC`               | port DESC                 |
-| `PROTOCOL_ASC`            | protocol ASC              |
-| `PROTOCOL_DESC`           | protocol DESC             |
-| `TRANSPORT_PROTOCOL_ASC`  | transport_protocol ASC    |
-| `TRANSPORT_PROTOCOL_DESC` | transport_protocol DESC   |
+| Name               | Value              |
+| ------------------ | ------------------ |
+| `CREATE_TIME_ASC`  | create_time_asc    |
+| `CREATE_TIME_DESC` | create_time_desc   |

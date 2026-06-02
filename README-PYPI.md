@@ -232,6 +232,10 @@ asyncio.run(main())
 
 ### [TagsAndComments](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md)
 
+* [list_comments](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#list_comments) - List comments
+* [create_comment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#create_comment) - Create a comment
+* [delete_comment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#delete_comment) - Delete a comment
+* [update_comment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#update_comment) - Update a comment
 * [list_tags](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#list_tags) - List tags
 * [create_tag](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#create_tag) - Create a tag
 * [delete_tag](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#delete_tag) - Delete a tag

@@ -5,11 +5,16 @@ from censys_platform.types import BaseModel
 from typing_extensions import TypedDict
 
 
-class CreateTagAssignmentInputBodyTypedDict(TypedDict):
+class CreateCommentInputBodyTypedDict(TypedDict):
+    asset_id: str
+    r"""The identifier of the asset (host IP, certificate SHA-256 fingerprint, or web property hostname:port)."""
+    body: str
+    r"""The comment body text."""
+
+
+class CreateCommentInputBody(BaseModel):
     asset_id: str
     r"""The identifier of the asset (host IP, certificate SHA-256 fingerprint, or web property hostname:port)."""
 
-
-class CreateTagAssignmentInputBody(BaseModel):
-    asset_id: str
-    r"""The identifier of the asset (host IP, certificate SHA-256 fingerprint, or web property hostname:port)."""
+    body: str
+    r"""The comment body text."""

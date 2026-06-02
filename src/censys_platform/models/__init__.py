@@ -127,6 +127,8 @@ if TYPE_CHECKING:
         CollectionEventsResponse,
         CollectionEventsResponseTypedDict,
     )
+    from .comment import AssetType, Comment, CommentTypedDict
+    from .commentslist import CommentsList, CommentsListTypedDict
     from .connection import Connection, ConnectionTypedDict
     from .contact import Contact, ContactTypedDict
     from .convertqueryerror import ConvertQueryError, ConvertQueryErrorTypedDict
@@ -137,6 +139,10 @@ if TYPE_CHECKING:
     from .createcenseyejobinputbody import (
         CreateCenseyeJobInputBody,
         CreateCenseyeJobInputBodyTypedDict,
+    )
+    from .createcommentinputbody import (
+        CreateCommentInputBody,
+        CreateCommentInputBodyTypedDict,
     )
     from .createtagassignmentinputbody import (
         CreateTagAssignmentInputBody,
@@ -857,6 +863,14 @@ if TYPE_CHECKING:
         ResponseEnvelopeCollectionEventsResponse,
         ResponseEnvelopeCollectionEventsResponseTypedDict,
     )
+    from .responseenvelopecomment import (
+        ResponseEnvelopeComment,
+        ResponseEnvelopeCommentTypedDict,
+    )
+    from .responseenvelopecommentslist import (
+        ResponseEnvelopeCommentsList,
+        ResponseEnvelopeCommentsListTypedDict,
+    )
     from .responseenvelopecreditusagereport import (
         ResponseEnvelopeCreditUsageReport,
         ResponseEnvelopeCreditUsageReportTypedDict,
@@ -1174,7 +1188,11 @@ if TYPE_CHECKING:
     from .systemcapabilities import SystemCapabilities, SystemCapabilitiesTypedDict
     from .tacacsplus import TacacsPlus, TacacsPlusTypedDict
     from .tag import Tag, TagPrivacy, TagTypedDict
-    from .tagassignment import AssetType, TagAssignment, TagAssignmentTypedDict
+    from .tagassignment import (
+        TagAssignment,
+        TagAssignmentAssetType,
+        TagAssignmentTypedDict,
+    )
     from .tagassignmentslist import TagAssignmentsList, TagAssignmentsListTypedDict
     from .tagslist import TagsList, TagsListTypedDict
     from .target import Target, TargetTypedDict
@@ -1219,6 +1237,10 @@ if TYPE_CHECKING:
     from .unrecognizedpublickey import (
         UnrecognizedPublicKey,
         UnrecognizedPublicKeyTypedDict,
+    )
+    from .updatecommentinputbody import (
+        UpdateCommentInputBody,
+        UpdateCommentInputBodyTypedDict,
     )
     from .updatememberroleinputbody import (
         Roles,
@@ -1366,6 +1388,39 @@ if TYPE_CHECKING:
         V3CollectionsSearchQueryResponse,
         V3CollectionsSearchQueryResponseTypedDict,
     )
+    from .v3_comments_create_commentop import (
+        V3CommentsCreateCommentGlobals,
+        V3CommentsCreateCommentGlobalsTypedDict,
+        V3CommentsCreateCommentRequest,
+        V3CommentsCreateCommentRequestTypedDict,
+        V3CommentsCreateCommentResponse,
+        V3CommentsCreateCommentResponseTypedDict,
+    )
+    from .v3_comments_delete_commentop import (
+        V3CommentsDeleteCommentGlobals,
+        V3CommentsDeleteCommentGlobalsTypedDict,
+        V3CommentsDeleteCommentRequest,
+        V3CommentsDeleteCommentRequestTypedDict,
+        V3CommentsDeleteCommentResponse,
+        V3CommentsDeleteCommentResponseTypedDict,
+    )
+    from .v3_comments_list_commentsop import (
+        OrderBy,
+        V3CommentsListCommentsGlobals,
+        V3CommentsListCommentsGlobalsTypedDict,
+        V3CommentsListCommentsRequest,
+        V3CommentsListCommentsRequestTypedDict,
+        V3CommentsListCommentsResponse,
+        V3CommentsListCommentsResponseTypedDict,
+    )
+    from .v3_comments_update_commentop import (
+        V3CommentsUpdateCommentGlobals,
+        V3CommentsUpdateCommentGlobalsTypedDict,
+        V3CommentsUpdateCommentRequest,
+        V3CommentsUpdateCommentRequestTypedDict,
+        V3CommentsUpdateCommentResponse,
+        V3CommentsUpdateCommentResponseTypedDict,
+    )
     from .v3_globaldata_asset_certificate_list_postop import (
         V3GlobaldataAssetCertificateListPostGlobals,
         V3GlobaldataAssetCertificateListPostGlobalsTypedDict,
@@ -1479,7 +1534,7 @@ if TYPE_CHECKING:
         V3GlobaldataSearchQueryResponseTypedDict,
     )
     from .v3_globaldata_service_on_hostop import (
-        OrderBy,
+        QueryParamOrderBy,
         QueryParamTransportProtocol,
         V3GlobaldataServiceOnHostGlobals,
         V3GlobaldataServiceOnHostGlobalsTypedDict,
@@ -1538,10 +1593,10 @@ if TYPE_CHECKING:
         V3TagsListAssignmentsResponseTypedDict,
     )
     from .v3_tags_list_tagsop import (
-        QueryParamOrderBy,
         QueryParamPrivacy,
         V3TagsListTagsGlobals,
         V3TagsListTagsGlobalsTypedDict,
+        V3TagsListTagsQueryParamOrderBy,
         V3TagsListTagsRequest,
         V3TagsListTagsRequestTypedDict,
         V3TagsListTagsResponse,
@@ -1793,6 +1848,10 @@ __all__ = [
     "CollectionStatus",
     "CollectionStatuses",
     "CollectionTypedDict",
+    "Comment",
+    "CommentTypedDict",
+    "CommentsList",
+    "CommentsListTypedDict",
     "Confidentiality",
     "Connection",
     "ConnectionTypedDict",
@@ -1808,6 +1867,8 @@ __all__ = [
     "CpeTypedDict",
     "CreateCenseyeJobInputBody",
     "CreateCenseyeJobInputBodyTypedDict",
+    "CreateCommentInputBody",
+    "CreateCommentInputBodyTypedDict",
     "CreateTagAssignmentInputBody",
     "CreateTagAssignmentInputBodyTypedDict",
     "CreateTagInputBody",
@@ -2551,6 +2612,10 @@ __all__ = [
     "ResponseEnvelopeCollectionEventsResponse",
     "ResponseEnvelopeCollectionEventsResponseTypedDict",
     "ResponseEnvelopeCollectionTypedDict",
+    "ResponseEnvelopeComment",
+    "ResponseEnvelopeCommentTypedDict",
+    "ResponseEnvelopeCommentsList",
+    "ResponseEnvelopeCommentsListTypedDict",
     "ResponseEnvelopeCreditUsageReport",
     "ResponseEnvelopeCreditUsageReportTypedDict",
     "ResponseEnvelopeHostAsset",
@@ -2838,6 +2903,7 @@ __all__ = [
     "TacacsPlusTypedDict",
     "Tag",
     "TagAssignment",
+    "TagAssignmentAssetType",
     "TagAssignmentTypedDict",
     "TagAssignmentsList",
     "TagAssignmentsListTypedDict",
@@ -2904,6 +2970,8 @@ __all__ = [
     "UnitronicsPcomTypedDict",
     "UnrecognizedPublicKey",
     "UnrecognizedPublicKeyTypedDict",
+    "UpdateCommentInputBody",
+    "UpdateCommentInputBodyTypedDict",
     "UpdateMemberRoleInputBody",
     "UpdateMemberRoleInputBodyTypedDict",
     "UpdateTagInputBody",
@@ -3012,6 +3080,30 @@ __all__ = [
     "V3CollectionsSearchQueryRequestTypedDict",
     "V3CollectionsSearchQueryResponse",
     "V3CollectionsSearchQueryResponseTypedDict",
+    "V3CommentsCreateCommentGlobals",
+    "V3CommentsCreateCommentGlobalsTypedDict",
+    "V3CommentsCreateCommentRequest",
+    "V3CommentsCreateCommentRequestTypedDict",
+    "V3CommentsCreateCommentResponse",
+    "V3CommentsCreateCommentResponseTypedDict",
+    "V3CommentsDeleteCommentGlobals",
+    "V3CommentsDeleteCommentGlobalsTypedDict",
+    "V3CommentsDeleteCommentRequest",
+    "V3CommentsDeleteCommentRequestTypedDict",
+    "V3CommentsDeleteCommentResponse",
+    "V3CommentsDeleteCommentResponseTypedDict",
+    "V3CommentsListCommentsGlobals",
+    "V3CommentsListCommentsGlobalsTypedDict",
+    "V3CommentsListCommentsRequest",
+    "V3CommentsListCommentsRequestTypedDict",
+    "V3CommentsListCommentsResponse",
+    "V3CommentsListCommentsResponseTypedDict",
+    "V3CommentsUpdateCommentGlobals",
+    "V3CommentsUpdateCommentGlobalsTypedDict",
+    "V3CommentsUpdateCommentRequest",
+    "V3CommentsUpdateCommentRequestTypedDict",
+    "V3CommentsUpdateCommentResponse",
+    "V3CommentsUpdateCommentResponseTypedDict",
     "V3GlobaldataAssetCertificateGlobals",
     "V3GlobaldataAssetCertificateGlobalsTypedDict",
     "V3GlobaldataAssetCertificateListPostGlobals",
@@ -3141,6 +3233,7 @@ __all__ = [
     "V3TagsListAssignmentsResponseTypedDict",
     "V3TagsListTagsGlobals",
     "V3TagsListTagsGlobalsTypedDict",
+    "V3TagsListTagsQueryParamOrderBy",
     "V3TagsListTagsRequest",
     "V3TagsListTagsRequestTypedDict",
     "V3TagsListTagsResponse",
@@ -3382,6 +3475,11 @@ _dynamic_imports: dict[str, str] = {
     "CollectionEventTypedDict": ".collectionevent",
     "CollectionEventsResponse": ".collectioneventsresponse",
     "CollectionEventsResponseTypedDict": ".collectioneventsresponse",
+    "AssetType": ".comment",
+    "Comment": ".comment",
+    "CommentTypedDict": ".comment",
+    "CommentsList": ".commentslist",
+    "CommentsListTypedDict": ".commentslist",
     "Connection": ".connection",
     "ConnectionTypedDict": ".connection",
     "Contact": ".contact",
@@ -3398,6 +3496,8 @@ _dynamic_imports: dict[str, str] = {
     "CPELifeCycleTypedDict": ".cpe_lifecycle",
     "CreateCenseyeJobInputBody": ".createcenseyejobinputbody",
     "CreateCenseyeJobInputBodyTypedDict": ".createcenseyejobinputbody",
+    "CreateCommentInputBody": ".createcommentinputbody",
+    "CreateCommentInputBodyTypedDict": ".createcommentinputbody",
     "CreateTagAssignmentInputBody": ".createtagassignmentinputbody",
     "CreateTagAssignmentInputBodyTypedDict": ".createtagassignmentinputbody",
     "CreateTagInputBody": ".createtaginputbody",
@@ -4157,6 +4257,10 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeCollectionTypedDict": ".responseenvelopecollection",
     "ResponseEnvelopeCollectionEventsResponse": ".responseenvelopecollectioneventsresponse",
     "ResponseEnvelopeCollectionEventsResponseTypedDict": ".responseenvelopecollectioneventsresponse",
+    "ResponseEnvelopeComment": ".responseenvelopecomment",
+    "ResponseEnvelopeCommentTypedDict": ".responseenvelopecomment",
+    "ResponseEnvelopeCommentsList": ".responseenvelopecommentslist",
+    "ResponseEnvelopeCommentsListTypedDict": ".responseenvelopecommentslist",
     "ResponseEnvelopeCreditUsageReport": ".responseenvelopecreditusagereport",
     "ResponseEnvelopeCreditUsageReportTypedDict": ".responseenvelopecreditusagereport",
     "ResponseEnvelopeHostAsset": ".responseenvelopehostasset",
@@ -4449,8 +4553,8 @@ _dynamic_imports: dict[str, str] = {
     "Tag": ".tag",
     "TagPrivacy": ".tag",
     "TagTypedDict": ".tag",
-    "AssetType": ".tagassignment",
     "TagAssignment": ".tagassignment",
+    "TagAssignmentAssetType": ".tagassignment",
     "TagAssignmentTypedDict": ".tagassignment",
     "TagAssignmentsList": ".tagassignmentslist",
     "TagAssignmentsListTypedDict": ".tagassignmentslist",
@@ -4508,6 +4612,8 @@ _dynamic_imports: dict[str, str] = {
     "UnitronicsPcomTypedDict": ".unitronicspcom",
     "UnrecognizedPublicKey": ".unrecognizedpublickey",
     "UnrecognizedPublicKeyTypedDict": ".unrecognizedpublickey",
+    "UpdateCommentInputBody": ".updatecommentinputbody",
+    "UpdateCommentInputBodyTypedDict": ".updatecommentinputbody",
     "Roles": ".updatememberroleinputbody",
     "UpdateMemberRoleInputBody": ".updatememberroleinputbody",
     "UpdateMemberRoleInputBodyTypedDict": ".updatememberroleinputbody",
@@ -4621,6 +4727,31 @@ _dynamic_imports: dict[str, str] = {
     "V3CollectionsSearchQueryRequestTypedDict": ".v3_collections_search_queryop",
     "V3CollectionsSearchQueryResponse": ".v3_collections_search_queryop",
     "V3CollectionsSearchQueryResponseTypedDict": ".v3_collections_search_queryop",
+    "V3CommentsCreateCommentGlobals": ".v3_comments_create_commentop",
+    "V3CommentsCreateCommentGlobalsTypedDict": ".v3_comments_create_commentop",
+    "V3CommentsCreateCommentRequest": ".v3_comments_create_commentop",
+    "V3CommentsCreateCommentRequestTypedDict": ".v3_comments_create_commentop",
+    "V3CommentsCreateCommentResponse": ".v3_comments_create_commentop",
+    "V3CommentsCreateCommentResponseTypedDict": ".v3_comments_create_commentop",
+    "V3CommentsDeleteCommentGlobals": ".v3_comments_delete_commentop",
+    "V3CommentsDeleteCommentGlobalsTypedDict": ".v3_comments_delete_commentop",
+    "V3CommentsDeleteCommentRequest": ".v3_comments_delete_commentop",
+    "V3CommentsDeleteCommentRequestTypedDict": ".v3_comments_delete_commentop",
+    "V3CommentsDeleteCommentResponse": ".v3_comments_delete_commentop",
+    "V3CommentsDeleteCommentResponseTypedDict": ".v3_comments_delete_commentop",
+    "OrderBy": ".v3_comments_list_commentsop",
+    "V3CommentsListCommentsGlobals": ".v3_comments_list_commentsop",
+    "V3CommentsListCommentsGlobalsTypedDict": ".v3_comments_list_commentsop",
+    "V3CommentsListCommentsRequest": ".v3_comments_list_commentsop",
+    "V3CommentsListCommentsRequestTypedDict": ".v3_comments_list_commentsop",
+    "V3CommentsListCommentsResponse": ".v3_comments_list_commentsop",
+    "V3CommentsListCommentsResponseTypedDict": ".v3_comments_list_commentsop",
+    "V3CommentsUpdateCommentGlobals": ".v3_comments_update_commentop",
+    "V3CommentsUpdateCommentGlobalsTypedDict": ".v3_comments_update_commentop",
+    "V3CommentsUpdateCommentRequest": ".v3_comments_update_commentop",
+    "V3CommentsUpdateCommentRequestTypedDict": ".v3_comments_update_commentop",
+    "V3CommentsUpdateCommentResponse": ".v3_comments_update_commentop",
+    "V3CommentsUpdateCommentResponseTypedDict": ".v3_comments_update_commentop",
     "V3GlobaldataAssetCertificateListPostGlobals": ".v3_globaldata_asset_certificate_list_postop",
     "V3GlobaldataAssetCertificateListPostGlobalsTypedDict": ".v3_globaldata_asset_certificate_list_postop",
     "V3GlobaldataAssetCertificateListPostRequest": ".v3_globaldata_asset_certificate_list_postop",
@@ -4705,7 +4836,7 @@ _dynamic_imports: dict[str, str] = {
     "V3GlobaldataSearchQueryRequestTypedDict": ".v3_globaldata_search_queryop",
     "V3GlobaldataSearchQueryResponse": ".v3_globaldata_search_queryop",
     "V3GlobaldataSearchQueryResponseTypedDict": ".v3_globaldata_search_queryop",
-    "OrderBy": ".v3_globaldata_service_on_hostop",
+    "QueryParamOrderBy": ".v3_globaldata_service_on_hostop",
     "QueryParamTransportProtocol": ".v3_globaldata_service_on_hostop",
     "V3GlobaldataServiceOnHostGlobals": ".v3_globaldata_service_on_hostop",
     "V3GlobaldataServiceOnHostGlobalsTypedDict": ".v3_globaldata_service_on_hostop",
@@ -4750,10 +4881,10 @@ _dynamic_imports: dict[str, str] = {
     "V3TagsListAssignmentsRequestTypedDict": ".v3_tags_list_assignmentsop",
     "V3TagsListAssignmentsResponse": ".v3_tags_list_assignmentsop",
     "V3TagsListAssignmentsResponseTypedDict": ".v3_tags_list_assignmentsop",
-    "QueryParamOrderBy": ".v3_tags_list_tagsop",
     "QueryParamPrivacy": ".v3_tags_list_tagsop",
     "V3TagsListTagsGlobals": ".v3_tags_list_tagsop",
     "V3TagsListTagsGlobalsTypedDict": ".v3_tags_list_tagsop",
+    "V3TagsListTagsQueryParamOrderBy": ".v3_tags_list_tagsop",
     "V3TagsListTagsRequest": ".v3_tags_list_tagsop",
     "V3TagsListTagsRequestTypedDict": ".v3_tags_list_tagsop",
     "V3TagsListTagsResponse": ".v3_tags_list_tagsop",

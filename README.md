@@ -232,6 +232,10 @@ asyncio.run(main())
 
 ### [TagsAndComments](docs/sdks/tagsandcomments/README.md)
 
+* [list_comments](docs/sdks/tagsandcomments/README.md#list_comments) - List comments
+* [create_comment](docs/sdks/tagsandcomments/README.md#create_comment) - Create a comment
+* [delete_comment](docs/sdks/tagsandcomments/README.md#delete_comment) - Delete a comment
+* [update_comment](docs/sdks/tagsandcomments/README.md#update_comment) - Update a comment
 * [list_tags](docs/sdks/tagsandcomments/README.md#list_tags) - List tags
 * [create_tag](docs/sdks/tagsandcomments/README.md#create_tag) - Create a tag
 * [delete_tag](docs/sdks/tagsandcomments/README.md#delete_tag) - Delete a tag

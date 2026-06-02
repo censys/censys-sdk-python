@@ -54,7 +54,7 @@ class QueryParamTransportProtocol(str, Enum):
     QUIC = "quic"
 
 
-class OrderBy(str, Enum):
+class QueryParamOrderBy(str, Enum):
     PORT_ASC = "port ASC"
     PORT_DESC = "port DESC"
     PROTOCOL_ASC = "protocol ASC"
@@ -82,7 +82,7 @@ class V3GlobaldataServiceOnHostRequestTypedDict(TypedDict):
     r"""Filter by application protocol"""
     transport_protocol: NotRequired[QueryParamTransportProtocol]
     r"""Filter by transport protocol"""
-    order_by: NotRequired[Nullable[List[OrderBy]]]
+    order_by: NotRequired[Nullable[List[QueryParamOrderBy]]]
     r"""Order observations by these fields. Multiple values can be provided to sort by multiple fields (e.g., ['port DESC', 'protocol ASC'])."""
 
 
@@ -141,7 +141,7 @@ class V3GlobaldataServiceOnHostRequest(BaseModel):
     r"""Filter by transport protocol"""
 
     order_by: Annotated[
-        OptionalNullable[List[OrderBy]],
+        OptionalNullable[List[QueryParamOrderBy]],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = UNSET
     r"""Order observations by these fields. Multiple values can be provided to sort by multiple fields (e.g., ['port DESC', 'protocol ASC'])."""

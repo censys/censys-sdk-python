@@ -29,10 +29,10 @@ class SDK(BaseSDK):
     r"""Endpoints related to the Account Management product"""
     collections: "Collections"
     r"""Endpoints related to the Collections product"""
-    global_data: "GlobalData"
-    r"""Endpoints related to the Global Data product"""
     tags_and_comments: "TagsAndComments"
     r"""Endpoints related to asset tagging and commenting"""
+    global_data: "GlobalData"
+    r"""Endpoints related to the Global Data product"""
     threat_hunting: "ThreatHunting"
     r"""Endpoints related to the Adversary Investigation product"""
     adversary_investigation: "AdversaryInvestigation"
@@ -43,8 +43,8 @@ class SDK(BaseSDK):
             "AccountManagement",
         ),
         "collections": ("censys_platform.collections", "Collections"),
-        "global_data": ("censys_platform.global_data", "GlobalData"),
         "tags_and_comments": ("censys_platform.tags_and_comments", "TagsAndComments"),
+        "global_data": ("censys_platform.global_data", "GlobalData"),
         "threat_hunting": ("censys_platform.threat_hunting", "ThreatHunting"),
         "adversary_investigation": (
             "censys_platform.adversary_investigation",
@@ -99,7 +99,9 @@ class SDK(BaseSDK):
         ), "The provided async_client must implement the AsyncHttpClient protocol."
 
         security: Any = None
-        if callable(personal_access_token):
+        if personal_access_token is None:
+            security = None
+        elif callable(personal_access_token):
             # pylint: disable=unnecessary-lambda-assignment
             security = lambda: models.Security(
                 personal_access_token=personal_access_token()
