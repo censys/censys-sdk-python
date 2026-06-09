@@ -11,7 +11,7 @@ from censys_platform.types import BaseModel, Nullable, UNSET_SENTINEL
 from datetime import datetime
 from enum import Enum
 from pydantic import field_serializer, model_serializer
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -38,7 +38,7 @@ class CreditUsageReportTypedDict(TypedDict):
     r"""The total amount of credits expired during the report period."""
     transaction_count: int
     r"""The total number of transactions during the report period."""
-    credits_consumed_by_consumer: NotRequired[str]
+    credits_consumed_by_consumer: NotRequired[Dict[str, int]]
     r"""The breakdown of credits consumed by consumer. This may not be present if the report is generated for a specific user."""
     granularity: NotRequired[Granularity]
     r"""The granularity of the report."""
@@ -68,7 +68,7 @@ class CreditUsageReport(BaseModel):
     transaction_count: int
     r"""The total number of transactions during the report period."""
 
-    credits_consumed_by_consumer: Optional[str] = None
+    credits_consumed_by_consumer: Optional[Dict[str, int]] = None
     r"""The breakdown of credits consumed by consumer. This may not be present if the report is generated for a specific user."""
 
     granularity: Optional[Granularity] = Granularity.DAILY

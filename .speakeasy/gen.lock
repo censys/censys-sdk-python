@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 012c0d5374289fca8b5a197e3d4572a9
-  docVersion: 1.0.105
+  docChecksum: ade290ce8a2cfaa82b58311fa0c6666c
+  docVersion: 1.0.106
   speakeasyVersion: 1.773.1
   generationVersion: 2.897.1
-  releaseVersion: 0.14.1
-  configChecksum: e55be9209e4d081701e730a8cbf66dd6
+  releaseVersion: 0.14.2
+  configChecksum: 34177271be9aefafa3f0435ef563fffb
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: df7c96b5-2810-479c-9717-5809b676ad07
-  pristine_commit_hash: 60007caea838d91ce773798fb04dd311516dc3cf
-  pristine_tree_hash: ac064187cca346b37b5047e913b2ec15f866154b
+  generation_id: 39f91088-4aae-47ba-a46b-df6129509eab
+  pristine_commit_hash: 8eae61ad2d57450ae36e3cf8ef33a088dd513fe3
+  pristine_tree_hash: 9798613e7dd5c4f3a9ad57c93b29c347b03e573f
 features:
   python:
     acceptHeaders: 3.0.0
@@ -390,8 +390,8 @@ trackedFiles:
     pristine_git_object: 266a30835016e6c819908bcaf17fb681f36d76e1
   docs/models/creditusagereport.md:
     id: fa4adb4db7c6
-    last_write_checksum: sha1:d8f40acc1a1a75019bc2463c96317dc1f7c7aa55
-    pristine_git_object: 2c2ba22c88fa016dd512d643e3c39af0b0b0609f
+    last_write_checksum: sha1:e24b4a92be56d9c81e4190f2a844e1dc45b510f5
+    pristine_git_object: c44426ec816ab5e12e115e5783d285646aa16259
   docs/models/creditusagereportperiod.md:
     id: 2b3cfdf1f882
     last_write_checksum: sha1:feb86a3a3fef14a8d2ea7c7f087ed7922aff9689
@@ -3674,8 +3674,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:0a933ccd695a479282163550dea4facf09b02498
-    pristine_git_object: 552b51ba888213c2c9be61a418219526255a5a75
+    last_write_checksum: sha1:80ebcb2be64b9e205a9e20e586d4003784fe9788
+    pristine_git_object: bd0ed8f6a7ce105ef1a3d78663792b883e98732b
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -3702,8 +3702,8 @@ trackedFiles:
     pristine_git_object: 352d3691d91c2d0ba0f05b48b56d4df5ce520098
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:4c75c917333d1dca93cb529859cd909a2322821b
-    pristine_git_object: 3f7ad73c6c0515d52d41505ebf3ac2e6bf882faa
+    last_write_checksum: sha1:be2be80e216f5040c0b5d9b7b0a9ad115e83ea0f
+    pristine_git_object: 41c8d17b03eb01ac5df7f050637ad439279bfbc5
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:09f4a14d8ae7684622d2d8633656f043c3ae9bef
@@ -4014,8 +4014,8 @@ trackedFiles:
     pristine_git_object: abca19e0ba647dc4b02a33c29318950dbc532dff
   src/censys_platform/models/creditusagereport.py:
     id: 30edd208be3c
-    last_write_checksum: sha1:41e8d860b9e7f487c4d5bc888d5e0a44a3e5e5b1
-    pristine_git_object: ea85492eda128f0e48fa4dda5ecfe884f96deb73
+    last_write_checksum: sha1:138a76d2ed8551437123556b591d2aba76551951
+    pristine_git_object: f8ce979ddd961571e2a1e874bf451529dc39fdff
   src/censys_platform/models/creditusagereportperiod.py:
     id: 0a8a1e52291c
     last_write_checksum: sha1:26c5ae1f41a9540712517ad6e0377b61867eab7c
@@ -7210,7 +7210,7 @@ examples:
           include_consumer_breakdown: false
       responses:
         "200":
-          application/json: {"result": {"credits_consumed_by_source": {"api": 527007, "ui": 30140}, "end_time": "2026-02-24T20:39:40.987Z", "granularity": "daily", "periods": [], "start_time": "2026-08-31T05:06:39.123Z", "total_added": 532855, "total_consumed": 794965, "total_expired": 868832, "transaction_count": 833735}}
+          application/json: {"result": {"credits_consumed_by_consumer": {"user@example.com": 3000}, "credits_consumed_by_source": {"api": 527007, "ui": 30140}, "end_time": "2026-02-24T20:39:40.987Z", "granularity": "daily", "periods": [], "start_time": "2026-08-31T05:06:39.123Z", "total_added": 532855, "total_consumed": 794965, "total_expired": 868832, "transaction_count": 833735}}
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "400":
@@ -7288,7 +7288,7 @@ examples:
           granularity: "daily"
       responses:
         "200":
-          application/json: {"result": {"credits_consumed_by_source": {"api": 135676, "ui": 62358}, "end_time": "2025-11-05T11:52:42.728Z", "granularity": "daily", "periods": [], "start_time": "2025-12-18T14:05:05.185Z", "total_added": 853045, "total_consumed": 419835, "total_expired": 916558, "transaction_count": 881742}}
+          application/json: {"result": {"credits_consumed_by_consumer": {"user@example.com": 3000}, "credits_consumed_by_source": {"api": 135676, "ui": 62358}, "end_time": "2025-11-05T11:52:42.728Z", "granularity": "daily", "periods": [], "start_time": "2025-12-18T14:05:05.185Z", "total_added": 853045, "total_consumed": 419835, "total_expired": 916558, "transaction_count": 881742}}
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "400":
@@ -7333,7 +7333,7 @@ examples:
           granularity: "daily"
       responses:
         "200":
-          application/json: {"result": {"credits_consumed_by_source": {"api": 950767, "ui": 255777}, "end_time": "2024-04-27T13:57:59.211Z", "granularity": "daily", "periods": null, "start_time": "2024-12-31T17:45:46.745Z", "total_added": 709804, "total_consumed": 277201, "total_expired": 64971, "transaction_count": 82629}}
+          application/json: {"result": {"credits_consumed_by_consumer": {"user@example.com": 3000}, "credits_consumed_by_source": {"api": 950767, "ui": 255777}, "end_time": "2024-04-27T13:57:59.211Z", "granularity": "daily", "periods": null, "start_time": "2024-12-31T17:45:46.745Z", "total_added": 709804, "total_consumed": 277201, "total_expired": 64971, "transaction_count": 82629}}
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "404":
