@@ -183,6 +183,7 @@ class ServiceTypedDict(TypedDict):
     cisco_ipsla: NotRequired[CiscoIpslaTypedDict]
     cmore: NotRequired[CmoreTypedDict]
     coap: NotRequired[CoapTypedDict]
+    compromises: NotRequired[Nullable[List[RiskTypedDict]]]
     crestron_cp3: NotRequired[CrestronCp3TypedDict]
     crestron_din_ap2: NotRequired[CrestronDinAp2TypedDict]
     cursor_on_target: NotRequired[CursorOnTargetTypedDict]
@@ -352,6 +353,8 @@ class Service(BaseModel):
     cmore: Optional[Cmore] = None
 
     coap: Optional[Coap] = None
+
+    compromises: OptionalNullable[List[Risk]] = UNSET
 
     crestron_cp3: Optional[CrestronCp3] = None
 
@@ -655,6 +658,7 @@ class Service(BaseModel):
                 "cisco_ipsla",
                 "cmore",
                 "coap",
+                "compromises",
                 "crestron_cp3",
                 "crestron_din_ap2",
                 "cursor_on_target",
@@ -796,6 +800,7 @@ class Service(BaseModel):
         )
         nullable_fields = set(
             [
+                "compromises",
                 "endpoints",
                 "exposures",
                 "hardware",

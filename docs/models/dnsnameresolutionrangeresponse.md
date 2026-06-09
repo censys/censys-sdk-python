@@ -1,0 +1,11 @@
+# DNSNameResolutionRangeResponse
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `name`                                                                         | *str*                                                                          | :heavy_check_mark:                                                             | The domain name that was queried.                                              |
+| `next_page_token`                                                              | *str*                                                                          | :heavy_check_mark:                                                             | A token that can be used to retrieve the next page of records.                 |
+| `records`                                                                      | List[[models.DNSResolutionRangeRecord](../models/dnsresolutionrangerecord.md)] | :heavy_check_mark:                                                             | The list of DNS observation windows.                                           |
+| `total_records`                                                                | *int*                                                                          | :heavy_check_mark:                                                             | The number of records that exist in total across all pages.                    |

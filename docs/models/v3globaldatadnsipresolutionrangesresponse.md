@@ -1,0 +1,9 @@
+# V3GlobaldataDNSIPResolutionRangesResponse
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `headers`                                                                                                        | Dict[str, List[*str*]]                                                                                           | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `result`                                                                                                         | [models.ResponseEnvelopeDNSIPResolutionRangeResponse](../models/responseenvelopednsipresolutionrangeresponse.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

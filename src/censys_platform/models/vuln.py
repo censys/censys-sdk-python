@@ -53,6 +53,7 @@ class VulnTypedDict(TypedDict):
     risk_source: NotRequired[VulnRiskSource]
     severity: NotRequired[VulnSeverity]
     source: NotRequired[VulnSource]
+    type: NotRequired[Nullable[List[str]]]
     year: NotRequired[int]
 
 
@@ -76,6 +77,8 @@ class Vuln(BaseModel):
     severity: Optional[VulnSeverity] = None
 
     source: Optional[VulnSource] = None
+
+    type: OptionalNullable[List[str]] = UNSET
 
     year: Optional[int] = None
 
@@ -120,10 +123,11 @@ class Vuln(BaseModel):
                 "risk_source",
                 "severity",
                 "source",
+                "type",
                 "year",
             ]
         )
-        nullable_fields = set(["cwes", "evidence", "kev"])
+        nullable_fields = set(["cwes", "evidence", "kev", "type"])
         serialized = handler(self)
         m = {}
 

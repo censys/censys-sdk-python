@@ -16,6 +16,10 @@ Endpoints related to the Global Data product
 * [get_host_timeline](#get_host_timeline) - Get host event history
 * [get_web_properties](#get_web_properties) - Retrieve multiple web properties
 * [get_web_property](#get_web_property) - Get a web property
+* [list_dns_ip_resolution_bounds](#list_dns_ip_resolution_bounds) - Get latest DNS names that resolved to an IP
+* [list_dns_ip_resolution_ranges](#list_dns_ip_resolution_ranges) - Get DNS names that resolved to an IP within a time window
+* [list_dns_name_resolution_bounds](#list_dns_name_resolution_bounds) - Get latest DNS resolution records for a name
+* [list_dns_name_resolution_ranges](#list_dns_name_resolution_ranges) - Get historical DNS resolution ranges for a name
 * [create_tracked_scan](#create_tracked_scan) - Live Rescan: Initiate a new rescan
 * [get_tracked_scan](#get_tracked_scan) - Get scan status
 * [aggregate](#aggregate) - Aggregate results for a search query
@@ -494,6 +498,215 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 400, 403, 404, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_dns_ip_resolution_bounds
+
+Retrieve the latest domain names that resolved to the IP you provide (A and AAAA). You can narrow results with `record_types` (A or AAAA).<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-dns-ip-resolution-bound" method="get" path="/v3/global/dns/resolutions/ip/{ip}/bounds" -->
+```python
+import censys_platform
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.list_dns_ip_resolution_bounds(request={
+        "start_time": "2024-01-01T00:00:00Z",
+        "end_time": "2024-01-31T23:59:59Z",
+        "page_size": 50,
+        "record_types": [
+            censys_platform.RecordTypes.A,
+        ],
+        "ip": "8.8.8.8",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [models.V3GlobaldataDNSIPResolutionBoundRequest](../../models/v3globaldatadnsipresolutionboundrequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
+| `retries`                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                          | :heavy_minus_sign:                                                                                        | Configuration to override the default retry behavior of the client.                                       |
+
+### Response
+
+**[models.V3GlobaldataDNSIPResolutionBoundResponse](../../models/v3globaldatadnsipresolutionboundresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404, 409         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_dns_ip_resolution_ranges
+
+Retrieve domain names that resolved to the IP you provide (A and AAAA) within the requested time window.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-dns-ip-resolution-ranges" method="get" path="/v3/global/dns/resolutions/ip/{ip}/ranges" -->
+```python
+import censys_platform
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.list_dns_ip_resolution_ranges(request={
+        "start_time": "2024-01-01T00:00:00Z",
+        "end_time": "2024-01-31T23:59:59Z",
+        "page_size": 50,
+        "record_types": [
+            censys_platform.QueryParamRecordTypes.A,
+        ],
+        "domain": "platform.censys.io",
+        "ip": "8.8.8.8",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [models.V3GlobaldataDNSIPResolutionRangesRequest](../../models/v3globaldatadnsipresolutionrangesrequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `retries`                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                            | :heavy_minus_sign:                                                                                          | Configuration to override the default retry behavior of the client.                                         |
+
+### Response
+
+**[models.V3GlobaldataDNSIPResolutionRangesResponse](../../models/v3globaldatadnsipresolutionrangesresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404, 409         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_dns_name_resolution_bounds
+
+Retrieve the latest DNS resolution records for a name. This endpoint returns the latest observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using `record_types`.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-dns-name-resolution-bound" method="get" path="/v3/global/dns/resolutions/{name}/bounds" -->
+```python
+import censys_platform
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.list_dns_name_resolution_bounds(request={
+        "start_time": "2024-01-01T00:00:00Z",
+        "end_time": "2024-01-31T23:59:59Z",
+        "page_size": 50,
+        "record_types": [
+            censys_platform.V3GlobaldataDNSNameResolutionBoundQueryParamRecordTypes.MX,
+        ],
+        "name": "platform.censys.io",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                     | [models.V3GlobaldataDNSNameResolutionBoundRequest](../../models/v3globaldatadnsnameresolutionboundrequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
+| `retries`                                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                              | :heavy_minus_sign:                                                                                            | Configuration to override the default retry behavior of the client.                                           |
+
+### Response
+
+**[models.V3GlobaldataDNSNameResolutionBoundResponse](../../models/v3globaldatadnsnameresolutionboundresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404, 409         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_dns_name_resolution_ranges
+
+Retrieve historical DNS resolution observations for a name. Each item is one window during which a record value was observed by Censys.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-dns-name-resolution-ranges" method="get" path="/v3/global/dns/resolutions/{name}/ranges" -->
+```python
+import censys_platform
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.list_dns_name_resolution_ranges(request={
+        "start_time": "2024-01-01T00:00:00Z",
+        "end_time": "2024-01-31T23:59:59Z",
+        "page_size": 50,
+        "record_types": [
+            censys_platform.V3GlobaldataDNSNameResolutionRangesQueryParamRecordTypes.MX,
+        ],
+        "name": "platform.censys.io",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                       | [models.V3GlobaldataDNSNameResolutionRangesRequest](../../models/v3globaldatadnsnameresolutionrangesrequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
+| `retries`                                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                | :heavy_minus_sign:                                                                                              | Configuration to override the default retry behavior of the client.                                             |
+
+### Response
+
+**[models.V3GlobaldataDNSNameResolutionRangesResponse](../../models/v3globaldatadnsnameresolutionrangesresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404, 409         | application/problem+json   |
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 

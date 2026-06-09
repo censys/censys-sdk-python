@@ -1,0 +1,11 @@
+# DNSIPResolutionRecord
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `domain`                                                                               | *str*                                                                                  | :heavy_check_mark:                                                                     | The domain name that resolved to this IP.                                              |
+| `first_seen`                                                                           | [date](https://docs.python.org/3/library/datetime.html#date-objects)                   | :heavy_check_mark:                                                                     | The time this record was first observed.                                               |
+| `last_seen`                                                                            | [date](https://docs.python.org/3/library/datetime.html#date-objects)                   | :heavy_check_mark:                                                                     | The time this record was last observed.                                                |
+| `record_type`                                                                          | [models.DNSIPResolutionRecordRecordType](../models/dnsipresolutionrecordrecordtype.md) | :heavy_check_mark:                                                                     | Either A or AAAA.                                                                      |

@@ -51,6 +51,7 @@ class RiskTypedDict(TypedDict):
     risk_source: NotRequired[RiskSource]
     severity: NotRequired[Severity]
     source: NotRequired[RiskSource1]
+    type: NotRequired[Nullable[List[str]]]
     year: NotRequired[int]
 
 
@@ -72,6 +73,8 @@ class Risk(BaseModel):
     severity: Optional[Severity] = None
 
     source: Optional[RiskSource1] = None
+
+    type: OptionalNullable[List[str]] = UNSET
 
     year: Optional[int] = None
 
@@ -115,10 +118,11 @@ class Risk(BaseModel):
                 "risk_source",
                 "severity",
                 "source",
+                "type",
                 "year",
             ]
         )
-        nullable_fields = set(["evidence"])
+        nullable_fields = set(["evidence", "type"])
         serialized = handler(self)
         m = {}
 

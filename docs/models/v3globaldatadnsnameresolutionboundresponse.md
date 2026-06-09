@@ -1,0 +1,9 @@
+# V3GlobaldataDNSNameResolutionBoundResponse
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `headers`                                                                                                            | Dict[str, List[*str*]]                                                                                               | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `result`                                                                                                             | [models.ResponseEnvelopeDNSNameResolutionBoundResponse](../models/responseenvelopednsnameresolutionboundresponse.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
