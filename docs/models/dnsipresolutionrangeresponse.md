@@ -1,0 +1,11 @@
+# DNSIPResolutionRangeResponse
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ip`                                                                               | *str*                                                                              | :heavy_check_mark:                                                                 | The IP address that was queried.                                                   |
+| `next_page_token`                                                                  | *str*                                                                              | :heavy_check_mark:                                                                 | A token that can be used to retrieve the next page of records.                     |
+| `records`                                                                          | List[[models.DNSIPResolutionRangeRecord](../models/dnsipresolutionrangerecord.md)] | :heavy_check_mark:                                                                 | The list of domain names that resolved to this IP.                                 |
+| `total_records`                                                                    | *int*                                                                              | :heavy_check_mark:                                                                 | The number of records that exist in total across all pages.                        |

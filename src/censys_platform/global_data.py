@@ -2310,6 +2310,878 @@ class GlobalData(BaseSDK):
 
         raise models.SDKError("Unexpected response received", http_res)
 
+    def list_dns_ip_resolution_bounds(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSIPResolutionBoundRequest,
+            models.V3GlobaldataDNSIPResolutionBoundRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSIPResolutionBoundResponse:
+        r"""Get latest DNS names that resolved to an IP
+
+        Retrieve the latest domain names that resolved to the IP you provide (A and AAAA). You can narrow results with `record_types` (A or AAAA).<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSIPResolutionBoundRequest
+            )
+        request = cast(models.V3GlobaldataDNSIPResolutionBoundRequest, request)
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/global/dns/resolutions/ip/{ip}/bounds",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSIPResolutionBoundGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-ip-resolution-bound",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSIPResolutionBoundResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSIPResolutionBoundResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_dns_ip_resolution_bounds_async(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSIPResolutionBoundRequest,
+            models.V3GlobaldataDNSIPResolutionBoundRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSIPResolutionBoundResponse:
+        r"""Get latest DNS names that resolved to an IP
+
+        Retrieve the latest domain names that resolved to the IP you provide (A and AAAA). You can narrow results with `record_types` (A or AAAA).<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSIPResolutionBoundRequest
+            )
+        request = cast(models.V3GlobaldataDNSIPResolutionBoundRequest, request)
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/global/dns/resolutions/ip/{ip}/bounds",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSIPResolutionBoundGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-ip-resolution-bound",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSIPResolutionBoundResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSIPResolutionBoundResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def list_dns_ip_resolution_ranges(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSIPResolutionRangesRequest,
+            models.V3GlobaldataDNSIPResolutionRangesRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSIPResolutionRangesResponse:
+        r"""Get DNS names that resolved to an IP within a time window
+
+        Retrieve domain names that resolved to the IP you provide (A and AAAA) within the requested time window.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSIPResolutionRangesRequest
+            )
+        request = cast(models.V3GlobaldataDNSIPResolutionRangesRequest, request)
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/global/dns/resolutions/ip/{ip}/ranges",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSIPResolutionRangesGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-ip-resolution-ranges",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSIPResolutionRangesResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSIPResolutionRangeResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_dns_ip_resolution_ranges_async(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSIPResolutionRangesRequest,
+            models.V3GlobaldataDNSIPResolutionRangesRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSIPResolutionRangesResponse:
+        r"""Get DNS names that resolved to an IP within a time window
+
+        Retrieve domain names that resolved to the IP you provide (A and AAAA) within the requested time window.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSIPResolutionRangesRequest
+            )
+        request = cast(models.V3GlobaldataDNSIPResolutionRangesRequest, request)
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/global/dns/resolutions/ip/{ip}/ranges",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSIPResolutionRangesGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-ip-resolution-ranges",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSIPResolutionRangesResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSIPResolutionRangeResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def list_dns_name_resolution_bounds(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSNameResolutionBoundRequest,
+            models.V3GlobaldataDNSNameResolutionBoundRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSNameResolutionBoundResponse:
+        r"""Get latest DNS resolution records for a name
+
+        Retrieve the latest DNS resolution records for a name. This endpoint returns the latest observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using `record_types`.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSNameResolutionBoundRequest
+            )
+        request = cast(models.V3GlobaldataDNSNameResolutionBoundRequest, request)
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/global/dns/resolutions/{name}/bounds",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSNameResolutionBoundGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-name-resolution-bound",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSNameResolutionBoundResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSNameResolutionBoundResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_dns_name_resolution_bounds_async(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSNameResolutionBoundRequest,
+            models.V3GlobaldataDNSNameResolutionBoundRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSNameResolutionBoundResponse:
+        r"""Get latest DNS resolution records for a name
+
+        Retrieve the latest DNS resolution records for a name. This endpoint returns the latest observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using `record_types`.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSNameResolutionBoundRequest
+            )
+        request = cast(models.V3GlobaldataDNSNameResolutionBoundRequest, request)
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/global/dns/resolutions/{name}/bounds",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSNameResolutionBoundGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-name-resolution-bound",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSNameResolutionBoundResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSNameResolutionBoundResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def list_dns_name_resolution_ranges(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSNameResolutionRangesRequest,
+            models.V3GlobaldataDNSNameResolutionRangesRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSNameResolutionRangesResponse:
+        r"""Get historical DNS resolution ranges for a name
+
+        Retrieve historical DNS resolution observations for a name. Each item is one window during which a record value was observed by Censys.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSNameResolutionRangesRequest
+            )
+        request = cast(models.V3GlobaldataDNSNameResolutionRangesRequest, request)
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/global/dns/resolutions/{name}/ranges",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSNameResolutionRangesGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-name-resolution-ranges",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSNameResolutionRangesResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSNameResolutionRangeResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_dns_name_resolution_ranges_async(
+        self,
+        *,
+        request: Union[
+            models.V3GlobaldataDNSNameResolutionRangesRequest,
+            models.V3GlobaldataDNSNameResolutionRangesRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3GlobaldataDNSNameResolutionRangesResponse:
+        r"""Get historical DNS resolution ranges for a name
+
+        Retrieve historical DNS resolution observations for a name. Each item is one window during which a record value was observed by Censys.<br><br>[Learn more about Censys Active DNS Resolution](https://docs.censys.com/docs/platform-active-dns).<br><br>This endpoint is in beta and is only available to Censys Enterprise users.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, models.V3GlobaldataDNSNameResolutionRangesRequest
+            )
+        request = cast(models.V3GlobaldataDNSNameResolutionRangesRequest, request)
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/global/dns/resolutions/{name}/ranges",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3GlobaldataDNSNameResolutionRangesGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-globaldata-dns-name-resolution-ranges",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3GlobaldataDNSNameResolutionRangesResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeDNSNameResolutionRangeResponse, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
     def create_tracked_scan(
         self,
         *,

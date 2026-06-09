@@ -24,6 +24,7 @@ from typing_extensions import NotRequired, TypedDict
 
 class WebpropertyTypedDict(TypedDict):
     cert: NotRequired[CertificateTypedDict]
+    compromises: NotRequired[Nullable[List[RiskTypedDict]]]
     endpoints: NotRequired[Nullable[List[EndpointScanStateTypedDict]]]
     exposures: NotRequired[Nullable[List[RiskTypedDict]]]
     hardware: NotRequired[Nullable[List[AttributeTypedDict]]]
@@ -42,6 +43,8 @@ class WebpropertyTypedDict(TypedDict):
 
 class Webproperty(BaseModel):
     cert: Optional[Certificate] = None
+
+    compromises: OptionalNullable[List[Risk]] = UNSET
 
     endpoints: OptionalNullable[List[EndpointScanState]] = UNSET
 
@@ -76,6 +79,7 @@ class Webproperty(BaseModel):
         optional_fields = set(
             [
                 "cert",
+                "compromises",
                 "endpoints",
                 "exposures",
                 "hardware",
@@ -94,6 +98,7 @@ class Webproperty(BaseModel):
         )
         nullable_fields = set(
             [
+                "compromises",
                 "endpoints",
                 "exposures",
                 "hardware",

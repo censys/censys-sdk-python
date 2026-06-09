@@ -1,0 +1,9 @@
+# V3GlobaldataDNSIPResolutionBoundResponse
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `headers`                                                                                                        | Dict[str, List[*str*]]                                                                                           | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `result`                                                                                                         | [models.ResponseEnvelopeDNSIPResolutionBoundResponse](../models/responseenvelopednsipresolutionboundresponse.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
