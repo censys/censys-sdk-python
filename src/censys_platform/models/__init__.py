@@ -1672,6 +1672,7 @@ if TYPE_CHECKING:
         V3TagsGetTagResponseTypedDict,
     )
     from .v3_tags_list_assignmentsop import (
+        QueryParamAssetType,
         V3TagsListAssignmentsGlobals,
         V3TagsListAssignmentsGlobalsTypedDict,
         V3TagsListAssignmentsQueryParamOrderBy,
@@ -2646,6 +2647,7 @@ __all__ = [
     "QcStatementsQcType",
     "QcStatementsQcTypeTypedDict",
     "QcStatementsTypedDict",
+    "QueryParamAssetType",
     "QueryParamGranularity",
     "QueryParamOrderBy",
     "QueryParamPrivacy",
@@ -5074,6 +5076,7 @@ _dynamic_imports: dict[str, str] = {
     "V3TagsGetTagRequestTypedDict": ".v3_tags_get_tagop",
     "V3TagsGetTagResponse": ".v3_tags_get_tagop",
     "V3TagsGetTagResponseTypedDict": ".v3_tags_get_tagop",
+    "QueryParamAssetType": ".v3_tags_list_assignmentsop",
     "V3TagsListAssignmentsGlobals": ".v3_tags_list_assignmentsop",
     "V3TagsListAssignmentsGlobalsTypedDict": ".v3_tags_list_assignmentsop",
     "V3TagsListAssignmentsQueryParamOrderBy": ".v3_tags_list_assignmentsop",

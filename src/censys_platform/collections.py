@@ -6,7 +6,7 @@ from censys_platform._hooks import HookContext
 from censys_platform.types import BaseModel, OptionalNullable, UNSET
 from censys_platform.utils.unmarshal_json_response import unmarshal_json_response
 from enum import Enum
-from typing import Any, List, Mapping, Optional, Union, cast
+from typing import Any, Iterable, List, Mapping, Optional, Union, cast
 
 
 class DeleteAcceptEnum(str, Enum):
@@ -23,7 +23,9 @@ class Collections(BaseSDK):
         organization_id: Optional[str] = None,
         page_token: Optional[str] = None,
         page_size: Optional[int] = None,
-        collection_statuses: OptionalNullable[List[models.CollectionStatuses]] = UNSET,
+        collection_statuses: OptionalNullable[
+            Iterable[models.CollectionStatuses]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -56,7 +58,9 @@ class Collections(BaseSDK):
             organization_id=organization_id,
             page_token=page_token,
             page_size=page_size,
-            collection_statuses=collection_statuses,
+            collection_statuses=utils.unmarshal(
+                collection_statuses, OptionalNullable[List[models.CollectionStatuses]]
+            ),
         )
 
         req = self._build_request(
@@ -134,7 +138,9 @@ class Collections(BaseSDK):
         organization_id: Optional[str] = None,
         page_token: Optional[str] = None,
         page_size: Optional[int] = None,
-        collection_statuses: OptionalNullable[List[models.CollectionStatuses]] = UNSET,
+        collection_statuses: OptionalNullable[
+            Iterable[models.CollectionStatuses]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -167,7 +173,9 @@ class Collections(BaseSDK):
             organization_id=organization_id,
             page_token=page_token,
             page_size=page_size,
-            collection_statuses=collection_statuses,
+            collection_statuses=utils.unmarshal(
+                collection_statuses, OptionalNullable[List[models.CollectionStatuses]]
+            ),
         )
 
         req = self._build_request_async(
