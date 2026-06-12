@@ -48,6 +48,14 @@ class V3TagsListAssignmentsQueryParamOrderBy(str, Enum):
     CREATE_TIME_DESC = "create_time_desc"
 
 
+class QueryParamAssetType(str, Enum):
+    r"""Filter assignments by asset type."""
+
+    HOST = "host"
+    WEB_PROPERTY = "web_property"
+    CERTIFICATE = "certificate"
+
+
 class V3TagsListAssignmentsRequestTypedDict(TypedDict):
     tag_id: str
     r"""The ID of the tag whose assignments to list."""
@@ -61,6 +69,8 @@ class V3TagsListAssignmentsRequestTypedDict(TypedDict):
     r"""Sort order. Supported values: create_time_asc, create_time_desc."""
     asset_id: NotRequired[str]
     r"""The identifier of the asset (host IP, certificate SHA-256 fingerprint, or web property hostname:port)."""
+    asset_type: NotRequired[QueryParamAssetType]
+    r"""Filter assignments by asset type."""
     created_before: NotRequired[datetime]
     r"""RFC3339 timestamp. Only return assignments created before this time."""
     created_after: NotRequired[datetime]
@@ -105,6 +115,12 @@ class V3TagsListAssignmentsRequest(BaseModel):
     ] = None
     r"""The identifier of the asset (host IP, certificate SHA-256 fingerprint, or web property hostname:port)."""
 
+    asset_type: Annotated[
+        Optional[QueryParamAssetType],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = None
+    r"""Filter assignments by asset type."""
+
     created_before: Annotated[
         Optional[datetime],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
@@ -132,6 +148,7 @@ class V3TagsListAssignmentsRequest(BaseModel):
                 "page_token",
                 "order_by",
                 "asset_id",
+                "asset_type",
                 "created_before",
                 "created_after",
                 "created_by",

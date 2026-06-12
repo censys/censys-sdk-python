@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.14.2
+  version: 0.14.3
   additionalDependencies:
     dev: {}
     main: {}
@@ -69,6 +69,7 @@ python:
       webhooks: ""
   inferUnionDiscriminators: true
   inputModelSuffix: input
+  inputTypedDictSuffix: TypedDict
   legacyPyright: true
   license: ""
   maxMethodParams: 5
