@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .chromedevtools import ChromeDevtools, ChromeDevtoolsTypedDict
+from .clickhousehttp import ClickHouseHTTP, ClickHouseHTTPTypedDict
 from .cobaltstrike import CobaltStrike, CobaltStrikeTypedDict
 from .elasticsearch import ElasticSearch, ElasticSearchTypedDict
 from .extractedendpointdata import ExtractedEndpointData, ExtractedEndpointDataTypedDict
@@ -21,6 +22,7 @@ from .prometheustarget import PrometheusTarget, PrometheusTargetTypedDict
 from .redlionweb import RedlionWeb, RedlionWebTypedDict
 from .scadaview import ScadaView, ScadaViewTypedDict
 from .screenshot import Screenshot, ScreenshotTypedDict
+from .wordpress import Wordpress, WordpressTypedDict
 from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
@@ -47,6 +49,7 @@ class EndpointScanStateTypedDict(TypedDict):
     banner: NotRequired[str]
     banner_hash_sha256: NotRequired[str]
     chrome_devtools: NotRequired[ChromeDevtoolsTypedDict]
+    clickhouse_http: NotRequired[ClickHouseHTTPTypedDict]
     cobalt_strike: NotRequired[CobaltStrikeTypedDict]
     elasticsearch: NotRequired[ElasticSearchTypedDict]
     endpoint_type: NotRequired[str]
@@ -73,6 +76,7 @@ class EndpointScanStateTypedDict(TypedDict):
     scan_time: NotRequired[str]
     screenshots: NotRequired[Nullable[List[ScreenshotTypedDict]]]
     transport_protocol: NotRequired[EndpointScanStateTransportProtocol]
+    wordpress: NotRequired[WordpressTypedDict]
 
 
 class EndpointScanState(BaseModel):
@@ -81,6 +85,8 @@ class EndpointScanState(BaseModel):
     banner_hash_sha256: Optional[str] = None
 
     chrome_devtools: Optional[ChromeDevtools] = None
+
+    clickhouse_http: Optional[ClickHouseHTTP] = None
 
     cobalt_strike: Optional[CobaltStrike] = None
 
@@ -134,6 +140,8 @@ class EndpointScanState(BaseModel):
 
     transport_protocol: Optional[EndpointScanStateTransportProtocol] = None
 
+    wordpress: Optional[Wordpress] = None
+
     @field_serializer("transport_protocol")
     def serialize_transport_protocol(self, value):
         if isinstance(value, str):
@@ -150,6 +158,7 @@ class EndpointScanState(BaseModel):
                 "banner",
                 "banner_hash_sha256",
                 "chrome_devtools",
+                "clickhouse_http",
                 "cobalt_strike",
                 "elasticsearch",
                 "endpoint_type",
@@ -176,6 +185,7 @@ class EndpointScanState(BaseModel):
                 "scan_time",
                 "screenshots",
                 "transport_protocol",
+                "wordpress",
             ]
         )
         nullable_fields = set(["screenshots"])

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .chromedevtools import ChromeDevtools, ChromeDevtoolsTypedDict
+from .clickhousehttp import ClickHouseHTTP, ClickHouseHTTPTypedDict
 from .cobaltstrike import CobaltStrike, CobaltStrikeTypedDict
 from .elasticsearch import ElasticSearch, ElasticSearchTypedDict
 from .fortigate import Fortigate, FortigateTypedDict
@@ -21,6 +22,7 @@ from .redlionweb import RedlionWeb, RedlionWebTypedDict
 from .scadaview import ScadaView, ScadaViewTypedDict
 from .screenshot import Screenshot, ScreenshotTypedDict
 from .tls import TLS, TLSTypedDict
+from .wordpress import Wordpress, WordpressTypedDict
 from censys_platform import models, utils
 from censys_platform.types import (
     BaseModel,
@@ -47,6 +49,7 @@ class EndpointScanTypedDict(TypedDict):
     banner: NotRequired[str]
     banner_hash_sha256: NotRequired[str]
     chrome_devtools: NotRequired[ChromeDevtoolsTypedDict]
+    clickhouse_http: NotRequired[ClickHouseHTTPTypedDict]
     cobalt_strike: NotRequired[CobaltStrikeTypedDict]
     elasticsearch: NotRequired[ElasticSearchTypedDict]
     endpoint_type: NotRequired[str]
@@ -74,6 +77,7 @@ class EndpointScanTypedDict(TypedDict):
     screenshots: NotRequired[Nullable[List[ScreenshotTypedDict]]]
     tls: NotRequired[TLSTypedDict]
     transport_protocol: NotRequired[EndpointScanTransportProtocol]
+    wordpress: NotRequired[WordpressTypedDict]
 
 
 class EndpointScan(BaseModel):
@@ -82,6 +86,8 @@ class EndpointScan(BaseModel):
     banner_hash_sha256: Optional[str] = None
 
     chrome_devtools: Optional[ChromeDevtools] = None
+
+    clickhouse_http: Optional[ClickHouseHTTP] = None
 
     cobalt_strike: Optional[CobaltStrike] = None
 
@@ -137,6 +143,8 @@ class EndpointScan(BaseModel):
 
     transport_protocol: Optional[EndpointScanTransportProtocol] = None
 
+    wordpress: Optional[Wordpress] = None
+
     @field_serializer("transport_protocol")
     def serialize_transport_protocol(self, value):
         if isinstance(value, str):
@@ -153,6 +161,7 @@ class EndpointScan(BaseModel):
                 "banner",
                 "banner_hash_sha256",
                 "chrome_devtools",
+                "clickhouse_http",
                 "cobalt_strike",
                 "elasticsearch",
                 "endpoint_type",
@@ -180,6 +189,7 @@ class EndpointScan(BaseModel):
                 "screenshots",
                 "tls",
                 "transport_protocol",
+                "wordpress",
             ]
         )
         nullable_fields = set(["screenshots"])

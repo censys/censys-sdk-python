@@ -1,0 +1,9 @@
+# V3GlobaldataAssetHostEnrichmentResponse
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `headers`                                                                                      | Dict[str, List[*str*]]                                                                         | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `result`                                                                                       | [models.ResponseEnvelopeHostEnrichmentAsset](../models/responseenvelopehostenrichmentasset.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

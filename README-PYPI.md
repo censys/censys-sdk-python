@@ -218,6 +218,7 @@ asyncio.run(main())
 * [get_certificates_raw](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_certificates_raw) - Retrieve multiple certificates in PEM format
 * [get_certificate](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_certificate) - Get a certificate
 * [get_certificate_raw](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_certificate_raw) - Get a certificate in PEM format
+* [get_host_enrichment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_host_enrichment) - Get host enrichment
 * [get_hosts](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_hosts) - Retrieve multiple hosts
 * [get_host](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_host) - Get a host
 * [list_services_on_host](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_services_on_host) - Get service history for a host
@@ -247,7 +248,11 @@ asyncio.run(main())
 * [update_tag](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#update_tag) - Update a tag
 * [list_tag_assignments](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#list_tag_assignments) - List tag assignments
 * [create_tag_assignment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#create_tag_assignment) - Create a tag assignment
+* [bulk_create_tag_assignments](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#bulk_create_tag_assignments) - Bulk create tag assignments
+* [bulk_delete_tag_assignments](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#bulk_delete_tag_assignments) - Bulk delete tag assignments
 * [delete_tag_assignment](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#delete_tag_assignment) - Delete a tag assignment
+* [list_tag_operations](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#list_tag_operations) - List tag operations
+* [cancel_tag_operation](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/tagsandcomments/README.md#cancel_tag_operation) - Cancel a tag operation
 
 ### [ThreatHunting](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md)
 

@@ -13,6 +13,7 @@ from .bacnet import Bacnet, BacnetTypedDict
 from .checkpointtopology import CheckpointTopology, CheckpointTopologyTypedDict
 from .chromecast import Chromecast, ChromecastTypedDict
 from .ciscoipsla import CiscoIpsla, CiscoIpslaTypedDict
+from .clickhousenative import ClickHouseNative, ClickHouseNativeTypedDict
 from .cmore import Cmore, CmoreTypedDict
 from .coap import Coap, CoapTypedDict
 from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
@@ -38,6 +39,7 @@ from .frps import Frps, FrpsTypedDict
 from .ftp import Ftp, FtpTypedDict
 from .gearman import Gearman, GearmanTypedDict
 from .gemini import Gemini, GeminiTypedDict
+from .gopher import Gopher, GopherTypedDict
 from .hajime import Hajime, HajimeTypedDict
 from .hidvertx import HidVertx, HidVertxTypedDict
 from .hikvision import Hikvision, HikvisionTypedDict
@@ -77,6 +79,7 @@ from .ntrip import Ntrip, NtripTypedDict
 from .onc import Onc, OncTypedDict
 from .onvif import Onvif, OnvifTypedDict
 from .opcua import OpcUa, OpcUaTypedDict
+from .openflow import Openflow, OpenflowTypedDict
 from .openvpn import Openvpn, OpenvpnTypedDict
 from .openvpnmgmt import OpenvpnMgmt, OpenvpnMgmtTypedDict
 from .oracle import Oracle, OracleTypedDict
@@ -93,12 +96,14 @@ from .realport import Realport, RealportTypedDict
 from .redis import Redis, RedisTypedDict
 from .redline import Redline, RedlineTypedDict
 from .redlioncrimson import RedlionCrimson, RedlionCrimsonTypedDict
+from .reolinkbaichuan import ReolinkBaichuan, ReolinkBaichuanTypedDict
 from .representativeinfo import RepresentativeInfo, RepresentativeInfoTypedDict
 from .rifatron import Rifatron, RifatronTypedDict
 from .ripple import Ripple, RippleTypedDict
 from .rlogin import Rlogin, RloginTypedDict
 from .rocketmq import Rocketmq, RocketmqTypedDict
 from .routerosapi import RouterosAPI, RouterosAPITypedDict
+from .rtmp import Rtmp, RtmpTypedDict
 from .rtsp import Rtsp, RtspTypedDict
 from .rustdeskheartbeat import RustdeskHeartbeat, RustdeskHeartbeatTypedDict
 from .rustdeskrelay import RustdeskRelay, RustdeskRelayTypedDict
@@ -121,6 +126,7 @@ from .ssdp import Ssdp, SsdpTypedDict
 from .ssh import SSH, SSHTypedDict
 from .steam import Steam, SteamTypedDict
 from .stun import Stun, StunTypedDict
+from .synergy import Synergy, SynergyTypedDict
 from .tacacsplus import TacacsPlus, TacacsPlusTypedDict
 from .teamviewer import TeamViewer, TeamViewerTypedDict
 from .telnet import Telnet, TelnetTypedDict
@@ -132,6 +138,7 @@ from .upnp import Upnp, UpnpTypedDict
 from .ventrilo import Ventrilo, VentriloTypedDict
 from .vnc import Vnc, VncTypedDict
 from .weblogict3 import WeblogicT3, WeblogicT3TypedDict
+from .wincecerdisp import WinceCerdisp, WinceCerdispTypedDict
 from .winrm import Winrm, WinrmTypedDict
 from .wsdiscovery import WsDiscovery, WsDiscoveryTypedDict
 from .x11 import X11, X11TypedDict
@@ -170,6 +177,7 @@ class ServiceScanTypedDict(TypedDict):
     checkpoint_topology: NotRequired[CheckpointTopologyTypedDict]
     chromecast: NotRequired[ChromecastTypedDict]
     cisco_ipsla: NotRequired[CiscoIpslaTypedDict]
+    clickhouse_native: NotRequired[ClickHouseNativeTypedDict]
     cmore: NotRequired[CmoreTypedDict]
     coap: NotRequired[CoapTypedDict]
     crestron_cp3: NotRequired[CrestronCp3TypedDict]
@@ -195,6 +203,7 @@ class ServiceScanTypedDict(TypedDict):
     ftp: NotRequired[FtpTypedDict]
     gearman: NotRequired[GearmanTypedDict]
     gemini: NotRequired[GeminiTypedDict]
+    gopher: NotRequired[GopherTypedDict]
     hajime: NotRequired[HajimeTypedDict]
     hid_vertx: NotRequired[HidVertxTypedDict]
     hikvision: NotRequired[HikvisionTypedDict]
@@ -236,6 +245,7 @@ class ServiceScanTypedDict(TypedDict):
     onc: NotRequired[OncTypedDict]
     onvif: NotRequired[OnvifTypedDict]
     opc_ua: NotRequired[OpcUaTypedDict]
+    openflow: NotRequired[OpenflowTypedDict]
     openvpn: NotRequired[OpenvpnTypedDict]
     openvpn_mgmt: NotRequired[OpenvpnMgmtTypedDict]
     oracle: NotRequired[OracleTypedDict]
@@ -254,12 +264,14 @@ class ServiceScanTypedDict(TypedDict):
     redis: NotRequired[RedisTypedDict]
     redline: NotRequired[RedlineTypedDict]
     redlion_crimson: NotRequired[RedlionCrimsonTypedDict]
+    reolink_baichuan: NotRequired[ReolinkBaichuanTypedDict]
     representative_info: NotRequired[RepresentativeInfoTypedDict]
     rifatron: NotRequired[RifatronTypedDict]
     ripple: NotRequired[RippleTypedDict]
     rlogin: NotRequired[RloginTypedDict]
     rocketmq: NotRequired[RocketmqTypedDict]
     routeros_api: NotRequired[RouterosAPITypedDict]
+    rtmp: NotRequired[RtmpTypedDict]
     rtsp: NotRequired[RtspTypedDict]
     rustdesk_heartbeat: NotRequired[RustdeskHeartbeatTypedDict]
     rustdesk_relay: NotRequired[RustdeskRelayTypedDict]
@@ -283,6 +295,7 @@ class ServiceScanTypedDict(TypedDict):
     ssh: NotRequired[SSHTypedDict]
     steam: NotRequired[SteamTypedDict]
     stun: NotRequired[StunTypedDict]
+    synergy: NotRequired[SynergyTypedDict]
     tacacs_plus: NotRequired[TacacsPlusTypedDict]
     team_viewer: NotRequired[TeamViewerTypedDict]
     telnet: NotRequired[TelnetTypedDict]
@@ -295,6 +308,7 @@ class ServiceScanTypedDict(TypedDict):
     ventrilo: NotRequired[VentriloTypedDict]
     vnc: NotRequired[VncTypedDict]
     weblogic_t3: NotRequired[WeblogicT3TypedDict]
+    wince_cerdisp: NotRequired[WinceCerdispTypedDict]
     winrm: NotRequired[WinrmTypedDict]
     ws_discovery: NotRequired[WsDiscoveryTypedDict]
     x11: NotRequired[X11TypedDict]
@@ -323,6 +337,8 @@ class ServiceScan(BaseModel):
     chromecast: Optional[Chromecast] = None
 
     cisco_ipsla: Optional[CiscoIpsla] = None
+
+    clickhouse_native: Optional[ClickHouseNative] = None
 
     cmore: Optional[Cmore] = None
 
@@ -373,6 +389,8 @@ class ServiceScan(BaseModel):
     gearman: Optional[Gearman] = None
 
     gemini: Optional[Gemini] = None
+
+    gopher: Optional[Gopher] = None
 
     hajime: Optional[Hajime] = None
 
@@ -456,6 +474,8 @@ class ServiceScan(BaseModel):
 
     opc_ua: Optional[OpcUa] = None
 
+    openflow: Optional[Openflow] = None
+
     openvpn: Optional[Openvpn] = None
 
     openvpn_mgmt: Optional[OpenvpnMgmt] = None
@@ -492,6 +512,8 @@ class ServiceScan(BaseModel):
 
     redlion_crimson: Optional[RedlionCrimson] = None
 
+    reolink_baichuan: Optional[ReolinkBaichuan] = None
+
     representative_info: Optional[RepresentativeInfo] = None
 
     rifatron: Optional[Rifatron] = None
@@ -503,6 +525,8 @@ class ServiceScan(BaseModel):
     rocketmq: Optional[Rocketmq] = None
 
     routeros_api: Optional[RouterosAPI] = None
+
+    rtmp: Optional[Rtmp] = None
 
     rtsp: Optional[Rtsp] = None
 
@@ -550,6 +574,8 @@ class ServiceScan(BaseModel):
 
     stun: Optional[Stun] = None
 
+    synergy: Optional[Synergy] = None
+
     tacacs_plus: Optional[TacacsPlus] = None
 
     team_viewer: Optional[TeamViewer] = None
@@ -573,6 +599,8 @@ class ServiceScan(BaseModel):
     vnc: Optional[Vnc] = None
 
     weblogic_t3: Optional[WeblogicT3] = None
+
+    wince_cerdisp: Optional[WinceCerdisp] = None
 
     winrm: Optional[Winrm] = None
 
@@ -606,6 +634,7 @@ class ServiceScan(BaseModel):
                 "checkpoint_topology",
                 "chromecast",
                 "cisco_ipsla",
+                "clickhouse_native",
                 "cmore",
                 "coap",
                 "crestron_cp3",
@@ -631,6 +660,7 @@ class ServiceScan(BaseModel):
                 "ftp",
                 "gearman",
                 "gemini",
+                "gopher",
                 "hajime",
                 "hid_vertx",
                 "hikvision",
@@ -672,6 +702,7 @@ class ServiceScan(BaseModel):
                 "onc",
                 "onvif",
                 "opc_ua",
+                "openflow",
                 "openvpn",
                 "openvpn_mgmt",
                 "oracle",
@@ -690,12 +721,14 @@ class ServiceScan(BaseModel):
                 "redis",
                 "redline",
                 "redlion_crimson",
+                "reolink_baichuan",
                 "representative_info",
                 "rifatron",
                 "ripple",
                 "rlogin",
                 "rocketmq",
                 "routeros_api",
+                "rtmp",
                 "rtsp",
                 "rustdesk_heartbeat",
                 "rustdesk_relay",
@@ -719,6 +752,7 @@ class ServiceScan(BaseModel):
                 "ssh",
                 "steam",
                 "stun",
+                "synergy",
                 "tacacs_plus",
                 "team_viewer",
                 "telnet",
@@ -731,6 +765,7 @@ class ServiceScan(BaseModel):
                 "ventrilo",
                 "vnc",
                 "weblogic_t3",
+                "wince_cerdisp",
                 "winrm",
                 "ws_discovery",
                 "x11",

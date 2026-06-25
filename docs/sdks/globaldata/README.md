@@ -10,6 +10,7 @@ Endpoints related to the Global Data product
 * [get_certificates_raw](#get_certificates_raw) - Retrieve multiple certificates in PEM format
 * [get_certificate](#get_certificate) - Get a certificate
 * [get_certificate_raw](#get_certificate_raw) - Get a certificate in PEM format
+* [get_host_enrichment](#get_host_enrichment) - Get host enrichment
 * [get_hosts](#get_hosts) - Retrieve multiple hosts
 * [get_host](#get_host) - Get a host
 * [list_services_on_host](#list_services_on_host) - Get service history for a host
@@ -207,6 +208,50 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 400, 403, 404              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_host_enrichment
+
+Retrieve enrichment data for a single host, optimized for high-volume SOC enrichment use cases. A host IP is its IP address.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-globaldata-asset-host-enrichment" method="get" path="/v3/global/asset/enrichment/host/{host_ip}" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.global_data.get_host_enrichment(host_ip="8.8.8.8")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          | Example                                                                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `host_ip`                                                                                                                                                                                                            | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The IP address of a host.                                                                                                                                                                                            | 8.8.8.8                                                                                                                                                                                                              |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |                                                                                                                                                                                                                      |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |                                                                                                                                                                                                                      |
+
+### Response
+
+**[models.V3GlobaldataAssetHostEnrichmentResponse](../../models/v3globaldataassethostenrichmentresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 400, 403, 404, 409, 429    | application/problem+json   |
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
