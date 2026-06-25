@@ -1,0 +1,13 @@
+# ClickHouseHTTP
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `databases`                                                              | List[*str*]                                                              | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `databases_exposed`                                                      | *Optional[bool]*                                                         | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `display_name`                                                           | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `error`                                                                  | [Optional[models.ClickHouseHTTPError]](../models/clickhousehttperror.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `timezone`                                                               | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `version`                                                                | *Optional[str]*                                                          | :heavy_minus_sign:                                                       | N/A                                                                      |

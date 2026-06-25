@@ -17,7 +17,11 @@ Endpoints related to asset tagging and commenting
 * [update_tag](#update_tag) - Update a tag
 * [list_tag_assignments](#list_tag_assignments) - List tag assignments
 * [create_tag_assignment](#create_tag_assignment) - Create a tag assignment
+* [bulk_create_tag_assignments](#bulk_create_tag_assignments) - Bulk create tag assignments
+* [bulk_delete_tag_assignments](#bulk_delete_tag_assignments) - Bulk delete tag assignments
 * [delete_tag_assignment](#delete_tag_assignment) - Delete a tag assignment
+* [list_tag_operations](#list_tag_operations) - List tag operations
+* [cancel_tag_operation](#cancel_tag_operation) - Cancel a tag operation
 
 ## list_comments
 
@@ -517,6 +521,98 @@ with SDK(
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
+## bulk_create_tag_assignments
+
+Start a long-running operation that assigns a tag to every asset matching a CenQL query. The operation runs asynchronously; use the returned operation to track its progress.<br><br>A tag can hold a limited number of asset assignments, and the limit depends on your plan. If the operation reaches that limit before every matching asset is tagged, it finishes with status `limit_reached`.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-tags-bulk-create-assignments" method="post" path="/v3/tags/{tag_id}/assignments/bulk-create" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.bulk_create_tag_assignments(tag_id="1de943e6-02d8-47bb-8655-559621fc968c", bulk_create_tag_assignments_input_body={
+        "query": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tag_id`                                                                                                                                                                                                             | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the tag to assign.                                                                                                                                                                                         |
+| `bulk_create_tag_assignments_input_body`                                                                                                                                                                             | [models.BulkCreateTagAssignmentsInputBody](../../models/bulkcreatetagassignmentsinputbody.md)                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3TagsBulkCreateAssignmentsResponse](../../models/v3tagsbulkcreateassignmentsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 404, 409, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## bulk_delete_tag_assignments
+
+Start a long-running operation that removes a tag from its assigned assets, optionally restricted to a creation-time window. The operation runs asynchronously; use the returned operation to track its progress.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-tags-bulk-delete-assignments" method="post" path="/v3/tags/{tag_id}/assignments/bulk-delete" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.bulk_delete_tag_assignments(tag_id="4fb0c28f-5f77-4d94-8d15-c0c621009061", bulk_delete_tag_assignments_input_body={})
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tag_id`                                                                                                                                                                                                             | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the tag whose assignments to delete.                                                                                                                                                                       |
+| `bulk_delete_tag_assignments_input_body`                                                                                                                                                                             | [models.BulkDeleteTagAssignmentsInputBody](../../models/bulkdeletetagassignmentsinputbody.md)                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3TagsBulkDeleteAssignmentsResponse](../../models/v3tagsbulkdeleteassignmentsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 404, 409, 422         | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
 ## delete_tag_assignment
 
 Remove a tag assignment from an asset. This action is permanent and cannot be undone. Removing an assignment only detaches the tag from the specified asset; the tag itself is not deleted. Only the tag's creator or an organization admin can delete an assignment for a `private` tag. Assignments for `shared` tags can be deleted by any organization member.<br><br>This endpoint does not cost any credits to execute.
@@ -559,5 +655,95 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 403, 404, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_tag_operations
+
+Retrieve a paginated list of bulk tag operations. Provide a tag ID in the path to scope the listing to a single tag, or `-` to list operations across all tags in your organization. Use query parameters to filter by type or status.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-tags-list-operations" method="get" path="/v3/tags/{tag_id}/operations" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.list_tag_operations(request={
+        "tag_id": "123e4567-e89b-12d3-a456-426614174000",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [models.V3TagsListOperationsRequest](../../models/v3tagslistoperationsrequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
+
+### Response
+
+**[models.V3TagsListOperationsResponse](../../models/v3tagslistoperationsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 409, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## cancel_tag_operation
+
+Request cancellation of an in-progress bulk tag operation. Cancellation is cooperative: the operation finishes the page it is currently processing, then stops. Work already committed before cancellation is preserved.<br><br>Cancellation is not a rollback — it stops further work but does not remove assignments the operation already created. To remove assignments, use the bulk-delete endpoint. An operation that has already finished cannot be cancelled.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-tags-cancel-operation" method="post" path="/v3/tags/{tag_id}/operations/{operation_id}/cancel" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.cancel_tag_operation(tag_id="59da45bf-13dd-4601-8b86-c3af7e33fd9a", operation_id="174d4e39-b9c5-4b3f-aa69-5937abd03e40")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tag_id`                                                                                                                                                                                                             | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the tag the operation belongs to.                                                                                                                                                                          |
+| `operation_id`                                                                                                                                                                                                       | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the operation to cancel.                                                                                                                                                                                   |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3TagsCancelOperationResponse](../../models/v3tagscanceloperationresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 404, 409, 422         | application/problem+json   |
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

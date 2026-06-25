@@ -2489,6 +2489,498 @@ class TagsAndComments(BaseSDK):
 
         raise models.SDKError("Unexpected response received", http_res)
 
+    def bulk_create_tag_assignments(
+        self,
+        *,
+        tag_id: str,
+        bulk_create_tag_assignments_input_body: Union[
+            models.BulkCreateTagAssignmentsInputBody,
+            models.BulkCreateTagAssignmentsInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsBulkCreateAssignmentsResponse:
+        r"""Bulk create tag assignments
+
+        Start a long-running operation that assigns a tag to every asset matching a CenQL query. The operation runs asynchronously; use the returned operation to track its progress.<br><br>A tag can hold a limited number of asset assignments, and the limit depends on your plan. If the operation reaches that limit before every matching asset is tagged, it finishes with status `limit_reached`.<br><br>This endpoint does not cost any credits to execute.
+
+        :param tag_id: The ID of the tag to assign.
+        :param bulk_create_tag_assignments_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3TagsBulkCreateAssignmentsRequest(
+            organization_id=organization_id,
+            tag_id=tag_id,
+            bulk_create_tag_assignments_input_body=utils.get_pydantic_model(
+                bulk_create_tag_assignments_input_body,
+                models.BulkCreateTagAssignmentsInputBody,
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/tags/{tag_id}/assignments/bulk-create",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsBulkCreateAssignmentsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.bulk_create_tag_assignments_input_body,
+                False,
+                False,
+                "json",
+                models.BulkCreateTagAssignmentsInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-bulk-create-assignments",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "202", "application/json"):
+            return models.V3TagsBulkCreateAssignmentsResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperation, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def bulk_create_tag_assignments_async(
+        self,
+        *,
+        tag_id: str,
+        bulk_create_tag_assignments_input_body: Union[
+            models.BulkCreateTagAssignmentsInputBody,
+            models.BulkCreateTagAssignmentsInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsBulkCreateAssignmentsResponse:
+        r"""Bulk create tag assignments
+
+        Start a long-running operation that assigns a tag to every asset matching a CenQL query. The operation runs asynchronously; use the returned operation to track its progress.<br><br>A tag can hold a limited number of asset assignments, and the limit depends on your plan. If the operation reaches that limit before every matching asset is tagged, it finishes with status `limit_reached`.<br><br>This endpoint does not cost any credits to execute.
+
+        :param tag_id: The ID of the tag to assign.
+        :param bulk_create_tag_assignments_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3TagsBulkCreateAssignmentsRequest(
+            organization_id=organization_id,
+            tag_id=tag_id,
+            bulk_create_tag_assignments_input_body=utils.get_pydantic_model(
+                bulk_create_tag_assignments_input_body,
+                models.BulkCreateTagAssignmentsInputBody,
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/tags/{tag_id}/assignments/bulk-create",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsBulkCreateAssignmentsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.bulk_create_tag_assignments_input_body,
+                False,
+                False,
+                "json",
+                models.BulkCreateTagAssignmentsInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-bulk-create-assignments",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "202", "application/json"):
+            return models.V3TagsBulkCreateAssignmentsResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperation, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def bulk_delete_tag_assignments(
+        self,
+        *,
+        tag_id: str,
+        bulk_delete_tag_assignments_input_body: Union[
+            models.BulkDeleteTagAssignmentsInputBody,
+            models.BulkDeleteTagAssignmentsInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsBulkDeleteAssignmentsResponse:
+        r"""Bulk delete tag assignments
+
+        Start a long-running operation that removes a tag from its assigned assets, optionally restricted to a creation-time window. The operation runs asynchronously; use the returned operation to track its progress.<br><br>This endpoint does not cost any credits to execute.
+
+        :param tag_id: The ID of the tag whose assignments to delete.
+        :param bulk_delete_tag_assignments_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3TagsBulkDeleteAssignmentsRequest(
+            organization_id=organization_id,
+            tag_id=tag_id,
+            bulk_delete_tag_assignments_input_body=utils.get_pydantic_model(
+                bulk_delete_tag_assignments_input_body,
+                models.BulkDeleteTagAssignmentsInputBody,
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/tags/{tag_id}/assignments/bulk-delete",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsBulkDeleteAssignmentsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.bulk_delete_tag_assignments_input_body,
+                False,
+                False,
+                "json",
+                models.BulkDeleteTagAssignmentsInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-bulk-delete-assignments",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "202", "application/json"):
+            return models.V3TagsBulkDeleteAssignmentsResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperation, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def bulk_delete_tag_assignments_async(
+        self,
+        *,
+        tag_id: str,
+        bulk_delete_tag_assignments_input_body: Union[
+            models.BulkDeleteTagAssignmentsInputBody,
+            models.BulkDeleteTagAssignmentsInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsBulkDeleteAssignmentsResponse:
+        r"""Bulk delete tag assignments
+
+        Start a long-running operation that removes a tag from its assigned assets, optionally restricted to a creation-time window. The operation runs asynchronously; use the returned operation to track its progress.<br><br>This endpoint does not cost any credits to execute.
+
+        :param tag_id: The ID of the tag whose assignments to delete.
+        :param bulk_delete_tag_assignments_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3TagsBulkDeleteAssignmentsRequest(
+            organization_id=organization_id,
+            tag_id=tag_id,
+            bulk_delete_tag_assignments_input_body=utils.get_pydantic_model(
+                bulk_delete_tag_assignments_input_body,
+                models.BulkDeleteTagAssignmentsInputBody,
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/tags/{tag_id}/assignments/bulk-delete",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsBulkDeleteAssignmentsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.bulk_delete_tag_assignments_input_body,
+                False,
+                False,
+                "json",
+                models.BulkDeleteTagAssignmentsInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-bulk-delete-assignments",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "202", "application/json"):
+            return models.V3TagsBulkDeleteAssignmentsResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperation, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
     def delete_tag_assignment(
         self,
         *,
@@ -2696,6 +3188,440 @@ class TagsAndComments(BaseSDK):
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
             http_res, ["403", "404", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def list_tag_operations(
+        self,
+        *,
+        request: Union[
+            models.V3TagsListOperationsRequest,
+            models.V3TagsListOperationsRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsListOperationsResponse:
+        r"""List tag operations
+
+        Retrieve a paginated list of bulk tag operations. Provide a tag ID in the path to scope the listing to a single tag, or `-` to list operations across all tags in your organization. Use query parameters to filter by type or status.<br><br>This endpoint does not cost any credits to execute.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.V3TagsListOperationsRequest)
+        request = cast(models.V3TagsListOperationsRequest, request)
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/tags/{tag_id}/operations",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsListOperationsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-list-operations",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3TagsListOperationsResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperationsList, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_tag_operations_async(
+        self,
+        *,
+        request: Union[
+            models.V3TagsListOperationsRequest,
+            models.V3TagsListOperationsRequestTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsListOperationsResponse:
+        r"""List tag operations
+
+        Retrieve a paginated list of bulk tag operations. Provide a tag ID in the path to scope the listing to a single tag, or `-` to list operations across all tags in your organization. Use query parameters to filter by type or status.<br><br>This endpoint does not cost any credits to execute.
+
+        :param request: The request object to send.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.V3TagsListOperationsRequest)
+        request = cast(models.V3TagsListOperationsRequest, request)
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/tags/{tag_id}/operations",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsListOperationsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-list-operations",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3TagsListOperationsResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperationsList, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def cancel_tag_operation(
+        self,
+        *,
+        tag_id: str,
+        operation_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsCancelOperationResponse:
+        r"""Cancel a tag operation
+
+        Request cancellation of an in-progress bulk tag operation. Cancellation is cooperative: the operation finishes the page it is currently processing, then stops. Work already committed before cancellation is preserved.<br><br>Cancellation is not a rollback — it stops further work but does not remove assignments the operation already created. To remove assignments, use the bulk-delete endpoint. An operation that has already finished cannot be cancelled.<br><br>This endpoint does not cost any credits to execute.
+
+        :param tag_id: The ID of the tag the operation belongs to.
+        :param operation_id: The ID of the operation to cancel.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3TagsCancelOperationRequest(
+            organization_id=organization_id,
+            tag_id=tag_id,
+            operation_id=operation_id,
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/tags/{tag_id}/operations/{operation_id}/cancel",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsCancelOperationGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-cancel-operation",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3TagsCancelOperationResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperation, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def cancel_tag_operation_async(
+        self,
+        *,
+        tag_id: str,
+        operation_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3TagsCancelOperationResponse:
+        r"""Cancel a tag operation
+
+        Request cancellation of an in-progress bulk tag operation. Cancellation is cooperative: the operation finishes the page it is currently processing, then stops. Work already committed before cancellation is preserved.<br><br>Cancellation is not a rollback — it stops further work but does not remove assignments the operation already created. To remove assignments, use the bulk-delete endpoint. An operation that has already finished cannot be cancelled.<br><br>This endpoint does not cost any credits to execute.
+
+        :param tag_id: The ID of the tag the operation belongs to.
+        :param operation_id: The ID of the operation to cancel.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3TagsCancelOperationRequest(
+            organization_id=organization_id,
+            tag_id=tag_id,
+            operation_id=operation_id,
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/tags/{tag_id}/operations/{operation_id}/cancel",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3TagsCancelOperationGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-tags-cancel-operation",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3TagsCancelOperationResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeTagOperation, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
