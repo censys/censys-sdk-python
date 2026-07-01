@@ -8,20 +8,27 @@ from .elasticsearch import ElasticSearch, ElasticSearchTypedDict
 from .fortigate import Fortigate, FortigateTypedDict
 from .graphql import Graphql, GraphqlTypedDict
 from .http import HTTP, HTTPTypedDict
+from .influxdb import Influxdb, InfluxdbTypedDict
 from .ivantiavalanche import IvantiAvalanche, IvantiAvalancheTypedDict
 from .jenkins import Jenkins, JenkinsTypedDict
+from .jupyter import Jupyter, JupyterTypedDict
+from .keycloak import Keycloak, KeycloakTypedDict
 from .kubernetes import Kubernetes, KubernetesTypedDict
 from .mcp import Mcp, McpTypedDict
+from .nginxproxymanager import NginxProxyManager, NginxProxyManagerTypedDict
 from .ollama import Ollama, OllamaTypedDict
 from .opendirectory import OpenDirectory, OpenDirectoryTypedDict
 from .plexmediaserver import PlexMediaServer, PlexMediaServerTypedDict
 from .pprof import Pprof, PprofTypedDict
 from .prometheus import Prometheus, PrometheusTypedDict
 from .prometheustarget import PrometheusTarget, PrometheusTargetTypedDict
+from .proxmoxve import ProxmoxVe, ProxmoxVeTypedDict
 from .redlionweb import RedlionWeb, RedlionWebTypedDict
 from .scadaview import ScadaView, ScadaViewTypedDict
 from .screenshot import Screenshot, ScreenshotTypedDict
+from .synologydsm import SynologyDsm, SynologyDsmTypedDict
 from .tls import TLS, TLSTypedDict
+from .vault import Vault, VaultTypedDict
 from .wordpress import Wordpress, WordpressTypedDict
 from censys_platform import models, utils
 from censys_platform.types import (
@@ -57,12 +64,16 @@ class EndpointScanTypedDict(TypedDict):
     graphql: NotRequired[GraphqlTypedDict]
     hostname: NotRequired[str]
     http: NotRequired[HTTPTypedDict]
+    influxdb: NotRequired[InfluxdbTypedDict]
     ip: NotRequired[str]
     is_success: NotRequired[bool]
     ivanti_avalanche: NotRequired[IvantiAvalancheTypedDict]
     jenkins: NotRequired[JenkinsTypedDict]
+    jupyter: NotRequired[JupyterTypedDict]
+    keycloak: NotRequired[KeycloakTypedDict]
     kubernetes: NotRequired[KubernetesTypedDict]
     mcp: NotRequired[McpTypedDict]
+    nginx_proxy_manager: NotRequired[NginxProxyManagerTypedDict]
     ollama: NotRequired[OllamaTypedDict]
     open_directory: NotRequired[OpenDirectoryTypedDict]
     path: NotRequired[str]
@@ -71,12 +82,15 @@ class EndpointScanTypedDict(TypedDict):
     pprof: NotRequired[PprofTypedDict]
     prometheus: NotRequired[PrometheusTypedDict]
     prometheus_target: NotRequired[PrometheusTargetTypedDict]
+    proxmox_ve: NotRequired[ProxmoxVeTypedDict]
     redlion_web: NotRequired[RedlionWebTypedDict]
     scada_view: NotRequired[ScadaViewTypedDict]
     scan_time: NotRequired[str]
     screenshots: NotRequired[Nullable[List[ScreenshotTypedDict]]]
+    synology_dsm: NotRequired[SynologyDsmTypedDict]
     tls: NotRequired[TLSTypedDict]
     transport_protocol: NotRequired[EndpointScanTransportProtocol]
+    vault: NotRequired[VaultTypedDict]
     wordpress: NotRequired[WordpressTypedDict]
 
 
@@ -103,6 +117,8 @@ class EndpointScan(BaseModel):
 
     http: Optional[HTTP] = None
 
+    influxdb: Optional[Influxdb] = None
+
     ip: Optional[str] = None
 
     is_success: Optional[bool] = None
@@ -111,9 +127,15 @@ class EndpointScan(BaseModel):
 
     jenkins: Optional[Jenkins] = None
 
+    jupyter: Optional[Jupyter] = None
+
+    keycloak: Optional[Keycloak] = None
+
     kubernetes: Optional[Kubernetes] = None
 
     mcp: Optional[Mcp] = None
+
+    nginx_proxy_manager: Optional[NginxProxyManager] = None
 
     ollama: Optional[Ollama] = None
 
@@ -131,6 +153,8 @@ class EndpointScan(BaseModel):
 
     prometheus_target: Optional[PrometheusTarget] = None
 
+    proxmox_ve: Optional[ProxmoxVe] = None
+
     redlion_web: Optional[RedlionWeb] = None
 
     scada_view: Optional[ScadaView] = None
@@ -139,9 +163,13 @@ class EndpointScan(BaseModel):
 
     screenshots: OptionalNullable[List[Screenshot]] = UNSET
 
+    synology_dsm: Optional[SynologyDsm] = None
+
     tls: Optional[TLS] = None
 
     transport_protocol: Optional[EndpointScanTransportProtocol] = None
+
+    vault: Optional[Vault] = None
 
     wordpress: Optional[Wordpress] = None
 
@@ -169,12 +197,16 @@ class EndpointScan(BaseModel):
                 "graphql",
                 "hostname",
                 "http",
+                "influxdb",
                 "ip",
                 "is_success",
                 "ivanti_avalanche",
                 "jenkins",
+                "jupyter",
+                "keycloak",
                 "kubernetes",
                 "mcp",
+                "nginx_proxy_manager",
                 "ollama",
                 "open_directory",
                 "path",
@@ -183,12 +215,15 @@ class EndpointScan(BaseModel):
                 "pprof",
                 "prometheus",
                 "prometheus_target",
+                "proxmox_ve",
                 "redlion_web",
                 "scada_view",
                 "scan_time",
                 "screenshots",
+                "synology_dsm",
                 "tls",
                 "transport_protocol",
+                "vault",
                 "wordpress",
             ]
         )
