@@ -26,6 +26,7 @@ from .darkcomet import Darkcomet, DarkcometTypedDict
 from .darkgate import Darkgate, DarkgateTypedDict
 from .dcerpc import Dcerpc, DcerpcTypedDict
 from .dhcpdiscover import Dhcpdiscover, DhcpdiscoverTypedDict
+from .dicom import Dicom, DicomTypedDict
 from .dnp3 import Dnp3, Dnp3TypedDict
 from .dns import DNS, DNSTypedDict
 from .dtls import Dtls, DtlsTypedDict
@@ -36,6 +37,7 @@ from .endpointscanstate import EndpointScanState, EndpointScanStateTypedDict
 from .epmd import Epmd, EpmdTypedDict
 from .etcd import Etcd, EtcdTypedDict
 from .ethereum import Ethereum, EthereumTypedDict
+from .fins import Fins, FinsTypedDict
 from .flashsocketpolicy import FlashSocketPolicy, FlashSocketPolicyTypedDict
 from .fox import Fox, FoxTypedDict
 from .frps import Frps, FrpsTypedDict
@@ -48,6 +50,7 @@ from .hidvertx import HidVertx, HidVertxTypedDict
 from .hikvision import Hikvision, HikvisionTypedDict
 from .ibmnje import Ibmnje, IbmnjeTypedDict
 from .icap import Icap, IcapTypedDict
+from .iec608705104 import Iec608705104, Iec608705104TypedDict
 from .ike import Ike, IkeTypedDict
 from .imap import Imap, ImapTypedDict
 from .iota import Iota, IotaTypedDict
@@ -56,6 +59,7 @@ from .ipp import Ipp, IppTypedDict
 from .iscsi import Iscsi, IscsiTypedDict
 from .ja4tscanscan import Ja4TScanScan, Ja4TScanScanTypedDict
 from .jarmscan import JarmScan, JarmScanTypedDict
+from .javarmi import JavaRmi, JavaRmiTypedDict
 from .krpc import Krpc, KrpcTypedDict
 from .l2tp import L2Tp, L2TpTypedDict
 from .label import Label, LabelTypedDict
@@ -135,6 +139,7 @@ from .steam import Steam, SteamTypedDict
 from .stun import Stun, StunTypedDict
 from .synergy import Synergy, SynergyTypedDict
 from .tacacsplus import TacacsPlus, TacacsPlusTypedDict
+from .tarantool import Tarantool, TarantoolTypedDict
 from .teamviewer import TeamViewer, TeamViewerTypedDict
 from .telnet import Telnet, TelnetTypedDict
 from .threat import Threat, ThreatTypedDict
@@ -200,6 +205,7 @@ class ServiceTypedDict(TypedDict):
     darkgate: NotRequired[DarkgateTypedDict]
     dcerpc: NotRequired[DcerpcTypedDict]
     dhcpdiscover: NotRequired[DhcpdiscoverTypedDict]
+    dicom: NotRequired[DicomTypedDict]
     dnp3: NotRequired[Dnp3TypedDict]
     dns: NotRequired[DNSTypedDict]
     dtls: NotRequired[DtlsTypedDict]
@@ -211,6 +217,7 @@ class ServiceTypedDict(TypedDict):
     etcd: NotRequired[EtcdTypedDict]
     ethereum: NotRequired[EthereumTypedDict]
     exposures: NotRequired[Nullable[List[RiskTypedDict]]]
+    fins: NotRequired[FinsTypedDict]
     flash_socket_policy: NotRequired[FlashSocketPolicyTypedDict]
     fox: NotRequired[FoxTypedDict]
     frps: NotRequired[FrpsTypedDict]
@@ -224,6 +231,7 @@ class ServiceTypedDict(TypedDict):
     hikvision: NotRequired[HikvisionTypedDict]
     ibmnje: NotRequired[IbmnjeTypedDict]
     icap: NotRequired[IcapTypedDict]
+    iec60870_5_104: NotRequired[Iec608705104TypedDict]
     ike: NotRequired[IkeTypedDict]
     imap: NotRequired[ImapTypedDict]
     iota: NotRequired[IotaTypedDict]
@@ -233,6 +241,7 @@ class ServiceTypedDict(TypedDict):
     iscsi: NotRequired[IscsiTypedDict]
     ja4tscan: NotRequired[Ja4TScanScanTypedDict]
     jarm: NotRequired[JarmScanTypedDict]
+    java_rmi: NotRequired[JavaRmiTypedDict]
     krpc: NotRequired[KrpcTypedDict]
     l2tp: NotRequired[L2TpTypedDict]
     labels: NotRequired[Nullable[List[LabelTypedDict]]]
@@ -317,6 +326,7 @@ class ServiceTypedDict(TypedDict):
     stun: NotRequired[StunTypedDict]
     synergy: NotRequired[SynergyTypedDict]
     tacacs_plus: NotRequired[TacacsPlusTypedDict]
+    tarantool: NotRequired[TarantoolTypedDict]
     team_viewer: NotRequired[TeamViewerTypedDict]
     telnet: NotRequired[TelnetTypedDict]
     threats: NotRequired[Nullable[List[ThreatTypedDict]]]
@@ -388,6 +398,8 @@ class Service(BaseModel):
 
     dhcpdiscover: Optional[Dhcpdiscover] = None
 
+    dicom: Optional[Dicom] = None
+
     dnp3: Optional[Dnp3] = None
 
     dns: Optional[DNS] = None
@@ -409,6 +421,8 @@ class Service(BaseModel):
     ethereum: Optional[Ethereum] = None
 
     exposures: OptionalNullable[List[Risk]] = UNSET
+
+    fins: Optional[Fins] = None
 
     flash_socket_policy: Optional[FlashSocketPolicy] = None
 
@@ -436,6 +450,8 @@ class Service(BaseModel):
 
     icap: Optional[Icap] = None
 
+    iec60870_5_104: Optional[Iec608705104] = None
+
     ike: Optional[Ike] = None
 
     imap: Optional[Imap] = None
@@ -453,6 +469,8 @@ class Service(BaseModel):
     ja4tscan: Optional[Ja4TScanScan] = None
 
     jarm: Optional[JarmScan] = None
+
+    java_rmi: Optional[JavaRmi] = None
 
     krpc: Optional[Krpc] = None
 
@@ -622,6 +640,8 @@ class Service(BaseModel):
 
     tacacs_plus: Optional[TacacsPlus] = None
 
+    tarantool: Optional[Tarantool] = None
+
     team_viewer: Optional[TeamViewer] = None
 
     telnet: Optional[Telnet] = None
@@ -696,6 +716,7 @@ class Service(BaseModel):
                 "darkgate",
                 "dcerpc",
                 "dhcpdiscover",
+                "dicom",
                 "dnp3",
                 "dns",
                 "dtls",
@@ -707,6 +728,7 @@ class Service(BaseModel):
                 "etcd",
                 "ethereum",
                 "exposures",
+                "fins",
                 "flash_socket_policy",
                 "fox",
                 "frps",
@@ -720,6 +742,7 @@ class Service(BaseModel):
                 "hikvision",
                 "ibmnje",
                 "icap",
+                "iec60870_5_104",
                 "ike",
                 "imap",
                 "iota",
@@ -729,6 +752,7 @@ class Service(BaseModel):
                 "iscsi",
                 "ja4tscan",
                 "jarm",
+                "java_rmi",
                 "krpc",
                 "l2tp",
                 "labels",
@@ -813,6 +837,7 @@ class Service(BaseModel):
                 "stun",
                 "synergy",
                 "tacacs_plus",
+                "tarantool",
                 "team_viewer",
                 "telnet",
                 "threats",

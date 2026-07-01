@@ -19,6 +19,7 @@ class HostEnrichmentServiceTypedDict(TypedDict):
     labels: NotRequired[Nullable[List[LabelTypedDict]]]
     port: NotRequired[int]
     protocol: NotRequired[str]
+    scan_time: NotRequired[str]
     threats: NotRequired[Nullable[List[ThreatTypedDict]]]
 
 
@@ -29,11 +30,13 @@ class HostEnrichmentService(BaseModel):
 
     protocol: Optional[str] = None
 
+    scan_time: Optional[str] = None
+
     threats: OptionalNullable[List[Threat]] = UNSET
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["labels", "port", "protocol", "threats"])
+        optional_fields = set(["labels", "port", "protocol", "scan_time", "threats"])
         nullable_fields = set(["labels", "threats"])
         serialized = handler(self)
         m = {}
