@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 7071e0a8267fbc3a003f778098de9754
-  docVersion: 1.0.113
+  docChecksum: f6ae0f61affe5a7c38091ba27a08e3e9
+  docVersion: 1.0.114
   speakeasyVersion: 1.787.0
   generationVersion: 2.914.0
-  releaseVersion: 0.15.0
-  configChecksum: 43a153a184a06340be9c089984d2a25f
+  releaseVersion: 0.15.1
+  configChecksum: e3dd3086fc3f2c33cf694f6bc07a94d3
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: f4d3c076-9fe7-43fd-9eb3-abfe0c062833
-  pristine_commit_hash: 7acf605f1fd1c8d467971ac0e0fa6a04a83d7334
-  pristine_tree_hash: 635355067e342acf0060c15b6c0c3f1164c81e23
+  generation_id: c6a6fd83-9394-4be7-80a9-4d055858c3ad
+  pristine_commit_hash: fa5308cbc7f632440416b356608b7397cbb5cde8
+  pristine_tree_hash: aab331b1d0f2d5301b4ddf9890b459dc8b245720
 features:
   python:
     acceptHeaders: 3.0.0
@@ -1026,12 +1026,16 @@ trackedFiles:
     pristine_git_object: 1c0b3433dd61d54161c0e257dbf85536029aee58
   docs/models/hostenrichment.md:
     id: ccefd65293aa
-    last_write_checksum: sha1:cdb95813e8b07a6445b4e589861a6d16b2169ca0
-    pristine_git_object: 04e4d64f86ef312dc80b3603ae82d6b341efb801
+    last_write_checksum: sha1:7aec039e7d70a33ddfd7db02b9b39844527c6465
+    pristine_git_object: 6eac8efbce4afaabc6fa77eebb2ac9d4eeb03000
   docs/models/hostenrichmentasset.md:
     id: "928151057873"
     last_write_checksum: sha1:de727c11d7861d48ec3587d3f6f5fa3fa7a3af3f
     pristine_git_object: a5e325ad83ab639804e5b28409b46d2f3a9594cc
+  docs/models/hostenrichmentgreynoise.md:
+    id: 4e25e934c5bd
+    last_write_checksum: sha1:d67ea778e1860f254955ee9e48416cb3088df760
+    pristine_git_object: bc94617ce8c0cc110fcccc8dfbe80b62d7e58baf
   docs/models/hostenrichmentservice.md:
     id: 8f9f50391cbb
     last_write_checksum: sha1:86e289172033e1c23a9b0fd42bbf2e9b47e8dcf8
@@ -3962,8 +3966,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:f8e93f5ecee4a71266433eae61adf3588b21ead4
-    pristine_git_object: bc90454f54b33fe8be0ef2132cc98dd667c55c9f
+    last_write_checksum: sha1:a71e548a04ba6131cf6694fdceae8db8ba5478ad
+    pristine_git_object: a0ea16d59940b422586bfc82d325b61974901ac6
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -3990,8 +3994,8 @@ trackedFiles:
     pristine_git_object: ec32aa84954b1a51f33327002cacd727eb9ab81e
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:6361549041ac63964ac83c49ec24c37ea966e87e
-    pristine_git_object: d56a2261e53a57103a109c51c9a2e78f38284fd3
+    last_write_checksum: sha1:8f662d35dc68f660500136b6971289e19705615a
+    pristine_git_object: 3001104a5ead0e0ce386518df8c5da7e3db6e597
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:bd19db50cb8a422da287a12730ebd3520de2d4ee
@@ -4018,8 +4022,8 @@ trackedFiles:
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/censys_platform/models/__init__.py:
     id: 4c65ae1e4fed
-    last_write_checksum: sha1:1f2e7ee95c51b2c47791b7e672657b1e2904b145
-    pristine_git_object: c7f5b4ff6221de2f5df4bfc1ccd7d6efd01582f1
+    last_write_checksum: sha1:558cc042326518650e8a886c304d87c4d9a375e8
+    pristine_git_object: f386290a8d0c1b01297fa657c6c4568c0698c5db
   src/censys_platform/models/activemq.py:
     id: c852b87bc559
     last_write_checksum: sha1:a754dc1ce0647be6304994e4c598c533e0db974e
@@ -4878,12 +4882,16 @@ trackedFiles:
     pristine_git_object: d1b774ea75d32c613bad1e6fe147ae5ebe5f1dbe
   src/censys_platform/models/hostenrichment.py:
     id: 500665f5218c
-    last_write_checksum: sha1:6b18f52fa8e62a22a00d6ad223e49dc33247cde0
-    pristine_git_object: c26c951707c01b45127dc5f9dd5321efabeb6346
+    last_write_checksum: sha1:a4e0c98aaa38dcfe10cbbf1cb1532457de1bdecd
+    pristine_git_object: a417049753475ff21cdd5d29ce5f9e9b74be6e37
   src/censys_platform/models/hostenrichmentasset.py:
     id: 6845bb7ae3e6
     last_write_checksum: sha1:af72a4225014d12c0db1226283f7d1f83bdb2a5c
     pristine_git_object: 7e923cc948db006d5908532a296ebbaef76af330
+  src/censys_platform/models/hostenrichmentgreynoise.py:
+    id: d1ad4d475079
+    last_write_checksum: sha1:d6587053c06871c133b1fe973f3ba1d8fdeb0fd9
+    pristine_git_object: 0e942baa3ce24b71629e809866256eab9387e709
   src/censys_platform/models/hostenrichmentservice.py:
     id: aba13ecfb790
     last_write_checksum: sha1:e88898abdd416ed1120ee65f7c77d9fbe1fcd327

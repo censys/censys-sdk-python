@@ -499,6 +499,10 @@ if TYPE_CHECKING:
     )
     from .hostenrichment import HostEnrichment, HostEnrichmentTypedDict
     from .hostenrichmentasset import HostEnrichmentAsset, HostEnrichmentAssetTypedDict
+    from .hostenrichmentgreynoise import (
+        HostEnrichmentGreynoise,
+        HostEnrichmentGreynoiseTypedDict,
+    )
     from .hostenrichmentservice import (
         HostEnrichmentService,
         HostEnrichmentServiceTypedDict,
@@ -2403,6 +2407,8 @@ __all__ = [
     "HostEnrichment",
     "HostEnrichmentAsset",
     "HostEnrichmentAssetTypedDict",
+    "HostEnrichmentGreynoise",
+    "HostEnrichmentGreynoiseTypedDict",
     "HostEnrichmentService",
     "HostEnrichmentServiceTypedDict",
     "HostEnrichmentTypedDict",
@@ -4251,6 +4257,8 @@ _dynamic_imports: dict[str, str] = {
     "HostEnrichmentTypedDict": ".hostenrichment",
     "HostEnrichmentAsset": ".hostenrichmentasset",
     "HostEnrichmentAssetTypedDict": ".hostenrichmentasset",
+    "HostEnrichmentGreynoise": ".hostenrichmentgreynoise",
+    "HostEnrichmentGreynoiseTypedDict": ".hostenrichmentgreynoise",
     "HostEnrichmentService": ".hostenrichmentservice",
     "HostEnrichmentServiceTypedDict": ".hostenrichmentservice",
     "HostObservationRange": ".hostobservationrange",
