@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 from .hostdns import HostDNS, HostDNSTypedDict
+from .hostenrichmentgreynoise import (
+    HostEnrichmentGreynoise,
+    HostEnrichmentGreynoiseTypedDict,
+)
 from .hostenrichmentservice import HostEnrichmentService, HostEnrichmentServiceTypedDict
 from .label import Label, LabelTypedDict
 from .location import Location, LocationTypedDict
@@ -26,6 +30,7 @@ from typing_extensions import NotRequired, TypedDict
 class HostEnrichmentTypedDict(TypedDict):
     autonomous_system: NotRequired[RoutingTypedDict]
     dns: NotRequired[HostDNSTypedDict]
+    greynoise: NotRequired[HostEnrichmentGreynoiseTypedDict]
     ip: NotRequired[str]
     labels: NotRequired[Nullable[List[LabelTypedDict]]]
     location: NotRequired[LocationTypedDict]
@@ -44,6 +49,8 @@ class HostEnrichment(BaseModel):
     autonomous_system: Optional[Routing] = None
 
     dns: Optional[HostDNS] = None
+
+    greynoise: Optional[HostEnrichmentGreynoise] = None
 
     ip: Optional[str] = None
 
@@ -73,6 +80,7 @@ class HostEnrichment(BaseModel):
             [
                 "autonomous_system",
                 "dns",
+                "greynoise",
                 "ip",
                 "labels",
                 "location",
