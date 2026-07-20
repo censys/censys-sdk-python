@@ -17,6 +17,16 @@ if TYPE_CHECKING:
     )
     from .anermacfforth import AnermaCfForth, AnermaCfForthTypedDict
     from .anyconnect import AnyConnect, AnyConnectTypedDict
+    from .argocd import Argocd, ArgocdTypedDict
+    from .argocd_anonymousexposure import (
+        ArgocdAnonymousExposure,
+        ArgocdAnonymousExposureTypedDict,
+    )
+    from .argocd_settings import ArgocdSettings, ArgocdSettingsTypedDict
+    from .argocd_settings_oidcconfig import (
+        ArgocdSettingsOIDCConfig,
+        ArgocdSettingsOIDCConfigTypedDict,
+    )
     from .assetcertificatelistinputbody import (
         AssetCertificateListInputBody,
         AssetCertificateListInputBodyTypedDict,
@@ -1952,6 +1962,14 @@ __all__ = [
     "AnermaCfForthTypedDict",
     "AnyConnect",
     "AnyConnectTypedDict",
+    "Argocd",
+    "ArgocdAnonymousExposure",
+    "ArgocdAnonymousExposureTypedDict",
+    "ArgocdSettings",
+    "ArgocdSettingsOIDCConfig",
+    "ArgocdSettingsOIDCConfigTypedDict",
+    "ArgocdSettingsTypedDict",
+    "ArgocdTypedDict",
     "AssetCertificateListInputBody",
     "AssetCertificateListInputBodyTypedDict",
     "AssetChangeTypes",
@@ -3796,6 +3814,14 @@ _dynamic_imports: dict[str, str] = {
     "AnermaCfForthTypedDict": ".anermacfforth",
     "AnyConnect": ".anyconnect",
     "AnyConnectTypedDict": ".anyconnect",
+    "Argocd": ".argocd",
+    "ArgocdTypedDict": ".argocd",
+    "ArgocdAnonymousExposure": ".argocd_anonymousexposure",
+    "ArgocdAnonymousExposureTypedDict": ".argocd_anonymousexposure",
+    "ArgocdSettings": ".argocd_settings",
+    "ArgocdSettingsTypedDict": ".argocd_settings",
+    "ArgocdSettingsOIDCConfig": ".argocd_settings_oidcconfig",
+    "ArgocdSettingsOIDCConfigTypedDict": ".argocd_settings_oidcconfig",
     "AssetCertificateListInputBody": ".assetcertificatelistinputbody",
     "AssetCertificateListInputBodyTypedDict": ".assetcertificatelistinputbody",
     "AssetHostListInputBody": ".assethostlistinputbody",

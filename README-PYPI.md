@@ -225,10 +225,10 @@ asyncio.run(main())
 * [get_host_timeline](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
 * [get_web_properties](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_web_properties) - Retrieve multiple web properties
 * [get_web_property](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_web_property) - Get a web property
-* [list_dns_ip_resolution_bounds](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_ip_resolution_bounds) - Get latest DNS names that resolved to an IP
-* [list_dns_ip_resolution_ranges](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_ip_resolution_ranges) - Get DNS names that resolved to an IP within a time window
-* [list_dns_name_resolution_bounds](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_name_resolution_bounds) - Get latest DNS resolution records for a name
-* [list_dns_name_resolution_ranges](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_name_resolution_ranges) - Get historical DNS resolution ranges for a name
+* [list_dns_ip_resolution_bounds](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_ip_resolution_bounds) - Get DNS names that resolved to an IP (aggregated bounds)
+* [list_dns_ip_resolution_ranges](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_ip_resolution_ranges) - Get DNS names that resolved to an IP (ranges)
+* [list_dns_name_resolution_bounds](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_name_resolution_bounds) - Get DNS resolution records for a name (aggregated bounds)
+* [list_dns_name_resolution_ranges](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#list_dns_name_resolution_ranges) - Get DNS resolution records for a name (ranges)
 * [create_tracked_scan](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#create_tracked_scan) - Live Rescan: Initiate a new rescan
 * [get_tracked_scan](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#get_tracked_scan) - Get scan status
 * [aggregate](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/globaldata/README.md#aggregate) - Aggregate results for a search query
