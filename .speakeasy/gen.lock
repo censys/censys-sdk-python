@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: f6ae0f61affe5a7c38091ba27a08e3e9
-  docVersion: 1.0.114
-  speakeasyVersion: 1.787.0
-  generationVersion: 2.914.0
-  releaseVersion: 0.15.1
-  configChecksum: e3dd3086fc3f2c33cf694f6bc07a94d3
+  docChecksum: 4b161c058218b143babf1eac48e80b04
+  docVersion: 1.0.122
+  speakeasyVersion: 1.790.3
+  generationVersion: 2.918.4
+  releaseVersion: 0.15.2
+  configChecksum: 8d847036008d0210f3d1aee4c5002164
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: c6a6fd83-9394-4be7-80a9-4d055858c3ad
-  pristine_commit_hash: fa5308cbc7f632440416b356608b7397cbb5cde8
-  pristine_tree_hash: aab331b1d0f2d5301b4ddf9890b459dc8b245720
+  generation_id: 3d1cbb08-be7f-4c61-9478-4bc5abdce25e
+  pristine_commit_hash: b12a5e2e92625aab70693321e2e3b5ed6edbca91
+  pristine_tree_hash: aaac272e39d77ae1da0543727584957a178e37a4
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.1.0
     constsAndDefaults: 1.0.7
-    core: 6.0.33
+    core: 6.0.34
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.1
@@ -84,6 +84,22 @@ trackedFiles:
     id: c8995f9f934b
     last_write_checksum: sha1:b0a9fcc0d2faee6830d3856b119573cfc6bf2f97
     pristine_git_object: 847a34b048907842f5330bb51e0131870a60338c
+  docs/models/argocd.md:
+    id: ed9767e5a533
+    last_write_checksum: sha1:1b1083af0fe38cb065aec8bee9a914a73c43064c
+    pristine_git_object: 73ff4328e86ef906f62db63bd0a6f2d05ce803d4
+  docs/models/argocdanonymousexposure.md:
+    id: 5a0063344791
+    last_write_checksum: sha1:8db6927dd1b00eaf3b43aaf20bbe46e2f2c20117
+    pristine_git_object: 68ad5fa44d65b5cfc057ed6f90904a9069a5ddcb
+  docs/models/argocdsettings.md:
+    id: 933c17a8fbd9
+    last_write_checksum: sha1:8c3305fd8d6124229c377dc5e1937751d4a0b292
+    pristine_git_object: c3e5dc46573f736b88d3fea95c8fb1a211ee615c
+  docs/models/argocdsettingsoidcconfig.md:
+    id: 8a4292f311dc
+    last_write_checksum: sha1:711e78295aa41ec1c13e166333810ee40181c6cb
+    pristine_git_object: 8562c6ee82c4cfd6388d57c754599df93175bab6
   docs/models/assetcertificatelistinputbody.md:
     id: f025fc3bb8ee
     last_write_checksum: sha1:e917d6bae83b5ea94b11f2c6c2ce08f3295b34ee
@@ -794,16 +810,16 @@ trackedFiles:
     pristine_git_object: 9c735895110f3b56d5e26c570d15cf143747c533
   docs/models/endpointscan.md:
     id: 74c09badb875
-    last_write_checksum: sha1:34c9250a8937318984197de31da311bdbca718ae
-    pristine_git_object: ee6478093c6bc57b94d1b799c111b8cdc2f96575
+    last_write_checksum: sha1:651b6b79357a2ef6d2f26f3fae23f45125c42bd8
+    pristine_git_object: a3640e5164deffe24dfcae17c403bd0aaa230b04
   docs/models/endpointscanned.md:
     id: 3ea99f65fa10
     last_write_checksum: sha1:ac0e3f51e3b56992018881630868f2145f006767
     pristine_git_object: 329a0199b23767a9ae036c09997ed2899f9ddda7
   docs/models/endpointscanstate.md:
     id: e2ee34e6abd2
-    last_write_checksum: sha1:1c4691d724972f3810ae8046f4563b98e1aa32b7
-    pristine_git_object: 0b7a950d8b1805eecf8cb8d870a2dde4afb20264
+    last_write_checksum: sha1:0677e58d1794c230c75302eb248e636f02092c43
+    pristine_git_object: 8a0aa811921e5726927f30d2a9a8fe06dc9d9183
   docs/models/endpointscanstatetransportprotocol.md:
     id: 70cde6881504
     last_write_checksum: sha1:90077eafdf227363cbd2905d0a204ef01a53e16b
@@ -3942,8 +3958,8 @@ trackedFiles:
     pristine_git_object: 7c00028bb7ac927b2a2a51c23903759c44d6207c
   docs/sdks/globaldata/README.md:
     id: 0c68886632e6
-    last_write_checksum: sha1:f33437f41944923bef3eb2f3303d27807d8c61cb
-    pristine_git_object: 4412fe377b910b71bcfe8d0eb8d0fd0cd7e4a709
+    last_write_checksum: sha1:dec8d76f7251bbdfe8fca0193d5be882d2e4644b
+    pristine_git_object: 3c074e4fd1632366e188b5f234d4d8dc6d9806d6
   docs/sdks/tagsandcomments/README.md:
     id: 092d693513d0
     last_write_checksum: sha1:c1622953e204c9899be112c839bfdd950d78bd46
@@ -3966,8 +3982,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:a71e548a04ba6131cf6694fdceae8db8ba5478ad
-    pristine_git_object: a0ea16d59940b422586bfc82d325b61974901ac6
+    last_write_checksum: sha1:b5ec863976a064b8c22937df6d8cc472aeeccd2d
+    pristine_git_object: 0e98ebad860baecb68ba58b1687fe3214dbeac0b
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -3994,8 +4010,8 @@ trackedFiles:
     pristine_git_object: ec32aa84954b1a51f33327002cacd727eb9ab81e
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:8f662d35dc68f660500136b6971289e19705615a
-    pristine_git_object: 3001104a5ead0e0ce386518df8c5da7e3db6e597
+    last_write_checksum: sha1:db16fd2dc229fcf0326c8bc659310ad83e2bf9e4
+    pristine_git_object: 7d52e07cd51a426f9fdbff413cb779e315c55f6c
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:bd19db50cb8a422da287a12730ebd3520de2d4ee
@@ -4014,16 +4030,16 @@ trackedFiles:
     pristine_git_object: 6a3f9934fb892e840d0b61300ac27d8a2e53624a
   src/censys_platform/global_data.py:
     id: 0eedbf9a2038
-    last_write_checksum: sha1:99e33241e890d0fc6668921b76d8e064e7bcf7ae
-    pristine_git_object: fc8fdf75c6541431553bae897c00b1fbfb3e03ef
+    last_write_checksum: sha1:f3b4b72c915b2c6d8d50290e44321dc9c184f1b8
+    pristine_git_object: 02ad99b51b63241c92985d6306e4662f62f80fcb
   src/censys_platform/httpclient.py:
     id: 9378a19c2de6
     last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/censys_platform/models/__init__.py:
     id: 4c65ae1e4fed
-    last_write_checksum: sha1:558cc042326518650e8a886c304d87c4d9a375e8
-    pristine_git_object: f386290a8d0c1b01297fa657c6c4568c0698c5db
+    last_write_checksum: sha1:bde8b06c6398b017d229f01d6e770c4d3e99e072
+    pristine_git_object: e230e232ba968f7a32c2bd119e82679663d2a064
   src/censys_platform/models/activemq.py:
     id: c852b87bc559
     last_write_checksum: sha1:a754dc1ce0647be6304994e4c598c533e0db974e
@@ -4056,6 +4072,22 @@ trackedFiles:
     id: c2f70eef6aae
     last_write_checksum: sha1:cca0fb4235ef4085927eb9f561b8557c43027d85
     pristine_git_object: 775df8d30da45baefa644b30a8515f96adfc7300
+  src/censys_platform/models/argocd.py:
+    id: 353bbd57bbce
+    last_write_checksum: sha1:0d22fecd3ad9e08fc9e2ed28c801d297a4fcfb7a
+    pristine_git_object: e7d044b80b829ea38053b1f762d36d48928073be
+  src/censys_platform/models/argocd_anonymousexposure.py:
+    id: 7870da175ca0
+    last_write_checksum: sha1:a71ef9fa81b71cde33dc553b84cf6e625783db37
+    pristine_git_object: d53dc1ccb4da52e3e00466c2c40a3888216e593d
+  src/censys_platform/models/argocd_settings.py:
+    id: a7efb53ca18c
+    last_write_checksum: sha1:921e1cbf4d439855faadcd640de7f2aa7361a001
+    pristine_git_object: 2b27ed79487865c7fd2793a2643373fab5ff8aa6
+  src/censys_platform/models/argocd_settings_oidcconfig.py:
+    id: 4531b76f8148
+    last_write_checksum: sha1:78c404cff5c4ce7d0720d5c63a8a9179c1ca006e
+    pristine_git_object: cfb97578ea99627178da7faa8abedd6846d44b3b
   src/censys_platform/models/assetcertificatelistinputbody.py:
     id: 1cf737523db8
     last_write_checksum: sha1:5720dc2865c0c23948903153456b52d755845080
@@ -4662,16 +4694,16 @@ trackedFiles:
     pristine_git_object: d3af93915b99c62422a93dbc7f9dae79417c546b
   src/censys_platform/models/endpointscan.py:
     id: e9034f3e14f9
-    last_write_checksum: sha1:839b8f0aa63a39c21137a63041fbf2dc675dce52
-    pristine_git_object: 9fa33b0de0c30966c34e185a4466426bf50d6554
+    last_write_checksum: sha1:de87716f1286171c8121dafb8ad5cbe3f1a0ec9d
+    pristine_git_object: 9de555c445a1571ee38ce0f46a004d990b47afc5
   src/censys_platform/models/endpointscanned.py:
     id: 62ea4d26c40d
     last_write_checksum: sha1:2afb8006679248fb848b4d2ef87caa4e143f892b
     pristine_git_object: a9984383bd95fc929bbf9ae60a98068b10155e5f
   src/censys_platform/models/endpointscanstate.py:
     id: 7b8f1fb78573
-    last_write_checksum: sha1:210ddb98300461215956d47fa37fa61297094211
-    pristine_git_object: c1c48bffba46d01d1fcfa481e14c4cd3e47e9fbf
+    last_write_checksum: sha1:b9d058c077d62a36eba715b694187886834f312e
+    pristine_git_object: cbea75684905b82ccb8e4d3bb8704652b2ec93f1
   src/censys_platform/models/epmd.py:
     id: 8088ccd12b02
     last_write_checksum: sha1:418687e71656a7120501c2af1043db1dfc0b7109
@@ -7054,16 +7086,16 @@ trackedFiles:
     pristine_git_object: a9a640a1a7048736383f96c67c6290c86bf536ee
   src/censys_platform/utils/__init__.py:
     id: 76ac94c422c2
-    last_write_checksum: sha1:1970816f2234ecb8785798240b0edced961de971
-    pristine_git_object: 0498cb8dabf249b39609f81fb10cddc30f1b78b5
+    last_write_checksum: sha1:53c9544397bbc534c45a228feac3cdb2e9017fe6
+    pristine_git_object: 7af3b82cf95edc2901bc85b2624c54f39b7f9724
   src/censys_platform/utils/annotations.py:
     id: 259f8dfc4b83
     last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
     pristine_git_object: 12e0aa4f1151bb52474cc02e88397329b90703f6
   src/censys_platform/utils/datetimes.py:
     id: 45311463dfef
-    last_write_checksum: sha1:c721e4123000e7dc61ec52b28a739439d9e17341
-    pristine_git_object: a6c52cd61bbe2d459046c940ce5e8c469f2f0664
+    last_write_checksum: sha1:fa47d54c549ff9b95496ce91930fadfb04a36be9
+    pristine_git_object: adad24762cf452d137abe94fda0fd26224cef593
   src/censys_platform/utils/dynamic_imports.py:
     id: 01ddee0f294a
     last_write_checksum: sha1:a1940c63feb8eddfd8026de53384baf5056d5dcc
@@ -8314,6 +8346,8 @@ examples:
         "400":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
         "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "429":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
 examplesVersion: 1.0.2
 generatedTests: {}
