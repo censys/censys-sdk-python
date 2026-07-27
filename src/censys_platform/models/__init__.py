@@ -158,6 +158,7 @@ if TYPE_CHECKING:
     from .contact import Contact, ContactTypedDict
     from .convertqueryerror import ConvertQueryError, ConvertQueryErrorTypedDict
     from .coordinates import Coordinates, CoordinatesTypedDict
+    from .cortexxdrp2p import CortexXdrP2P, CortexXdrP2PTypedDict
     from .countcondition import CountCondition, CountConditionTypedDict
     from .cpe import Cpe, CpeTypedDict
     from .cpe_lifecycle import CPELifeCycle, CPELifeCycleTypedDict
@@ -242,6 +243,7 @@ if TYPE_CHECKING:
     from .darkgate_file import DarkgateFile, DarkgateFileTypedDict
     from .dcerpc import Dcerpc, DcerpcTypedDict
     from .dcerpc_endpoint import DcerpcEndpoint, DcerpcEndpointTypedDict
+    from .denonheos import DenonHeos, DenonHeosTypedDict
     from .desktopinfo import DesktopInfo, DesktopInfoTypedDict
     from .devicecapabilities import DeviceCapabilities, DeviceCapabilitiesTypedDict
     from .deviceiocapabilities import (
@@ -309,6 +311,10 @@ if TYPE_CHECKING:
         DNSResolutionRecord,
         DNSResolutionRecordRecordType,
         DNSResolutionRecordTypedDict,
+    )
+    from .dotnetnegotiatestream import (
+        DotnetNegotiateStream,
+        DotnetNegotiateStreamTypedDict,
     )
     from .dsacryptographickey import DSACryptographicKey, DSACryptographicKeyTypedDict
     from .dsapublickey import DsaPublicKey, DsaPublicKeyTypedDict
@@ -409,6 +415,10 @@ if TYPE_CHECKING:
         ElasticSearchSystemInfoVer,
         ElasticSearchSystemInfoVerTypedDict,
     )
+    from .elasticsearchtransport import (
+        ElasticsearchTransport,
+        ElasticsearchTransportTypedDict,
+    )
     from .elffile import ElfFile, ElfFileTypedDict
     from .endpointscan import (
         EndpointScan,
@@ -478,6 +488,10 @@ if TYPE_CHECKING:
     from .gemini import Gemini, GeminiTypedDict
     from .generalnames import GeneralNames, GeneralNamesTypedDict
     from .generalsubtreeip import GeneralSubtreeIP, GeneralSubtreeIPTypedDict
+    from .giop import Giop, GiopTypedDict
+    from .giop_iiopprofile import GiopIiopProfile, GiopIiopProfileTypedDict
+    from .giop_ior import GiopIor, GiopIorTypedDict
+    from .giop_taggedcomponent import GiopTaggedComponent, GiopTaggedComponentTypedDict
     from .gopher import Gopher, GopherTypedDict
     from .gopher_item import GopherItem, GopherItemTypedDict
     from .graphql import Graphql, GraphqlTypedDict
@@ -607,6 +621,11 @@ if TYPE_CHECKING:
     )
     from .ipp import Ipp, IppTypedDict
     from .ipp_attribute import IppAttribute, IppAttributeTypedDict
+    from .iscdhcpomapi import IscDhcpOmapi, IscDhcpOmapiTypedDict
+    from .iscdhcpomapi_replyheader import (
+        IscDhcpOmapiReplyHeader,
+        IscDhcpOmapiReplyHeaderTypedDict,
+    )
     from .iscsi import Iscsi, IscsiTypedDict
     from .ivantiavalanche import IvantiAvalanche, IvantiAvalancheTypedDict
     from .ja4tscanscan import Ja4TScanScan, Ja4TScanScanTypedDict
@@ -619,6 +638,7 @@ if TYPE_CHECKING:
     from .jenkins_job import JenkinsJob, JenkinsJobTypedDict
     from .jenkins_label import JenkinsLabel, JenkinsLabelTypedDict
     from .jupyter import Jupyter, JupyterTypedDict
+    from .kcodesnetusb import KcodesNetusb, KcodesNetusbTypedDict
     from .kev import KEVSource, Kev, KevTypedDict
     from .keyalgorithm import KeyAlgorithm, KeyAlgorithmTypedDict
     from .keycloak import Keycloak, KeycloakTypedDict
@@ -756,6 +776,7 @@ if TYPE_CHECKING:
         MurmurMessageMurmurHeaderTypedDict,
     )
     from .mysql import Mysql, MysqlTypedDict
+    from .mysqlx import Mysqlx, MysqlxTypedDict
     from .nameconstraints import NameConstraints, NameConstraintsTypedDict
     from .natsio import NatsIo, NatsIoTypedDict
     from .nbd import Nbd, NbdTypedDict
@@ -831,6 +852,9 @@ if TYPE_CHECKING:
     from .pcanywhere import PcAnywhere, PcAnywhereTypedDict
     from .pcanywhere_status import PcAnywhereStatus, PcAnywhereStatusTypedDict
     from .peer import Peer, PeerTypedDict
+    from .perforcep4d import PerforceP4D, PerforceP4DTypedDict
+    from .perforcep4d_info import PerforceP4DInfo, PerforceP4DInfoTypedDict
+    from .perforcep4d_protocol import PerforceP4DProtocol, PerforceP4DProtocolTypedDict
     from .pgbouncer import Pgbouncer, PgbouncerTypedDict
     from .pgbouncer_startupcapabilities import (
         PgbouncerStartupCapabilities,
@@ -903,6 +927,8 @@ if TYPE_CHECKING:
         QCStatementsQCLegislationTypedDict,
     )
     from .qcstatements_qctype import QcStatementsQcType, QcStatementsQcTypeTypedDict
+    from .qdrantgrpc import QdrantGrpc, QdrantGrpcTypedDict
+    from .r1softbuagent import R1SoftBuagent, R1SoftBuagentTypedDict
     from .rawcertificateresponse import (
         RawCertificateResponse,
         RawCertificateResponseTypedDict,
@@ -1329,6 +1355,7 @@ if TYPE_CHECKING:
         StunTurnAllocateSuccessResponseTypedDict,
     )
     from .subjectkeyinfo import SubjectKeyInfo, SubjectKeyInfoTypedDict
+    from .syncthingbep import SyncthingBep, SyncthingBepTypedDict
     from .synergy import Synergy, SynergyTypedDict
     from .synologydsm import SynologyDsm, SynologyDsmTypedDict
     from .systemcapabilities import SystemCapabilities, SystemCapabilitiesTypedDict
@@ -1351,6 +1378,7 @@ if TYPE_CHECKING:
     from .tarantool import Tarantool, TarantoolTypedDict
     from .target import Target, TargetTypedDict
     from .teamviewer import TeamViewer, TeamViewerTypedDict
+    from .telexpertlxp import TelexperTlxp, TelexperTlxpTypedDict
     from .telnet import Telnet, TelnetTypedDict
     from .textmessage import TextMessage, TextMessageTypedDict
     from .thirdparty import ThirdParty, ThirdPartyTypedDict
@@ -1388,6 +1416,7 @@ if TYPE_CHECKING:
         TrackedScanTaskStatus,
         TrackedScanTaskTypedDict,
     )
+    from .twampcontrol import TwampControl, TwampControlTypedDict
     from .unitronicspcom import UnitronicsPcom, UnitronicsPcomTypedDict
     from .unrecognizedpublickey import (
         UnrecognizedPublicKey,
@@ -1798,6 +1827,14 @@ if TYPE_CHECKING:
         V3TagsDeleteTagResponse,
         V3TagsDeleteTagResponseTypedDict,
     )
+    from .v3_tags_get_operationop import (
+        V3TagsGetOperationGlobals,
+        V3TagsGetOperationGlobalsTypedDict,
+        V3TagsGetOperationRequest,
+        V3TagsGetOperationRequestTypedDict,
+        V3TagsGetOperationResponse,
+        V3TagsGetOperationResponseTypedDict,
+    )
     from .v3_tags_get_tagop import (
         V3TagsGetTagGlobals,
         V3TagsGetTagGlobalsTypedDict,
@@ -2119,6 +2156,8 @@ __all__ = [
     "ConvertQueryErrorTypedDict",
     "Coordinates",
     "CoordinatesTypedDict",
+    "CortexXdrP2P",
+    "CortexXdrP2PTypedDict",
     "CountCondition",
     "CountConditionTypedDict",
     "Cpe",
@@ -2207,6 +2246,8 @@ __all__ = [
     "DcerpcEndpoint",
     "DcerpcEndpointTypedDict",
     "DcerpcTypedDict",
+    "DenonHeos",
+    "DenonHeosTypedDict",
     "DesktopInfo",
     "DesktopInfoTypedDict",
     "DeviceCapabilities",
@@ -2233,6 +2274,8 @@ __all__ = [
     "DistinguishedNameTypedDict",
     "Dnp3",
     "Dnp3TypedDict",
+    "DotnetNegotiateStream",
+    "DotnetNegotiateStreamTypedDict",
     "DsaPublicKey",
     "DsaPublicKeyTypedDict",
     "Dtls",
@@ -2297,6 +2340,8 @@ __all__ = [
     "ElasticSearchSystemInfoVer",
     "ElasticSearchSystemInfoVerTypedDict",
     "ElasticSearchTypedDict",
+    "ElasticsearchTransport",
+    "ElasticsearchTransportTypedDict",
     "ElfFile",
     "ElfFileTypedDict",
     "EndpointScan",
@@ -2379,6 +2424,14 @@ __all__ = [
     "GeneralNamesTypedDict",
     "GeneralSubtreeIP",
     "GeneralSubtreeIPTypedDict",
+    "Giop",
+    "GiopIiopProfile",
+    "GiopIiopProfileTypedDict",
+    "GiopIor",
+    "GiopIorTypedDict",
+    "GiopTaggedComponent",
+    "GiopTaggedComponentTypedDict",
+    "GiopTypedDict",
     "Gopher",
     "GopherItem",
     "GopherItemTypedDict",
@@ -2508,6 +2561,10 @@ __all__ = [
     "IppAttribute",
     "IppAttributeTypedDict",
     "IppTypedDict",
+    "IscDhcpOmapi",
+    "IscDhcpOmapiReplyHeader",
+    "IscDhcpOmapiReplyHeaderTypedDict",
+    "IscDhcpOmapiTypedDict",
     "Iscsi",
     "IscsiTypedDict",
     "IvantiAvalanche",
@@ -2534,6 +2591,8 @@ __all__ = [
     "Jupyter",
     "JupyterTypedDict",
     "KEVSource",
+    "KcodesNetusb",
+    "KcodesNetusbTypedDict",
     "Kev",
     "KevTypedDict",
     "KeyAlgorithm",
@@ -2689,6 +2748,8 @@ __all__ = [
     "MurmurTypedDict",
     "Mysql",
     "MysqlTypedDict",
+    "Mysqlx",
+    "MysqlxTypedDict",
     "NTPNTPHeader",
     "NTPNTPHeaderTypedDict",
     "NameConstraints",
@@ -2802,6 +2863,12 @@ __all__ = [
     "PcAnywhereTypedDict",
     "Peer",
     "PeerTypedDict",
+    "PerforceP4D",
+    "PerforceP4DInfo",
+    "PerforceP4DInfoTypedDict",
+    "PerforceP4DProtocol",
+    "PerforceP4DProtocolTypedDict",
+    "PerforceP4DTypedDict",
     "Pgbouncer",
     "PgbouncerStartupCapabilities",
     "PgbouncerStartupCapabilitiesTypedDict",
@@ -2876,6 +2943,8 @@ __all__ = [
     "QcStatementsQcType",
     "QcStatementsQcTypeTypedDict",
     "QcStatementsTypedDict",
+    "QdrantGrpc",
+    "QdrantGrpcTypedDict",
     "QueryParamAssetType",
     "QueryParamGranularity",
     "QueryParamOrderBy",
@@ -2884,6 +2953,8 @@ __all__ = [
     "QueryParamStatus",
     "QueryParamTransportProtocol",
     "QueryParamType",
+    "R1SoftBuagent",
+    "R1SoftBuagentTypedDict",
     "RCode",
     "RSACryptographicKey",
     "RSACryptographicKeyTypedDict",
@@ -3256,6 +3327,8 @@ __all__ = [
     "StunTypedDict",
     "SubjectKeyInfo",
     "SubjectKeyInfoTypedDict",
+    "SyncthingBep",
+    "SyncthingBepTypedDict",
     "Synergy",
     "SynergyTypedDict",
     "SynologyDsm",
@@ -3302,6 +3375,8 @@ __all__ = [
     "Targets",
     "TeamViewer",
     "TeamViewerTypedDict",
+    "TelexperTlxp",
+    "TelexperTlxpTypedDict",
     "Telnet",
     "TelnetTypedDict",
     "TextMessage",
@@ -3342,6 +3417,8 @@ __all__ = [
     "TrackedScanTaskTypedDict",
     "TrackedScanTypedDict",
     "TransportProtocol",
+    "TwampControl",
+    "TwampControlTypedDict",
     "Two",
     "TwoTypedDict",
     "Type",
@@ -3647,6 +3724,12 @@ __all__ = [
     "V3TagsDeleteTagRequestTypedDict",
     "V3TagsDeleteTagResponse",
     "V3TagsDeleteTagResponseTypedDict",
+    "V3TagsGetOperationGlobals",
+    "V3TagsGetOperationGlobalsTypedDict",
+    "V3TagsGetOperationRequest",
+    "V3TagsGetOperationRequestTypedDict",
+    "V3TagsGetOperationResponse",
+    "V3TagsGetOperationResponseTypedDict",
     "V3TagsGetTagGlobals",
     "V3TagsGetTagGlobalsTypedDict",
     "V3TagsGetTagRequest",
@@ -3950,6 +4033,8 @@ _dynamic_imports: dict[str, str] = {
     "ConvertQueryErrorTypedDict": ".convertqueryerror",
     "Coordinates": ".coordinates",
     "CoordinatesTypedDict": ".coordinates",
+    "CortexXdrP2P": ".cortexxdrp2p",
+    "CortexXdrP2PTypedDict": ".cortexxdrp2p",
     "CountCondition": ".countcondition",
     "CountConditionTypedDict": ".countcondition",
     "Cpe": ".cpe",
@@ -4040,6 +4125,8 @@ _dynamic_imports: dict[str, str] = {
     "DcerpcTypedDict": ".dcerpc",
     "DcerpcEndpoint": ".dcerpc_endpoint",
     "DcerpcEndpointTypedDict": ".dcerpc_endpoint",
+    "DenonHeos": ".denonheos",
+    "DenonHeosTypedDict": ".denonheos",
     "DesktopInfo": ".desktopinfo",
     "DesktopInfoTypedDict": ".desktopinfo",
     "DeviceCapabilities": ".devicecapabilities",
@@ -4095,6 +4182,8 @@ _dynamic_imports: dict[str, str] = {
     "DNSResolutionRecord": ".dnsresolutionrecord",
     "DNSResolutionRecordRecordType": ".dnsresolutionrecord",
     "DNSResolutionRecordTypedDict": ".dnsresolutionrecord",
+    "DotnetNegotiateStream": ".dotnetnegotiatestream",
+    "DotnetNegotiateStreamTypedDict": ".dotnetnegotiatestream",
     "DSACryptographicKey": ".dsacryptographickey",
     "DSACryptographicKeyTypedDict": ".dsacryptographickey",
     "DsaPublicKey": ".dsapublickey",
@@ -4161,6 +4250,8 @@ _dynamic_imports: dict[str, str] = {
     "ElasticSearchSystemInfoTypedDict": ".elasticsearch_systeminfo",
     "ElasticSearchSystemInfoVer": ".elasticsearch_systeminfo_ver",
     "ElasticSearchSystemInfoVerTypedDict": ".elasticsearch_systeminfo_ver",
+    "ElasticsearchTransport": ".elasticsearchtransport",
+    "ElasticsearchTransportTypedDict": ".elasticsearchtransport",
     "ElfFile": ".elffile",
     "ElfFileTypedDict": ".elffile",
     "EndpointScan": ".endpointscan",
@@ -4246,6 +4337,14 @@ _dynamic_imports: dict[str, str] = {
     "GeneralNamesTypedDict": ".generalnames",
     "GeneralSubtreeIP": ".generalsubtreeip",
     "GeneralSubtreeIPTypedDict": ".generalsubtreeip",
+    "Giop": ".giop",
+    "GiopTypedDict": ".giop",
+    "GiopIiopProfile": ".giop_iiopprofile",
+    "GiopIiopProfileTypedDict": ".giop_iiopprofile",
+    "GiopIor": ".giop_ior",
+    "GiopIorTypedDict": ".giop_ior",
+    "GiopTaggedComponent": ".giop_taggedcomponent",
+    "GiopTaggedComponentTypedDict": ".giop_taggedcomponent",
     "Gopher": ".gopher",
     "GopherTypedDict": ".gopher",
     "GopherItem": ".gopher_item",
@@ -4370,6 +4469,10 @@ _dynamic_imports: dict[str, str] = {
     "IppTypedDict": ".ipp",
     "IppAttribute": ".ipp_attribute",
     "IppAttributeTypedDict": ".ipp_attribute",
+    "IscDhcpOmapi": ".iscdhcpomapi",
+    "IscDhcpOmapiTypedDict": ".iscdhcpomapi",
+    "IscDhcpOmapiReplyHeader": ".iscdhcpomapi_replyheader",
+    "IscDhcpOmapiReplyHeaderTypedDict": ".iscdhcpomapi_replyheader",
     "Iscsi": ".iscsi",
     "IscsiTypedDict": ".iscsi",
     "IvantiAvalanche": ".ivantiavalanche",
@@ -4395,6 +4498,8 @@ _dynamic_imports: dict[str, str] = {
     "JenkinsLabelTypedDict": ".jenkins_label",
     "Jupyter": ".jupyter",
     "JupyterTypedDict": ".jupyter",
+    "KcodesNetusb": ".kcodesnetusb",
+    "KcodesNetusbTypedDict": ".kcodesnetusb",
     "KEVSource": ".kev",
     "Kev": ".kev",
     "KevTypedDict": ".kev",
@@ -4554,6 +4659,8 @@ _dynamic_imports: dict[str, str] = {
     "MurmurMessageMurmurHeaderTypedDict": ".murmurmessage_murmurheader",
     "Mysql": ".mysql",
     "MysqlTypedDict": ".mysql",
+    "Mysqlx": ".mysqlx",
+    "MysqlxTypedDict": ".mysqlx",
     "NameConstraints": ".nameconstraints",
     "NameConstraintsTypedDict": ".nameconstraints",
     "NatsIo": ".natsio",
@@ -4661,6 +4768,12 @@ _dynamic_imports: dict[str, str] = {
     "PcAnywhereStatusTypedDict": ".pcanywhere_status",
     "Peer": ".peer",
     "PeerTypedDict": ".peer",
+    "PerforceP4D": ".perforcep4d",
+    "PerforceP4DTypedDict": ".perforcep4d",
+    "PerforceP4DInfo": ".perforcep4d_info",
+    "PerforceP4DInfoTypedDict": ".perforcep4d_info",
+    "PerforceP4DProtocol": ".perforcep4d_protocol",
+    "PerforceP4DProtocolTypedDict": ".perforcep4d_protocol",
     "Pgbouncer": ".pgbouncer",
     "PgbouncerTypedDict": ".pgbouncer",
     "PgbouncerStartupCapabilities": ".pgbouncer_startupcapabilities",
@@ -4733,6 +4846,10 @@ _dynamic_imports: dict[str, str] = {
     "QCStatementsQCLegislationTypedDict": ".qcstatements_qclegislation",
     "QcStatementsQcType": ".qcstatements_qctype",
     "QcStatementsQcTypeTypedDict": ".qcstatements_qctype",
+    "QdrantGrpc": ".qdrantgrpc",
+    "QdrantGrpcTypedDict": ".qdrantgrpc",
+    "R1SoftBuagent": ".r1softbuagent",
+    "R1SoftBuagentTypedDict": ".r1softbuagent",
     "RawCertificateResponse": ".rawcertificateresponse",
     "RawCertificateResponseTypedDict": ".rawcertificateresponse",
     "Rdate": ".rdate",
@@ -5110,6 +5227,8 @@ _dynamic_imports: dict[str, str] = {
     "StunTurnAllocateSuccessResponseTypedDict": ".stun_turn_allocatesuccessresponse",
     "SubjectKeyInfo": ".subjectkeyinfo",
     "SubjectKeyInfoTypedDict": ".subjectkeyinfo",
+    "SyncthingBep": ".syncthingbep",
+    "SyncthingBepTypedDict": ".syncthingbep",
     "Synergy": ".synergy",
     "SynergyTypedDict": ".synergy",
     "SynologyDsm": ".synologydsm",
@@ -5140,6 +5259,8 @@ _dynamic_imports: dict[str, str] = {
     "TargetTypedDict": ".target",
     "TeamViewer": ".teamviewer",
     "TeamViewerTypedDict": ".teamviewer",
+    "TelexperTlxp": ".telexpertlxp",
+    "TelexperTlxpTypedDict": ".telexpertlxp",
     "Telnet": ".telnet",
     "TelnetTypedDict": ".telnet",
     "TextMessage": ".textmessage",
@@ -5186,6 +5307,8 @@ _dynamic_imports: dict[str, str] = {
     "TrackedScanTask": ".trackedscan_task",
     "TrackedScanTaskStatus": ".trackedscan_task",
     "TrackedScanTaskTypedDict": ".trackedscan_task",
+    "TwampControl": ".twampcontrol",
+    "TwampControlTypedDict": ".twampcontrol",
     "UnitronicsPcom": ".unitronicspcom",
     "UnitronicsPcomTypedDict": ".unitronicspcom",
     "UnrecognizedPublicKey": ".unrecognizedpublickey",
@@ -5498,6 +5621,12 @@ _dynamic_imports: dict[str, str] = {
     "V3TagsDeleteTagRequestTypedDict": ".v3_tags_delete_tagop",
     "V3TagsDeleteTagResponse": ".v3_tags_delete_tagop",
     "V3TagsDeleteTagResponseTypedDict": ".v3_tags_delete_tagop",
+    "V3TagsGetOperationGlobals": ".v3_tags_get_operationop",
+    "V3TagsGetOperationGlobalsTypedDict": ".v3_tags_get_operationop",
+    "V3TagsGetOperationRequest": ".v3_tags_get_operationop",
+    "V3TagsGetOperationRequestTypedDict": ".v3_tags_get_operationop",
+    "V3TagsGetOperationResponse": ".v3_tags_get_operationop",
+    "V3TagsGetOperationResponseTypedDict": ".v3_tags_get_operationop",
     "V3TagsGetTagGlobals": ".v3_tags_get_tagop",
     "V3TagsGetTagGlobalsTypedDict": ".v3_tags_get_tagop",
     "V3TagsGetTagRequest": ".v3_tags_get_tagop",
