@@ -21,6 +21,7 @@ Endpoints related to asset tagging and commenting
 * [bulk_delete_tag_assignments](#bulk_delete_tag_assignments) - Bulk delete tag assignments
 * [delete_tag_assignment](#delete_tag_assignment) - Delete a tag assignment
 * [list_tag_operations](#list_tag_operations) - List tag operations
+* [get_tag_operation](#get_tag_operation) - Get a tag operation
 * [cancel_tag_operation](#cancel_tag_operation) - Cancel a tag operation
 
 ## list_comments
@@ -700,6 +701,51 @@ with SDK(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.AuthenticationError | 401                        | application/json           |
 | models.ErrorModel          | 403, 409, 422              | application/problem+json   |
+| models.ErrorModel          | 500                        | application/problem+json   |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_tag_operation
+
+Retrieve a single bulk tag operation by ID, including its current status and progress counts. Use this to poll the status of an operation started by the bulk-create or bulk-delete endpoints.<br><br>This endpoint does not cost any credits to execute.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="v3-tags-get-operation" method="get" path="/v3/tags/{tag_id}/operations/{operation_id}" -->
+```python
+from censys_platform import SDK
+
+
+with SDK(
+    organization_id="11111111-2222-3333-4444-555555555555",
+    personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as sdk:
+
+    res = sdk.tags_and_comments.get_tag_operation(tag_id="7fd3732a-0f74-46ae-9b99-cf8d471365c7", operation_id="1d645480-2c36-4fbe-b3ee-eabcaa515ece")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                            | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tag_id`                                                                                                                                                                                                             | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the tag the operation belongs to.                                                                                                                                                                          |
+| `operation_id`                                                                                                                                                                                                       | *str*                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                   | The ID of the operation to retrieve.                                                                                                                                                                                 |
+| `organization_id`                                                                                                                                                                                                    | *Optional[str]*                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                   | The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information. |
+| `retries`                                                                                                                                                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                   | Configuration to override the default retry behavior of the client.                                                                                                                                                  |
+
+### Response
+
+**[models.V3TagsGetOperationResponse](../../models/v3tagsgetoperationresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.AuthenticationError | 401                        | application/json           |
+| models.ErrorModel          | 403, 404, 409, 422         | application/problem+json   |
 | models.ErrorModel          | 500                        | application/problem+json   |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 

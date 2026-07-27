@@ -252,6 +252,7 @@ asyncio.run(main())
 * [bulk_delete_tag_assignments](docs/sdks/tagsandcomments/README.md#bulk_delete_tag_assignments) - Bulk delete tag assignments
 * [delete_tag_assignment](docs/sdks/tagsandcomments/README.md#delete_tag_assignment) - Delete a tag assignment
 * [list_tag_operations](docs/sdks/tagsandcomments/README.md#list_tag_operations) - List tag operations
+* [get_tag_operation](docs/sdks/tagsandcomments/README.md#get_tag_operation) - Get a tag operation
 * [cancel_tag_operation](docs/sdks/tagsandcomments/README.md#cancel_tag_operation) - Cancel a tag operation
 
 ### [ThreatHunting](docs/sdks/threathunting/README.md)
