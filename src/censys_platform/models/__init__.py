@@ -1136,6 +1136,10 @@ if TYPE_CHECKING:
         ResponseEnvelopeWebpropertyAsset,
         ResponseEnvelopeWebpropertyAssetTypedDict,
     )
+    from .responseenvelopewebpropertytimeline import (
+        ResponseEnvelopeWebpropertyTimeline,
+        ResponseEnvelopeWebpropertyTimelineTypedDict,
+    )
     from .responsevalidationerror import ResponseValidationError
     from .reversednsresolved import ReverseDNSResolved, ReverseDNSResolvedTypedDict
     from .rifatron import Rifatron, RifatronTypedDict
@@ -1677,6 +1681,14 @@ if TYPE_CHECKING:
         V3GlobaldataAssetWebpropertyListPostResponse,
         V3GlobaldataAssetWebpropertyListPostResponseTypedDict,
     )
+    from .v3_globaldata_asset_webproperty_timelineop import (
+        V3GlobaldataAssetWebpropertyTimelineGlobals,
+        V3GlobaldataAssetWebpropertyTimelineGlobalsTypedDict,
+        V3GlobaldataAssetWebpropertyTimelineRequest,
+        V3GlobaldataAssetWebpropertyTimelineRequestTypedDict,
+        V3GlobaldataAssetWebpropertyTimelineResponse,
+        V3GlobaldataAssetWebpropertyTimelineResponseTypedDict,
+    )
     from .v3_globaldata_asset_webpropertyop import (
         V3GlobaldataAssetWebpropertyGlobals,
         V3GlobaldataAssetWebpropertyGlobalsTypedDict,
@@ -1968,6 +1980,12 @@ if TYPE_CHECKING:
     from .weborigin import WebOrigin, WebOriginTypedDict
     from .webproperty import Webproperty, WebpropertyTypedDict
     from .webpropertyasset import WebpropertyAsset, WebpropertyAssetTypedDict
+    from .webpropertytimeline import WebpropertyTimeline, WebpropertyTimelineTypedDict
+    from .webtimelineevent import WebTimelineEvent, WebTimelineEventTypedDict
+    from .webtimelineeventasset import (
+        WebTimelineEventAsset,
+        WebTimelineEventAssetTypedDict,
+    )
     from .whois import Whois, WhoisTypedDict
     from .whoisupdated import WhoisUpdated, WhoisUpdatedTypedDict
     from .wincecerdisp import WinceCerdisp, WinceCerdispTypedDict
@@ -3098,6 +3116,8 @@ __all__ = [
     "ResponseEnvelopeValueCountsResponseTypedDict",
     "ResponseEnvelopeWebpropertyAsset",
     "ResponseEnvelopeWebpropertyAssetTypedDict",
+    "ResponseEnvelopeWebpropertyTimeline",
+    "ResponseEnvelopeWebpropertyTimelineTypedDict",
     "ResponseValidationError",
     "ReverseDNSResolved",
     "ReverseDNSResolvedTypedDict",
@@ -3620,6 +3640,12 @@ __all__ = [
     "V3GlobaldataAssetWebpropertyRequestTypedDict",
     "V3GlobaldataAssetWebpropertyResponse",
     "V3GlobaldataAssetWebpropertyResponseTypedDict",
+    "V3GlobaldataAssetWebpropertyTimelineGlobals",
+    "V3GlobaldataAssetWebpropertyTimelineGlobalsTypedDict",
+    "V3GlobaldataAssetWebpropertyTimelineRequest",
+    "V3GlobaldataAssetWebpropertyTimelineRequestTypedDict",
+    "V3GlobaldataAssetWebpropertyTimelineResponse",
+    "V3GlobaldataAssetWebpropertyTimelineResponseTypedDict",
     "V3GlobaldataDNSIPResolutionBoundGlobals",
     "V3GlobaldataDNSIPResolutionBoundGlobalsTypedDict",
     "V3GlobaldataDNSIPResolutionBoundRequest",
@@ -3847,11 +3873,17 @@ __all__ = [
     "VulnerabilityResponseEffort",
     "WebOrigin",
     "WebOriginTypedDict",
+    "WebTimelineEvent",
+    "WebTimelineEventAsset",
+    "WebTimelineEventAssetTypedDict",
+    "WebTimelineEventTypedDict",
     "WeblogicT3",
     "WeblogicT3TypedDict",
     "Webproperty",
     "WebpropertyAsset",
     "WebpropertyAssetTypedDict",
+    "WebpropertyTimeline",
+    "WebpropertyTimelineTypedDict",
     "WebpropertyTypedDict",
     "Whois",
     "WhoisTypedDict",
@@ -4988,6 +5020,8 @@ _dynamic_imports: dict[str, str] = {
     "ResponseEnvelopeValueCountsResponseTypedDict": ".responseenvelopevaluecountsresponse",
     "ResponseEnvelopeWebpropertyAsset": ".responseenvelopewebpropertyasset",
     "ResponseEnvelopeWebpropertyAssetTypedDict": ".responseenvelopewebpropertyasset",
+    "ResponseEnvelopeWebpropertyTimeline": ".responseenvelopewebpropertytimeline",
+    "ResponseEnvelopeWebpropertyTimelineTypedDict": ".responseenvelopewebpropertytimeline",
     "ResponseValidationError": ".responsevalidationerror",
     "ReverseDNSResolved": ".reversednsresolved",
     "ReverseDNSResolvedTypedDict": ".reversednsresolved",
@@ -5507,6 +5541,12 @@ _dynamic_imports: dict[str, str] = {
     "V3GlobaldataAssetWebpropertyListPostRequestTypedDict": ".v3_globaldata_asset_webproperty_list_postop",
     "V3GlobaldataAssetWebpropertyListPostResponse": ".v3_globaldata_asset_webproperty_list_postop",
     "V3GlobaldataAssetWebpropertyListPostResponseTypedDict": ".v3_globaldata_asset_webproperty_list_postop",
+    "V3GlobaldataAssetWebpropertyTimelineGlobals": ".v3_globaldata_asset_webproperty_timelineop",
+    "V3GlobaldataAssetWebpropertyTimelineGlobalsTypedDict": ".v3_globaldata_asset_webproperty_timelineop",
+    "V3GlobaldataAssetWebpropertyTimelineRequest": ".v3_globaldata_asset_webproperty_timelineop",
+    "V3GlobaldataAssetWebpropertyTimelineRequestTypedDict": ".v3_globaldata_asset_webproperty_timelineop",
+    "V3GlobaldataAssetWebpropertyTimelineResponse": ".v3_globaldata_asset_webproperty_timelineop",
+    "V3GlobaldataAssetWebpropertyTimelineResponseTypedDict": ".v3_globaldata_asset_webproperty_timelineop",
     "V3GlobaldataAssetWebpropertyGlobals": ".v3_globaldata_asset_webpropertyop",
     "V3GlobaldataAssetWebpropertyGlobalsTypedDict": ".v3_globaldata_asset_webpropertyop",
     "V3GlobaldataAssetWebpropertyRequest": ".v3_globaldata_asset_webpropertyop",
@@ -5749,6 +5789,12 @@ _dynamic_imports: dict[str, str] = {
     "WebpropertyTypedDict": ".webproperty",
     "WebpropertyAsset": ".webpropertyasset",
     "WebpropertyAssetTypedDict": ".webpropertyasset",
+    "WebpropertyTimeline": ".webpropertytimeline",
+    "WebpropertyTimelineTypedDict": ".webpropertytimeline",
+    "WebTimelineEvent": ".webtimelineevent",
+    "WebTimelineEventTypedDict": ".webtimelineevent",
+    "WebTimelineEventAsset": ".webtimelineeventasset",
+    "WebTimelineEventAssetTypedDict": ".webtimelineeventasset",
     "Whois": ".whois",
     "WhoisTypedDict": ".whois",
     "WhoisUpdated": ".whoisupdated",

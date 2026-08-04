@@ -225,6 +225,7 @@ asyncio.run(main())
 * [get_host_timeline](docs/sdks/globaldata/README.md#get_host_timeline) - Get host event history
 * [get_web_properties](docs/sdks/globaldata/README.md#get_web_properties) - Retrieve multiple web properties
 * [get_web_property](docs/sdks/globaldata/README.md#get_web_property) - Get a web property
+* [get_web_property_timeline](docs/sdks/globaldata/README.md#get_web_property_timeline) - Get web property event history
 * [list_dns_ip_resolution_bounds](docs/sdks/globaldata/README.md#list_dns_ip_resolution_bounds) - Get DNS names that resolved to an IP (aggregated bounds)
 * [list_dns_ip_resolution_ranges](docs/sdks/globaldata/README.md#list_dns_ip_resolution_ranges) - Get DNS names that resolved to an IP (ranges)
 * [list_dns_name_resolution_bounds](docs/sdks/globaldata/README.md#list_dns_name_resolution_bounds) - Get DNS resolution records for a name (aggregated bounds)
