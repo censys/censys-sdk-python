@@ -16,6 +16,7 @@ from .ciscoipsla import CiscoIpsla, CiscoIpslaTypedDict
 from .clickhousenative import ClickHouseNative, ClickHouseNativeTypedDict
 from .cmore import Cmore, CmoreTypedDict
 from .coap import Coap, CoapTypedDict
+from .comeliticona import ComelitIcona, ComelitIconaTypedDict
 from .cortexxdrp2p import CortexXdrP2P, CortexXdrP2PTypedDict
 from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
 from .crestrondinap2 import CrestronDinAp2, CrestronDinAp2TypedDict
@@ -27,10 +28,12 @@ from .dcerpc import Dcerpc, DcerpcTypedDict
 from .denonheos import DenonHeos, DenonHeosTypedDict
 from .dhcpdiscover import Dhcpdiscover, DhcpdiscoverTypedDict
 from .dicom import Dicom, DicomTypedDict
+from .dlt import Dlt, DltTypedDict
 from .dnp3 import Dnp3, Dnp3TypedDict
 from .dns import DNS, DNSTypedDict
 from .dotnetnegotiatestream import DotnetNegotiateStream, DotnetNegotiateStreamTypedDict
 from .dtls import Dtls, DtlsTypedDict
+from .dubbo import Dubbo, DubboTypedDict
 from .dvrip import DvrIP, DvrIPTypedDict
 from .eip import Eip, EipTypedDict
 from .elasticsearchtransport import (
@@ -43,6 +46,7 @@ from .etcd import Etcd, EtcdTypedDict
 from .ethereum import Ethereum, EthereumTypedDict
 from .fins import Fins, FinsTypedDict
 from .flashsocketpolicy import FlashSocketPolicy, FlashSocketPolicyTypedDict
+from .fourdserver import FourdServer, FourdServerTypedDict
 from .fox import Fox, FoxTypedDict
 from .frps import Frps, FrpsTypedDict
 from .ftp import Ftp, FtpTypedDict
@@ -53,22 +57,26 @@ from .gopher import Gopher, GopherTypedDict
 from .hajime import Hajime, HajimeTypedDict
 from .hidvertx import HidVertx, HidVertxTypedDict
 from .hikvision import Hikvision, HikvisionTypedDict
+from .hoosathtndgrpc import HoosatHtndGrpc, HoosatHtndGrpcTypedDict
 from .ibmnje import Ibmnje, IbmnjeTypedDict
 from .icap import Icap, IcapTypedDict
 from .iec608705104 import Iec608705104, Iec608705104TypedDict
 from .ike import Ike, IkeTypedDict
 from .imap import Imap, ImapTypedDict
 from .iota import Iota, IotaTypedDict
+from .iperf3 import Iperf3, Iperf3TypedDict
 from .ipmi import Ipmi, IpmiTypedDict
 from .ipp import Ipp, IppTypedDict
 from .iscdhcpomapi import IscDhcpOmapi, IscDhcpOmapiTypedDict
 from .iscsi import Iscsi, IscsiTypedDict
 from .javarmi import JavaRmi, JavaRmiTypedDict
 from .kcodesnetusb import KcodesNetusb, KcodesNetusbTypedDict
+from .knxip import Knxip, KnxipTypedDict
 from .krpc import Krpc, KrpcTypedDict
 from .l2tp import L2Tp, L2TpTypedDict
 from .ldap import Ldap, LdapTypedDict
 from .lpd import Lpd, LpdTypedDict
+from .manticoresphinxapi import ManticoreSphinxapi, ManticoreSphinxapiTypedDict
 from .mavlink import Mavlink, MavlinkTypedDict
 from .mdns import Mdns, MdnsTypedDict
 from .melsec import Melsec, MelsecTypedDict
@@ -80,6 +88,7 @@ from .mms import Mms, MmsTypedDict
 from .modbus import Modbus, ModbusTypedDict
 from .monerop2p import MoneroP2P, MoneroP2PTypedDict
 from .mongodb import Mongodb, MongodbTypedDict
+from .mplsldp import MplsLdp, MplsLdpTypedDict
 from .mqtt import Mqtt, MqttTypedDict
 from .mssql import Mssql, MssqlTypedDict
 from .murmur import Murmur, MurmurTypedDict
@@ -89,6 +98,7 @@ from .natsio import NatsIo, NatsIoTypedDict
 from .nbd import Nbd, NbdTypedDict
 from .nfsmountd import NfsMountd, NfsMountdTypedDict
 from .nmea import Nmea, NmeaTypedDict
+from .nrpe import Nrpe, NrpeTypedDict
 from .ntp import Ntp, NtpTypedDict
 from .ntrip import Ntrip, NtripTypedDict
 from .onc import Onc, OncTypedDict
@@ -114,6 +124,7 @@ from .realport import Realport, RealportTypedDict
 from .redis import Redis, RedisTypedDict
 from .redline import Redline, RedlineTypedDict
 from .redlioncrimson import RedlionCrimson, RedlionCrimsonTypedDict
+from .redshift import Redshift, RedshiftTypedDict
 from .reolinkbaichuan import ReolinkBaichuan, ReolinkBaichuanTypedDict
 from .representativeinfo import RepresentativeInfo, RepresentativeInfoTypedDict
 from .rifatron import Rifatron, RifatronTypedDict
@@ -137,6 +148,7 @@ from .sip import Sip, SipTypedDict
 from .skinny import Skinny, SkinnyTypedDict
 from .smb import Smb, SmbTypedDict
 from .smtp import SMTP, SMTPTypedDict
+from .smux import Smux, SmuxTypedDict
 from .snmp import Snmp, SnmpTypedDict
 from .socks import Socks, SocksTypedDict
 from .spice import Spice, SpiceTypedDict
@@ -154,6 +166,7 @@ from .telnet import Telnet, TelnetTypedDict
 from .tibia import Tibia, TibiaTypedDict
 from .tls import TLS, TLSTypedDict
 from .tplinkkasa import TplinkKasa, TplinkKasaTypedDict
+from .tvtcontrol import TvtControl, TvtControlTypedDict
 from .twampcontrol import TwampControl, TwampControlTypedDict
 from .unitronicspcom import UnitronicsPcom, UnitronicsPcomTypedDict
 from .upnp import Upnp, UpnpTypedDict
@@ -202,6 +215,7 @@ class ServiceScanTypedDict(TypedDict):
     clickhouse_native: NotRequired[ClickHouseNativeTypedDict]
     cmore: NotRequired[CmoreTypedDict]
     coap: NotRequired[CoapTypedDict]
+    comelit_icona: NotRequired[ComelitIconaTypedDict]
     cortex_xdr_p2p: NotRequired[CortexXdrP2PTypedDict]
     crestron_cp3: NotRequired[CrestronCp3TypedDict]
     crestron_din_ap2: NotRequired[CrestronDinAp2TypedDict]
@@ -213,10 +227,12 @@ class ServiceScanTypedDict(TypedDict):
     denon_heos: NotRequired[DenonHeosTypedDict]
     dhcpdiscover: NotRequired[DhcpdiscoverTypedDict]
     dicom: NotRequired[DicomTypedDict]
+    dlt: NotRequired[DltTypedDict]
     dnp3: NotRequired[Dnp3TypedDict]
     dns: NotRequired[DNSTypedDict]
     dotnet_negotiate_stream: NotRequired[DotnetNegotiateStreamTypedDict]
     dtls: NotRequired[DtlsTypedDict]
+    dubbo: NotRequired[DubboTypedDict]
     dvr_ip: NotRequired[DvrIPTypedDict]
     eip: NotRequired[EipTypedDict]
     elasticsearch_transport: NotRequired[ElasticsearchTransportTypedDict]
@@ -226,6 +242,7 @@ class ServiceScanTypedDict(TypedDict):
     ethereum: NotRequired[EthereumTypedDict]
     fins: NotRequired[FinsTypedDict]
     flash_socket_policy: NotRequired[FlashSocketPolicyTypedDict]
+    fourd_server: NotRequired[FourdServerTypedDict]
     fox: NotRequired[FoxTypedDict]
     frps: NotRequired[FrpsTypedDict]
     ftp: NotRequired[FtpTypedDict]
@@ -236,6 +253,7 @@ class ServiceScanTypedDict(TypedDict):
     hajime: NotRequired[HajimeTypedDict]
     hid_vertx: NotRequired[HidVertxTypedDict]
     hikvision: NotRequired[HikvisionTypedDict]
+    hoosat_htnd_grpc: NotRequired[HoosatHtndGrpcTypedDict]
     ibmnje: NotRequired[IbmnjeTypedDict]
     icap: NotRequired[IcapTypedDict]
     iec60870_5_104: NotRequired[Iec608705104TypedDict]
@@ -243,6 +261,7 @@ class ServiceScanTypedDict(TypedDict):
     imap: NotRequired[ImapTypedDict]
     iota: NotRequired[IotaTypedDict]
     ip: NotRequired[str]
+    iperf3: NotRequired[Iperf3TypedDict]
     ipmi: NotRequired[IpmiTypedDict]
     ipp: NotRequired[IppTypedDict]
     is_success: NotRequired[bool]
@@ -250,10 +269,12 @@ class ServiceScanTypedDict(TypedDict):
     iscsi: NotRequired[IscsiTypedDict]
     java_rmi: NotRequired[JavaRmiTypedDict]
     kcodes_netusb: NotRequired[KcodesNetusbTypedDict]
+    knxip: NotRequired[KnxipTypedDict]
     krpc: NotRequired[KrpcTypedDict]
     l2tp: NotRequired[L2TpTypedDict]
     ldap: NotRequired[LdapTypedDict]
     lpd: NotRequired[LpdTypedDict]
+    manticore_sphinxapi: NotRequired[ManticoreSphinxapiTypedDict]
     mavlink: NotRequired[MavlinkTypedDict]
     mdns: NotRequired[MdnsTypedDict]
     melsec: NotRequired[MelsecTypedDict]
@@ -265,6 +286,7 @@ class ServiceScanTypedDict(TypedDict):
     modbus: NotRequired[ModbusTypedDict]
     monero_p2p: NotRequired[MoneroP2PTypedDict]
     mongodb: NotRequired[MongodbTypedDict]
+    mpls_ldp: NotRequired[MplsLdpTypedDict]
     mqtt: NotRequired[MqttTypedDict]
     mssql: NotRequired[MssqlTypedDict]
     murmur: NotRequired[MurmurTypedDict]
@@ -274,6 +296,7 @@ class ServiceScanTypedDict(TypedDict):
     nbd: NotRequired[NbdTypedDict]
     nfs_mountd: NotRequired[NfsMountdTypedDict]
     nmea: NotRequired[NmeaTypedDict]
+    nrpe: NotRequired[NrpeTypedDict]
     ntp: NotRequired[NtpTypedDict]
     ntrip: NotRequired[NtripTypedDict]
     onc: NotRequired[OncTypedDict]
@@ -301,6 +324,7 @@ class ServiceScanTypedDict(TypedDict):
     redis: NotRequired[RedisTypedDict]
     redline: NotRequired[RedlineTypedDict]
     redlion_crimson: NotRequired[RedlionCrimsonTypedDict]
+    redshift: NotRequired[RedshiftTypedDict]
     reolink_baichuan: NotRequired[ReolinkBaichuanTypedDict]
     representative_info: NotRequired[RepresentativeInfoTypedDict]
     rifatron: NotRequired[RifatronTypedDict]
@@ -325,6 +349,7 @@ class ServiceScanTypedDict(TypedDict):
     skinny: NotRequired[SkinnyTypedDict]
     smb: NotRequired[SmbTypedDict]
     smtp: NotRequired[SMTPTypedDict]
+    smux: NotRequired[SmuxTypedDict]
     snmp: NotRequired[SnmpTypedDict]
     socks: NotRequired[SocksTypedDict]
     spice: NotRequired[SpiceTypedDict]
@@ -343,6 +368,7 @@ class ServiceScanTypedDict(TypedDict):
     tls: NotRequired[TLSTypedDict]
     tplink_kasa: NotRequired[TplinkKasaTypedDict]
     transport_protocol: NotRequired[ServiceScanTransportProtocol]
+    tvt_control: NotRequired[TvtControlTypedDict]
     twamp_control: NotRequired[TwampControlTypedDict]
     unitronics_pcom: NotRequired[UnitronicsPcomTypedDict]
     upnp: NotRequired[UpnpTypedDict]
@@ -385,6 +411,8 @@ class ServiceScan(BaseModel):
 
     coap: Optional[Coap] = None
 
+    comelit_icona: Optional[ComelitIcona] = None
+
     cortex_xdr_p2p: Optional[CortexXdrP2P] = None
 
     crestron_cp3: Optional[CrestronCp3] = None
@@ -407,6 +435,8 @@ class ServiceScan(BaseModel):
 
     dicom: Optional[Dicom] = None
 
+    dlt: Optional[Dlt] = None
+
     dnp3: Optional[Dnp3] = None
 
     dns: Optional[DNS] = None
@@ -414,6 +444,8 @@ class ServiceScan(BaseModel):
     dotnet_negotiate_stream: Optional[DotnetNegotiateStream] = None
 
     dtls: Optional[Dtls] = None
+
+    dubbo: Optional[Dubbo] = None
 
     dvr_ip: Optional[DvrIP] = None
 
@@ -432,6 +464,8 @@ class ServiceScan(BaseModel):
     fins: Optional[Fins] = None
 
     flash_socket_policy: Optional[FlashSocketPolicy] = None
+
+    fourd_server: Optional[FourdServer] = None
 
     fox: Optional[Fox] = None
 
@@ -453,6 +487,8 @@ class ServiceScan(BaseModel):
 
     hikvision: Optional[Hikvision] = None
 
+    hoosat_htnd_grpc: Optional[HoosatHtndGrpc] = None
+
     ibmnje: Optional[Ibmnje] = None
 
     icap: Optional[Icap] = None
@@ -466,6 +502,8 @@ class ServiceScan(BaseModel):
     iota: Optional[Iota] = None
 
     ip: Optional[str] = None
+
+    iperf3: Optional[Iperf3] = None
 
     ipmi: Optional[Ipmi] = None
 
@@ -481,6 +519,8 @@ class ServiceScan(BaseModel):
 
     kcodes_netusb: Optional[KcodesNetusb] = None
 
+    knxip: Optional[Knxip] = None
+
     krpc: Optional[Krpc] = None
 
     l2tp: Optional[L2Tp] = None
@@ -488,6 +528,8 @@ class ServiceScan(BaseModel):
     ldap: Optional[Ldap] = None
 
     lpd: Optional[Lpd] = None
+
+    manticore_sphinxapi: Optional[ManticoreSphinxapi] = None
 
     mavlink: Optional[Mavlink] = None
 
@@ -511,6 +553,8 @@ class ServiceScan(BaseModel):
 
     mongodb: Optional[Mongodb] = None
 
+    mpls_ldp: Optional[MplsLdp] = None
+
     mqtt: Optional[Mqtt] = None
 
     mssql: Optional[Mssql] = None
@@ -528,6 +572,8 @@ class ServiceScan(BaseModel):
     nfs_mountd: Optional[NfsMountd] = None
 
     nmea: Optional[Nmea] = None
+
+    nrpe: Optional[Nrpe] = None
 
     ntp: Optional[Ntp] = None
 
@@ -583,6 +629,8 @@ class ServiceScan(BaseModel):
 
     redlion_crimson: Optional[RedlionCrimson] = None
 
+    redshift: Optional[Redshift] = None
+
     reolink_baichuan: Optional[ReolinkBaichuan] = None
 
     representative_info: Optional[RepresentativeInfo] = None
@@ -631,6 +679,8 @@ class ServiceScan(BaseModel):
 
     smtp: Optional[SMTP] = None
 
+    smux: Optional[Smux] = None
+
     snmp: Optional[Snmp] = None
 
     socks: Optional[Socks] = None
@@ -666,6 +716,8 @@ class ServiceScan(BaseModel):
     tplink_kasa: Optional[TplinkKasa] = None
 
     transport_protocol: Optional[ServiceScanTransportProtocol] = None
+
+    tvt_control: Optional[TvtControl] = None
 
     twamp_control: Optional[TwampControl] = None
 
@@ -716,6 +768,7 @@ class ServiceScan(BaseModel):
                 "clickhouse_native",
                 "cmore",
                 "coap",
+                "comelit_icona",
                 "cortex_xdr_p2p",
                 "crestron_cp3",
                 "crestron_din_ap2",
@@ -727,10 +780,12 @@ class ServiceScan(BaseModel):
                 "denon_heos",
                 "dhcpdiscover",
                 "dicom",
+                "dlt",
                 "dnp3",
                 "dns",
                 "dotnet_negotiate_stream",
                 "dtls",
+                "dubbo",
                 "dvr_ip",
                 "eip",
                 "elasticsearch_transport",
@@ -740,6 +795,7 @@ class ServiceScan(BaseModel):
                 "ethereum",
                 "fins",
                 "flash_socket_policy",
+                "fourd_server",
                 "fox",
                 "frps",
                 "ftp",
@@ -750,6 +806,7 @@ class ServiceScan(BaseModel):
                 "hajime",
                 "hid_vertx",
                 "hikvision",
+                "hoosat_htnd_grpc",
                 "ibmnje",
                 "icap",
                 "iec60870_5_104",
@@ -757,6 +814,7 @@ class ServiceScan(BaseModel):
                 "imap",
                 "iota",
                 "ip",
+                "iperf3",
                 "ipmi",
                 "ipp",
                 "is_success",
@@ -764,10 +822,12 @@ class ServiceScan(BaseModel):
                 "iscsi",
                 "java_rmi",
                 "kcodes_netusb",
+                "knxip",
                 "krpc",
                 "l2tp",
                 "ldap",
                 "lpd",
+                "manticore_sphinxapi",
                 "mavlink",
                 "mdns",
                 "melsec",
@@ -779,6 +839,7 @@ class ServiceScan(BaseModel):
                 "modbus",
                 "monero_p2p",
                 "mongodb",
+                "mpls_ldp",
                 "mqtt",
                 "mssql",
                 "murmur",
@@ -788,6 +849,7 @@ class ServiceScan(BaseModel):
                 "nbd",
                 "nfs_mountd",
                 "nmea",
+                "nrpe",
                 "ntp",
                 "ntrip",
                 "onc",
@@ -815,6 +877,7 @@ class ServiceScan(BaseModel):
                 "redis",
                 "redline",
                 "redlion_crimson",
+                "redshift",
                 "reolink_baichuan",
                 "representative_info",
                 "rifatron",
@@ -839,6 +902,7 @@ class ServiceScan(BaseModel):
                 "skinny",
                 "smb",
                 "smtp",
+                "smux",
                 "snmp",
                 "socks",
                 "spice",
@@ -857,6 +921,7 @@ class ServiceScan(BaseModel):
                 "tls",
                 "tplink_kasa",
                 "transport_protocol",
+                "tvt_control",
                 "twamp_control",
                 "unitronics_pcom",
                 "upnp",

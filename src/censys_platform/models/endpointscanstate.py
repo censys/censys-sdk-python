@@ -29,6 +29,7 @@ from .redlionweb import RedlionWeb, RedlionWebTypedDict
 from .scadaview import ScadaView, ScadaViewTypedDict
 from .screenshot import Screenshot, ScreenshotTypedDict
 from .synologydsm import SynologyDsm, SynologyDsmTypedDict
+from .tailscalederp import TailscaleDerp, TailscaleDerpTypedDict
 from .vault import Vault, VaultTypedDict
 from .wordpress import Wordpress, WordpressTypedDict
 from censys_platform import models, utils
@@ -90,6 +91,7 @@ class EndpointScanStateTypedDict(TypedDict):
     scan_time: NotRequired[str]
     screenshots: NotRequired[Nullable[List[ScreenshotTypedDict]]]
     synology_dsm: NotRequired[SynologyDsmTypedDict]
+    tailscale_derp: NotRequired[TailscaleDerpTypedDict]
     transport_protocol: NotRequired[EndpointScanStateTransportProtocol]
     vault: NotRequired[VaultTypedDict]
     wordpress: NotRequired[WordpressTypedDict]
@@ -168,6 +170,8 @@ class EndpointScanState(BaseModel):
 
     synology_dsm: Optional[SynologyDsm] = None
 
+    tailscale_derp: Optional[TailscaleDerp] = None
+
     transport_protocol: Optional[EndpointScanStateTransportProtocol] = None
 
     vault: Optional[Vault] = None
@@ -223,6 +227,7 @@ class EndpointScanState(BaseModel):
                 "scan_time",
                 "screenshots",
                 "synology_dsm",
+                "tailscale_derp",
                 "transport_protocol",
                 "vault",
                 "wordpress",

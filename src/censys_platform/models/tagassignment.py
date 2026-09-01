@@ -26,7 +26,7 @@ class TagAssignmentTypedDict(TypedDict):
     created_at: datetime
     r"""RFC3339 timestamp when the assignment was created."""
     created_by: str
-    r"""The user ID of the user who created the assignment."""
+    r"""The ID of the user or service account that created the assignment."""
     id: str
     r"""The unique ID of the assignment."""
     platform_ref: str
@@ -46,7 +46,7 @@ class TagAssignment(BaseModel):
     r"""RFC3339 timestamp when the assignment was created."""
 
     created_by: str
-    r"""The user ID of the user who created the assignment."""
+    r"""The ID of the user or service account that created the assignment."""
 
     id: str
     r"""The unique ID of the assignment."""

@@ -21,7 +21,7 @@ class TagTypedDict(TypedDict):
     created_at: datetime
     r"""RFC3339 timestamp when the tag was created."""
     created_by: str
-    r"""The user ID of the user who created the tag."""
+    r"""The ID of the user or service account that created the tag."""
     id: str
     r"""The unique ID of the tag."""
     name: str
@@ -39,7 +39,7 @@ class Tag(BaseModel):
     r"""RFC3339 timestamp when the tag was created."""
 
     created_by: str
-    r"""The user ID of the user who created the tag."""
+    r"""The ID of the user or service account that created the tag."""
 
     id: str
     r"""The unique ID of the tag."""

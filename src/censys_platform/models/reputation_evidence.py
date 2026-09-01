@@ -5,6 +5,10 @@ from .reputation_evidence_externalsignal import (
     ReputationEvidenceExternalSignal,
     ReputationEvidenceExternalSignalTypedDict,
 )
+from .reputation_evidence_feature import (
+    ReputationEvidenceFeature,
+    ReputationEvidenceFeatureTypedDict,
+)
 from .reputation_evidence_fieldvalue import (
     ReputationEvidenceFieldValue,
     ReputationEvidenceFieldValueTypedDict,
@@ -34,6 +38,7 @@ class ReputationEvidenceTypedDict(TypedDict):
     external_signals: NotRequired[
         Nullable[List[ReputationEvidenceExternalSignalTypedDict]]
     ]
+    feature: NotRequired[ReputationEvidenceFeatureTypedDict]
     threats: NotRequired[Nullable[List[ReputationEvidenceThreatTypedDict]]]
 
 
@@ -46,6 +51,8 @@ class ReputationEvidence(BaseModel):
 
     external_signals: OptionalNullable[List[ReputationEvidenceExternalSignal]] = UNSET
 
+    feature: Optional[ReputationEvidenceFeature] = None
+
     threats: OptionalNullable[List[ReputationEvidenceThreat]] = UNSET
 
     @model_serializer(mode="wrap")
@@ -56,6 +63,7 @@ class ReputationEvidence(BaseModel):
                 "category",
                 "evidence_score",
                 "external_signals",
+                "feature",
                 "threats",
             ]
         )
