@@ -1,0 +1,10 @@
+# ManticoreSphinxapi
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `release_band`                                                                           | *Optional[str]*                                                                          | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `status`                                                                                 | List[[models.ManticoreSphinxapiStatusEntry](../models/manticoresphinxapistatusentry.md)] | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `status_row_count`                                                                       | *Optional[int]*                                                                          | :heavy_minus_sign:                                                                       | N/A                                                                                      |
