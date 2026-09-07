@@ -1,0 +1,14 @@
+# CnordSecurityCenter
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `events`                                                                       | List[[models.CnordSecurityCenterEvent](../models/cnordsecuritycenterevent.md)] | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `exposed_subscriber_records`                                                   | *Optional[int]*                                                                | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `header_generation`                                                            | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `license`                                                                      | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `observed_frame_kinds`                                                         | List[*str*]                                                                    | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `record_message_types`                                                         | List[*int*]                                                                    | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `station_name`                                                                 | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | N/A                                                                            |
