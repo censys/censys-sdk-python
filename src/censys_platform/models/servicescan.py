@@ -10,11 +10,15 @@ from .asteriskmanagerinterface import (
     AsteriskManagerInterfaceTypedDict,
 )
 from .bacnet import Bacnet, BacnetTypedDict
+from .bluemaxnuttcp import BluemaxNuttcp, BluemaxNuttcpTypedDict
 from .checkpointtopology import CheckpointTopology, CheckpointTopologyTypedDict
 from .chromecast import Chromecast, ChromecastTypedDict
 from .ciscoipsla import CiscoIpsla, CiscoIpslaTypedDict
+from .ciscosdwanvdaemon import CiscoSdwanVdaemon, CiscoSdwanVdaemonTypedDict
+from .clamav import Clamav, ClamavTypedDict
 from .clickhousenative import ClickHouseNative, ClickHouseNativeTypedDict
 from .cmore import Cmore, CmoreTypedDict
+from .cnordsecuritycenter import CnordSecurityCenter, CnordSecurityCenterTypedDict
 from .coap import Coap, CoapTypedDict
 from .comeliticona import ComelitIcona, ComelitIconaTypedDict
 from .cortexxdrp2p import CortexXdrP2P, CortexXdrP2PTypedDict
@@ -52,8 +56,10 @@ from .frps import Frps, FrpsTypedDict
 from .ftp import Ftp, FtpTypedDict
 from .gearman import Gearman, GearmanTypedDict
 from .gemini import Gemini, GeminiTypedDict
+from .geovisionaudio import GeovisionAudio, GeovisionAudioTypedDict
 from .giop import Giop, GiopTypedDict
 from .gopher import Gopher, GopherTypedDict
+from .grilconsole import GrilConsole, GrilConsoleTypedDict
 from .hajime import Hajime, HajimeTypedDict
 from .hidvertx import HidVertx, HidVertxTypedDict
 from .hikvision import Hikvision, HikvisionTypedDict
@@ -75,7 +81,9 @@ from .knxip import Knxip, KnxipTypedDict
 from .krpc import Krpc, KrpcTypedDict
 from .l2tp import L2Tp, L2TpTypedDict
 from .ldap import Ldap, LdapTypedDict
+from .libp2p import Libp2P, Libp2PTypedDict
 from .lpd import Lpd, LpdTypedDict
+from .managesieve import Managesieve, ManagesieveTypedDict
 from .manticoresphinxapi import ManticoreSphinxapi, ManticoreSphinxapiTypedDict
 from .mavlink import Mavlink, MavlinkTypedDict
 from .mdns import Mdns, MdnsTypedDict
@@ -107,10 +115,14 @@ from .opcua import OpcUa, OpcUaTypedDict
 from .openflow import Openflow, OpenflowTypedDict
 from .openvpn import Openvpn, OpenvpnTypedDict
 from .openvpnmgmt import OpenvpnMgmt, OpenvpnMgmtTypedDict
+from .opwfsc3000 import OpwFsc3000, OpwFsc3000TypedDict
 from .oracle import Oracle, OracleTypedDict
+from .orencoatrtu import OrencoAtrtu, OrencoAtrtuTypedDict
+from .otlpgrpc import OtlpGrpc, OtlpGrpcTypedDict
 from .pcanywhere import PcAnywhere, PcAnywhereTypedDict
 from .perforcep4d import PerforceP4D, PerforceP4DTypedDict
 from .pgbouncer import Pgbouncer, PgbouncerTypedDict
+from .pigeonhole import Pigeonhole, PigeonholeTypedDict
 from .pop3 import Pop3, Pop3TypedDict
 from .portmap import Portmap, PortmapTypedDict
 from .postgres import Postgres, PostgresTypedDict
@@ -152,17 +164,21 @@ from .smux import Smux, SmuxTypedDict
 from .snmp import Snmp, SnmpTypedDict
 from .socks import Socks, SocksTypedDict
 from .spice import Spice, SpiceTypedDict
+from .spotifyconnect import SpotifyConnect, SpotifyConnectTypedDict
 from .ssdp import Ssdp, SsdpTypedDict
 from .ssh import SSH, SSHTypedDict
 from .steam import Steam, SteamTypedDict
+from .stomp import Stomp, StompTypedDict
 from .stun import Stun, StunTypedDict
 from .syncthingbep import SyncthingBep, SyncthingBepTypedDict
 from .synergy import Synergy, SynergyTypedDict
 from .tacacsplus import TacacsPlus, TacacsPlusTypedDict
 from .tarantool import Tarantool, TarantoolTypedDict
+from .taurusstb import TaurusStb, TaurusStbTypedDict
 from .teamviewer import TeamViewer, TeamViewerTypedDict
 from .telexpertlxp import TelexperTlxp, TelexperTlxpTypedDict
 from .telnet import Telnet, TelnetTypedDict
+from .thrulay import Thrulay, ThrulayTypedDict
 from .tibia import Tibia, TibiaTypedDict
 from .tls import TLS, TLSTypedDict
 from .tplinkkasa import TplinkKasa, TplinkKasaTypedDict
@@ -170,11 +186,15 @@ from .tvtcontrol import TvtControl, TvtControlTypedDict
 from .twampcontrol import TwampControl, TwampControlTypedDict
 from .unitronicspcom import UnitronicsPcom, UnitronicsPcomTypedDict
 from .upnp import Upnp, UpnpTypedDict
+from .utilinetlpp import UtilinetLpp, UtilinetLppTypedDict
+from .vantageinfusion import VantageInfusion, VantageInfusionTypedDict
 from .ventrilo import Ventrilo, VentriloTypedDict
+from .visionhitechipcam import VisionhitechIpcam, VisionhitechIpcamTypedDict
 from .vnc import Vnc, VncTypedDict
 from .weblogict3 import WeblogicT3, WeblogicT3TypedDict
 from .wincecerdisp import WinceCerdisp, WinceCerdispTypedDict
 from .winrm import Winrm, WinrmTypedDict
+from .wowrealmd import WowRealmd, WowRealmdTypedDict
 from .wsdiscovery import WsDiscovery, WsDiscoveryTypedDict
 from .x11 import X11, X11TypedDict
 from .zeromq import Zeromq, ZeromqTypedDict
@@ -209,11 +229,15 @@ class ServiceScanTypedDict(TypedDict):
     bacnet: NotRequired[BacnetTypedDict]
     banner: NotRequired[str]
     banner_hash_sha256: NotRequired[str]
+    bluemax_nuttcp: NotRequired[BluemaxNuttcpTypedDict]
     checkpoint_topology: NotRequired[CheckpointTopologyTypedDict]
     chromecast: NotRequired[ChromecastTypedDict]
     cisco_ipsla: NotRequired[CiscoIpslaTypedDict]
+    cisco_sdwan_vdaemon: NotRequired[CiscoSdwanVdaemonTypedDict]
+    clamav: NotRequired[ClamavTypedDict]
     clickhouse_native: NotRequired[ClickHouseNativeTypedDict]
     cmore: NotRequired[CmoreTypedDict]
+    cnord_security_center: NotRequired[CnordSecurityCenterTypedDict]
     coap: NotRequired[CoapTypedDict]
     comelit_icona: NotRequired[ComelitIconaTypedDict]
     cortex_xdr_p2p: NotRequired[CortexXdrP2PTypedDict]
@@ -248,8 +272,10 @@ class ServiceScanTypedDict(TypedDict):
     ftp: NotRequired[FtpTypedDict]
     gearman: NotRequired[GearmanTypedDict]
     gemini: NotRequired[GeminiTypedDict]
+    geovision_audio: NotRequired[GeovisionAudioTypedDict]
     giop: NotRequired[GiopTypedDict]
     gopher: NotRequired[GopherTypedDict]
+    gril_console: NotRequired[GrilConsoleTypedDict]
     hajime: NotRequired[HajimeTypedDict]
     hid_vertx: NotRequired[HidVertxTypedDict]
     hikvision: NotRequired[HikvisionTypedDict]
@@ -273,7 +299,9 @@ class ServiceScanTypedDict(TypedDict):
     krpc: NotRequired[KrpcTypedDict]
     l2tp: NotRequired[L2TpTypedDict]
     ldap: NotRequired[LdapTypedDict]
+    libp2p: NotRequired[Libp2PTypedDict]
     lpd: NotRequired[LpdTypedDict]
+    managesieve: NotRequired[ManagesieveTypedDict]
     manticore_sphinxapi: NotRequired[ManticoreSphinxapiTypedDict]
     mavlink: NotRequired[MavlinkTypedDict]
     mdns: NotRequired[MdnsTypedDict]
@@ -305,10 +333,14 @@ class ServiceScanTypedDict(TypedDict):
     openflow: NotRequired[OpenflowTypedDict]
     openvpn: NotRequired[OpenvpnTypedDict]
     openvpn_mgmt: NotRequired[OpenvpnMgmtTypedDict]
+    opw_fsc3000: NotRequired[OpwFsc3000TypedDict]
     oracle: NotRequired[OracleTypedDict]
+    orenco_atrtu: NotRequired[OrencoAtrtuTypedDict]
+    otlp_grpc: NotRequired[OtlpGrpcTypedDict]
     pc_anywhere: NotRequired[PcAnywhereTypedDict]
     perforce_p4d: NotRequired[PerforceP4DTypedDict]
     pgbouncer: NotRequired[PgbouncerTypedDict]
+    pigeonhole: NotRequired[PigeonholeTypedDict]
     pop3: NotRequired[Pop3TypedDict]
     port: NotRequired[int]
     portmap: NotRequired[PortmapTypedDict]
@@ -353,17 +385,21 @@ class ServiceScanTypedDict(TypedDict):
     snmp: NotRequired[SnmpTypedDict]
     socks: NotRequired[SocksTypedDict]
     spice: NotRequired[SpiceTypedDict]
+    spotify_connect: NotRequired[SpotifyConnectTypedDict]
     ssdp: NotRequired[SsdpTypedDict]
     ssh: NotRequired[SSHTypedDict]
     steam: NotRequired[SteamTypedDict]
+    stomp: NotRequired[StompTypedDict]
     stun: NotRequired[StunTypedDict]
     syncthing_bep: NotRequired[SyncthingBepTypedDict]
     synergy: NotRequired[SynergyTypedDict]
     tacacs_plus: NotRequired[TacacsPlusTypedDict]
     tarantool: NotRequired[TarantoolTypedDict]
+    taurus_stb: NotRequired[TaurusStbTypedDict]
     team_viewer: NotRequired[TeamViewerTypedDict]
     telexper_tlxp: NotRequired[TelexperTlxpTypedDict]
     telnet: NotRequired[TelnetTypedDict]
+    thrulay: NotRequired[ThrulayTypedDict]
     tibia: NotRequired[TibiaTypedDict]
     tls: NotRequired[TLSTypedDict]
     tplink_kasa: NotRequired[TplinkKasaTypedDict]
@@ -372,11 +408,15 @@ class ServiceScanTypedDict(TypedDict):
     twamp_control: NotRequired[TwampControlTypedDict]
     unitronics_pcom: NotRequired[UnitronicsPcomTypedDict]
     upnp: NotRequired[UpnpTypedDict]
+    utilinet_lpp: NotRequired[UtilinetLppTypedDict]
+    vantage_infusion: NotRequired[VantageInfusionTypedDict]
     ventrilo: NotRequired[VentriloTypedDict]
+    visionhitech_ipcam: NotRequired[VisionhitechIpcamTypedDict]
     vnc: NotRequired[VncTypedDict]
     weblogic_t3: NotRequired[WeblogicT3TypedDict]
     wince_cerdisp: NotRequired[WinceCerdispTypedDict]
     winrm: NotRequired[WinrmTypedDict]
+    wow_realmd: NotRequired[WowRealmdTypedDict]
     ws_discovery: NotRequired[WsDiscoveryTypedDict]
     x11: NotRequired[X11TypedDict]
     zeromq: NotRequired[ZeromqTypedDict]
@@ -399,15 +439,23 @@ class ServiceScan(BaseModel):
 
     banner_hash_sha256: Optional[str] = None
 
+    bluemax_nuttcp: Optional[BluemaxNuttcp] = None
+
     checkpoint_topology: Optional[CheckpointTopology] = None
 
     chromecast: Optional[Chromecast] = None
 
     cisco_ipsla: Optional[CiscoIpsla] = None
 
+    cisco_sdwan_vdaemon: Optional[CiscoSdwanVdaemon] = None
+
+    clamav: Optional[Clamav] = None
+
     clickhouse_native: Optional[ClickHouseNative] = None
 
     cmore: Optional[Cmore] = None
+
+    cnord_security_center: Optional[CnordSecurityCenter] = None
 
     coap: Optional[Coap] = None
 
@@ -477,9 +525,13 @@ class ServiceScan(BaseModel):
 
     gemini: Optional[Gemini] = None
 
+    geovision_audio: Optional[GeovisionAudio] = None
+
     giop: Optional[Giop] = None
 
     gopher: Optional[Gopher] = None
+
+    gril_console: Optional[GrilConsole] = None
 
     hajime: Optional[Hajime] = None
 
@@ -527,7 +579,11 @@ class ServiceScan(BaseModel):
 
     ldap: Optional[Ldap] = None
 
+    libp2p: Optional[Libp2P] = None
+
     lpd: Optional[Lpd] = None
+
+    managesieve: Optional[Managesieve] = None
 
     manticore_sphinxapi: Optional[ManticoreSphinxapi] = None
 
@@ -591,13 +647,21 @@ class ServiceScan(BaseModel):
 
     openvpn_mgmt: Optional[OpenvpnMgmt] = None
 
+    opw_fsc3000: Optional[OpwFsc3000] = None
+
     oracle: Optional[Oracle] = None
+
+    orenco_atrtu: Optional[OrencoAtrtu] = None
+
+    otlp_grpc: Optional[OtlpGrpc] = None
 
     pc_anywhere: Optional[PcAnywhere] = None
 
     perforce_p4d: Optional[PerforceP4D] = None
 
     pgbouncer: Optional[Pgbouncer] = None
+
+    pigeonhole: Optional[Pigeonhole] = None
 
     pop3: Optional[Pop3] = None
 
@@ -687,11 +751,15 @@ class ServiceScan(BaseModel):
 
     spice: Optional[Spice] = None
 
+    spotify_connect: Optional[SpotifyConnect] = None
+
     ssdp: Optional[Ssdp] = None
 
     ssh: Optional[SSH] = None
 
     steam: Optional[Steam] = None
+
+    stomp: Optional[Stomp] = None
 
     stun: Optional[Stun] = None
 
@@ -703,11 +771,15 @@ class ServiceScan(BaseModel):
 
     tarantool: Optional[Tarantool] = None
 
+    taurus_stb: Optional[TaurusStb] = None
+
     team_viewer: Optional[TeamViewer] = None
 
     telexper_tlxp: Optional[TelexperTlxp] = None
 
     telnet: Optional[Telnet] = None
+
+    thrulay: Optional[Thrulay] = None
 
     tibia: Optional[Tibia] = None
 
@@ -725,7 +797,13 @@ class ServiceScan(BaseModel):
 
     upnp: Optional[Upnp] = None
 
+    utilinet_lpp: Optional[UtilinetLpp] = None
+
+    vantage_infusion: Optional[VantageInfusion] = None
+
     ventrilo: Optional[Ventrilo] = None
+
+    visionhitech_ipcam: Optional[VisionhitechIpcam] = None
 
     vnc: Optional[Vnc] = None
 
@@ -734,6 +812,8 @@ class ServiceScan(BaseModel):
     wince_cerdisp: Optional[WinceCerdisp] = None
 
     winrm: Optional[Winrm] = None
+
+    wow_realmd: Optional[WowRealmd] = None
 
     ws_discovery: Optional[WsDiscovery] = None
 
@@ -762,11 +842,15 @@ class ServiceScan(BaseModel):
                 "bacnet",
                 "banner",
                 "banner_hash_sha256",
+                "bluemax_nuttcp",
                 "checkpoint_topology",
                 "chromecast",
                 "cisco_ipsla",
+                "cisco_sdwan_vdaemon",
+                "clamav",
                 "clickhouse_native",
                 "cmore",
+                "cnord_security_center",
                 "coap",
                 "comelit_icona",
                 "cortex_xdr_p2p",
@@ -801,8 +885,10 @@ class ServiceScan(BaseModel):
                 "ftp",
                 "gearman",
                 "gemini",
+                "geovision_audio",
                 "giop",
                 "gopher",
+                "gril_console",
                 "hajime",
                 "hid_vertx",
                 "hikvision",
@@ -826,7 +912,9 @@ class ServiceScan(BaseModel):
                 "krpc",
                 "l2tp",
                 "ldap",
+                "libp2p",
                 "lpd",
+                "managesieve",
                 "manticore_sphinxapi",
                 "mavlink",
                 "mdns",
@@ -858,10 +946,14 @@ class ServiceScan(BaseModel):
                 "openflow",
                 "openvpn",
                 "openvpn_mgmt",
+                "opw_fsc3000",
                 "oracle",
+                "orenco_atrtu",
+                "otlp_grpc",
                 "pc_anywhere",
                 "perforce_p4d",
                 "pgbouncer",
+                "pigeonhole",
                 "pop3",
                 "port",
                 "portmap",
@@ -906,17 +998,21 @@ class ServiceScan(BaseModel):
                 "snmp",
                 "socks",
                 "spice",
+                "spotify_connect",
                 "ssdp",
                 "ssh",
                 "steam",
+                "stomp",
                 "stun",
                 "syncthing_bep",
                 "synergy",
                 "tacacs_plus",
                 "tarantool",
+                "taurus_stb",
                 "team_viewer",
                 "telexper_tlxp",
                 "telnet",
+                "thrulay",
                 "tibia",
                 "tls",
                 "tplink_kasa",
@@ -925,11 +1021,15 @@ class ServiceScan(BaseModel):
                 "twamp_control",
                 "unitronics_pcom",
                 "upnp",
+                "utilinet_lpp",
+                "vantage_infusion",
                 "ventrilo",
+                "visionhitech_ipcam",
                 "vnc",
                 "weblogic_t3",
                 "wince_cerdisp",
                 "winrm",
+                "wow_realmd",
                 "ws_discovery",
                 "x11",
                 "zeromq",

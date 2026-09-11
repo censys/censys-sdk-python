@@ -16,6 +16,7 @@ from .jupyter import Jupyter, JupyterTypedDict
 from .keycloak import Keycloak, KeycloakTypedDict
 from .kubernetes import Kubernetes, KubernetesTypedDict
 from .mcp import Mcp, McpTypedDict
+from .netflixnrdp import NetflixNrdp, NetflixNrdpTypedDict
 from .nginxproxymanager import NginxProxyManager, NginxProxyManagerTypedDict
 from .ollama import Ollama, OllamaTypedDict
 from .opendirectory import OpenDirectory, OpenDirectoryTypedDict
@@ -76,6 +77,7 @@ class EndpointScanTypedDict(TypedDict):
     keycloak: NotRequired[KeycloakTypedDict]
     kubernetes: NotRequired[KubernetesTypedDict]
     mcp: NotRequired[McpTypedDict]
+    netflix_nrdp: NotRequired[NetflixNrdpTypedDict]
     nginx_proxy_manager: NotRequired[NginxProxyManagerTypedDict]
     ollama: NotRequired[OllamaTypedDict]
     open_directory: NotRequired[OpenDirectoryTypedDict]
@@ -140,6 +142,8 @@ class EndpointScan(BaseModel):
     kubernetes: Optional[Kubernetes] = None
 
     mcp: Optional[Mcp] = None
+
+    netflix_nrdp: Optional[NetflixNrdp] = None
 
     nginx_proxy_manager: Optional[NginxProxyManager] = None
 
@@ -215,6 +219,7 @@ class EndpointScan(BaseModel):
                 "keycloak",
                 "kubernetes",
                 "mcp",
+                "netflix_nrdp",
                 "nginx_proxy_manager",
                 "ollama",
                 "open_directory",
