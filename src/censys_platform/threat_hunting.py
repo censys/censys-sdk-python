@@ -935,7 +935,7 @@ class ThreatHunting(BaseSDK):
     ) -> models.V3ThreathuntingGetHostObservationsWithCertificateResponse:
         r"""Get host history for a certificate
 
-        Retrieve the historical observations of hosts associated with a certificate. This is useful for threat hunting, detection engineering, and timeline generation. Certificate history is also visible to Adversary Investigation users in the Platform UI on the [certificate timeline](https://docs.censys.com/docs/platform-threat-hunting-use-cert-history-to-build-better-detections#/).<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account. You may also filter results by port and transport protocol.<br><br>This endpoint is available to organizations that have access to the Adversary Investigation module. It costs 5 credits per page of results.
+        Retrieve the historical observations of hosts associated with a certificate. This is useful for threat hunting, detection engineering, and timeline generation. Certificate history is also visible to Adversary Investigation users in the Platform UI on the [certificate timeline](https://docs.censys.com/docs/platform-threat-hunting-use-cert-history-to-build-better-detections#/).<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account.<br><br>For workspaces with a history limit, the API returns observation ranges that overlap the allowed history window. The window starts at 00:00 UTC the allowed number of days ago and ends at the time of the request. Ranges are returned in full, with their original start and end times, even if they extend outside the window.<br><br>You may also filter results by port and transport protocol.<br><br>This endpoint is available to organizations that have access to the Adversary Investigation module. This endpoint costs one credit per page of results.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1048,7 +1048,7 @@ class ThreatHunting(BaseSDK):
     ) -> models.V3ThreathuntingGetHostObservationsWithCertificateResponse:
         r"""Get host history for a certificate
 
-        Retrieve the historical observations of hosts associated with a certificate. This is useful for threat hunting, detection engineering, and timeline generation. Certificate history is also visible to Adversary Investigation users in the Platform UI on the [certificate timeline](https://docs.censys.com/docs/platform-threat-hunting-use-cert-history-to-build-better-detections#/).<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account. You may also filter results by port and transport protocol.<br><br>This endpoint is available to organizations that have access to the Adversary Investigation module. It costs 5 credits per page of results.
+        Retrieve the historical observations of hosts associated with a certificate. This is useful for threat hunting, detection engineering, and timeline generation. Certificate history is also visible to Adversary Investigation users in the Platform UI on the [certificate timeline](https://docs.censys.com/docs/platform-threat-hunting-use-cert-history-to-build-better-detections#/).<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account.<br><br>For workspaces with a history limit, the API returns observation ranges that overlap the allowed history window. The window starts at 00:00 UTC the allowed number of days ago and ends at the time of the request. Ranges are returned in full, with their original start and end times, even if they extend outside the window.<br><br>You may also filter results by port and transport protocol.<br><br>This endpoint is available to organizations that have access to the Adversary Investigation module. This endpoint costs one credit per page of results.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1132,6 +1132,1382 @@ class ThreatHunting(BaseSDK):
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
             http_res, ["400", "403", "404"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def create_investigation_file_upload(
+        self,
+        *,
+        create_investigation_file_input_body: Union[
+            models.CreateInvestigationFileInputBody,
+            models.CreateInvestigationFileInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsFilesCreateResponse:
+        r"""Investigations: Create file upload
+
+        Prepare to attach an evidence file to an investigation. This endpoint does not accept the file. It returns a URL to send the file to and an identifier to pass to the [create job endpoint](https://docs.censys.com/reference/v3-threathunting-investigations-jobs-create) afterwards.<br><br>Upload the file with an HTTP PUT to `upload_url` and send `upload_headers` exactly as returned by this endpoint. The URL grants access to that one file and stops working at `expire_time`; a file uploaded before that stays usable afterwards. Prepare one upload per file.<br><br>Start the investigation promptly after uploading. There is a limit on how many uploaded files you may hold without using them and starting an investigation from a file releases its slot. A file that no investigation references is discarded once it passes the service's retention window for unused uploads. A file an investigation does reference is kept with that investigation for as long as the investigation itself.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param create_investigation_file_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsFilesCreateRequest(
+            organization_id=organization_id,
+            create_investigation_file_input_body=utils.get_pydantic_model(
+                create_investigation_file_input_body,
+                models.CreateInvestigationFileInputBody,
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/threat-hunting/investigations/files",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsFilesCreateGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.create_investigation_file_input_body,
+                False,
+                False,
+                "json",
+                models.CreateInvestigationFileInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-files-create",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsFilesCreateResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationFileUpload, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "413", "422", "429"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def create_investigation_file_upload_async(
+        self,
+        *,
+        create_investigation_file_input_body: Union[
+            models.CreateInvestigationFileInputBody,
+            models.CreateInvestigationFileInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsFilesCreateResponse:
+        r"""Investigations: Create file upload
+
+        Prepare to attach an evidence file to an investigation. This endpoint does not accept the file. It returns a URL to send the file to and an identifier to pass to the [create job endpoint](https://docs.censys.com/reference/v3-threathunting-investigations-jobs-create) afterwards.<br><br>Upload the file with an HTTP PUT to `upload_url` and send `upload_headers` exactly as returned by this endpoint. The URL grants access to that one file and stops working at `expire_time`; a file uploaded before that stays usable afterwards. Prepare one upload per file.<br><br>Start the investigation promptly after uploading. There is a limit on how many uploaded files you may hold without using them and starting an investigation from a file releases its slot. A file that no investigation references is discarded once it passes the service's retention window for unused uploads. A file an investigation does reference is kept with that investigation for as long as the investigation itself.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param create_investigation_file_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsFilesCreateRequest(
+            organization_id=organization_id,
+            create_investigation_file_input_body=utils.get_pydantic_model(
+                create_investigation_file_input_body,
+                models.CreateInvestigationFileInputBody,
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/threat-hunting/investigations/files",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsFilesCreateGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.create_investigation_file_input_body,
+                False,
+                False,
+                "json",
+                models.CreateInvestigationFileInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-files-create",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsFilesCreateResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationFileUpload, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "413", "422", "429"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def list_investigation_jobs(
+        self,
+        *,
+        organization_id: Optional[str] = None,
+        page_size: Optional[int] = 50,
+        page_token: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsListResponse:
+        r"""Investigations: List jobs
+
+        List the AI investigations you have started. The most recent investigations are listed first and only investigations that have not passed their retention period are shown. Results are paginated and include investigations started in the Platform UI as well as through the API.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param page_size: Number of investigations to return per page. Zero or omitted returns at most 50; values above 200 are reduced to 200.
+        :param page_token: Pagination token from the next_page_token of a previous response. Omit it to start from the first page.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsListRequest(
+            organization_id=organization_id,
+            page_size=page_size,
+            page_token=page_token,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/threat-hunting/investigations/jobs",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsListGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-list",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsJobsListResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationJobsList, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_investigation_jobs_async(
+        self,
+        *,
+        organization_id: Optional[str] = None,
+        page_size: Optional[int] = 50,
+        page_token: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsListResponse:
+        r"""Investigations: List jobs
+
+        List the AI investigations you have started. The most recent investigations are listed first and only investigations that have not passed their retention period are shown. Results are paginated and include investigations started in the Platform UI as well as through the API.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param page_size: Number of investigations to return per page. Zero or omitted returns at most 50; values above 200 are reduced to 200.
+        :param page_token: Pagination token from the next_page_token of a previous response. Omit it to start from the first page.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsListRequest(
+            organization_id=organization_id,
+            page_size=page_size,
+            page_token=page_token,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/threat-hunting/investigations/jobs",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsListGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-list",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsJobsListResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationJobsList, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def create_investigation_job(
+        self,
+        *,
+        create_investigation_job_input_body: Union[
+            models.CreateInvestigationJobInputBody,
+            models.CreateInvestigationJobInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsCreateResponse:
+        r"""Investigations: Create job
+
+        Start an [AI investigation](https://docs.censys.com/docs/platform-ai-investigations) from a set of indicators, a set of previously uploaded evidence files, or both. Supply at least one `indicators` or `file_ids`. To use files, upload them first with the [create file upload endpoint](https://docs.censys.com/reference/v3-threathunting-investigations-files-create).<br><br>This endpoint returns a `job_id` that you can poll to retrieve its status and results.<br><br>Provide `start_time` and `end_time` to scope the investigation to a time frame, or `start_time` alone to scope it from that time up to now. Omit both to investigate current data.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.
+
+        :param create_investigation_job_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsCreateRequest(
+            organization_id=organization_id,
+            create_investigation_job_input_body=utils.get_pydantic_model(
+                create_investigation_job_input_body,
+                models.CreateInvestigationJobInputBody,
+            ),
+        )
+
+        req = self._build_request(
+            method="POST",
+            path="/v3/threat-hunting/investigations/jobs",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsCreateGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.create_investigation_job_input_body,
+                False,
+                False,
+                "json",
+                models.CreateInvestigationJobInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-create",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "202", "application/json"):
+            return models.V3ThreathuntingInvestigationsJobsCreateResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeCreatedInvestigationJob, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "413", "422", "429"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def create_investigation_job_async(
+        self,
+        *,
+        create_investigation_job_input_body: Union[
+            models.CreateInvestigationJobInputBody,
+            models.CreateInvestigationJobInputBodyTypedDict,
+        ],
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsCreateResponse:
+        r"""Investigations: Create job
+
+        Start an [AI investigation](https://docs.censys.com/docs/platform-ai-investigations) from a set of indicators, a set of previously uploaded evidence files, or both. Supply at least one `indicators` or `file_ids`. To use files, upload them first with the [create file upload endpoint](https://docs.censys.com/reference/v3-threathunting-investigations-files-create).<br><br>This endpoint returns a `job_id` that you can poll to retrieve its status and results.<br><br>Provide `start_time` and `end_time` to scope the investigation to a time frame, or `start_time` alone to scope it from that time up to now. Omit both to investigate current data.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.
+
+        :param create_investigation_job_input_body:
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsCreateRequest(
+            organization_id=organization_id,
+            create_investigation_job_input_body=utils.get_pydantic_model(
+                create_investigation_job_input_body,
+                models.CreateInvestigationJobInputBody,
+            ),
+        )
+
+        req = self._build_request_async(
+            method="POST",
+            path="/v3/threat-hunting/investigations/jobs",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsCreateGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.create_investigation_job_input_body,
+                False,
+                False,
+                "json",
+                models.CreateInvestigationJobInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-create",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "202", "application/json"):
+            return models.V3ThreathuntingInvestigationsJobsCreateResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeCreatedInvestigationJob, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "413", "422", "429"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def get_investigation_job(
+        self,
+        *,
+        job_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsGetResponse:
+        r"""Investigations: Get job status
+
+        Retrieve the status of one AI investigation. Poll this endpoint until the investigation is completed, then download its report and evidence.<br><br>An investigation that does not exist, belongs to another user, or has passed its retention window will return a “not found” response.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param job_id: The unique identifier of the investigation.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsGetRequest(
+            organization_id=organization_id,
+            job_id=job_id,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/threat-hunting/investigations/jobs/{job_id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-get",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsJobsGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationJob, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def get_investigation_job_async(
+        self,
+        *,
+        job_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsGetResponse:
+        r"""Investigations: Get job status
+
+        Retrieve the status of one AI investigation. Poll this endpoint until the investigation is completed, then download its report and evidence.<br><br>An investigation that does not exist, belongs to another user, or has passed its retention window will return a “not found” response.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param job_id: The unique identifier of the investigation.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsGetRequest(
+            organization_id=organization_id,
+            job_id=job_id,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/threat-hunting/investigations/jobs/{job_id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-get",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsJobsGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationJob, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def get_investigation_job_results(
+        self,
+        *,
+        job_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsResultsResponse:
+        r"""Investigations: Get job results
+
+        Download the ZIP archive that contains a completed AI investigation's report and evidence. You can only retrieve the job results for an investigation you started. The archive is composed when you request it and is never stored.<br><br>Investigations that did not publish any findings or have passed their retention windows will return a “not found” response.<br><br>If an investigation’s ZIP archive is larger than 20 megabytes, you will receive a “payload too large” response. You can only retrieve the results for investigations that exceed this size limit within the Platform UI.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param job_id: The unique identifier of the investigation.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsResultsRequest(
+            organization_id=organization_id,
+            job_id=job_id,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/threat-hunting/investigations/jobs/{job_id}/results",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/zip",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsResultsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-results",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            stream=True,
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/zip"):
+            return models.V3ThreathuntingInvestigationsJobsResultsResponse(
+                result=http_res, headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            http_res_text = utils.stream_to_text(http_res)
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res, http_res_text
+            )
+            raise models.AuthenticationError(response_data, http_res, http_res_text)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "413", "422"], "application/problem+json"
+        ):
+            http_res_text = utils.stream_to_text(http_res)
+            response_data = unmarshal_json_response(
+                models.ErrorModelData, http_res, http_res_text
+            )
+            raise models.ErrorModel(response_data, http_res, http_res_text)
+        if utils.match_response(
+            http_res, ["500", "503", "504"], "application/problem+json"
+        ):
+            http_res_text = utils.stream_to_text(http_res)
+            response_data = unmarshal_json_response(
+                models.ErrorModelData, http_res, http_res_text
+            )
+            raise models.ErrorModel(response_data, http_res, http_res_text)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        http_res_text = utils.stream_to_text(http_res)
+        raise models.SDKError("Unexpected response received", http_res, http_res_text)
+
+    async def get_investigation_job_results_async(
+        self,
+        *,
+        job_id: str,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsJobsResultsResponse:
+        r"""Investigations: Get job results
+
+        Download the ZIP archive that contains a completed AI investigation's report and evidence. You can only retrieve the job results for an investigation you started. The archive is composed when you request it and is never stored.<br><br>Investigations that did not publish any findings or have passed their retention windows will return a “not found” response.<br><br>If an investigation’s ZIP archive is larger than 20 megabytes, you will receive a “payload too large” response. You can only retrieve the results for investigations that exceed this size limit within the Platform UI.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param job_id: The unique identifier of the investigation.
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsJobsResultsRequest(
+            organization_id=organization_id,
+            job_id=job_id,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/threat-hunting/investigations/jobs/{job_id}/results",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/zip",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsJobsResultsGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-jobs-results",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            stream=True,
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/zip"):
+            return models.V3ThreathuntingInvestigationsJobsResultsResponse(
+                result=http_res, headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res, http_res_text
+            )
+            raise models.AuthenticationError(response_data, http_res, http_res_text)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "413", "422"], "application/problem+json"
+        ):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            response_data = unmarshal_json_response(
+                models.ErrorModelData, http_res, http_res_text
+            )
+            raise models.ErrorModel(response_data, http_res, http_res_text)
+        if utils.match_response(
+            http_res, ["500", "503", "504"], "application/problem+json"
+        ):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            response_data = unmarshal_json_response(
+                models.ErrorModelData, http_res, http_res_text
+            )
+            raise models.ErrorModel(response_data, http_res, http_res_text)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        http_res_text = await utils.stream_to_text_async(http_res)
+        raise models.SDKError("Unexpected response received", http_res, http_res_text)
+
+    def get_investigation_usage(
+        self,
+        *,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsUsageGetResponse:
+        r"""Investigations: Get usage
+
+        Retrieve your organization's investigation limit, current usage, and the number of remaining investigations.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsUsageGetRequest(
+            organization_id=organization_id,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v3/threat-hunting/investigations/usage",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsUsageGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-usage-get",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsUsageGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationUsage, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def get_investigation_usage_async(
+        self,
+        *,
+        organization_id: Optional[str] = None,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3ThreathuntingInvestigationsUsageGetResponse:
+        r"""Investigations: Get usage
+
+        Retrieve your organization's investigation limit, current usage, and the number of remaining investigations.<br><br>To use this endpoint, your organization must have access to the Adversary Investigation module.<br><br>This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3ThreathuntingInvestigationsUsageGetRequest(
+            organization_id=organization_id,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v3/threat-hunting/investigations/usage",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=False,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            _globals=models.V3ThreathuntingInvestigationsUsageGetGlobals(
+                organization_id=self.sdk_configuration.globals.organization_id,
+            ),
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-threathunting-investigations-usage-get",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Threat Hunting", "Adversary Investigation"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.V3ThreathuntingInvestigationsUsageGetResponse(
+                result=unmarshal_json_response(
+                    models.ResponseEnvelopeInvestigationUsage, http_res
+                ),
+                headers=utils.get_response_headers(http_res.headers),
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "409", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
