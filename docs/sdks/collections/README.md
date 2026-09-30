@@ -28,7 +28,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -77,7 +77,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -125,7 +125,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -169,7 +169,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -213,7 +213,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -263,7 +263,7 @@ from censys_platform.utils import parse_datetime
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -312,7 +312,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -361,7 +361,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 

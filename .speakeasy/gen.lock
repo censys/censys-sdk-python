@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 5d46a1406f29da848476aa2c9a77061e
-  docVersion: 1.0.129
-  speakeasyVersion: 1.796.4
-  generationVersion: 2.935.1
-  releaseVersion: 0.16.2
-  configChecksum: ba2674a3bb344d4c67002ccb2982ea2d
+  docChecksum: e46878a3d0c25e5962ab3ddce85421b5
+  docVersion: 1.0.142
+  speakeasyVersion: 1.799.0
+  generationVersion: 2.941.0
+  releaseVersion: 0.16.3
+  configChecksum: 2982380ecb248570f8b7765136d131fb
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: 9fb62cb5-bf18-4f48-a5bd-58a0bb4930ac
-  pristine_commit_hash: 07867d6666ed0ee1d62efd1e93d09ba25c435826
-  pristine_tree_hash: 213286eaf86498876ef6a06e1f7b66e725bccb71
+  generation_id: 7ff2849a-eb98-47a6-a73c-e43a54b4eca3
+  pristine_commit_hash: e1031742a68d6f1da1db889aafe714ffbd227c93
+  pristine_tree_hash: 3cf7ae1f89fa488d37e0a4c30c13f808fa5e592e
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.1.0
-    constsAndDefaults: 1.0.7
+    constsAndDefaults: 1.0.8
     core: 6.1.2
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
@@ -38,7 +38,7 @@ features:
     responseFormat: 1.1.0
     retries: 3.1.2
     sdkHooks: 1.3.0
-    unions: 3.1.9
+    unions: 3.1.10
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -50,8 +50,8 @@ trackedFiles:
     pristine_git_object: 8d79f0abb72526f1fb34a4c03e5bba612c6ba2ae
   USAGE.md:
     id: 3aed33ce6e6f
-    last_write_checksum: sha1:1347572bf52178b0340fd655a9d6ea679d27dbac
-    pristine_git_object: eeda7fce468c8a378e57d7122c13b2828224c7db
+    last_write_checksum: sha1:6402b39ab6d760930ef2916d4eb73c8d6afea420
+    pristine_git_object: 4b24becf054bd5bb2ed2d1b0c54afaf9caef200f
   docs/models/activemq.md:
     id: de45f7081011
     last_write_checksum: sha1:202fb2e27deeac3b528a34596d42fdca188b11b0
@@ -408,6 +408,10 @@ trackedFiles:
     id: 1357414e5140
     last_write_checksum: sha1:7de276c48da998f80b49eaca675b9a13da2b9c9a
     pristine_git_object: fed00cb738fb3d73a9a7fa7bc953fa46db061db1
+  docs/models/contenttype.md:
+    id: 78e9266f4216
+    last_write_checksum: sha1:0e4c5126962a78b33a3d6e99424109062d1c895e
+    pristine_git_object: eb39df021175a34484272c94651bc1d72c0387d2
   docs/models/convertqueryerror.md:
     id: 852bd2096be1
     last_write_checksum: sha1:ebb12c040c3afe1318a4e7a487a4861652d43bd7
@@ -440,6 +444,22 @@ trackedFiles:
     id: dd575407cb21
     last_write_checksum: sha1:5de366ede0776a5a337bdfcb91fab4e997d9c7ba
     pristine_git_object: ee7dfba8ae63ff055ed6063b5fb7f2328cc6c46a
+  docs/models/createdinvestigationjob.md:
+    id: dbf5a412ce85
+    last_write_checksum: sha1:826145958450c83c729ed65373af584fb18d3c34
+    pristine_git_object: e9962cc9aa862fe6b552ae0ed666cacbbc68b2c9
+  docs/models/createdinvestigationjobstate.md:
+    id: b1a1fb53c8d7
+    last_write_checksum: sha1:3a531554f6d1b5e27edfe72415936e49ff0bd481
+    pristine_git_object: 10832eb04abe1f739a1c237ea6be6e64960d1d5e
+  docs/models/createinvestigationfileinputbody.md:
+    id: 79988cb278f1
+    last_write_checksum: sha1:ba181693f3d26528ac8e291461d5abd34fd557b4
+    pristine_git_object: 52a39c4051c79c5ce46540808b93c0e902c8ff73
+  docs/models/createinvestigationjobinputbody.md:
+    id: 66c62106c5f4
+    last_write_checksum: sha1:6dbd7a82b868956835ca9f3f4dceb090353a0546
+    pristine_git_object: 4f70cb709f7a4cb2f56eccc07e4e4c34c442a117
   docs/models/createtagassignmentinputbody.md:
     id: 2e681fb1b818
     last_write_checksum: sha1:1d71382ceac5664bccf73d12be521c625b14c02d
@@ -1244,6 +1264,26 @@ trackedFiles:
     id: 9c173b87f41f
     last_write_checksum: sha1:a7f2f603c47d35cbf2968fdf32959ec10eed968b
     pristine_git_object: e8d51716594fcc2d0f55bd3e4785ef9a1380697c
+  docs/models/investigationfileupload.md:
+    id: bd4026d93588
+    last_write_checksum: sha1:14178bbc5c52ea9124d2204a4323617597210d15
+    pristine_git_object: b6dd82cd581e51331e414658481b87a70459bbe3
+  docs/models/investigationjob.md:
+    id: 0a92f6184353
+    last_write_checksum: sha1:c71013bb101235aa6e5cb2941d369574d88d0a43
+    pristine_git_object: 3d139a5c1d0e2f126380454d612b0fb5a28d42a3
+  docs/models/investigationjobslist.md:
+    id: f010fc779098
+    last_write_checksum: sha1:772c2390d2c1cd9803c726d29f7575011e855222
+    pristine_git_object: 6e51e6fed48f41e22350cb8f5a52b370905c44a8
+  docs/models/investigationjobstate.md:
+    id: 707cd28c991f
+    last_write_checksum: sha1:763449eba8ddc39e1f36ba4c99359c08d7b98ee6
+    pristine_git_object: 8a18e5de7a586e1bd1ff42db1f23acdc746ac34d
+  docs/models/investigationusage.md:
+    id: d7de23216da9
+    last_write_checksum: sha1:e9e04b32937a8f639c5fa9a9918ac2e276e66ad6
+    pristine_git_object: 2b6c1a8c317f8156e58be5deb90bc76b37c02316
   docs/models/invitememberinputbody.md:
     id: 8032644ab5a1
     last_write_checksum: sha1:b0e6ed8c565ff70dc039371826d7aa03ab632691
@@ -2388,6 +2428,10 @@ trackedFiles:
     id: 7cd3bf8e949b
     last_write_checksum: sha1:ec826001a6e305036b395c57a3923bf750af9e14
     pristine_git_object: a8f3ef9b8630276388d5fc8d2450d437bfa5da34
+  docs/models/responseenvelopecreatedinvestigationjob.md:
+    id: 9cffb5ccce41
+    last_write_checksum: sha1:361789c8747c07236dea41065a53d721e46d680c
+    pristine_git_object: c66355ad0fdf9364e9bbab41465aef47fd44561d
   docs/models/responseenvelopecreditusagereport.md:
     id: f5500feb1c05
     last_write_checksum: sha1:fe33585e2d3be564e785daa9df02908f3476fa1f
@@ -2424,6 +2468,22 @@ trackedFiles:
     id: c24814fd4931
     last_write_checksum: sha1:7d806f383bc35c321e77c0afe786e0b1297a2c18
     pristine_git_object: a877aa7239b16356c7e41e4c73c1c52b453f5878
+  docs/models/responseenvelopeinvestigationfileupload.md:
+    id: bddc7ca30303
+    last_write_checksum: sha1:de4630ffc7d3b2767f34a97d4a0aafa70e776825
+    pristine_git_object: 7f77ae979a0af0f9838468f5e7c89e8bd1cad0c8
+  docs/models/responseenvelopeinvestigationjob.md:
+    id: 42d5f2fc0d6c
+    last_write_checksum: sha1:23ededdbf8d19602fcf1b5340de66f9b1ad12ed7
+    pristine_git_object: 884a17a0ec53e2c96ab9db84000c723c43f3d55c
+  docs/models/responseenvelopeinvestigationjobslist.md:
+    id: 4819459cb0ed
+    last_write_checksum: sha1:fcc5752d5fb96dbd39920bc8be6e7a7e39b374cb
+    pristine_git_object: b9d18d414e9ef25061500457354538492ba55adb
+  docs/models/responseenvelopeinvestigationusage.md:
+    id: 43935361f301
+    last_write_checksum: sha1:c5fcc7103084cbad27d792f0050705c661568658
+    pristine_git_object: 385f49c4a06ea831989c8f55b634aa81b464b1be
   docs/models/responseenvelopelistcertificateasset.md:
     id: 1b5381034a4a
     last_write_checksum: sha1:f0ee9123db409e5a50f01439e0710974dc6472f6
@@ -4032,6 +4092,78 @@ trackedFiles:
     id: 8fdd4bed8ffe
     last_write_checksum: sha1:b85a42bd7d1545dae9c3de1742603d1bc9869a79
     pristine_git_object: ecba01585e53ad66b1dad78d0e43f0bcacfa5da8
+  docs/models/v3threathuntinginvestigationsfilescreateglobals.md:
+    id: b0613cfd3f4e
+    last_write_checksum: sha1:dffa22d7c420847f64f1c29ded006c8084b2971a
+    pristine_git_object: 401e773b5c4503dc2bf6fad6862424cb83a52c81
+  docs/models/v3threathuntinginvestigationsfilescreaterequest.md:
+    id: 8e7928c75cf3
+    last_write_checksum: sha1:a3c23b624cfe5515fc5abe3036afd15bc5c6cb7c
+    pristine_git_object: 16af7ada5d0516c02ba598f5ac9bc3c94bb02782
+  docs/models/v3threathuntinginvestigationsfilescreateresponse.md:
+    id: 1af0d18abacf
+    last_write_checksum: sha1:0e0a9387ab2cda7d06707a0e7469631730a6c78c
+    pristine_git_object: a2521e38301152b0f66ec59a17d1966da59f3636
+  docs/models/v3threathuntinginvestigationsjobscreateglobals.md:
+    id: ec21bab5788e
+    last_write_checksum: sha1:80a6c5e72fc17fbde07a0bafc84d1997e983e27b
+    pristine_git_object: 47f7029de7d8a7de6304cee8edabbf6d0c5c39df
+  docs/models/v3threathuntinginvestigationsjobscreaterequest.md:
+    id: e19b98bbac24
+    last_write_checksum: sha1:a8c697c4893de48effd94f2256609384de8432a0
+    pristine_git_object: 9e520e0770b93d4afdd9d34b97ea8091f5b8d81f
+  docs/models/v3threathuntinginvestigationsjobscreateresponse.md:
+    id: 08e56c25c5e6
+    last_write_checksum: sha1:b73148192ca55ac1c7428be90e7e589d48b8f7c7
+    pristine_git_object: df741e08b71bb2563294293b93f4739e3aadc16d
+  docs/models/v3threathuntinginvestigationsjobsgetglobals.md:
+    id: becf5cae5656
+    last_write_checksum: sha1:cb4120241ea8319f24e34157a9d1e0882f08ae73
+    pristine_git_object: dbff16ff0b146ce364eeb7c4bee4894afb153abe
+  docs/models/v3threathuntinginvestigationsjobsgetrequest.md:
+    id: bdfaa2e96dfc
+    last_write_checksum: sha1:77601eaf0b0e0f2ab3bd5f30e976bae40b7aee32
+    pristine_git_object: bedaaf61bcba522b6bae846a8e212bc8a11f64dd
+  docs/models/v3threathuntinginvestigationsjobsgetresponse.md:
+    id: "229128847963"
+    last_write_checksum: sha1:b8a9eda1d88052b2192cb5dabdf385a3706632a3
+    pristine_git_object: 29f5c11e2308d3ca07dbe6e89c5f557fe19fa7a6
+  docs/models/v3threathuntinginvestigationsjobslistglobals.md:
+    id: d958a44a11b6
+    last_write_checksum: sha1:ee0ab1935be55a101e44c2a6110083aa056315ac
+    pristine_git_object: 61b93cb8357627c394f0e263b3349cb706817523
+  docs/models/v3threathuntinginvestigationsjobslistrequest.md:
+    id: 2b6f37c5265f
+    last_write_checksum: sha1:e93f55cf167ae5e5713b19e45274dc4850a2ae69
+    pristine_git_object: bf59cadf64c7854b690a735f93a048f75ae09c6b
+  docs/models/v3threathuntinginvestigationsjobslistresponse.md:
+    id: b18cf3feba28
+    last_write_checksum: sha1:eda7bc57ddce5c6dbb3b2cf87e06a97f2be3ac9b
+    pristine_git_object: 19eca33e56157edc20a1873450c01798fd277996
+  docs/models/v3threathuntinginvestigationsjobsresultsglobals.md:
+    id: 08bb12b59bda
+    last_write_checksum: sha1:964123941856e256d5534126ac102180bc9fcb83
+    pristine_git_object: 60c494c511f80ba2bc6677729fe22c81a5d8963a
+  docs/models/v3threathuntinginvestigationsjobsresultsrequest.md:
+    id: fd89a6cabf04
+    last_write_checksum: sha1:78d53bc7bc91e9304aad996ef726923e28ad3390
+    pristine_git_object: ea73a370bc9d4ed4329633f610578b9081aa0748
+  docs/models/v3threathuntinginvestigationsjobsresultsresponse.md:
+    id: 75fa56b4e5ec
+    last_write_checksum: sha1:1075d9fdf35e547b99523eab46915fb56d19553c
+    pristine_git_object: 370ed88c85a2768163f0a4c82cb22e89de7d5c23
+  docs/models/v3threathuntinginvestigationsusagegetglobals.md:
+    id: 612c049caa8e
+    last_write_checksum: sha1:9216bfaa31b835343baab31dc34dc59cfa55a2ed
+    pristine_git_object: e5d1806693eea5e0cb329adddbb4d9b4eddecb3c
+  docs/models/v3threathuntinginvestigationsusagegetrequest.md:
+    id: 06cac79610a3
+    last_write_checksum: sha1:d42413434e71875a05218161a32fadd308c2bfe4
+    pristine_git_object: 4fee7c9a8c0f1b0ccc6aac609a88852751bc3c2b
+  docs/models/v3threathuntinginvestigationsusagegetresponse.md:
+    id: 5aa1454dec98
+    last_write_checksum: sha1:ed2488de798382e282d4b0203fb07095660c689f
+    pristine_git_object: ed20ed145f8b31a6abbad108dda10a092097ed15
   docs/models/v3threathuntingscansdiscoveryglobals.md:
     id: 6a92560bec0e
     last_write_checksum: sha1:d0d2b694eee25366f469ff577800a41753b299cd
@@ -4250,24 +4382,24 @@ trackedFiles:
     pristine_git_object: 7d5aff9b18d011a6e257e53d83c88d8d47a4e4d8
   docs/sdks/adversaryinvestigation/README.md:
     id: 2dce02963bd0
-    last_write_checksum: sha1:3c18df44d53ca47f54ead4f884cd8b2120d28c5d
-    pristine_git_object: d144d8d10b57206ca0d68984925bea0fadafa5e5
+    last_write_checksum: sha1:8ee8809d61b7abf033b3d94e429be4399e04979d
+    pristine_git_object: 99bd5e7fe259ab29164471638a222ece9ea4d6c0
   docs/sdks/collections/README.md:
     id: 7985e64efccf
-    last_write_checksum: sha1:1ba3f5a096d125f3ee3d8f9e90b806efd6ee57ae
-    pristine_git_object: 7c00028bb7ac927b2a2a51c23903759c44d6207c
+    last_write_checksum: sha1:10cf831ec0bf1d339b9c538a83940fc3d8fcc468
+    pristine_git_object: 8e594571c3239dac34bff0dde09e76d472baafdc
   docs/sdks/globaldata/README.md:
     id: 0c68886632e6
-    last_write_checksum: sha1:c6e5fb19bc9c93678901ea8327044fcf041e28a8
-    pristine_git_object: 4a61b053515ebea6064242dc6f5fadbc84701570
+    last_write_checksum: sha1:ac6430361bd1bb6ce5fe120df254aef1a6508bc9
+    pristine_git_object: 9ff7fd65700cf89cd924940ee480f117236d69cb
   docs/sdks/tagsandcomments/README.md:
     id: 092d693513d0
-    last_write_checksum: sha1:10248efb939c1a4d162c667daf867564492d9250
-    pristine_git_object: fefaf1b3a69e0d8a8e6c88dfa8d605ac57ba2fc7
+    last_write_checksum: sha1:22e2bae3b76f4f59cb7c3718a7b0bd2c40ed2fcd
+    pristine_git_object: f3742b7af4a623faacdbb7b71691896b608d9aa7
   docs/sdks/threathunting/README.md:
     id: 9d697938ee45
-    last_write_checksum: sha1:1dd7920214af9a4123554aadab51f42c5cb9f60d
-    pristine_git_object: 325a9d2dd5ff367bd9b0304d97299775f203da3f
+    last_write_checksum: sha1:e5ae51a4d6eace8ad13338b86fc1b2cb6f6357d7
+    pristine_git_object: 20d77981cef44e4d98d2a82598bff4c1242085b4
   poetry.toml:
     id: a81ade82122a
     last_write_checksum: sha1:2242305e29dc6921bdf5b200aea5d4bf67830230
@@ -4282,8 +4414,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:6fd80054cc2cb32e2a8404577013bcd791f13361
-    pristine_git_object: 0bbf1030f14e0ff20a31b5a4d4ca3a1dab31c9fa
+    last_write_checksum: sha1:44d87c94fb7e34daaadccfa3bfa138751fdfa398
+    pristine_git_object: f086e0eb9da1df33e17f13b5d735ffc9f6a4b37f
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -4310,16 +4442,16 @@ trackedFiles:
     pristine_git_object: ec32aa84954b1a51f33327002cacd727eb9ab81e
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:3ac3a945ccd132a9e07113e019fd221dd13533f5
-    pristine_git_object: ced1dc3beaa034b2d39d449ab344f87bca6bf86f
+    last_write_checksum: sha1:0ac85c3b53835b82e2bc0ab6718beaa4d6efae47
+    pristine_git_object: 167d4942340cae6cc9fdcfaddeb29cfd92c77c65
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:bd19db50cb8a422da287a12730ebd3520de2d4ee
     pristine_git_object: ae82274d2c632aa41356fc62b67a837ad2816b51
   src/censys_platform/adversary_investigation.py:
     id: "549148265347"
-    last_write_checksum: sha1:f803952c6146e8bdfaf55aab1bde1807b2645317
-    pristine_git_object: 371a3b1acd10bb0731ba9a441cf5ca47c0aee05d
+    last_write_checksum: sha1:783712176d8fce17ddd67ca654e215fb0b0fda89
+    pristine_git_object: 0b78443f8d6c5cf8077417dd1e2f5704f283593c
   src/censys_platform/basesdk.py:
     id: a49fe6a31a15
     last_write_checksum: sha1:bf7333c1bb73f6a5cfa8d5bfcb3544e52bdfb531
@@ -4330,16 +4462,16 @@ trackedFiles:
     pristine_git_object: 6a3f9934fb892e840d0b61300ac27d8a2e53624a
   src/censys_platform/global_data.py:
     id: 0eedbf9a2038
-    last_write_checksum: sha1:ea4d80f9aeb481bfc01e640a2d7a1fd1923f15be
-    pristine_git_object: 436e83850b6657043d1526999a9d1ddc4080bd08
+    last_write_checksum: sha1:ec5d6e8039d63b09afbc3ced8ef100e3ca7aceff
+    pristine_git_object: fa48dd0e96fff4d855005d6f01cde58dd0b1f03b
   src/censys_platform/httpclient.py:
     id: 9378a19c2de6
     last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/censys_platform/models/__init__.py:
     id: 4c65ae1e4fed
-    last_write_checksum: sha1:e93bce7d8ea8b0fbbb8d0a39f10aa4c9358d72ad
-    pristine_git_object: 78e0c60f54f2c1d0b1828221bafeb02bf915b47f
+    last_write_checksum: sha1:32c9f5755f13b23dc062714d97aac38faf11147b
+    pristine_git_object: fe6242c11f248865cf803a45fcabc7c9df69b1c8
   src/censys_platform/models/activemq.py:
     id: c852b87bc559
     last_write_checksum: sha1:a754dc1ce0647be6304994e4c598c533e0db974e
@@ -4676,6 +4808,18 @@ trackedFiles:
     id: a074322b4412
     last_write_checksum: sha1:e6dab42cacb8e73402f620c8d90e0a8d3b709182
     pristine_git_object: 0ab672617b5a86d8ea910d4553293d20759567fe
+  src/censys_platform/models/createdinvestigationjob.py:
+    id: d819b02765bd
+    last_write_checksum: sha1:a1298e173f5d8ce9a8ae479c735d8554bc0180b6
+    pristine_git_object: e43714693470cd438f74486bacc2bd196568e194
+  src/censys_platform/models/createinvestigationfileinputbody.py:
+    id: 9dd20adbe98b
+    last_write_checksum: sha1:78df984139d7ac6f8ce1e1b7472ba1ca5dd9f164
+    pristine_git_object: 6a68bc1f185fa600b76d0f0231ebf78982da478e
+  src/censys_platform/models/createinvestigationjobinputbody.py:
+    id: 896dd3c226d5
+    last_write_checksum: sha1:1191b6abcff0ac99aa26d644b557bf04602dce3f
+    pristine_git_object: b949aebb49bb29b85320410d2e3e91132748a8f9
   src/censys_platform/models/createtagassignmentinputbody.py:
     id: 27def4b5fb2a
     last_write_checksum: sha1:7d6b698032b17cc41fd00f296ec9b3b073a2946f
@@ -5404,6 +5548,22 @@ trackedFiles:
     id: 15bfb7e58e84
     last_write_checksum: sha1:f656415a814396c59f610c241320af7c3e0bf5f6
     pristine_git_object: 072fa8521d4c4c84f243171d15fb1d4102329ba3
+  src/censys_platform/models/investigationfileupload.py:
+    id: cccfafb1e6db
+    last_write_checksum: sha1:05c15c3ee9913305e587651845dfdeb01b370df2
+    pristine_git_object: c025394ba9859d299ce845c432a7dde351851a2d
+  src/censys_platform/models/investigationjob.py:
+    id: afd740ea8fb7
+    last_write_checksum: sha1:8e9261b16cdd789ed343469c79b8bd7a51285ee7
+    pristine_git_object: f82d942455f7d3370a9178b297be46d979aeda57
+  src/censys_platform/models/investigationjobslist.py:
+    id: 4330224fcf1a
+    last_write_checksum: sha1:88758c57f7e9bfeb10854aa7306f1a555fbcd7e9
+    pristine_git_object: 82e2169fce145b333926c8e07368f76304738738
+  src/censys_platform/models/investigationusage.py:
+    id: efbcc8959362
+    last_write_checksum: sha1:2c249cc5d662ee750d65970859c8c58b79ad5514
+    pristine_git_object: 44e2196dc65ecd2a4ed4bd2569f43e194902e7b0
   src/censys_platform/models/invitememberinputbody.py:
     id: 8b6c8c58ca10
     last_write_checksum: sha1:5faa85c50233e5035df5547bcc3d8dfdd79d6318
@@ -6452,6 +6612,10 @@ trackedFiles:
     id: 0525f06687c4
     last_write_checksum: sha1:64ca161aabbab13f7a52de1d59986d885abee43e
     pristine_git_object: 3a62637b1cb4585c9bf46056cff0b5144b078b4b
+  src/censys_platform/models/responseenvelopecreatedinvestigationjob.py:
+    id: d88e077e39fc
+    last_write_checksum: sha1:2670a0cb2118712fb43ef8dae4125503a24346e5
+    pristine_git_object: 915ae8b6032bf8bb67094c3a1e4a3a89187a4f0b
   src/censys_platform/models/responseenvelopecreditusagereport.py:
     id: b13771039f42
     last_write_checksum: sha1:410b8f9506c652be5287470f73b67e37e7b87e3b
@@ -6488,6 +6652,22 @@ trackedFiles:
     id: c8ccaa901fba
     last_write_checksum: sha1:b8cac6ca48f5cd2df36255e89253f4b2620f59a3
     pristine_git_object: 615b035fe078a02ba98054048472f6833dc046bd
+  src/censys_platform/models/responseenvelopeinvestigationfileupload.py:
+    id: 47ea2f428d3e
+    last_write_checksum: sha1:7072c70698314b16bdec1b25ed70e537b09739c3
+    pristine_git_object: 598518084a977b67c6f407252f6911ab8b42f31d
+  src/censys_platform/models/responseenvelopeinvestigationjob.py:
+    id: 3757084ff0d1
+    last_write_checksum: sha1:5a395d0b9f5930de096ad7ed6474cc3d9aa703f3
+    pristine_git_object: 17ad8276f5080a5df66e63c66816dd73b3c00a8c
+  src/censys_platform/models/responseenvelopeinvestigationjobslist.py:
+    id: 26e76fd5f6d0
+    last_write_checksum: sha1:5cb1471e4016338265d351e33504ea3df3a7a4ca
+    pristine_git_object: dee2ca682204b7d51e2da670e3e87a47fbe26540
+  src/censys_platform/models/responseenvelopeinvestigationusage.py:
+    id: 51fda43c6718
+    last_write_checksum: sha1:e34d19f026c4d46aa97ad068bc434d420dcd025a
+    pristine_git_object: f22e09d843a69abe05f27705595ec8415eb605e5
   src/censys_platform/models/responseenvelopelistcertificateasset.py:
     id: 0a2e710c9659
     last_write_checksum: sha1:66d8be97f09d8fbadd8b100e215d59649acc99c9
@@ -7488,6 +7668,30 @@ trackedFiles:
     id: ba9b94957bd2
     last_write_checksum: sha1:aa15b64aa323a4eb3a84c71612ab9b821c02521e
     pristine_git_object: 0bbee78c2af1066e6cff999bedfe5e4fbc0425da
+  src/censys_platform/models/v3_threathunting_investigations_files_createop.py:
+    id: c83bd8588509
+    last_write_checksum: sha1:a36872e11d47c153e1b84c2081d774344f12782a
+    pristine_git_object: f24393231009a207d85e267b2318ca2fd193d293
+  src/censys_platform/models/v3_threathunting_investigations_jobs_createop.py:
+    id: 1b21e6702069
+    last_write_checksum: sha1:fd8cc666b8f0ac794bd49d3332fb0768067dcda9
+    pristine_git_object: 20c4ad3d247d59fbb87d1b1802dbfa79622ac4a2
+  src/censys_platform/models/v3_threathunting_investigations_jobs_getop.py:
+    id: 69cfcea2163f
+    last_write_checksum: sha1:d098ffb4030f87810dcf45848ff18ac51e800d63
+    pristine_git_object: ce47034ca60ba3cc01b18ebe41b8844528cf3e78
+  src/censys_platform/models/v3_threathunting_investigations_jobs_listop.py:
+    id: 3f4d96dadedb
+    last_write_checksum: sha1:1300676c40ae6444e3901de4d70f14bcf15748bd
+    pristine_git_object: ee3be025506ff78c7d3ca057027348a70d04b9a2
+  src/censys_platform/models/v3_threathunting_investigations_jobs_resultsop.py:
+    id: cb8ba06db82a
+    last_write_checksum: sha1:7376ec59707fd34449c5b58f18a4dda674fef93e
+    pristine_git_object: 7a4b0d359887861b80139ffbf2596be976ba2fe5
+  src/censys_platform/models/v3_threathunting_investigations_usage_getop.py:
+    id: c584d127a167
+    last_write_checksum: sha1:92580fbca65360db56709c1bed63da4108bc260d
+    pristine_git_object: 9454b6fee622993a083c44f83b8ae1818cc82139
   src/censys_platform/models/v3_threathunting_scans_discoveryop.py:
     id: faab379de921
     last_write_checksum: sha1:0cfc1d9b05fe8138fbe3d8f70b26e826ad4abcf7
@@ -7654,8 +7858,8 @@ trackedFiles:
     pristine_git_object: a1b3a3b61aab191f0d99a4e2ab2c871b1afd75c7
   src/censys_platform/threat_hunting.py:
     id: 970de984d111
-    last_write_checksum: sha1:8f858cb50e5962da7dc0a241bcbcffd737f10c6f
-    pristine_git_object: 581b406408ba1a15ce81a911bcada519502173ff
+    last_write_checksum: sha1:0f6e8fc36f5dcaad98bfb9f418588e21f3e74f08
+    pristine_git_object: 794d80b65843351ce63c4b79292a71e2923d8345
   src/censys_platform/types/__init__.py:
     id: 40a6abbc737a
     last_write_checksum: sha1:f9ad14217f832e74f594285960125add50324be9
@@ -7670,8 +7874,8 @@ trackedFiles:
     pristine_git_object: a9a640a1a7048736383f96c67c6290c86bf536ee
   src/censys_platform/utils/__init__.py:
     id: 76ac94c422c2
-    last_write_checksum: sha1:53c9544397bbc534c45a228feac3cdb2e9017fe6
-    pristine_git_object: 7af3b82cf95edc2901bc85b2624c54f39b7f9724
+    last_write_checksum: sha1:370ec05f8793eddc69ee21a4df8fb1b08d11561d
+    pristine_git_object: 6d6c5c3f9973b392924f0ee369a6c6bb5407ea02
   src/censys_platform/utils/annotations.py:
     id: 259f8dfc4b83
     last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
@@ -7726,8 +7930,8 @@ trackedFiles:
     pristine_git_object: 42d8d78e9981eed7507670014d99588e27ab325a
   src/censys_platform/utils/serializers.py:
     id: a3afe58d4a90
-    last_write_checksum: sha1:7485f1425b0661fd84836186570df90207eec6af
-    pristine_git_object: 1031ed930bad5ece220cf7416a56c29f40f0588b
+    last_write_checksum: sha1:2fb543339b424a0818b126e69695df5c91cd4d7b
+    pristine_git_object: 5e57d36e8883501df8f6293e4c76ac337c4987eb
   src/censys_platform/utils/unmarshal_json_response.py:
     id: d2dd833c6fb4
     last_write_checksum: sha1:431aefbf77535ecb82fd774c5429eda8380aca91
@@ -8964,6 +9168,99 @@ examples:
         "401":
           application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
         "400":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-investigations-files-create:
+    speakeasy-default-v3-threathunting-investigations-files-create:
+      parameters:
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"content_type": "application/pdf", "filename": "incident-report.pdf", "size_bytes": 1048576}
+      responses:
+        "200":
+          application/json: {"result": {"expire_time": "2025-01-02T11:45:56.804Z", "file_id": "file_550e8400-e29b-41d4-a716-446655440000", "upload_headers": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "upload_url": "https://darling-chasuble.info/"}}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-investigations-jobs-list:
+    speakeasy-default-v3-threathunting-investigations-jobs-list:
+      parameters:
+        query:
+          organization_id: "<id>"
+          page_size: 50
+      responses:
+        "200":
+          application/json: {"result": {"jobs": [{"create_time": "2024-02-01T12:57:42.163Z", "job_id": "550e8400-e29b-41d4-a716-446655440000", "state": "completed"}]}}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-investigations-jobs-create:
+    speakeasy-default-v3-threathunting-investigations-jobs-create:
+      parameters:
+        query:
+          organization_id: "<id>"
+      requestBody:
+        application/json: {"end_time": "2026-08-01T00:00:00Z", "file_ids": ["file_550e8400-e29b-41d4-a716-446655440000"], "indicators": ["1.1.1.1", "example.com"], "start_time": "2026-06-01T00:00:00Z"}
+      responses:
+        "202":
+          application/json: {"result": {"create_time": "2026-08-20T01:15:24.568Z", "job_id": "550e8400-e29b-41d4-a716-446655440000", "state": "completed"}}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-investigations-jobs-get:
+    speakeasy-default-v3-threathunting-investigations-jobs-get:
+      parameters:
+        path:
+          job_id: "9f1c7f36-34af-416b-82b3-b496756f4d5e"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/json: {"result": {"create_time": "2024-05-10T02:37:42.194Z", "job_id": "550e8400-e29b-41d4-a716-446655440000", "state": "completed"}}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-investigations-jobs-results:
+    speakeasy-default-v3-threathunting-investigations-jobs-results:
+      parameters:
+        path:
+          job_id: "abfb0cd9-3719-491a-be31-8dbbaaff559c"
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/zip: "x-file: example.file"
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+        "500":
+          application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
+  v3-threathunting-investigations-usage-get:
+    speakeasy-default-v3-threathunting-investigations-usage-get:
+      parameters:
+        query:
+          organization_id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"error": {"code": 401, "message": "Access credentials are invalid", "reason": "Access token is not active", "status": "Unauthorized"}}
+        "403":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}
         "500":
           application/problem+json: {"detail": "Property foo is required but is missing.", "instance": "https://example.com/error-log/abc123", "status": 400, "title": "Bad Request", "type": "https://example.com/errors/example"}

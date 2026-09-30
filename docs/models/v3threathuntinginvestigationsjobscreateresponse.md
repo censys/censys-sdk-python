@@ -1,0 +1,9 @@
+# V3ThreathuntingInvestigationsJobsCreateResponse
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `headers`                                                                                              | Dict[str, List[*str*]]                                                                                 | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `result`                                                                                               | [models.ResponseEnvelopeCreatedInvestigationJob](../models/responseenvelopecreatedinvestigationjob.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

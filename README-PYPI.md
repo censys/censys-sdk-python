@@ -125,7 +125,7 @@ from censys_platform import SDK
 
 
 with SDK(
-    organization_id="11111111-2222-3333-4444-555555555555",
+    organization_id="<id>",
     personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as sdk:
 
@@ -153,7 +153,7 @@ from censys_platform import SDK
 async def main():
 
     async with SDK(
-        organization_id="11111111-2222-3333-4444-555555555555",
+        organization_id="<id>",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
 
@@ -197,6 +197,12 @@ asyncio.run(main())
 * [get_censeye_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_censeye_job) - CensEye: Get job status
 * [get_censeye_job_results](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_censeye_job_results) - CensEye: Get job results
 * [get_host_observations_with_certificate](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_host_observations_with_certificate) - Get host history for a certificate
+* [create_investigation_file_upload](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#create_investigation_file_upload) - Investigations: Create file upload
+* [list_investigation_jobs](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#list_investigation_jobs) - Investigations: List jobs
+* [create_investigation_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#create_investigation_job) - Investigations: Create job
+* [get_investigation_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_investigation_job) - Investigations: Get job status
+* [get_investigation_job_results](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_investigation_job_results) - Investigations: Get job results
+* [get_investigation_usage](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#get_investigation_usage) - Investigations: Get usage
 * [create_tracked_scan](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#create_tracked_scan) - Live Discovery: Initiate a new scan
 * [list_threats](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#list_threats) - List active threats
 * [value_counts](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/adversaryinvestigation/README.md#value_counts) - CensEye: Retrieve value counts to discover pivots
@@ -263,6 +269,12 @@ asyncio.run(main())
 * [get_censeye_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_censeye_job) - CensEye: Get job status
 * [get_censeye_job_results](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_censeye_job_results) - CensEye: Get job results
 * [get_host_observations_with_certificate](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_host_observations_with_certificate) - Get host history for a certificate
+* [create_investigation_file_upload](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#create_investigation_file_upload) - Investigations: Create file upload
+* [list_investigation_jobs](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#list_investigation_jobs) - Investigations: List jobs
+* [create_investigation_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#create_investigation_job) - Investigations: Create job
+* [get_investigation_job](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_investigation_job) - Investigations: Get job status
+* [get_investigation_job_results](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_investigation_job_results) - Investigations: Get job results
+* [get_investigation_usage](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_investigation_usage) - Investigations: Get usage
 * [create_tracked_scan](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#create_tracked_scan) - Live Discovery: Initiate a new scan
 * [get_tracked_scan_threat_hunting](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#get_tracked_scan_threat_hunting) - Get scan status
 * [list_threats](https://github.com/censys/censys-sdk-python/blob/master/docs/sdks/threathunting/README.md#list_threats) - List active threats
@@ -575,7 +587,7 @@ from censys_platform import SDK
 def main():
 
     with SDK(
-        organization_id="11111111-2222-3333-4444-555555555555",
+        organization_id="<id>",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...
@@ -585,7 +597,7 @@ def main():
 async def amain():
 
     async with SDK(
-        organization_id="11111111-2222-3333-4444-555555555555",
+        organization_id="<id>",
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...

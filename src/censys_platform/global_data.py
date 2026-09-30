@@ -3804,7 +3804,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "422"], "application/problem+json"
+            http_res, ["400", "403", "409", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
@@ -3924,7 +3924,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "422"], "application/problem+json"
+            http_res, ["400", "403", "409", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)

@@ -1,0 +1,9 @@
+# V3ThreathuntingInvestigationsFilesCreateResponse
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `headers`                                                                                              | Dict[str, List[*str*]]                                                                                 | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `result`                                                                                               | [models.ResponseEnvelopeInvestigationFileUpload](../models/responseenvelopeinvestigationfileupload.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
