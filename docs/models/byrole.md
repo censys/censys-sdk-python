@@ -1,6 +1,6 @@
 # ByRole
 
-The number of members users in the organization, split by role.
+The number of users in the organization, split by Platform-wide role.
 
 
 ## Fields

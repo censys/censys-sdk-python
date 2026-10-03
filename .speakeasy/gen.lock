@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: e46878a3d0c25e5962ab3ddce85421b5
-  docVersion: 1.0.142
-  speakeasyVersion: 1.799.0
-  generationVersion: 2.941.0
-  releaseVersion: 0.16.3
-  configChecksum: 2982380ecb248570f8b7765136d131fb
+  docChecksum: 9c10581bc5eacb7bdab6d75fd87d4265
+  docVersion: 1.0.144
+  speakeasyVersion: 1.800.1
+  generationVersion: 2.943.0
+  releaseVersion: 0.16.4
+  configChecksum: 383cccb409bb56c4b6e8baf098319298
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: 7ff2849a-eb98-47a6-a73c-e43a54b4eca3
-  pristine_commit_hash: e1031742a68d6f1da1db889aafe714ffbd227c93
-  pristine_tree_hash: 3cf7ae1f89fa488d37e0a4c30c13f808fa5e592e
+  generation_id: a9d4821d-7230-4498-81c5-6d8ff7e7fe96
+  pristine_commit_hash: 9cc8aced3e99399ecfb28f3a0023ea5cabf4c1db
+  pristine_tree_hash: 180650e5334d7be93d362bf22ede2d4115eddcf3
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.1.0
     constsAndDefaults: 1.0.8
-    core: 6.1.2
+    core: 6.1.3
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.1
@@ -38,7 +38,7 @@ features:
     responseFormat: 1.1.0
     retries: 3.1.2
     sdkHooks: 1.3.0
-    unions: 3.1.10
+    unions: 3.1.12
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -194,8 +194,8 @@ trackedFiles:
     pristine_git_object: 542a21124555446a855f82b8faca3ad57120dbd7
   docs/models/byrole.md:
     id: a02e627441e1
-    last_write_checksum: sha1:3370f32236e190d1e1325ece9622931cbd3b6ad4
-    pristine_git_object: b53a91e2887299bc8e014d1f3bddc99b5b8c3f14
+    last_write_checksum: sha1:87b6e3ba6f22c57b0b505d8a5026993840e23616
+    pristine_git_object: 0240a4f3373c4265fc7b3945ba3089ccfd406d36
   docs/models/cabforganizationid.md:
     id: 61e24a77b591
     last_write_checksum: sha1:0c3084cd2cbb167a610e362c35c843f3a6e03f94
@@ -1646,8 +1646,8 @@ trackedFiles:
     pristine_git_object: 12eb86c9d88c5d66a07d9f6fc3047ca12a10b03c
   docs/models/membercounts.md:
     id: 5ec71168d650
-    last_write_checksum: sha1:b85e28e71420b8ea3238dd3c10a3f494e7f9d3ba
-    pristine_git_object: 51b5fb7f06caf47e9667a9501b245e1ba3396d9b
+    last_write_checksum: sha1:ccd17ceb3c1159419d6c6572c3c2bd09a925c158
+    pristine_git_object: c78e16fc9827002f46cb98f1a78443c43e52d8a8
   docs/models/memberlist.md:
     id: ca0e4e461d67
     last_write_checksum: sha1:c038c53f5dc5143f32de3f5f994b46983c430a07
@@ -1998,12 +1998,12 @@ trackedFiles:
     pristine_git_object: b55cf3f632a15a30ccd9235b30309bf93c65b30a
   docs/models/organizationmember.md:
     id: 7e5cd60a4c6e
-    last_write_checksum: sha1:396034a00b98f1342755bc189f49c04e1fde1342
-    pristine_git_object: f46c564e6bf1143cd24772924a3cc4edd33c1b47
+    last_write_checksum: sha1:add5a3252f1f027f02074f0d6b770673ebd71373
+    pristine_git_object: d77e1aa8d6ed12a5554cce4f899b396a4e7bbb87
   docs/models/organizationmemberslist.md:
     id: de8f8f2ca562
-    last_write_checksum: sha1:0151a6b9f4f3865b14b0e7c5cb5b30710dbaab1f
-    pristine_git_object: 3d7d0b3d904c85e24c2e10cc7a6063973eb6a39b
+    last_write_checksum: sha1:fb14393c4b33089dc3f1173ef5e347fdc18fca42
+    pristine_git_object: 6504ba4f037c25a8c93a17eb9e3349652f489484
   docs/models/organizationpreferences.md:
     id: 92be2ff33fe7
     last_write_checksum: sha1:99c99ffb326899b1bc8f358856fc63d7afc7b9a8
@@ -3326,8 +3326,8 @@ trackedFiles:
     pristine_git_object: c56a9c68a6e5a1386208c87dfb01de53f01fa156
   docs/models/updatememberroleinputbody.md:
     id: eb8b9ca0325b
-    last_write_checksum: sha1:2b2c8d9bfc6466d5213573ea7e598304d66e4c92
-    pristine_git_object: 6d796475309b7a47274147e171ee2ffb35f8c206
+    last_write_checksum: sha1:77401edb4a15c86ae82bcbbe3d044157c507e699
+    pristine_git_object: 25910c8919c07756bcabcb312fa89198bce9c6ba
   docs/models/updatetaginputbody.md:
     id: f94117b39709
     last_write_checksum: sha1:7755016808373be7716968423ea44b2eb185cf55
@@ -3386,8 +3386,8 @@ trackedFiles:
     pristine_git_object: 9af5a3f37f09c1b19600e84733676d1d15132449
   docs/models/v3accountmanagementlistorgmembersrequest.md:
     id: 14da67bf11fb
-    last_write_checksum: sha1:73a4f627b87817c1e67d7c041e9efff7332d604d
-    pristine_git_object: 2cf75a823449de8d4c2c4a2a99284b7cb2dc1d81
+    last_write_checksum: sha1:764bcce00d8553e0fa46eb1c6c5ce9302201db59
+    pristine_git_object: b9b23207f93855b705107d2bdb6d0c3cae9c03f4
   docs/models/v3accountmanagementlistorgmembersresponse.md:
     id: 5aab1b3dc1a6
     last_write_checksum: sha1:0ca89aa4218d723c0c4d02474ef598a6481a20c7
@@ -3398,8 +3398,8 @@ trackedFiles:
     pristine_git_object: 75a5bb5eb9b091f431a027e8c2a5688620ffad8a
   docs/models/v3accountmanagementmembercreditsusagerequest.md:
     id: e59a76833761
-    last_write_checksum: sha1:7329cfad88d6bee9040134d9761dcea98e65014d
-    pristine_git_object: 7adbcb5db2a716804955e57724cbfce99758c2fc
+    last_write_checksum: sha1:466be92fa3363aa8a4f6e8fce57c89e113828ee1
+    pristine_git_object: b9baa8c4a80810cd788ff74a04ce7284994642cc
   docs/models/v3accountmanagementmembercreditsusageresponse.md:
     id: 0af74158be47
     last_write_checksum: sha1:40eeb20ccf69e48a423837f305c97f972644ffa6
@@ -3422,24 +3422,24 @@ trackedFiles:
     pristine_git_object: b698727e091e4df82d987e9bf3109b068770aaeb
   docs/models/v3accountmanagementorgdetailsrequest.md:
     id: 01d8d84a02d8
-    last_write_checksum: sha1:6413b2e5108e3c9f095371776b5e7f95106acffd
-    pristine_git_object: 28be77b8ecd3d2b279adb5675904f414d25272bf
+    last_write_checksum: sha1:525901b280ce6fed6438e62f94bf5b6e73f0da7c
+    pristine_git_object: acb4e0127f33ac5e186117c7da0b3599a52838fe
   docs/models/v3accountmanagementorgdetailsresponse.md:
     id: ad8a33b29c4b
     last_write_checksum: sha1:9ad60ee6aa0080e35ffb25810d3a7c13c1c81475
     pristine_git_object: 56b4e2d5cc0ee5035d1a997d1856f7432c99547d
   docs/models/v3accountmanagementremoveorgmemberrequest.md:
     id: b364d7e54d23
-    last_write_checksum: sha1:6ba32d5b69f89ec981bdfa8ae7154eaab2683806
-    pristine_git_object: f4143d6229707a2bf5ef8bbf0cd5431e7ecb339e
+    last_write_checksum: sha1:c46d7019d2cf0bf0946c30c914a5b40fa341a251
+    pristine_git_object: 8475aef5fc480eb6174b2cb6bbc5f61073c5198f
   docs/models/v3accountmanagementremoveorgmemberresponse.md:
     id: e09ec73419a7
     last_write_checksum: sha1:f8f5bf03e891e8eaa67982ec3805ba35741a3bc6
     pristine_git_object: 83c3c12da3504b8a559c5de98b1d5909dc9e035a
   docs/models/v3accountmanagementupdateorgmemberrequest.md:
     id: 9ea830918781
-    last_write_checksum: sha1:57f1003995ed663b0ea6639e94abea59b0fef2a0
-    pristine_git_object: 0ba7fccd031a526f56d42352efd084ae091489b7
+    last_write_checksum: sha1:fe6d0b47fdd7af5dbf744533ab34fd3d56058665
+    pristine_git_object: ea5575af1ff64e4ebd6d7a1ec25715c92d1ef277
   docs/models/v3accountmanagementupdateorgmemberresponse.md:
     id: 8f6a06dae02d
     last_write_checksum: sha1:dae0ecbf006a73474932acadf0081755b7de9c4d
@@ -4378,8 +4378,8 @@ trackedFiles:
     pristine_git_object: 924281f1d76d2c334d0d8c8329b518fef8f41798
   docs/sdks/accountmanagement/README.md:
     id: 5ecc19ffd434
-    last_write_checksum: sha1:6158ea9897139b88623065a82f3f426686039674
-    pristine_git_object: 7d5aff9b18d011a6e257e53d83c88d8d47a4e4d8
+    last_write_checksum: sha1:2904045bb679c15eab4bc75fc963ef21ac03f0f9
+    pristine_git_object: c388057c1a72f39a11a42859100cde1d2ba01e6a
   docs/sdks/adversaryinvestigation/README.md:
     id: 2dce02963bd0
     last_write_checksum: sha1:8ee8809d61b7abf033b3d94e429be4399e04979d
@@ -4414,8 +4414,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:44d87c94fb7e34daaadccfa3bfa138751fdfa398
-    pristine_git_object: f086e0eb9da1df33e17f13b5d735ffc9f6a4b37f
+    last_write_checksum: sha1:8a4acbc9e5f322382f3ec0c93f6e7a21b2d73c87
+    pristine_git_object: 44f0aabe02c88e5353448199c3d7ddc145203634
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -4442,12 +4442,12 @@ trackedFiles:
     pristine_git_object: ec32aa84954b1a51f33327002cacd727eb9ab81e
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:0ac85c3b53835b82e2bc0ab6718beaa4d6efae47
-    pristine_git_object: 167d4942340cae6cc9fdcfaddeb29cfd92c77c65
+    last_write_checksum: sha1:7e0db0e044cba84ee64d85fdb09d73fa44367100
+    pristine_git_object: ce9d5b62bb30b5fd403636dece212470dd591892
   src/censys_platform/account_management.py:
     id: 09993862b047
-    last_write_checksum: sha1:bd19db50cb8a422da287a12730ebd3520de2d4ee
-    pristine_git_object: ae82274d2c632aa41356fc62b67a837ad2816b51
+    last_write_checksum: sha1:00781ce5922763de37fabf85a9b7c75ab1d8c18a
+    pristine_git_object: 9d756393507267ca53f31b6ec895eeff52d56f9d
   src/censys_platform/adversary_investigation.py:
     id: "549148265347"
     last_write_checksum: sha1:783712176d8fce17ddd67ca654e215fb0b0fda89
@@ -5914,8 +5914,8 @@ trackedFiles:
     pristine_git_object: 3ece9cd6ef97ed48a530c297cd699a8e5e2e64b6
   src/censys_platform/models/membercounts.py:
     id: 335b636f5618
-    last_write_checksum: sha1:f1940a55baf87521c33873a556696db8e829b77e
-    pristine_git_object: aa895b4171bdf9f2111815302e0106fec546faa1
+    last_write_checksum: sha1:0a7a448364b2e64ad7b5eab98eb9086945d75241
+    pristine_git_object: bb0bb020c2abc5ffb403f40b442b765d0fc18891
   src/censys_platform/models/memberlist.py:
     id: 639063c698de
     last_write_checksum: sha1:680d9b91d931c6c5b5d0f10585d9a41de8dac558
@@ -6254,12 +6254,12 @@ trackedFiles:
     pristine_git_object: 777f741eeae6b2d280d9bb1418daea1fb998a87b
   src/censys_platform/models/organizationmember.py:
     id: 7fff6ddb1975
-    last_write_checksum: sha1:243814ba32a461eee2e7d7bbb6ab405c13c4843c
-    pristine_git_object: b2935eb31663f2d19de6b372163e7f3b2388cc57
+    last_write_checksum: sha1:24b31a956a43fdf461c8b9809068183265b3d4a8
+    pristine_git_object: 318d4593f1d24de95bb2c0d81f17abceb72e9260
   src/censys_platform/models/organizationmemberslist.py:
     id: ae7f9a71e345
-    last_write_checksum: sha1:d47cc5d83741b4b9a35d55888fe3cb967a88bcff
-    pristine_git_object: 1d147df6b8ed7e3c43050ca09b1d57d634ba1663
+    last_write_checksum: sha1:147ab27078820414d9be65567976c4fc56c4b1be
+    pristine_git_object: c2c69bf53efbe2054b298b9e3961f3a833480c2f
   src/censys_platform/models/organizationpreferences.py:
     id: ef66ffb0cc94
     last_write_checksum: sha1:33a1d7c4e8c8c1ecb25504c50bf0ac6928440901
@@ -7386,8 +7386,8 @@ trackedFiles:
     pristine_git_object: dc742a52ee514d505db46d17501cfa75c475e4bd
   src/censys_platform/models/updatememberroleinputbody.py:
     id: 6f240c949e73
-    last_write_checksum: sha1:b89362b24d2cfbc0dcb8921f0cdd9900a70fe21e
-    pristine_git_object: 794676d6873ff60b30b66d7354982d799d53d16d
+    last_write_checksum: sha1:ff2ba53b60b5791ec38b062b6a7aafcb85035294
+    pristine_git_object: 0c386996906ba39d95352aa4899e9eb7f142f07b
   src/censys_platform/models/updatetaginputbody.py:
     id: 7d7ec89ca615
     last_write_checksum: sha1:6322d10b917e6bfc0d9e74119599496297355c21
@@ -7430,12 +7430,12 @@ trackedFiles:
     pristine_git_object: ce181e75568397c2a0061dcefd0baaf8fc0de68f
   src/censys_platform/models/v3_accountmanagement_list_org_membersop.py:
     id: 16cea6dc8c8d
-    last_write_checksum: sha1:48eaf1348fd053ae289e3d97f7ba1c067e7c9c46
-    pristine_git_object: 3d625a96df5ef711925abbe8c41f44926195b1dc
+    last_write_checksum: sha1:bc82e16cd2b637c35c3107ab75749201b4503b9a
+    pristine_git_object: a493838fcc7c73cd08dbec0298b82b708c9c1484
   src/censys_platform/models/v3_accountmanagement_member_credits_usageop.py:
     id: b185d2245704
-    last_write_checksum: sha1:af854d439095ab27b2936f5f9a21d7252711cb11
-    pristine_git_object: 2dab4b889fedc71615b7cfe8fadf20aff47dc08e
+    last_write_checksum: sha1:8a9bcd4c1c0fea4e60f19dc6a065fb7a60c851d1
+    pristine_git_object: 51c8486981b2408b12eccbe622a15fc815d0cdb6
   src/censys_platform/models/v3_accountmanagement_org_credits_usageop.py:
     id: de2ed8fa4d37
     last_write_checksum: sha1:c57ece8850dfee901a2f94151781db9cbdb9c0e9
@@ -7446,16 +7446,16 @@ trackedFiles:
     pristine_git_object: 08fbc9ea6917bb1e311a56d9b1203af51ae87bfd
   src/censys_platform/models/v3_accountmanagement_org_detailsop.py:
     id: a59403c6a492
-    last_write_checksum: sha1:79f9ee7a101ed0d0646907ea785bcd6ea58eac14
-    pristine_git_object: b09a44241874b7c18ecf69f43a78c236225cca5a
+    last_write_checksum: sha1:44744994e044bd1807051ced688647c1ab2ac4a2
+    pristine_git_object: bfd342036ae300d330b6760cffcf41ce11ce7deb
   src/censys_platform/models/v3_accountmanagement_remove_org_memberop.py:
     id: 20f62a01d3f0
-    last_write_checksum: sha1:84dc10a2deffcad7c9cada83f89d0c42885bc318
-    pristine_git_object: c24e865ecba2342551b5b1ad78ae04c540870fcb
+    last_write_checksum: sha1:64442b8b0535204b56af4187ad54582356ac5e09
+    pristine_git_object: 3cddb3c2085f9c3249f871a0cc2fea4dfac81bc1
   src/censys_platform/models/v3_accountmanagement_update_org_memberop.py:
     id: ae09811f196c
-    last_write_checksum: sha1:650cc2eee4271bcaffb11f92ee936e26fed0d18b
-    pristine_git_object: d0cb5e72264ce0d58fa29da7b9e7be3c9720c13c
+    last_write_checksum: sha1:1ff273223a8d68cdcee251bf08fabe3535de83d1
+    pristine_git_object: da8808bda8f131ec4e84f46ac9eb14d9fb9be69f
   src/censys_platform/models/v3_accountmanagement_user_credits_usageop.py:
     id: 286d0e45b39e
     last_write_checksum: sha1:74e383db9d9ebf7aa946ff6bdd3050b7f6b83abd
@@ -7882,8 +7882,8 @@ trackedFiles:
     pristine_git_object: 12e0aa4f1151bb52474cc02e88397329b90703f6
   src/censys_platform/utils/datetimes.py:
     id: 45311463dfef
-    last_write_checksum: sha1:fa47d54c549ff9b95496ce91930fadfb04a36be9
-    pristine_git_object: adad24762cf452d137abe94fda0fd26224cef593
+    last_write_checksum: sha1:dcbdac8f63789f5d41b64d4d0515db77961e1d0c
+    pristine_git_object: 688c29a59b33a38c3b8bd3276f89c98483fcdb58
   src/censys_platform/utils/dynamic_imports.py:
     id: 01ddee0f294a
     last_write_checksum: sha1:a1940c63feb8eddfd8026de53384baf5056d5dcc
@@ -7938,12 +7938,12 @@ trackedFiles:
     pristine_git_object: 39ded81e5072381ebf98a363b8bcc79173583d75
   src/censys_platform/utils/url.py:
     id: 730b2347ec74
-    last_write_checksum: sha1:6479961baa90432ca25626f8e40a7bbc32e73b41
-    pristine_git_object: c78ccbae426ce6d385709d97ce0b1c2813ea2418
+    last_write_checksum: sha1:0269c7e27f701e0c72d44bc2a36ac4d44ef2108c
+    pristine_git_object: 8eeaa7b0cc48e5e528afc0527da8b76ef46308d4
   src/censys_platform/utils/values.py:
     id: "277559094909"
-    last_write_checksum: sha1:65e1ee8607767a4fc1ae7a55c74d77a23ab3cef1
-    pristine_git_object: ac217f473c5d52a454a2979b3eb35e66175d365c
+    last_write_checksum: sha1:c0eaaf8779a4ba3ae068579a57182667efef0cb7
+    pristine_git_object: 094755b73f7f9382d8df997602080c82a55896fd
 examples:
   v3-collections-crud-list:
     speakeasy-default-v3-collections-crud-list:

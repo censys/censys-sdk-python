@@ -11,7 +11,7 @@ class V3AccountmanagementRemoveOrgMemberRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
     user_id: str
-    r"""The ID of a Censys user. You can obtain a user's ID by listing members of an organization."""
+    r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
 
 
 class V3AccountmanagementRemoveOrgMemberRequest(BaseModel):
@@ -23,7 +23,7 @@ class V3AccountmanagementRemoveOrgMemberRequest(BaseModel):
     user_id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""The ID of a Censys user. You can obtain a user's ID by listing members of an organization."""
+    r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
 
 
 class V3AccountmanagementRemoveOrgMemberResponseTypedDict(TypedDict):

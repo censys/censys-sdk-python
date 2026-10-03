@@ -15,12 +15,12 @@ class Roles(str, Enum):
 
 class UpdateMemberRoleInputBodyTypedDict(TypedDict):
     roles: Nullable[List[Roles]]
-    r"""Array of role identifiers to assign to the user"""
+    r"""The Platform-wide roles to assign to the user."""
 
 
 class UpdateMemberRoleInputBody(BaseModel):
     roles: Nullable[List[Roles]]
-    r"""Array of role identifiers to assign to the user"""
+    r"""The Platform-wide roles to assign to the user."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

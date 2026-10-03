@@ -184,10 +184,10 @@ asyncio.run(main())
 * [get_organization_credits](docs/sdks/accountmanagement/README.md#get_organization_credits) - Get organization credit balance
 * [get_organization_credit_usage](docs/sdks/accountmanagement/README.md#get_organization_credit_usage) - Get organization credit usage
 * [invite_user_to_organization](docs/sdks/accountmanagement/README.md#invite_user_to_organization) - Invite user to organization
-* [list_organization_members](docs/sdks/accountmanagement/README.md#list_organization_members) - List organization members
-* [remove_organization_member](docs/sdks/accountmanagement/README.md#remove_organization_member) - Remove member from organization
-* [update_organization_member](docs/sdks/accountmanagement/README.md#update_organization_member) - Update a member's roles in an organization
-* [get_member_credit_usage](docs/sdks/accountmanagement/README.md#get_member_credit_usage) - Get organization member credit usage
+* [list_organization_members](docs/sdks/accountmanagement/README.md#list_organization_members) - List organization users
+* [remove_organization_member](docs/sdks/accountmanagement/README.md#remove_organization_member) - Remove user from organization
+* [update_organization_member](docs/sdks/accountmanagement/README.md#update_organization_member) - Update a user's Platform-wide roles in an organization
+* [get_member_credit_usage](docs/sdks/accountmanagement/README.md#get_member_credit_usage) - Get organization user credit usage
 * [get_user_credits](docs/sdks/accountmanagement/README.md#get_user_credits) - Get Free user credit balance
 * [get_user_credits_usage](docs/sdks/accountmanagement/README.md#get_user_credits_usage) - Get Free user credit usage
 
