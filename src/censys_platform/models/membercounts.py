@@ -8,7 +8,7 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class ByRoleTypedDict(TypedDict):
-    r"""The number of members users in the organization, split by role."""
+    r"""The number of users in the organization, split by Platform-wide role."""
 
     admin: NotRequired[int]
     r"""The number of users with the admin role."""
@@ -17,7 +17,7 @@ class ByRoleTypedDict(TypedDict):
 
 
 class ByRole(BaseModel):
-    r"""The number of members users in the organization, split by role."""
+    r"""The number of users in the organization, split by Platform-wide role."""
 
     admin: Optional[int] = None
     r"""The number of users with the admin role."""
@@ -44,14 +44,14 @@ class ByRole(BaseModel):
 
 class MemberCountsTypedDict(TypedDict):
     by_role: ByRoleTypedDict
-    r"""The number of members users in the organization, split by role."""
+    r"""The number of users in the organization, split by Platform-wide role."""
     total: int
-    r"""The total number of members users in the organization."""
+    r"""The total number of users in the organization."""
 
 
 class MemberCounts(BaseModel):
     by_role: ByRole
-    r"""The number of members users in the organization, split by role."""
+    r"""The number of users in the organization, split by Platform-wide role."""
 
     total: int
-    r"""The total number of members users in the organization."""
+    r"""The total number of users in the organization."""

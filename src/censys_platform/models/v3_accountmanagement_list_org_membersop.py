@@ -16,7 +16,7 @@ class V3AccountmanagementListOrgMembersRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
     page_size: NotRequired[int]
-    r"""Number of members to return per page"""
+    r"""Number of users to return per page"""
     page_token: NotRequired[str]
     r"""Pagination token for retrieving the next page of results"""
 
@@ -31,7 +31,7 @@ class V3AccountmanagementListOrgMembersRequest(BaseModel):
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = 10
-    r"""Number of members to return per page"""
+    r"""Number of users to return per page"""
 
     page_token: Annotated[
         Optional[str],

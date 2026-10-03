@@ -16,7 +16,7 @@ class OrganizationMemberTypedDict(TypedDict):
     last_name: str
     r"""The last name of the user."""
     roles: Nullable[List[str]]
-    r"""The roles this member has in the organization."""
+    r"""The Platform-wide roles the user has in the organization."""
     uid: str
     r"""The ID of a Censys user."""
     created_at: NotRequired[datetime]
@@ -38,7 +38,7 @@ class OrganizationMember(BaseModel):
     r"""The last name of the user."""
 
     roles: Nullable[List[str]]
-    r"""The roles this member has in the organization."""
+    r"""The Platform-wide roles the user has in the organization."""
 
     uid: str
     r"""The ID of a Censys user."""

@@ -11,13 +11,13 @@ from typing_extensions import TypedDict
 
 class OrganizationMembersListTypedDict(TypedDict):
     members: Nullable[List[OrganizationMemberTypedDict]]
-    r"""The list of members in the organization."""
+    r"""The list of users in the organization."""
     pagination: PaginationInfoTypedDict
 
 
 class OrganizationMembersList(BaseModel):
     members: Nullable[List[OrganizationMember]]
-    r"""The list of members in the organization."""
+    r"""The list of users in the organization."""
 
     pagination: PaginationInfo
 

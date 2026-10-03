@@ -40,10 +40,10 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgDetailsResponse:
         r"""Get organization details
 
-        Retrieve an organization's details, including the count of organization members broken down by role and organization settings such as AI training and MFA requirements.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve an organization's details, including the count of users broken down by [Platform-wide role](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) and organization settings such as AI training and MFA requirements.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param include_member_counts: Whether to include how many members are in this organization, split by role.
+        :param include_member_counts: Whether to include how many users are in this organization, split by Platform-wide role.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -146,10 +146,10 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgDetailsResponse:
         r"""Get organization details
 
-        Retrieve an organization's details, including the count of organization members broken down by role and organization settings such as AI training and MFA requirements.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve an organization's details, including the count of users broken down by [Platform-wide role](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) and organization settings such as AI training and MFA requirements.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param include_member_counts: Whether to include how many members are in this organization, split by role.
+        :param include_member_counts: Whether to include how many users are in this organization, split by Platform-wide role.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -460,7 +460,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgCreditsUsageResponse:
         r"""Get organization credit usage
 
-        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Users with the Platform Admin role can obtain credit usage information for all users in their organization. Other users may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -568,7 +568,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgCreditsUsageResponse:
         r"""Get organization credit usage
 
-        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Users with the Platform Admin role can obtain credit usage information for all users in their organization. Other users may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -677,7 +677,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementInviteUserToOrgResponse:
         r"""Invite user to organization
 
-        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new member via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new user via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param invite_member_input_body:
@@ -795,7 +795,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementInviteUserToOrgResponse:
         r"""Invite user to organization
 
-        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new member via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new user via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param invite_member_input_body:
@@ -909,12 +909,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementListOrgMembersResponse:
-        r"""List organization members
+        r"""List organization users
 
-        Retrieve a paginated list of an organization's members and their user details, including their user ID, email, name, creation time, and roles.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve a paginated list of an organization's users and their details, including their user ID, email, name, creation time, and [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles).<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param page_size: Number of members to return per page
+        :param page_size: Number of users to return per page
         :param page_token: Pagination token for retrieving the next page of results
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1018,12 +1018,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementListOrgMembersResponse:
-        r"""List organization members
+        r"""List organization users
 
-        Retrieve a paginated list of an organization's members and their user details, including their user ID, email, name, creation time, and roles.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve a paginated list of an organization's users and their details, including their user ID, email, name, creation time, and [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles).<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param page_size: Number of members to return per page
+        :param page_size: Number of users to return per page
         :param page_token: Pagination token for retrieving the next page of results
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1127,12 +1127,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementRemoveOrgMemberResponse:
-        r"""Remove member from organization
+        r"""Remove user from organization
 
-        Remove a user from an organization. This is equivalent to [removing a member via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Remove a user from an organization. This is equivalent to [removing a user via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1234,12 +1234,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementRemoveOrgMemberResponse:
-        r"""Remove member from organization
+        r"""Remove user from organization
 
-        Remove a user from an organization. This is equivalent to [removing a member via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Remove a user from an organization. This is equivalent to [removing a user via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1344,12 +1344,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementUpdateOrgMemberResponse:
-        r"""Update a member's roles in an organization
+        r"""Update a user's Platform-wide roles in an organization
 
-        Update the roles assigned to an organization member. This operation replaces a member's roles with the list provided in the request body. To remove all roles from a member, provide an empty list. To completely remove a member from an organization, use the [remove member endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Update the [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) assigned to a user in an organization. This operation replaces a user's Platform-wide roles with the list provided in the request body. To remove all assigned Platform-wide roles from a user, provide an empty list. To completely remove a user from an organization, use the [remove user endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param update_member_role_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1465,12 +1465,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementUpdateOrgMemberResponse:
-        r"""Update a member's roles in an organization
+        r"""Update a user's Platform-wide roles in an organization
 
-        Update the roles assigned to an organization member. This operation replaces a member's roles with the list provided in the request body. To remove all roles from a member, provide an empty list. To completely remove a member from an organization, use the [remove member endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Update the [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) assigned to a user in an organization. This operation replaces a user's Platform-wide roles with the list provided in the request body. To remove all assigned Platform-wide roles from a user, provide an empty list. To completely remove a user from an organization, use the [remove user endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param update_member_role_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1584,9 +1584,9 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementMemberCreditsUsageResponse:
-        r"""Get organization member credit usage
+        r"""Get organization user credit usage
 
-        Retrieve credit consumption information for an organization member over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit consumption information for a user in an organization over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1692,9 +1692,9 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementMemberCreditsUsageResponse:
-        r"""Get organization member credit usage
+        r"""Get organization user credit usage
 
-        Retrieve credit consumption information for an organization member over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit consumption information for a user in an organization over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method

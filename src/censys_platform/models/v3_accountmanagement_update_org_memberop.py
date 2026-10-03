@@ -15,7 +15,7 @@ class V3AccountmanagementUpdateOrgMemberRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
     user_id: str
-    r"""The ID of a Censys user. You can obtain a user's ID by listing members of an organization."""
+    r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
     update_member_role_input_body: UpdateMemberRoleInputBodyTypedDict
 
 
@@ -28,7 +28,7 @@ class V3AccountmanagementUpdateOrgMemberRequest(BaseModel):
     user_id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""The ID of a Censys user. You can obtain a user's ID by listing members of an organization."""
+    r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
 
     update_member_role_input_body: Annotated[
         UpdateMemberRoleInputBody,
