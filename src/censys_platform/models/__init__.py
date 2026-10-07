@@ -774,6 +774,7 @@ if TYPE_CHECKING:
     )
     from .memberlist import Memberlist, MemberlistTypedDict
     from .memberlist_nodeinfo import MemberlistNodeInfo, MemberlistNodeInfoTypedDict
+    from .membermodulerole import MemberModuleRole, MemberModuleRoleTypedDict
     from .members import Members, MembersTypedDict
     from .memcached import Memcached, MemcachedTypedDict
     from .metrics import Metrics, MetricsTypedDict
@@ -786,6 +787,7 @@ if TYPE_CHECKING:
         ModbusExceptionResponseTypedDict,
     )
     from .modbus_meiresponse import ModbusMEIResponse, ModbusMEIResponseTypedDict
+    from .moduleroleoption import ModuleRoleOption, ModuleRoleOptionTypedDict
     from .monerop2p import MoneroP2P, MoneroP2PTypedDict
     from .monerop2p_entry import MoneroP2PEntry, MoneroP2PEntryTypedDict
     from .monerop2p_payload import MoneroP2PPayload, MoneroP2PPayloadTypedDict
@@ -900,6 +902,7 @@ if TYPE_CHECKING:
         OrganizationMembersList,
         OrganizationMembersListTypedDict,
     )
+    from .organizationmodule import OrganizationModule, OrganizationModuleTypedDict
     from .organizationpreferences import (
         OrganizationPreferences,
         OrganizationPreferencesTypedDict,
@@ -1385,6 +1388,10 @@ if TYPE_CHECKING:
         ServicesOnHostResponse,
         ServicesOnHostResponseTypedDict,
     )
+    from .setmembermoduleroleinputbody import (
+        SetMemberModuleRoleInputBody,
+        SetMemberModuleRoleInputBodyTypedDict,
+    )
     from .sevendaystodie import SevenDaysToDie, SevenDaysToDieTypedDict
     from .signature import Signature, SignatureTypedDict
     from .signedcertificatetimestamp import (
@@ -1586,11 +1593,23 @@ if TYPE_CHECKING:
         V3AccountmanagementOrgDetailsResponse,
         V3AccountmanagementOrgDetailsResponseTypedDict,
     )
+    from .v3_accountmanagement_remove_member_moduleop import (
+        V3AccountmanagementRemoveMemberModuleRequest,
+        V3AccountmanagementRemoveMemberModuleRequestTypedDict,
+        V3AccountmanagementRemoveMemberModuleResponse,
+        V3AccountmanagementRemoveMemberModuleResponseTypedDict,
+    )
     from .v3_accountmanagement_remove_org_memberop import (
         V3AccountmanagementRemoveOrgMemberRequest,
         V3AccountmanagementRemoveOrgMemberRequestTypedDict,
         V3AccountmanagementRemoveOrgMemberResponse,
         V3AccountmanagementRemoveOrgMemberResponseTypedDict,
+    )
+    from .v3_accountmanagement_set_member_module_roleop import (
+        V3AccountmanagementSetMemberModuleRoleRequest,
+        V3AccountmanagementSetMemberModuleRoleRequestTypedDict,
+        V3AccountmanagementSetMemberModuleRoleResponse,
+        V3AccountmanagementSetMemberModuleRoleResponseTypedDict,
     )
     from .v3_accountmanagement_update_org_memberop import (
         V3AccountmanagementUpdateOrgMemberRequest,
@@ -2917,6 +2936,8 @@ __all__ = [
     "MelsecTypedDict",
     "MemberCounts",
     "MemberCountsTypedDict",
+    "MemberModuleRole",
+    "MemberModuleRoleTypedDict",
     "Memberlist",
     "MemberlistNodeInfo",
     "MemberlistNodeInfoTypedDict",
@@ -2939,6 +2960,8 @@ __all__ = [
     "ModbusMEIResponse",
     "ModbusMEIResponseTypedDict",
     "ModbusTypedDict",
+    "ModuleRoleOption",
+    "ModuleRoleOptionTypedDict",
     "MoneroP2P",
     "MoneroP2PEntry",
     "MoneroP2PEntryTypedDict",
@@ -3092,6 +3115,8 @@ __all__ = [
     "OrganizationMemberTypedDict",
     "OrganizationMembersList",
     "OrganizationMembersListTypedDict",
+    "OrganizationModule",
+    "OrganizationModuleTypedDict",
     "OrganizationPreferences",
     "OrganizationPreferencesTypedDict",
     "OrganizationTypedDict",
@@ -3525,6 +3550,8 @@ __all__ = [
     "ServiceTypedDict",
     "ServicesOnHostResponse",
     "ServicesOnHostResponseTypedDict",
+    "SetMemberModuleRoleInputBody",
+    "SetMemberModuleRoleInputBodyTypedDict",
     "SevenDaysToDie",
     "SevenDaysToDieTypedDict",
     "Severity",
@@ -3758,10 +3785,18 @@ __all__ = [
     "V3AccountmanagementOrgDetailsRequestTypedDict",
     "V3AccountmanagementOrgDetailsResponse",
     "V3AccountmanagementOrgDetailsResponseTypedDict",
+    "V3AccountmanagementRemoveMemberModuleRequest",
+    "V3AccountmanagementRemoveMemberModuleRequestTypedDict",
+    "V3AccountmanagementRemoveMemberModuleResponse",
+    "V3AccountmanagementRemoveMemberModuleResponseTypedDict",
     "V3AccountmanagementRemoveOrgMemberRequest",
     "V3AccountmanagementRemoveOrgMemberRequestTypedDict",
     "V3AccountmanagementRemoveOrgMemberResponse",
     "V3AccountmanagementRemoveOrgMemberResponseTypedDict",
+    "V3AccountmanagementSetMemberModuleRoleRequest",
+    "V3AccountmanagementSetMemberModuleRoleRequestTypedDict",
+    "V3AccountmanagementSetMemberModuleRoleResponse",
+    "V3AccountmanagementSetMemberModuleRoleResponseTypedDict",
     "V3AccountmanagementUpdateOrgMemberRequest",
     "V3AccountmanagementUpdateOrgMemberRequestTypedDict",
     "V3AccountmanagementUpdateOrgMemberResponse",
@@ -4999,6 +5034,8 @@ _dynamic_imports: dict[str, str] = {
     "MemberlistTypedDict": ".memberlist",
     "MemberlistNodeInfo": ".memberlist_nodeinfo",
     "MemberlistNodeInfoTypedDict": ".memberlist_nodeinfo",
+    "MemberModuleRole": ".membermodulerole",
+    "MemberModuleRoleTypedDict": ".membermodulerole",
     "Members": ".members",
     "MembersTypedDict": ".members",
     "Memcached": ".memcached",
@@ -5017,6 +5054,8 @@ _dynamic_imports: dict[str, str] = {
     "ModbusExceptionResponseTypedDict": ".modbus_exceptionresponse",
     "ModbusMEIResponse": ".modbus_meiresponse",
     "ModbusMEIResponseTypedDict": ".modbus_meiresponse",
+    "ModuleRoleOption": ".moduleroleoption",
+    "ModuleRoleOptionTypedDict": ".moduleroleoption",
     "MoneroP2P": ".monerop2p",
     "MoneroP2PTypedDict": ".monerop2p",
     "MoneroP2PEntry": ".monerop2p_entry",
@@ -5166,6 +5205,8 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationMemberTypedDict": ".organizationmember",
     "OrganizationMembersList": ".organizationmemberslist",
     "OrganizationMembersListTypedDict": ".organizationmemberslist",
+    "OrganizationModule": ".organizationmodule",
+    "OrganizationModuleTypedDict": ".organizationmodule",
     "OrganizationPreferences": ".organizationpreferences",
     "OrganizationPreferencesTypedDict": ".organizationpreferences",
     "OtherName": ".othername",
@@ -5583,6 +5624,8 @@ _dynamic_imports: dict[str, str] = {
     "ServiceScannedTypedDict": ".servicescanned",
     "ServicesOnHostResponse": ".servicesonhostresponse",
     "ServicesOnHostResponseTypedDict": ".servicesonhostresponse",
+    "SetMemberModuleRoleInputBody": ".setmembermoduleroleinputbody",
+    "SetMemberModuleRoleInputBodyTypedDict": ".setmembermoduleroleinputbody",
     "SevenDaysToDie": ".sevendaystodie",
     "SevenDaysToDieTypedDict": ".sevendaystodie",
     "Signature": ".signature",
@@ -5813,10 +5856,18 @@ _dynamic_imports: dict[str, str] = {
     "V3AccountmanagementOrgDetailsRequestTypedDict": ".v3_accountmanagement_org_detailsop",
     "V3AccountmanagementOrgDetailsResponse": ".v3_accountmanagement_org_detailsop",
     "V3AccountmanagementOrgDetailsResponseTypedDict": ".v3_accountmanagement_org_detailsop",
+    "V3AccountmanagementRemoveMemberModuleRequest": ".v3_accountmanagement_remove_member_moduleop",
+    "V3AccountmanagementRemoveMemberModuleRequestTypedDict": ".v3_accountmanagement_remove_member_moduleop",
+    "V3AccountmanagementRemoveMemberModuleResponse": ".v3_accountmanagement_remove_member_moduleop",
+    "V3AccountmanagementRemoveMemberModuleResponseTypedDict": ".v3_accountmanagement_remove_member_moduleop",
     "V3AccountmanagementRemoveOrgMemberRequest": ".v3_accountmanagement_remove_org_memberop",
     "V3AccountmanagementRemoveOrgMemberRequestTypedDict": ".v3_accountmanagement_remove_org_memberop",
     "V3AccountmanagementRemoveOrgMemberResponse": ".v3_accountmanagement_remove_org_memberop",
     "V3AccountmanagementRemoveOrgMemberResponseTypedDict": ".v3_accountmanagement_remove_org_memberop",
+    "V3AccountmanagementSetMemberModuleRoleRequest": ".v3_accountmanagement_set_member_module_roleop",
+    "V3AccountmanagementSetMemberModuleRoleRequestTypedDict": ".v3_accountmanagement_set_member_module_roleop",
+    "V3AccountmanagementSetMemberModuleRoleResponse": ".v3_accountmanagement_set_member_module_roleop",
+    "V3AccountmanagementSetMemberModuleRoleResponseTypedDict": ".v3_accountmanagement_set_member_module_roleop",
     "V3AccountmanagementUpdateOrgMemberRequest": ".v3_accountmanagement_update_org_memberop",
     "V3AccountmanagementUpdateOrgMemberRequestTypedDict": ".v3_accountmanagement_update_org_memberop",
     "V3AccountmanagementUpdateOrgMemberResponse": ".v3_accountmanagement_update_org_memberop",

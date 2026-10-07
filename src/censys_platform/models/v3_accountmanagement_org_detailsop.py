@@ -15,8 +15,10 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 class V3AccountmanagementOrgDetailsRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
+    include_modules: NotRequired[bool]
+    r"""Whether to include the organization's entitled modules, available roles, and seat capacity."""
     include_member_counts: NotRequired[bool]
-    r"""Whether to include how many members are in this organization, split by role."""
+    r"""Whether to include how many users are in this organization, split by Platform-wide role."""
 
 
 class V3AccountmanagementOrgDetailsRequest(BaseModel):
@@ -25,15 +27,21 @@ class V3AccountmanagementOrgDetailsRequest(BaseModel):
     ]
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
+    include_modules: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = False
+    r"""Whether to include the organization's entitled modules, available roles, and seat capacity."""
+
     include_member_counts: Annotated[
         Optional[bool],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = False
-    r"""Whether to include how many members are in this organization, split by role."""
+    r"""Whether to include how many users are in this organization, split by Platform-wide role."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["include_member_counts"])
+        optional_fields = set(["include_modules", "include_member_counts"])
         serialized = handler(self)
         m = {}
 
