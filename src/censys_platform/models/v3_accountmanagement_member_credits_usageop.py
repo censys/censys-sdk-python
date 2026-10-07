@@ -26,7 +26,7 @@ class V3AccountmanagementMemberCreditsUsageRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
     user_id: str
-    r"""The ID of a Censys user. You can obtain a user's ID by listing members of an organization."""
+    r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
     date_: NotRequired[str]
     r"""The date for the credit usage report in YYYY-MM-DD format (e.g., 2025-11-06). This field is deprecated and will be removed in a future version. Use start_date and end_date instead. The date must be on or after 2025-01-01 (the earliest date available for credit usage reports)."""
     start_date: NotRequired[date]
@@ -46,7 +46,7 @@ class V3AccountmanagementMemberCreditsUsageRequest(BaseModel):
     user_id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""The ID of a Censys user. You can obtain a user's ID by listing members of an organization."""
+    r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
 
     date_: Annotated[
         Optional[str],

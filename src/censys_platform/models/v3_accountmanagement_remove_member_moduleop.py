@@ -7,14 +7,16 @@ from typing import Dict, List
 from typing_extensions import Annotated, TypedDict
 
 
-class V3AccountmanagementRemoveOrgMemberRequestTypedDict(TypedDict):
+class V3AccountmanagementRemoveMemberModuleRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
     user_id: str
     r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
+    module: str
+    r"""The module identifier, for example platform-search."""
 
 
-class V3AccountmanagementRemoveOrgMemberRequest(BaseModel):
+class V3AccountmanagementRemoveMemberModuleRequest(BaseModel):
     organization_id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
@@ -25,10 +27,15 @@ class V3AccountmanagementRemoveOrgMemberRequest(BaseModel):
     ]
     r"""The ID of a Censys user. You can obtain a user's ID by listing users in an organization."""
 
+    module: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
+    r"""The module identifier, for example platform-search."""
 
-class V3AccountmanagementRemoveOrgMemberResponseTypedDict(TypedDict):
+
+class V3AccountmanagementRemoveMemberModuleResponseTypedDict(TypedDict):
     headers: Dict[str, List[str]]
 
 
-class V3AccountmanagementRemoveOrgMemberResponse(BaseModel):
+class V3AccountmanagementRemoveMemberModuleResponse(BaseModel):
     headers: Dict[str, List[str]]

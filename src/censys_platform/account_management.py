@@ -25,6 +25,16 @@ class UpdateOrganizationMemberAcceptEnum(str, Enum):
     APPLICATION_PROBLEM_PLUS_JSON = "application/problem+json"
 
 
+class RemoveOrganizationMemberModuleAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_PROBLEM_PLUS_JSON = "application/problem+json"
+
+
+class SetOrganizationMemberModuleRoleAcceptEnum(str, Enum):
+    APPLICATION_JSON = "application/json"
+    APPLICATION_PROBLEM_PLUS_JSON = "application/problem+json"
+
+
 class AccountManagement(BaseSDK):
     r"""Endpoints related to the Account Management product"""
 
@@ -32,6 +42,7 @@ class AccountManagement(BaseSDK):
         self,
         *,
         organization_id: str,
+        include_modules: Optional[bool] = False,
         include_member_counts: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -40,10 +51,11 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgDetailsResponse:
         r"""Get organization details
 
-        Retrieve an organization's details, including the count of organization members broken down by role and organization settings such as AI training and MFA requirements.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve an organization's details, including the count of users broken down by [Platform-wide role](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) and organization settings such as AI training and MFA requirements. Set `include_modules` to true to include entitled modules, available roles, and seat capacity.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param include_member_counts: Whether to include how many members are in this organization, split by role.
+        :param include_modules: Whether to include the organization's entitled modules, available roles, and seat capacity.
+        :param include_member_counts: Whether to include how many users are in this organization, split by Platform-wide role.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -61,6 +73,7 @@ class AccountManagement(BaseSDK):
 
         request = models.V3AccountmanagementOrgDetailsRequest(
             organization_id=organization_id,
+            include_modules=include_modules,
             include_member_counts=include_member_counts,
         )
 
@@ -138,6 +151,7 @@ class AccountManagement(BaseSDK):
         self,
         *,
         organization_id: str,
+        include_modules: Optional[bool] = False,
         include_member_counts: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -146,10 +160,11 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgDetailsResponse:
         r"""Get organization details
 
-        Retrieve an organization's details, including the count of organization members broken down by role and organization settings such as AI training and MFA requirements.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve an organization's details, including the count of users broken down by [Platform-wide role](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) and organization settings such as AI training and MFA requirements. Set `include_modules` to true to include entitled modules, available roles, and seat capacity.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param include_member_counts: Whether to include how many members are in this organization, split by role.
+        :param include_modules: Whether to include the organization's entitled modules, available roles, and seat capacity.
+        :param include_member_counts: Whether to include how many users are in this organization, split by Platform-wide role.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -167,6 +182,7 @@ class AccountManagement(BaseSDK):
 
         request = models.V3AccountmanagementOrgDetailsRequest(
             organization_id=organization_id,
+            include_modules=include_modules,
             include_member_counts=include_member_counts,
         )
 
@@ -460,7 +476,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgCreditsUsageResponse:
         r"""Get organization credit usage
 
-        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Users with the Platform Admin role can obtain credit usage information for all users in their organization. Other users may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -568,7 +584,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementOrgCreditsUsageResponse:
         r"""Get organization credit usage
 
-        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Admins can obtain credit usage information for all users in their organization. Members may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit information for an organization over a specific date range. You must include a start date in your request.<br><br>Users with the Platform Admin role can obtain credit usage information for all users in their organization. Other users may only retrieve usage information for their own account.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -677,7 +693,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementInviteUserToOrgResponse:
         r"""Invite user to organization
 
-        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new member via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new user via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param invite_member_input_body:
@@ -795,7 +811,7 @@ class AccountManagement(BaseSDK):
     ) -> models.V3AccountmanagementInviteUserToOrgResponse:
         r"""Invite user to organization
 
-        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new member via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Invite a user to an organization. The user will receive an email to join the organization. This is equivalent to [adding a new user via the UI](https://docs.censys.com/docs/platform-org-management#invite-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param invite_member_input_body:
@@ -909,12 +925,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementListOrgMembersResponse:
-        r"""List organization members
+        r"""List organization users
 
-        Retrieve a paginated list of an organization's members and their user details, including their user ID, email, name, creation time, and roles.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve a paginated list of an organization's users and their details, including their user ID, email, name, creation time, [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles), and [module roles](https://docs.censys.com/docs/role-based-access-control#module-roles).<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param page_size: Number of members to return per page
+        :param page_size: Number of users to return per page
         :param page_token: Pagination token for retrieving the next page of results
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1018,12 +1034,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementListOrgMembersResponse:
-        r"""List organization members
+        r"""List organization users
 
-        Retrieve a paginated list of an organization's members and their user details, including their user ID, email, name, creation time, and roles.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve a paginated list of an organization's users and their details, including their user ID, email, name, creation time, [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles), and [module roles](https://docs.censys.com/docs/role-based-access-control#module-roles).<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param page_size: Number of members to return per page
+        :param page_size: Number of users to return per page
         :param page_token: Pagination token for retrieving the next page of results
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1127,12 +1143,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementRemoveOrgMemberResponse:
-        r"""Remove member from organization
+        r"""Remove user from organization
 
-        Remove a user from an organization. This is equivalent to [removing a member via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Remove a user from an organization. This is equivalent to [removing a user via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1234,12 +1250,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementRemoveOrgMemberResponse:
-        r"""Remove member from organization
+        r"""Remove user from organization
 
-        Remove a user from an organization. This is equivalent to [removing a member via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Remove a user from an organization. This is equivalent to [removing a user via the UI](https://docs.censys.com/docs/platform-org-management#remove-members).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1344,12 +1360,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementUpdateOrgMemberResponse:
-        r"""Update a member's roles in an organization
+        r"""Update a user's Platform-wide roles in an organization
 
-        Update the roles assigned to an organization member. This operation replaces a member's roles with the list provided in the request body. To remove all roles from a member, provide an empty list. To completely remove a member from an organization, use the [remove member endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Update the [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) assigned to a user in an organization. This operation replaces a user's Platform-wide roles with the list provided in the request body. To remove all assigned Platform-wide roles from a user, provide an empty list. To completely remove a user from an organization, use the [remove user endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param update_member_role_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1465,12 +1481,12 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementUpdateOrgMemberResponse:
-        r"""Update a member's roles in an organization
+        r"""Update a user's Platform-wide roles in an organization
 
-        Update the roles assigned to an organization member. This operation replaces a member's roles with the list provided in the request body. To remove all roles from a member, provide an empty list. To completely remove a member from an organization, use the [remove member endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
+        Update the [Platform-wide roles](https://docs.censys.com/docs/role-based-access-control#platform-wide-roles) assigned to a user in an organization. This operation replaces a user's Platform-wide roles with the list provided in the request body. To remove all assigned Platform-wide roles from a user, provide an empty list. To completely remove a user from an organization, use the [remove user endpoint](https://docs.censys.com/reference/v3-accountmanagement-remove-org-member).<br><br>Only users with the Platform Admin role in the provided organization can perform this operation.<br><br>This endpoint does not cost any credits to execute.
 
         :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
-        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing members of an organization.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
         :param update_member_role_input_body:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1584,9 +1600,9 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementMemberCreditsUsageResponse:
-        r"""Get organization member credit usage
+        r"""Get organization user credit usage
 
-        Retrieve credit consumption information for an organization member over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit consumption information for a user in an organization over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1692,9 +1708,9 @@ class AccountManagement(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.V3AccountmanagementMemberCreditsUsageResponse:
-        r"""Get organization member credit usage
+        r"""Get organization user credit usage
 
-        Retrieve credit consumption information for an organization member over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
+        Retrieve credit consumption information for a user in an organization over a specific date range. You must include a start date in your request.<br><br>This endpoint does not cost any credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1773,6 +1789,484 @@ class AccountManagement(BaseSDK):
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
             http_res, ["400", "403", "404", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def remove_organization_member_module(
+        self,
+        *,
+        organization_id: str,
+        user_id: str,
+        module: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        accept_header_override: Optional[
+            RemoveOrganizationMemberModuleAcceptEnum
+        ] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3AccountmanagementRemoveMemberModuleResponse:
+        r"""Remove a user's module access
+
+        Remove a user's access to the specified module. Only users with the Platform Admin role in the organization can perform this operation. This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
+        :param module: The module identifier, for example platform-search.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param accept_header_override: Override the default accept header for this method
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3AccountmanagementRemoveMemberModuleRequest(
+            organization_id=organization_id,
+            user_id=user_id,
+            module=module,
+        )
+
+        req = self._build_request(
+            method="DELETE",
+            path="/v3/accounts/organizations/{organization_id}/members/{user_id}/modules/{module}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value=accept_header_override.value
+            if accept_header_override is not None
+            else "application/json;q=1, application/problem+json;q=0",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-accountmanagement-remove-member-module",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Account Management"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return models.V3AccountmanagementRemoveMemberModuleResponse(
+                headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def remove_organization_member_module_async(
+        self,
+        *,
+        organization_id: str,
+        user_id: str,
+        module: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        accept_header_override: Optional[
+            RemoveOrganizationMemberModuleAcceptEnum
+        ] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3AccountmanagementRemoveMemberModuleResponse:
+        r"""Remove a user's module access
+
+        Remove a user's access to the specified module. Only users with the Platform Admin role in the organization can perform this operation. This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
+        :param module: The module identifier, for example platform-search.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param accept_header_override: Override the default accept header for this method
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3AccountmanagementRemoveMemberModuleRequest(
+            organization_id=organization_id,
+            user_id=user_id,
+            module=module,
+        )
+
+        req = self._build_request_async(
+            method="DELETE",
+            path="/v3/accounts/organizations/{organization_id}/members/{user_id}/modules/{module}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value=accept_header_override.value
+            if accept_header_override is not None
+            else "application/json;q=1, application/problem+json;q=0",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-accountmanagement-remove-member-module",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Account Management"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return models.V3AccountmanagementRemoveMemberModuleResponse(
+                headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def set_organization_member_module_role(
+        self,
+        *,
+        organization_id: str,
+        user_id: str,
+        module: str,
+        set_member_module_role_input_body: Union[
+            models.SetMemberModuleRoleInputBody,
+            models.SetMemberModuleRoleInputBodyTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        accept_header_override: Optional[
+            SetOrganizationMemberModuleRoleAcceptEnum
+        ] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3AccountmanagementSetMemberModuleRoleResponse:
+        r"""Set a user's module role
+
+        Assign a [module role](https://docs.censys.com/docs/role-based-access-control#module-roles) to a user in an organization or replace their existing role in that module. Only users with the Platform Admin role in the organization can perform this operation. This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
+        :param module: The module identifier, for example platform-search.
+        :param set_member_module_role_input_body:
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param accept_header_override: Override the default accept header for this method
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3AccountmanagementSetMemberModuleRoleRequest(
+            organization_id=organization_id,
+            user_id=user_id,
+            module=module,
+            set_member_module_role_input_body=utils.get_pydantic_model(
+                set_member_module_role_input_body, models.SetMemberModuleRoleInputBody
+            ),
+        )
+
+        req = self._build_request(
+            method="PUT",
+            path="/v3/accounts/organizations/{organization_id}/members/{user_id}/modules/{module}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value=accept_header_override.value
+            if accept_header_override is not None
+            else "application/json;q=1, application/problem+json;q=0",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.set_member_module_role_input_body,
+                False,
+                False,
+                "json",
+                models.SetMemberModuleRoleInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-accountmanagement-set-member-module-role",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Account Management"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return models.V3AccountmanagementSetMemberModuleRoleResponse(
+                headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409", "422"], "application/problem+json"
+        ):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "500", "application/problem+json"):
+            response_data = unmarshal_json_response(models.ErrorModelData, http_res)
+            raise models.ErrorModel(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def set_organization_member_module_role_async(
+        self,
+        *,
+        organization_id: str,
+        user_id: str,
+        module: str,
+        set_member_module_role_input_body: Union[
+            models.SetMemberModuleRoleInputBody,
+            models.SetMemberModuleRoleInputBodyTypedDict,
+        ],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        accept_header_override: Optional[
+            SetOrganizationMemberModuleRoleAcceptEnum
+        ] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V3AccountmanagementSetMemberModuleRoleResponse:
+        r"""Set a user's module role
+
+        Assign a [module role](https://docs.censys.com/docs/role-based-access-control#module-roles) to a user in an organization or replace their existing role in that module. Only users with the Platform Admin role in the organization can perform this operation. This endpoint does not cost any credits to execute.
+
+        :param organization_id: The ID of a Censys organization. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param user_id: The ID of a Censys user. You can obtain a user's ID by listing users in an organization.
+        :param module: The module identifier, for example platform-search.
+        :param set_member_module_role_input_body:
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param accept_header_override: Override the default accept header for this method
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V3AccountmanagementSetMemberModuleRoleRequest(
+            organization_id=organization_id,
+            user_id=user_id,
+            module=module,
+            set_member_module_role_input_body=utils.get_pydantic_model(
+                set_member_module_role_input_body, models.SetMemberModuleRoleInputBody
+            ),
+        )
+
+        req = self._build_request_async(
+            method="PUT",
+            path="/v3/accounts/organizations/{organization_id}/members/{user_id}/modules/{module}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value=accept_header_override.value
+            if accept_header_override is not None
+            else "application/json;q=1, application/problem+json;q=0",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.set_member_module_role_input_body,
+                False,
+                False,
+                "json",
+                models.SetMemberModuleRoleInputBody,
+            ),
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v3-accountmanagement-set-member-module-role",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+                tags=["Account Management"],
+                extensions=None,
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return models.V3AccountmanagementSetMemberModuleRoleResponse(
+                headers=utils.get_response_headers(http_res.headers)
+            )
+        if utils.match_response(http_res, "401", "application/json"):
+            response_data = unmarshal_json_response(
+                models.AuthenticationErrorData, http_res
+            )
+            raise models.AuthenticationError(response_data, http_res)
+        if utils.match_response(
+            http_res, ["400", "403", "404", "409", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)

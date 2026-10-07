@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .membercounts import MemberCounts, MemberCountsTypedDict
+from .organizationmodule import OrganizationModule, OrganizationModuleTypedDict
 from .organizationpreferences import (
     OrganizationPreferences,
     OrganizationPreferencesTypedDict,
@@ -9,7 +10,7 @@ from .organizationpreferences import (
 from censys_platform.types import BaseModel, UNSET_SENTINEL
 from datetime import datetime
 from pydantic import model_serializer
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -21,6 +22,8 @@ class OrganizationDetailsTypedDict(TypedDict):
     created_at: NotRequired[datetime]
     r"""The date and time the organization was created."""
     member_counts: NotRequired[MemberCountsTypedDict]
+    modules: NotRequired[List[OrganizationModuleTypedDict]]
+    r"""The modules this organization is entitled to. Only present when include_modules is true; empty when the organization has none."""
     preferences: NotRequired[OrganizationPreferencesTypedDict]
 
 
@@ -36,11 +39,14 @@ class OrganizationDetails(BaseModel):
 
     member_counts: Optional[MemberCounts] = None
 
+    modules: Optional[List[OrganizationModule]] = None
+    r"""The modules this organization is entitled to. Only present when include_modules is true; empty when the organization has none."""
+
     preferences: Optional[OrganizationPreferences] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["created_at", "member_counts", "preferences"])
+        optional_fields = set(["created_at", "member_counts", "modules", "preferences"])
         serialized = handler(self)
         m = {}
 
