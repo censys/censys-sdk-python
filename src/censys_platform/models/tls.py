@@ -40,6 +40,10 @@ class TLSTypedDict(TypedDict):
     ja3s: NotRequired[str]
     r"""The JA3S fingerprint for this service."""
     ja4s: NotRequired[str]
+    key_exchange_group: NotRequired[str]
+    r"""Key exchange group selected by the server: the TLS 1.3 key_share group or the TLS 1.2 ECDHE curve, e.g. X25519MLKEM768."""
+    pqc_groups: NotRequired[Nullable[List[str]]]
+    r"""Post-quantum TLS 1.3 key exchange groups the server accepts, e.g. X25519MLKEM768."""
     presented_chain: NotRequired[Nullable[List[TLSChainTypedDict]]]
     r"""Certificate chain information."""
     version_selected: NotRequired[VersionSelected]
@@ -58,6 +62,12 @@ class TLS(BaseModel):
     r"""The JA3S fingerprint for this service."""
 
     ja4s: Optional[str] = None
+
+    key_exchange_group: Optional[str] = None
+    r"""Key exchange group selected by the server: the TLS 1.3 key_share group or the TLS 1.2 ECDHE curve, e.g. X25519MLKEM768."""
+
+    pqc_groups: OptionalNullable[List[str]] = UNSET
+    r"""Post-quantum TLS 1.3 key exchange groups the server accepts, e.g. X25519MLKEM768."""
 
     presented_chain: OptionalNullable[List[TLSChain]] = UNSET
     r"""Certificate chain information."""
@@ -84,12 +94,14 @@ class TLS(BaseModel):
                 "fingerprint_sha256",
                 "ja3s",
                 "ja4s",
+                "key_exchange_group",
+                "pqc_groups",
                 "presented_chain",
                 "version_selected",
                 "versions",
             ]
         )
-        nullable_fields = set(["presented_chain", "versions"])
+        nullable_fields = set(["pqc_groups", "presented_chain", "versions"])
         serialized = handler(self)
         m = {}
 

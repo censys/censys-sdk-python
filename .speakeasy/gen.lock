@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 2ed4cb55595db3955dcd2c4483c4ad7d
-  docVersion: 1.0.146
-  speakeasyVersion: 1.800.1
-  generationVersion: 2.943.0
-  releaseVersion: 0.16.4
-  configChecksum: 383cccb409bb56c4b6e8baf098319298
+  docChecksum: 7af733d1ffaeaf2bca251844d352b4c2
+  docVersion: 1.0.150
+  speakeasyVersion: 1.801.0
+  generationVersion: 2.946.0
+  releaseVersion: 0.16.5
+  configChecksum: 7e82b1b7ec9d09ffd58baec8b2877ae0
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: ed1d3708-33ee-4060-b1e8-6e6f979d73f1
-  pristine_commit_hash: 0b870dd21507b3c62fa1c126f314ecde269f9086
-  pristine_tree_hash: eec07e56e779b39436279f9ac438d40adabf0326
+  generation_id: 8f748948-7925-4073-8a49-6b21f92c365f
+  pristine_commit_hash: 4d9cc255d8d2c90b3ab86ffdb7980512e5f1f685
+  pristine_tree_hash: 119f05c1f3f41a17b29c4a79bd00351e5003457c
 features:
   python:
     acceptHeaders: 3.0.0
@@ -3266,8 +3266,8 @@ trackedFiles:
     pristine_git_object: a1ad410e561516f54548acf172196cf664306788
   docs/models/tls.md:
     id: b02be4f57050
-    last_write_checksum: sha1:b034c460bc1e9c2a6749462ba6f18d76362f1ab2
-    pristine_git_object: 8b083c1c9b356423b39cbdbd9a1e3f2b624636cd
+    last_write_checksum: sha1:1f08a779327dd74c551d80e9ce228a71e774a4a9
+    pristine_git_object: 47b90b826af43ea7a29671a6f0d7361293d9ec7e
   docs/models/tlschain.md:
     id: 873a344d5ece
     last_write_checksum: sha1:68f90770bb4fe21bcf0d6c5ef210f7bc2389e0fd
@@ -4118,8 +4118,8 @@ trackedFiles:
     pristine_git_object: bf7b4db49498d162735bf867cb14f7e4a696cd5a
   docs/models/v3threathuntinggethostobservationswithcertificaterequest.md:
     id: 6cd9ed086ccb
-    last_write_checksum: sha1:13e345ec9543f2195f3846269af501869d308644
-    pristine_git_object: 8e7a0831c1b118a329731aee28d2b973c09270f4
+    last_write_checksum: sha1:3831628246502140b1c638bb182ecdfda2700823
+    pristine_git_object: 327eede6c00d567d5f634f4f10c7c6ac4daa2ced
   docs/models/v3threathuntinggethostobservationswithcertificateresponse.md:
     id: 8fdd4bed8ffe
     last_write_checksum: sha1:b85a42bd7d1545dae9c3de1742603d1bc9869a79
@@ -4446,8 +4446,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:8a4acbc9e5f322382f3ec0c93f6e7a21b2d73c87
-    pristine_git_object: 44f0aabe02c88e5353448199c3d7ddc145203634
+    last_write_checksum: sha1:c2dd9acab398f58dda48112b544a5f30485d9065
+    pristine_git_object: 3c547cd450508e63f332047d1959588aed2568a1
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -4474,8 +4474,8 @@ trackedFiles:
     pristine_git_object: ec32aa84954b1a51f33327002cacd727eb9ab81e
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:e0e830c4d5675ba0b393f27f1c82bd75b6997bf5
-    pristine_git_object: d33ca36d6ebd5d7d90b583c8ee591ca3110c482f
+    last_write_checksum: sha1:42aa0909cee714cfb4aa55b894123facf7da2186
+    pristine_git_object: 5f50bf04d1e9265b18718f6be76ff3bbd6942c29
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:ffa901e36d87e9d190cefe08c68850912e9274d4
@@ -7374,8 +7374,8 @@ trackedFiles:
     pristine_git_object: 4b06eae4c8ab5d9f14fc1a952b104c059462bfd9
   src/censys_platform/models/tls.py:
     id: 28f934d811f8
-    last_write_checksum: sha1:f17cd3b1bda174f71aa0a6d1e2f6bb40e3212716
-    pristine_git_object: 296825ef87228a47816d2a50acf2253e481ad3dc
+    last_write_checksum: sha1:26d6966baee5e4595794a7d0f7b1078396cd0de3
+    pristine_git_object: 60ba0461690516f393fed0d75964b990f2969314
   src/censys_platform/models/tls_chain.py:
     id: b670adfe054b
     last_write_checksum: sha1:677907d59a0957d3ae6f270af126fd946881025c
@@ -7722,8 +7722,8 @@ trackedFiles:
     pristine_git_object: 571315faccbe35e6ddd4cf27df46532339f330d6
   src/censys_platform/models/v3_threathunting_get_host_observations_with_certificateop.py:
     id: ba9b94957bd2
-    last_write_checksum: sha1:aa15b64aa323a4eb3a84c71612ab9b821c02521e
-    pristine_git_object: 0bbee78c2af1066e6cff999bedfe5e4fbc0425da
+    last_write_checksum: sha1:eceeeb8b9a3f4102b3cfd4c51d6c1f3d34df3f9f
+    pristine_git_object: e1826e231dd17f5f5d9aab5e5b25d191570b9dcd
   src/censys_platform/models/v3_threathunting_investigations_files_createop.py:
     id: c83bd8588509
     last_write_checksum: sha1:a36872e11d47c153e1b84c2081d774344f12782a

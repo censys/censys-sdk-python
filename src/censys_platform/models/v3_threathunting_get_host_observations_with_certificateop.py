@@ -51,7 +51,7 @@ class V3ThreathuntingGetHostObservationsWithCertificateRequestTypedDict(TypedDic
     port: NotRequired[int]
     r"""The port to filter by"""
     protocol: NotRequired[str]
-    r"""The transport protocol to filter by"""
+    r"""The application protocol to filter by"""
     page_token: NotRequired[str]
     r"""Pagination token from previous response to retrieve next page of results"""
     page_size: NotRequired[int]
@@ -92,7 +92,7 @@ class V3ThreathuntingGetHostObservationsWithCertificateRequest(BaseModel):
         Optional[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
     ] = None
-    r"""The transport protocol to filter by"""
+    r"""The application protocol to filter by"""
 
     page_token: Annotated[
         Optional[str],
