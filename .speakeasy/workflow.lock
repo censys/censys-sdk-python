@@ -1,20 +1,20 @@
-speakeasyVersion: 1.800.1
+speakeasyVersion: 1.802.0
 sources:
     converge-source:
         sourceNamespace: converge-source
-        sourceRevisionDigest: sha256:44fe7953b40064cbb286b64043da7a0505ad9ccb0c3df49eed813efc7f827ed4
-        sourceBlobDigest: sha256:e1c94d4172be5689bbe3ce477200f402e3df34b980476bc21f9c190708d7920c
+        sourceRevisionDigest: sha256:0632bb72b027915f6b9544772a778be7a2727212d83807272cbb5813c83eeae0
+        sourceBlobDigest: sha256:d5f7243dce2689b6ebb901762adba08be7cfaa8cc489f3290bcd5d27ca2af23e
         tags:
             - latest
-            - 1.0.146
+            - 1.0.152
 targets:
     censys-sdk-python:
         source: converge-source
         sourceNamespace: converge-source
-        sourceRevisionDigest: sha256:44fe7953b40064cbb286b64043da7a0505ad9ccb0c3df49eed813efc7f827ed4
-        sourceBlobDigest: sha256:e1c94d4172be5689bbe3ce477200f402e3df34b980476bc21f9c190708d7920c
+        sourceRevisionDigest: sha256:0632bb72b027915f6b9544772a778be7a2727212d83807272cbb5813c83eeae0
+        sourceBlobDigest: sha256:d5f7243dce2689b6ebb901762adba08be7cfaa8cc489f3290bcd5d27ca2af23e
         codeSamplesNamespace: converge-source-python-code-samples
-        codeSamplesRevisionDigest: sha256:87bcd477d8acb439ba08cd49101a6cbf334ffb84ddce4be650be418291c372b6
+        codeSamplesRevisionDigest: sha256:754a10d455d0296c96ebfab9dc7ebcfe8a1619223ef735b8b8ad5a2f9824c3b0
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
