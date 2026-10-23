@@ -427,3 +427,13 @@ Based on:
 - [python v0.16.4] .
 ### Releases
 - [PyPI v0.16.4] https://pypi.org/project/censys-platform/0.16.4 - .
+
+## 2026-10-23 00:38:30
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.803.1 (2.950.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.16.5] .
+### Releases
+- [PyPI v0.16.5] https://pypi.org/project/censys-platform/0.16.5 - .
