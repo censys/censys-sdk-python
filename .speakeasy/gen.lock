@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: ce34e7e3d105ef7825bbb0bcdd7da4be
-  docVersion: 1.0.155
-  speakeasyVersion: 1.803.1
-  generationVersion: 2.950.2
-  releaseVersion: 0.16.5
-  configChecksum: e3f73f20003e228367c4f873cbab9590
+  docChecksum: 1cbbb48cd9181b1790848ec0a44729d1
+  docVersion: 1.0.156
+  speakeasyVersion: 1.803.2
+  generationVersion: 2.950.13
+  releaseVersion: 0.16.6
+  configChecksum: 84e005912a9296bbf920803b590c2943
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: 18279ce7-e587-4651-8db8-f05bb733055a
-  pristine_commit_hash: 26a125c645750f994accc6e0161949cda70c51e1
-  pristine_tree_hash: de6162c6a92d91757d32fa41e5e536613bf43471
+  generation_id: cfb35687-d517-4247-b2a1-9f76e4793ef6
+  pristine_commit_hash: 39b0dc38dbc1810afd0226b7e976898b784d8dcd
+  pristine_tree_hash: 48ef497b0f519b4f5a0dd7fe3d1187c27ce438f1
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.1.0
     constsAndDefaults: 1.0.8
-    core: 6.1.4
+    core: 6.1.5
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.1
@@ -4446,8 +4446,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:c2dd9acab398f58dda48112b544a5f30485d9065
-    pristine_git_object: 3c547cd450508e63f332047d1959588aed2568a1
+    last_write_checksum: sha1:49493dc2a0116d99a2f1d6ead55ff726caf6e2ac
+    pristine_git_object: 0eee649f9e23438bcda5824b8d5c4c72ecabf058
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -4474,8 +4474,8 @@ trackedFiles:
     pristine_git_object: ec32aa84954b1a51f33327002cacd727eb9ab81e
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:545fa4cd56a628478ddb1bc1b9bc2633b50e563f
-    pristine_git_object: e32c1e8db576678f0b5404bc2b947be9b7f43f74
+    last_write_checksum: sha1:f14c386676b72f267d5242501ef5afa90720c370
+    pristine_git_object: 962063e18210b5cd3919941fd437bb848f8dbb42
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:ffa901e36d87e9d190cefe08c68850912e9274d4
