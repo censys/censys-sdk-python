@@ -7,6 +7,8 @@ from censys_platform.types import (
     OptionalNullable,
     UNSET,
     UNSET_SENTINEL,
+    current_exclude_none,
+    serialize_with_info,
 )
 from datetime import datetime
 from pydantic import model_serializer
@@ -39,14 +41,20 @@ class CreateInvestigationJobInputBody(BaseModel):
     r"""Start of the reported timeframe to scope the investigation to, as an RFC 3339 timestamp. Inclusive, and must be in the past. Omit both start_time and end_time to investigate current data. Supplying start_time on its own scopes the investigation from that instant up to now, which is how an open-ended report is expressed."""
 
     @model_serializer(mode="wrap")
+    def _serialize_model_with_info(self, handler, info):
+        return serialize_with_info(self.serialize_model, handler, info)
+
     def serialize_model(self, handler):
         optional_fields = set(["end_time", "file_ids", "indicators", "start_time"])
         nullable_fields = set(["file_ids", "indicators"])
+        exclude_none = current_exclude_none()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
-            k = f.alias or n
+            k = f.alias if f.alias is not None else n
+            if k not in serialized and n not in serialized and exclude_none is False:
+                continue
             val = serialized.get(k, serialized.get(n))
             is_nullable_and_explicitly_set = (
                 k in nullable_fields

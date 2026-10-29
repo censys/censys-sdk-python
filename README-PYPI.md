@@ -593,6 +593,7 @@ def main():
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...
+        pass
 
 
 # Or when using async:
@@ -603,6 +604,7 @@ async def amain():
         personal_access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as sdk:
         # Rest of application here...
+        pass
 ```
 <!-- End Resource Management [resource-management] -->
 
