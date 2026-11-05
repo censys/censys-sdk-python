@@ -265,7 +265,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudCreateResponse:
         r"""Create a collection
 
-        Create a new collection.<br><br>This endpoint does not cost credits to execute.
+        Create a new [collection](https://docs.censys.com/docs/platform-collections).<br><br>In a SOC environment, use this endpoint to save a query as a dynamic asset group, such as all internet-facing RDP hosts or a threat's footprint, so SOC monitoring and reporting stay scoped as assets change.<br><br>This endpoint does not cost credits to execute.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_create_input_body:
@@ -385,7 +385,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudCreateResponse:
         r"""Create a collection
 
-        Create a new collection.<br><br>This endpoint does not cost credits to execute.
+        Create a new [collection](https://docs.censys.com/docs/platform-collections).<br><br>In a SOC environment, use this endpoint to save a query as a dynamic asset group, such as all internet-facing RDP hosts or a threat's footprint, so SOC monitoring and reporting stay scoped as assets change.<br><br>This endpoint does not cost credits to execute.
 
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param crud_create_input_body:
@@ -723,7 +723,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudGetResponse:
         r"""Get a collection
 
-        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
+        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count. Use it to confirm it still reflects the scope you intend to monitor.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -832,7 +832,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudGetResponse:
         r"""Get a collection
 
-        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count.<br><br>This endpoint does not cost credits to execute.
+        Retrieve information about a collection. Retrieved information includes its name, query, description, status, and asset count. Use it to confirm it still reflects the scope you intend to monitor.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1189,7 +1189,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsListEventsResponse:
         r"""Get a collection's events
 
-        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.<br><br>This endpoint does not cost credits to execute.
+        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.<br><br>In a SOC environment, use this endpoint to see which assets were added or removed and when, to catch new exposure or unexpected changes in a monitored scope.<br><br>This endpoint does not cost credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1298,7 +1298,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsListEventsResponse:
         r"""Get a collection's events
 
-        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.<br><br>This endpoint does not cost credits to execute.
+        Retrieve the event history for a collection. This includes the addition or removal of assets as well as collection status changes.<br><br>In a SOC environment, use this endpoint to see which assets were added or removed and when, to catch new exposure or unexpected changes in a monitored scope.<br><br>This endpoint does not cost credits to execute.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1408,7 +1408,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsSearchAggregateResponse:
         r"""Aggregate results for a search query within a collection
 
-        Aggregate results for a Platform search query that targets a collection's assets. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
+        Aggregate results for a Platform search query that targets a collection's assets. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.<br><br>In a SOC environment, use this endpoint to count and bucket matches by field, such as port, country, or software, inside a collection so you can spot exposure trends without pulling every asset.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param search_aggregate_input_body:
@@ -1531,7 +1531,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsSearchAggregateResponse:
         r"""Aggregate results for a search query within a collection
 
-        Aggregate results for a Platform search query that targets a collection's assets. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
+        Aggregate results for a Platform search query that targets a collection's assets. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.<br><br>In a SOC environment, use this endpoint to count and bucket matches by field, such as port, country, or software, inside a collection so you can spot exposure trends without pulling every asset.
 
         :param collection_uid: The UID for the collection. Obtain the collection ID using the [list collections endpoint](https://docs.censys.com/reference/v3-collections-crud-list#/) or via the collection URL when using the web console.
         :param search_aggregate_input_body:
@@ -1654,7 +1654,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsSearchQueryResponse:
         r"""Run a search query within a collection
 
-        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
+        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.<br><br>In a SOC environment, use this endpoint to search only within the defined scope of a collection, so triage and hunting results stay relevant instead of covering the whole internet.
 
         :param collection_uid: The UID for the collection
         :param search_query_input_body:
@@ -1777,7 +1777,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsSearchQueryResponse:
         r"""Run a search query within a collection
 
-        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
+        Run a search query across a collection's assets. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.<br><br>In a SOC environment, use this endpoint to search only within the defined scope of a collection, so triage and hunting results stay relevant instead of covering the whole internet.
 
         :param collection_uid: The UID for the collection
         :param search_query_input_body:

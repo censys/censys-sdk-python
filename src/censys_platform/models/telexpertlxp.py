@@ -7,6 +7,7 @@ from censys_platform.types import (
     current_exclude_none,
     serialize_with_info,
 )
+from censys_platform.types.basemodel import current_filtered_dump
 from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
@@ -32,12 +33,13 @@ class TelexperTlxp(BaseModel):
     def serialize_model(self, handler):
         optional_fields = set(["frame_type", "image_height_px", "image_width_px"])
         exclude_none = current_exclude_none()
+        skip_filtered = exclude_none is False or current_filtered_dump()
         serialized = handler(self)
         m = {}
 
         for n, f in type(self).model_fields.items():
             k = f.alias if f.alias is not None else n
-            if k not in serialized and n not in serialized and exclude_none is False:
+            if k not in serialized and n not in serialized and skip_filtered:
                 continue
             val = serialized.get(k, serialized.get(n))
 
