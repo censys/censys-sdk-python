@@ -575,6 +575,7 @@ if TYPE_CHECKING:
         HostTimelineEventAssetTypedDict,
     )
     from .http import HTTP, HTTPTypedDict
+    from .http_copyright import HTTPCopyright, HTTPCopyrightTypedDict
     from .http_favicon import HTTPFavicon, HTTPFaviconTypedDict
     from .http_redirectchainlink import (
         HTTPRedirectChainLink,
@@ -2667,6 +2668,8 @@ __all__ = [
     "GrilConsole",
     "GrilConsoleTypedDict",
     "HTTP",
+    "HTTPCopyright",
+    "HTTPCopyrightTypedDict",
     "HTTPFavicon",
     "HTTPFaviconTypedDict",
     "HTTPRedirectChainLink",
@@ -4806,6 +4809,8 @@ _dynamic_imports: dict[str, str] = {
     "HostTimelineEventAssetTypedDict": ".hosttimelineeventasset",
     "HTTP": ".http",
     "HTTPTypedDict": ".http",
+    "HTTPCopyright": ".http_copyright",
+    "HTTPCopyrightTypedDict": ".http_copyright",
     "HTTPFavicon": ".http_favicon",
     "HTTPFaviconTypedDict": ".http_favicon",
     "HTTPRedirectChainLink": ".http_redirectchainlink",

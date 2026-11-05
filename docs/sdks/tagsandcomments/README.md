@@ -386,7 +386,7 @@ with SDK(
 
 ## update_tag
 
-Update an existing tag in your organization. Only the fields provided in the request body will be updated; omitted fields are left unchanged.<br><br>Only the tag's creator or an organization admin can update a `private` tag. Tags with the `shared` setting can be updated by any organization member.<br><br>This endpoint does not cost any credits to execute.
+Update an existing tag in your organization. Only the fields provided in the request body will be updated; omitted fields are left unchanged.<br><br>Only the tag's creator or an organization admin can update a `private` tag. Tags with the `shared` setting can be updated by any organization member. A `shared` tag cannot be made `private`.<br><br>This endpoint does not cost any credits to execute.
 
 ### Example Usage
 

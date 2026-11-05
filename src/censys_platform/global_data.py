@@ -27,7 +27,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateListPostResponse:
         r"""Retrieve multiple certificates
 
-        Retrieve information about multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve information about multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint.<br><br>In a SOC environment, use this endpoint to bulk-check multiple certificates from network telemetry for self-signed, newly issued, or lookalike certs.
 
         :param asset_certificate_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -150,7 +150,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateListPostResponse:
         r"""Retrieve multiple certificates
 
-        Retrieve information about multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve information about multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint.<br><br>In a SOC environment, use this endpoint to bulk-check multiple certificates from network telemetry for self-signed, newly issued, or lookalike certs.
 
         :param asset_certificate_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -273,7 +273,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateListRawPostResponse:
         r"""Retrieve multiple certificates in PEM format
 
-        Retrieve the raw PEM-encoded format for multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve the raw PEM-encoded format for multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint.<br><br>Use this endpoint to export raw PEMs for multiple certificates at once, for bulk analysis or sharing with your detection pipeline.
 
         :param asset_certificate_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -394,7 +394,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateListRawPostResponse:
         r"""Retrieve multiple certificates in PEM format
 
-        Retrieve the raw PEM-encoded format for multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve the raw PEM-encoded format for multiple certificates. You can retrieve up to 1,000 certificates per call. A certificate ID is its SHA-256 fingerprint.<br><br>Use this endpoint to export raw PEMs for multiple certificates at once, for bulk analysis or sharing with your detection pipeline.
 
         :param asset_certificate_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -512,7 +512,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateResponse:
         r"""Get a certificate
 
-        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint.<br><br>In a SOC environment, use this endpoint to look up a certificate by SHA-256 fingerprint to see its subject, issuer, and validity, so you can vet certs seen in TLS logs or alerts.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -623,7 +623,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateResponse:
         r"""Get a certificate
 
-        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint.<br><br>In a SOC environment, use this endpoint to look up a certificate by SHA-256 fingerprint to see its subject, issuer, and validity, so you can vet certs seen in TLS logs or alerts.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -734,7 +734,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateRawResponse:
         r"""Get a certificate in PEM format
 
-        Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint.<br><br>Use this endpoint to retrieve the raw PEM of a suspicious certificate for offline analysis or to feed other tooling.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -849,7 +849,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateRawResponse:
         r"""Get a certificate in PEM format
 
-        Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint in the Censys dataset.
+        Retrieve the raw PEM-encoded format of a certificate. A certificate ID is its SHA-256 fingerprint.<br><br>Use this endpoint to retrieve the raw PEM of a suspicious certificate for offline analysis or to feed other tooling.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -964,7 +964,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostEnrichmentResponse:
         r"""Get host enrichment
 
-        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
+        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>Use this endpoint to add Censys context (location, ASN, labels, reputation, and more) to IPs in your SIEM or SOAR at high volume, without spending standard credits.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
 
         :param host_ip: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1078,7 +1078,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostEnrichmentResponse:
         r"""Get host enrichment
 
-        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
+        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>Use this endpoint to add Censys context (location, ASN, labels, reputation, and more) to IPs in your SIEM or SOAR at high volume, without spending standard credits.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
 
         :param host_ip: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1194,7 +1194,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostListPostResponse:
         r"""Retrieve multiple hosts
 
-        Retrieve information about multiple hosts. You can retrieve up to 100 hosts per call. A host ID is its IP address.
+        Retrieve information about multiple hosts. You can retrieve up to 100 hosts per call. A host ID is its IP address.<br><br>In a SOC environment, use this endpoint to look up multiple IPs from an alert, log, or threat feed in one call, so you can triage a whole indicator list quickly.
 
         :param asset_host_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1316,7 +1316,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostListPostResponse:
         r"""Retrieve multiple hosts
 
-        Retrieve information about multiple hosts. You can retrieve up to 100 hosts per call. A host ID is its IP address.
+        Retrieve information about multiple hosts. You can retrieve up to 100 hosts per call. A host ID is its IP address.<br><br>In a SOC environment, use this endpoint to look up multiple IPs from an alert, log, or threat feed in one call, so you can triage a whole indicator list quickly.
 
         :param asset_host_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1437,7 +1437,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostResponse:
         r"""Get a host
 
-        Retrieve information about a single host. A host ID is its IP address.
+        Retrieve information about a single host. A host ID is its IP address.<br><br>In a SOC environment, use this endpoint to pull the current services, software, certificates, and labels on an IP from an alert, so you can quickly judge whether it is malicious or benign.
 
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1551,7 +1551,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostResponse:
         r"""Get a host
 
-        Retrieve information about a single host. A host ID is its IP address.
+        Retrieve information about a single host. A host ID is its IP address.<br><br>In a SOC environment, use this endpoint to pull the current services, software, certificates, and labels on an IP from an alert, so you can quickly judge whether it is malicious or benign.
 
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1666,7 +1666,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataServiceOnHostResponse:
         r"""Get service history for a host
 
-        Retrieve historical service observations for a host. This endpoint returns time ranges during which services were detected on the host.<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account.<br><br>You can filter by port number, protocol, and transport protocol.
+        Retrieve historical service observations for a host. This endpoint returns time ranges during which services were detected on the host.<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account.<br><br>You can filter by port number, protocol, and transport protocol.<br><br>In a SOC environment, use this endpoint to see when a specific service was exposed on an IP, so you can check whether it was live during the window of a suspected incident.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1775,7 +1775,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataServiceOnHostResponse:
         r"""Get service history for a host
 
-        Retrieve historical service observations for a host. This endpoint returns time ranges during which services were detected on the host.<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account.<br><br>You can filter by port number, protocol, and transport protocol.
+        Retrieve historical service observations for a host. This endpoint returns time ranges during which services were detected on the host.<br><br>You can define a specific time frame of interest. If you do not specify a time frame, this endpoint will search the historical dataset that is available to your account.<br><br>You can filter by port number, protocol, and transport protocol.<br><br>In a SOC environment, use this endpoint to see when a specific service was exposed on an IP, so you can check whether it was live during the window of a suspected incident.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1884,7 +1884,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
         r"""Get host event history
 
-        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will be reflected in the `scan` object.
+        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will be reflected in the `scan` object.<br><br>In a SOC environment, use this endpoint to see what changed on an IP over time, such as new services, certificate swaps, and software changes, to reconstruct when attacker infrastructure was stood up or modified.
 
         :param host_id: The IP address of a host.
         :param start_time: Start time of the host timeline. Equivalent to the To field in the event history UI. This must be the timestamp closest to the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 2 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
@@ -2001,7 +2001,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostTimelineResponse:
         r"""Get host event history
 
-        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will be reflected in the `scan` object.
+        Retrieve event history for a host. A host ID is its IP address.<br><br>Note that when a service protocol changes after a new scan (for example, from `UNKNOWN` to `NETBIOS`), this information will be reflected in the `scan` object.<br><br>In a SOC environment, use this endpoint to see what changed on an IP over time, such as new services, certificate swaps, and software changes, to reconstruct when attacker infrastructure was stood up or modified.
 
         :param host_id: The IP address of a host.
         :param start_time: Start time of the host timeline. Equivalent to the To field in the event history UI. This must be the timestamp closest to the current time. For example, if you want events from January 1, 2025 to the start of January 2, 2025, input the January 2 timestamp here. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
@@ -2119,7 +2119,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetWebpropertyListPostResponse:
         r"""Retrieve multiple web properties
 
-        Retrieve information about multiple web properties. You can retrieve up to 100 web properties per call. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
+        Retrieve information about multiple web properties. You can retrieve up to 100 web properties per call. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.<br><br>In a SOC environment, use this endpoint to check up to 100 suspicious hostnames at once, such as domains from phishing reports or proxy logs, to find the live and malicious ones.
 
         :param asset_webproperty_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -2242,7 +2242,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetWebpropertyListPostResponse:
         r"""Retrieve multiple web properties
 
-        Retrieve information about multiple web properties. You can retrieve up to 100 web properties per call. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
+        Retrieve information about multiple web properties. You can retrieve up to 100 web properties per call. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.<br><br>In a SOC environment, use this endpoint to check up to 100 suspicious hostnames at once, such as domains from phishing reports or proxy logs, to find the live and malicious ones.
 
         :param asset_webproperty_list_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -2363,7 +2363,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetWebpropertyResponse:
         r"""Get a web property
 
-        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
+        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.<br><br>In a SOC environment, use this endpoint to inspect the current content, technologies, and certificate for a hostname and port from a phishing or C2 alert.
 
         :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -2477,7 +2477,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetWebpropertyResponse:
         r"""Get a web property
 
-        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.
+        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.<br><br>In a SOC environment, use this endpoint to inspect the current content, technologies, and certificate for a hostname and port from a phishing or C2 alert.
 
         :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -2826,7 +2826,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSIPResolutionBoundResponse:
         r"""Get DNS names that resolved to an IP (aggregated bounds)
 
-        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Results are aggregated per domain name and multiple distinct ranges for a name will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for `censys.com` in the response.<br><br>To retrieve domain names for an IP with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-ranges)<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Results are aggregated per domain name and multiple distinct ranges for a name will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for `censys.com` in the response.<br><br>To retrieve domain names for an IP with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-ranges)<br><br>In a SOC environment, use this endpoint to find every domain that has pointed at a malicious IP, with first- and last-seen bounds per name, so you can discover related domains and block them.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -2937,7 +2937,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSIPResolutionBoundResponse:
         r"""Get DNS names that resolved to an IP (aggregated bounds)
 
-        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Results are aggregated per domain name and multiple distinct ranges for a name will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for `censys.com` in the response.<br><br>To retrieve domain names for an IP with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-ranges)<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Results are aggregated per domain name and multiple distinct ranges for a name will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for `censys.com` in the response.<br><br>To retrieve domain names for an IP with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-ranges)<br><br>In a SOC environment, use this endpoint to find every domain that has pointed at a malicious IP, with first- and last-seen bounds per name, so you can discover related domains and block them.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -3048,7 +3048,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSIPResolutionRangesResponse:
         r"""Get DNS names that resolved to an IP (ranges)
 
-        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges.<br><br>To retrieve domain names for an IP with each result aggregated by name, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-bound).<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges.<br><br>To retrieve domain names for an IP with each result aggregated by name, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-bound).<br><br>In a SOC environment, use this endpoint to see the exact time ranges a domain resolved to an IP, to confirm it was active during the incident window or to spot infrastructure reuse.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -3159,7 +3159,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSIPResolutionRangesResponse:
         r"""Get DNS names that resolved to an IP (ranges)
 
-        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges.<br><br>To retrieve domain names for an IP with each result aggregated by name, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-bound).<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the domain names that resolved to an IP during a time frame. You can narrow results with `record_types` (A or AAAA).<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges.<br><br>To retrieve domain names for an IP with each result aggregated by name, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-ip-resolution-bound).<br><br>In a SOC environment, use this endpoint to see the exact time ranges a domain resolved to an IP, to confirm it was active during the incident window or to spot infrastructure reuse.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -3270,7 +3270,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSNameResolutionBoundResponse:
         r"""Get DNS resolution records for a name (aggregated bounds)
 
-        Retrieve the DNS resolution records for a name. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using record_types.<br><br>Results are aggregated per record distinct ranges for a record will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for the `1.1.1.1` A record in the response.<br><br>To retrieve records for a name with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-ranges).<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the DNS resolution records for a name. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using record_types.<br><br>Results are aggregated per record distinct ranges for a record will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for the `1.1.1.1` A record in the response.<br><br>To retrieve records for a name with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-ranges).<br><br>In a SOC environment, use this endpoint to see the A, AAAA, MX, NS, SOA, and TXT records observed for a suspicious domain, to pivot to its hosting and mail infrastructure.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -3381,7 +3381,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSNameResolutionBoundResponse:
         r"""Get DNS resolution records for a name (aggregated bounds)
 
-        Retrieve the DNS resolution records for a name. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using record_types.<br><br>Results are aggregated per record distinct ranges for a record will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for the `1.1.1.1` A record in the response.<br><br>To retrieve records for a name with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-ranges).<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the DNS resolution records for a name. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using record_types.<br><br>Results are aggregated per record distinct ranges for a record will be grouped into one row of results. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will group those ranges into one entry for the `1.1.1.1` A record in the response.<br><br>To retrieve records for a name with each record broken down by time range, use the [ranges endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-ranges).<br><br>In a SOC environment, use this endpoint to see the A, AAAA, MX, NS, SOA, and TXT records observed for a suspicious domain, to pivot to its hosting and mail infrastructure.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -3492,7 +3492,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSNameResolutionRangesResponse:
         r"""Get DNS resolution records for a name (ranges)
 
-        Retrieve the records that resolved for a name during a time frame. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using `record_types`.<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges for the `1.1.1.1` A record.<br><br>To retrieve records for a name with each result aggregated per record, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-bound).<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the records that resolved for a name during a time frame. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using `record_types`.<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges for the `1.1.1.1` A record.<br><br>To retrieve records for a name with each result aggregated per record, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-bound).<br><br>In a SOC environment, use this endpoint to see when a domain's records changed over time, such as a sudden hosting move after takedown.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -3603,7 +3603,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataDNSNameResolutionRangesResponse:
         r"""Get DNS resolution records for a name (ranges)
 
-        Retrieve the records that resolved for a name during a time frame. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using `record_types`.<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges for the `1.1.1.1` A record.<br><br>To retrieve records for a name with each result aggregated per record, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-bound).<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
+        Retrieve the records that resolved for a name during a time frame. This endpoint returns observed A, AAAA, MX, NS, SOA, and TXT records for the name you provide. You can filter by one or more record types using `record_types`.<br><br>Record results are broken down based on time range. For example, if `censys.com` resolved to `1.1.1.1` from January 1 to January 7 during two different ranges of January 1 to January 3 and January 5 to January 7, and you targeted January 1 through January 7 with your API call, then this endpoint will return one row for each of those distinct ranges for the `1.1.1.1` A record.<br><br>To retrieve records for a name with each result aggregated per record, use the [bounds endpoint endpoint](https://docs.censys.com/reference/v3-globaldata-dns-name-resolution-bound).<br><br>In a SOC environment, use this endpoint to see when a domain's records changed over time, such as a sudden hosting move after takedown.<br><br>This endpoint is only available to organizations on the Censys Search and Censys Core plans.<br><br>[Learn more about Censys Active DNS](https://docs.censys.com/docs/platform-active-dns).
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -3714,7 +3714,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataScansRescanResponse:
         r"""Live Rescan: Initiate a new rescan
 
-        Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
+        Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>In a SOC environment, rescan to ensure triage, an investigation, or a hunt has the most accurate and current state. This includes information like whether C2 servers are still operational, or whether an organization's asset is still exposed to the internet.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
 
         :param scans_rescan_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -3834,7 +3834,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataScansRescanResponse:
         r"""Live Rescan: Initiate a new rescan
 
-        Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
+        Initiate a rescan for a known host service at a specific IP and port (`ip:port`) or hostname and port (`hostname:port`). This is equivalent to the [Live Rescan](https://docs.censys.com/docs/platform-live-rescan#/) feature available in the UI, but you can also target web properties in addition to hosts.<br><br>The scan may take several minutes to complete. The response will contain a scan ID that you can use to [monitor the scan's status](https://docs.censys.com/reference/v3-globaldata-scans-get#/). After the scan completes, perform a lookup on the target asset to retrieve detailed scan information.<br><br>In a SOC environment, rescan to ensure triage, an investigation, or a hunt has the most accurate and current state. This includes information like whether C2 servers are still operational, or whether an organization's asset is still exposed to the internet.<br><br>This endpoint is available to all Enterprise customers. It costs 10 credits to execute.
 
         :param scans_rescan_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -3952,7 +3952,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataScansGetResponse:
         r"""Get scan status
 
-        Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
+        Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>Use this endpoint to check whether a Live Discovery or Live Rescan scan has finished, so automation knows when fresh data is ready to pull.<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all enterprise customers. This endpoint does not cost any credits to execute.
 
         :param scan_id: The unique identifier of the tracked scan
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -4063,7 +4063,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataScansGetResponse:
         r"""Get scan status
 
-        Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all Enterprise customers. This endpoint does not cost any credits to execute.
+        Retrieve the current status of a scan by its ID. This endpoint works for both [Live Discovery scans](https://docs.censys.com/reference/v3-threathunting-scans-discovery#/) and [Live Rescans](https://docs.censys.com/reference/v3-globaldata-scans-rescan#/).<br><br>Use this endpoint to check whether a Live Discovery or Live Rescan scan has finished, so automation knows when fresh data is ready to pull.<br><br>If the scan was successful, perform a lookup on the target asset to retrieve detailed scan information.<br><br>This endpoint is available to all enterprise customers. This endpoint does not cost any credits to execute.
 
         :param scan_id: The unique identifier of the tracked scan
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -4176,7 +4176,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataSearchAggregateResponse:
         r"""Aggregate results for a search query
 
-        Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
+        Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.<br><br>In a SOC environment, use this endpoint to count and bucket matches by field, such as country, ASN, or port, to size a campaign or spot where malicious infrastructure clusters without pulling every record.
 
         :param search_aggregate_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -4296,7 +4296,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataSearchAggregateResponse:
         r"""Aggregate results for a search query
 
-        Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.
+        Aggregate results for a Platform search query. This functionality is equivalent to the [Report Builder](https://docs.censys.com/docs/platform-report-builder#/) in the Platform web UI.<br><br>In a SOC environment, use this endpoint to count and bucket matches by field, such as country, ASN, or port, to size a campaign or spot where malicious infrastructure clusters without pulling every record.
 
         :param search_aggregate_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -4654,7 +4654,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataSearchQueryResponse:
         r"""Run a search query
 
-        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
+        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.<br><br>Host services that match your search criteria will be returned in a `matched_services` object.<br><br>In a SOC environment, use this endpoint to hunt for hosts, web properties, or certificates that match an indicator, such as a C2 banner, JARM, or favicon hash to scope infrastructure tied to an alert.
 
         :param search_query_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -4774,7 +4774,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataSearchQueryResponse:
         r"""Run a search query
 
-        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax. Host services that match your search criteria will be returned in a `matched_services` object.
+        Run a search query across Censys data. Reference the [documentation on Censys Query Language](https://docs.censys.com/docs/censys-query-language#/) for information about query syntax.<br><br>Host services that match your search criteria will be returned in a `matched_services` object.<br><br>In a SOC environment, use this endpoint to hunt for hosts, web properties, or certificates that match an indicator, such as a C2 banner, JARM, or favicon hash to scope infrastructure tied to an alert.
 
         :param search_query_input_body:
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
