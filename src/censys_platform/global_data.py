@@ -505,6 +505,8 @@ class GlobalData(BaseSDK):
         *,
         certificate_id: str,
         organization_id: Optional[str] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -516,6 +518,8 @@ class GlobalData(BaseSDK):
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -534,6 +538,8 @@ class GlobalData(BaseSDK):
         request = models.V3GlobaldataAssetCertificateRequest(
             organization_id=organization_id,
             certificate_id=certificate_id,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request(
@@ -595,7 +601,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "404"], "application/problem+json"
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
@@ -616,6 +622,8 @@ class GlobalData(BaseSDK):
         *,
         certificate_id: str,
         organization_id: Optional[str] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -627,6 +635,8 @@ class GlobalData(BaseSDK):
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -645,6 +655,8 @@ class GlobalData(BaseSDK):
         request = models.V3GlobaldataAssetCertificateRequest(
             organization_id=organization_id,
             certificate_id=certificate_id,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request_async(
@@ -706,7 +718,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "404"], "application/problem+json"
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
@@ -957,6 +969,8 @@ class GlobalData(BaseSDK):
         *,
         host_ip: str,
         organization_id: Optional[str] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -968,6 +982,8 @@ class GlobalData(BaseSDK):
 
         :param host_ip: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -986,6 +1002,8 @@ class GlobalData(BaseSDK):
         request = models.V3GlobaldataAssetHostEnrichmentRequest(
             organization_id=organization_id,
             host_ip=host_ip,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request(
@@ -1047,7 +1065,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "404", "409"], "application/problem+json"
+            http_res, ["400", "403", "404", "409", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
@@ -1071,6 +1089,8 @@ class GlobalData(BaseSDK):
         *,
         host_ip: str,
         organization_id: Optional[str] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1082,6 +1102,8 @@ class GlobalData(BaseSDK):
 
         :param host_ip: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1100,6 +1122,8 @@ class GlobalData(BaseSDK):
         request = models.V3GlobaldataAssetHostEnrichmentRequest(
             organization_id=organization_id,
             host_ip=host_ip,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request_async(
@@ -1161,7 +1185,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "404", "409"], "application/problem+json"
+            http_res, ["400", "403", "404", "409", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
@@ -1430,6 +1454,8 @@ class GlobalData(BaseSDK):
         host_id: str,
         organization_id: Optional[str] = None,
         at_time: Optional[datetime] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1442,6 +1468,8 @@ class GlobalData(BaseSDK):
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a host at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1461,6 +1489,8 @@ class GlobalData(BaseSDK):
             organization_id=organization_id,
             host_id=host_id,
             at_time=at_time,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request(
@@ -1522,7 +1552,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "404"], "application/problem+json"
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
@@ -1544,6 +1574,8 @@ class GlobalData(BaseSDK):
         host_id: str,
         organization_id: Optional[str] = None,
         at_time: Optional[datetime] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1556,6 +1588,8 @@ class GlobalData(BaseSDK):
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a host at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time.
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1575,6 +1609,8 @@ class GlobalData(BaseSDK):
             organization_id=organization_id,
             host_id=host_id,
             at_time=at_time,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request_async(
@@ -1636,7 +1672,7 @@ class GlobalData(BaseSDK):
             )
             raise models.AuthenticationError(response_data, http_res)
         if utils.match_response(
-            http_res, ["400", "403", "404"], "application/problem+json"
+            http_res, ["400", "403", "404", "422"], "application/problem+json"
         ):
             response_data = unmarshal_json_response(models.ErrorModelData, http_res)
             raise models.ErrorModel(response_data, http_res)
@@ -2356,6 +2392,8 @@ class GlobalData(BaseSDK):
         webproperty_id: str,
         organization_id: Optional[str] = None,
         at_time: Optional[datetime] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -2368,6 +2406,8 @@ class GlobalData(BaseSDK):
         :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a webproperty at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2387,6 +2427,8 @@ class GlobalData(BaseSDK):
             organization_id=organization_id,
             webproperty_id=webproperty_id,
             at_time=at_time,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request(
@@ -2470,6 +2512,8 @@ class GlobalData(BaseSDK):
         webproperty_id: str,
         organization_id: Optional[str] = None,
         at_time: Optional[datetime] = None,
+        fields: Optional[str] = None,
+        exclude_fields: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -2482,6 +2526,8 @@ class GlobalData(BaseSDK):
         :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
         :param at_time: RFC3339 Timestamp to view a webproperty at a specific point in time. Must be a valid RFC3339 string. Ensure that you suffix the date with T00:00:00Z or a specific time
+        :param fields: Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected.
+        :param exclude_fields: Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2501,6 +2547,8 @@ class GlobalData(BaseSDK):
             organization_id=organization_id,
             webproperty_id=webproperty_id,
             at_time=at_time,
+            fields=fields,
+            exclude_fields=exclude_fields,
         )
 
         req = self._build_request_async(
