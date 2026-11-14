@@ -151,6 +151,7 @@ if TYPE_CHECKING:
     from .cobaltstrike_postex import CobaltStrikePostEx, CobaltStrikePostExTypedDict
     from .collection import (
         Collection,
+        CollectionPrivacy,
         CollectionStatus,
         CollectionTypedDict,
         StatusReason,
@@ -214,8 +215,16 @@ if TYPE_CHECKING:
     )
     from .crestroncp3 import CrestronCp3, CrestronCp3TypedDict
     from .crestrondinap2 import CrestronDinAp2, CrestronDinAp2TypedDict
-    from .crudcreateinputbody import CrudCreateInputBody, CrudCreateInputBodyTypedDict
-    from .crudupdateinputbody import CrudUpdateInputBody, CrudUpdateInputBodyTypedDict
+    from .crudcreateinputbody import (
+        CrudCreateInputBody,
+        CrudCreateInputBodyPrivacy,
+        CrudCreateInputBodyTypedDict,
+    )
+    from .crudupdateinputbody import (
+        CrudUpdateInputBody,
+        CrudUpdateInputBodyPrivacy,
+        CrudUpdateInputBodyTypedDict,
+    )
     from .cryptsetup import CryptSetup, CryptSetupTypedDict
     from .ct import Ct, CtTypedDict
     from .ct_record import CtRecord, CtRecordTypedDict
@@ -2344,6 +2353,7 @@ __all__ = [
     "CollectionEventTypedDict",
     "CollectionEventsResponse",
     "CollectionEventsResponseTypedDict",
+    "CollectionPrivacy",
     "CollectionStatus",
     "CollectionStatuses",
     "CollectionTypedDict",
@@ -2396,8 +2406,10 @@ __all__ = [
     "CrestronDinAp2",
     "CrestronDinAp2TypedDict",
     "CrudCreateInputBody",
+    "CrudCreateInputBodyPrivacy",
     "CrudCreateInputBodyTypedDict",
     "CrudUpdateInputBody",
+    "CrudUpdateInputBodyPrivacy",
     "CrudUpdateInputBodyTypedDict",
     "CryptSetup",
     "CryptSetupTypedDict",
@@ -4402,6 +4414,7 @@ _dynamic_imports: dict[str, str] = {
     "CobaltStrikePostEx": ".cobaltstrike_postex",
     "CobaltStrikePostExTypedDict": ".cobaltstrike_postex",
     "Collection": ".collection",
+    "CollectionPrivacy": ".collection",
     "CollectionStatus": ".collection",
     "CollectionTypedDict": ".collection",
     "StatusReason": ".collection",
@@ -4461,8 +4474,10 @@ _dynamic_imports: dict[str, str] = {
     "CrestronDinAp2": ".crestrondinap2",
     "CrestronDinAp2TypedDict": ".crestrondinap2",
     "CrudCreateInputBody": ".crudcreateinputbody",
+    "CrudCreateInputBodyPrivacy": ".crudcreateinputbody",
     "CrudCreateInputBodyTypedDict": ".crudcreateinputbody",
     "CrudUpdateInputBody": ".crudupdateinputbody",
+    "CrudUpdateInputBodyPrivacy": ".crudupdateinputbody",
     "CrudUpdateInputBodyTypedDict": ".crudupdateinputbody",
     "CryptSetup": ".cryptsetup",
     "CryptSetupTypedDict": ".cryptsetup",

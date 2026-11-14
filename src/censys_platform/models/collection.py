@@ -17,6 +17,13 @@ from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
 
+class CollectionPrivacy(str, Enum, metaclass=utils.OpenEnumMeta):
+    r"""Collection visibility. `private` collections are visible to their creator and organization admins. `shared` collections are also visible to all organization members. Only the creator and organization admins can edit a collection."""
+
+    PRIVATE = "private"
+    SHARED = "shared"
+
+
 class CollectionStatus(str, Enum, metaclass=utils.OpenEnumMeta):
     UNSPECIFIED = "unspecified"
     POPULATING = "populating"
@@ -41,13 +48,15 @@ class CollectionTypedDict(TypedDict):
     description: str
     id: str
     name: str
+    privacy: CollectionPrivacy
+    r"""Collection visibility. `private` collections are visible to their creator and organization admins. `shared` collections are also visible to all organization members. Only the creator and organization admins can edit a collection."""
     query: str
     removed_assets_24_hours: int
     status: CollectionStatus
     status_reason: Nullable[StatusReason]
     total_assets: int
     created_by: NotRequired[str]
-    r"""The ID of a Censys user who created the collection."""
+    r"""The ID of the user or service account that created the collection."""
 
 
 class Collection(BaseModel):
@@ -61,6 +70,9 @@ class Collection(BaseModel):
 
     name: str
 
+    privacy: CollectionPrivacy
+    r"""Collection visibility. `private` collections are visible to their creator and organization admins. `shared` collections are also visible to all organization members. Only the creator and organization admins can edit a collection."""
+
     query: str
 
     removed_assets_24_hours: int
@@ -72,7 +84,16 @@ class Collection(BaseModel):
     total_assets: int
 
     created_by: Optional[str] = None
-    r"""The ID of a Censys user who created the collection."""
+    r"""The ID of the user or service account that created the collection."""
+
+    @field_serializer("privacy")
+    def serialize_privacy(self, value):
+        if isinstance(value, str):
+            try:
+                return models.CollectionPrivacy(value)
+            except ValueError:
+                return value
+        return value
 
     @field_serializer("status")
     def serialize_status(self, value):

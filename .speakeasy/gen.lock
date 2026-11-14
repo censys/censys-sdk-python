@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 5ca2c9b7-aea6-4a23-a631-998fcc6c18a8
 management:
-  docChecksum: 7dec23b04073c991f7b2dc645e4c78d8
-  docVersion: 1.0.161
-  speakeasyVersion: 1.806.0
-  generationVersion: 2.956.1
-  releaseVersion: 0.16.8
-  configChecksum: 633b24b1e6d08bbe59eb452c8b9b49a7
+  docChecksum: 276d466094f5cab27bf6ebdc53d7a68b
+  docVersion: 1.0.163
+  speakeasyVersion: 1.809.0
+  generationVersion: 2.961.1
+  releaseVersion: 0.16.9
+  configChecksum: ba67b726cf2ac36ad7f841ac972be320
   repoURL: https://github.com/censys/censys-sdk-python.git
   installationURL: https://github.com/censys/censys-sdk-python.git
   published: true
 persistentEdits:
-  generation_id: 752322a3-a01a-430b-9582-424d35a3fcc2
-  pristine_commit_hash: 43b03929496c9d034beccbc7023358fadba268f8
-  pristine_tree_hash: 04cb236c0007116837e7ac1c551cf02785624136
+  generation_id: 1136b896-228b-426d-b6ec-d5018eb955a4
+  pristine_commit_hash: 520fc646e147964e8fa5d976b8c054495944e159
+  pristine_tree_hash: 90ffe85a6904cea4e3c3faa011c1bd521330e3bf
 features:
   python:
     acceptHeaders: 3.0.0
     additionalDependencies: 1.1.0
     constsAndDefaults: 1.0.8
-    core: 6.1.13
+    core: 6.1.15
     defaultEnabledRetries: 0.2.0
     downloadStreams: 1.0.1
     enumUnions: 0.1.1
@@ -38,7 +38,7 @@ features:
     responseFormat: 1.1.0
     retries: 3.1.2
     sdkHooks: 1.3.0
-    unions: 3.1.15
+    unions: 3.1.16
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -366,8 +366,8 @@ trackedFiles:
     pristine_git_object: f86ff4b0e415849e5931cec95d39f246562bbb6c
   docs/models/collection.md:
     id: 33e46ebd8c53
-    last_write_checksum: sha1:ac92930f9399f8887198a25546b371ce8b9c32ba
-    pristine_git_object: 3e137620b61006d758135bbbeb88e49cb9ad82f4
+    last_write_checksum: sha1:c79ffa98d682fa1f4230408768ce33d2a917ab96
+    pristine_git_object: 438adeab82a7133575fc6ffe1c04c5add1fd7e59
   docs/models/collectionevent.md:
     id: 74a7c4169c7d
     last_write_checksum: sha1:14afdc41b88546da984b5139c607eaf604329c89
@@ -376,6 +376,10 @@ trackedFiles:
     id: 76fde4f60cf2
     last_write_checksum: sha1:6de6b83e12faf8a2167b84611946b8f654521f38
     pristine_git_object: 4a8df8a966e821a8ad7fd86c37a70d4be4adb3a5
+  docs/models/collectionprivacy.md:
+    id: be796cd40484
+    last_write_checksum: sha1:d6db2b4b44d6abadeb48052e3714c2a7f920442b
+    pristine_git_object: 3202f8300f8e130c79620ecf07b802054b9b5093
   docs/models/collectionstatus.md:
     id: 5c397478f6bf
     last_write_checksum: sha1:31f0503aaad20a8424d7784522471f4de288975e
@@ -494,12 +498,20 @@ trackedFiles:
     pristine_git_object: 481461c8d88b2b0448ee85f8f3dbd0c180f18dd9
   docs/models/crudcreateinputbody.md:
     id: 661b3a955c30
-    last_write_checksum: sha1:635e95e7f8043f3295461e026b53c72be1f5684b
-    pristine_git_object: 9a85669cabfeedfa35bf7a634f66b62f533cb454
+    last_write_checksum: sha1:386ddd80a33350949f67ce9e9cdd4b73a0dd39b4
+    pristine_git_object: 768bdbf5b1b89f56f2edf328d0918c670675a0fa
+  docs/models/crudcreateinputbodyprivacy.md:
+    id: da5e255f7f3f
+    last_write_checksum: sha1:665a95988072df320af4f2e50d2b6f078ff6db54
+    pristine_git_object: 5733b63994bf99cfc27835a1b49c331e6df84804
   docs/models/crudupdateinputbody.md:
     id: 9da7b5add77b
-    last_write_checksum: sha1:ecac42b1b66ac8920b219ad9a285aa7e1849b952
-    pristine_git_object: e7b029eaf733beb2c9bc4d3484c13b1129cb534b
+    last_write_checksum: sha1:bcb6233f858c0fbfa79c6075008d805f2218d25f
+    pristine_git_object: 8cbe982ba286f790832a0bc6b2ea0f0b5dbb1335
+  docs/models/crudupdateinputbodyprivacy.md:
+    id: 34e2a870a380
+    last_write_checksum: sha1:ad25f3abfebfafdc27c84183565cba6851445907
+    pristine_git_object: 3fafc3cea7d1c4a24348792d0272b2112867ed96
   docs/models/cryptsetup.md:
     id: 7e494faab090
     last_write_checksum: sha1:cf1e315bd498877fdff14c0edcb08b12ce098a92
@@ -3682,8 +3694,8 @@ trackedFiles:
     pristine_git_object: 6c9ed6ee9910b6d1b293dbcf96d4e5a1fae50bb0
   docs/models/v3globaldataassetcertificaterequest.md:
     id: fdd7bea4a143
-    last_write_checksum: sha1:2eea4e8fc8566ec0895f7001f2078b8ed25e1022
-    pristine_git_object: 1ede473b824bd6f6cc42550d2008234837109928
+    last_write_checksum: sha1:d98b422aa9070fc7cabce36e86b5704b2357e404
+    pristine_git_object: 56855bb0c76c4cd1bb1f9dedf831a1582a3530c9
   docs/models/v3globaldataassetcertificateresponse.md:
     id: 05a955c20203
     last_write_checksum: sha1:87c461d8b8e8ded06b7d40352e927b40f3ef2957
@@ -3694,8 +3706,8 @@ trackedFiles:
     pristine_git_object: 693fc687726e56fb1b60c31a56f64eb5681cffc4
   docs/models/v3globaldataassethostenrichmentrequest.md:
     id: f729fb528f42
-    last_write_checksum: sha1:71ebf61d2e352692c75956a66ac08a11554c1da4
-    pristine_git_object: 20cfbafef2a99a190510c0a3f8fc1584ce737962
+    last_write_checksum: sha1:22f0bee4a271c65f1a1687c4d4442f30180a1ccc
+    pristine_git_object: 5e0f4de0f8effd582884e834b84283dab41c29e7
   docs/models/v3globaldataassethostenrichmentresponse.md:
     id: 92d2b56c5416
     last_write_checksum: sha1:a7fd09c686e49ab51fc4ee35ead56158e2698496
@@ -3718,8 +3730,8 @@ trackedFiles:
     pristine_git_object: 819ff9af13145e6d18d472dd1b266c71c64cfea5
   docs/models/v3globaldataassethostrequest.md:
     id: 280974b8a113
-    last_write_checksum: sha1:cdffaab10406469155bf7b3a9204b905c71cf728
-    pristine_git_object: e44d7bedea29610df5c5e3d7a26352971af5f983
+    last_write_checksum: sha1:c5e7a58c956289b42fa3c85d0c0cf18bf30f4974
+    pristine_git_object: 50135bd8ba142228d9d4d651e4f602e65d6af411
   docs/models/v3globaldataassethostresponse.md:
     id: 8c17bf082cec
     last_write_checksum: sha1:84bbe73bf7733f1442f5ed22d51d618b8b883ef1
@@ -3754,8 +3766,8 @@ trackedFiles:
     pristine_git_object: dd6be4b9b4c0378379c682d77ef08f32f6f35484
   docs/models/v3globaldataassetwebpropertyrequest.md:
     id: 5752632287b6
-    last_write_checksum: sha1:6a2e8684f34bb78425f877b2512efdad1fd08e82
-    pristine_git_object: 5a2ef066e479a3a7f3b49f0bfb0fdbb612d8c662
+    last_write_checksum: sha1:ce00203c0270d2401e2bf6c938925668ee12aff1
+    pristine_git_object: 0e93faa5dded5cd459a71b34e8692ed7501844d6
   docs/models/v3globaldataassetwebpropertyresponse.md:
     id: f722e221bc3d
     last_write_checksum: sha1:d6cbfe0b421e8d6d41854aa4b6814778a39887f6
@@ -4422,12 +4434,12 @@ trackedFiles:
     pristine_git_object: 438646cdc061a0df0709bf2372ab801fb911c7b7
   docs/sdks/collections/README.md:
     id: 7985e64efccf
-    last_write_checksum: sha1:d85ccfccec5da172104f92720d75e4e4c4221a29
-    pristine_git_object: 71c9f1c2028f43ee940931a213f98f8ed35d9ab0
+    last_write_checksum: sha1:84c652da1fa7c2b8fbc6d608dcbcdb26b4038ced
+    pristine_git_object: 5674f0668f4ce59045346127c9c1c6f50886988d
   docs/sdks/globaldata/README.md:
     id: 0c68886632e6
-    last_write_checksum: sha1:a81a28399333afd5627c85aec0cf0d7fbaa05295
-    pristine_git_object: 6513447551bc3065eed06bb8c72972ae648e7625
+    last_write_checksum: sha1:8de08ffcb1bf532c0875374f34b6f67e00ab95b1
+    pristine_git_object: 5fe2f07999b30d6e868c974a7ff0d2cd076a3bc1
   docs/sdks/tagsandcomments/README.md:
     id: 092d693513d0
     last_write_checksum: sha1:02b34d2c1415c0b84548e697596ab45a4a036e49
@@ -4450,8 +4462,8 @@ trackedFiles:
     pristine_git_object: bfd8691be4b4b5ee9f2c4baf849970d807ade207
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:89c496daf1e2bde1e6ba0fabc77f19e76dc2f028
-    pristine_git_object: b95abd51dc6c535171c77ec02dcca7f99241e05d
+    last_write_checksum: sha1:1b6b56a2f3fdfa59f85dc6008d52595b4349fdd5
+    pristine_git_object: 8b52d91b205cd5c435da3fa82b13384a94111e85
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:10d6ae008b24c68e99d7e8ba9c2e747070685ead
@@ -4478,8 +4490,8 @@ trackedFiles:
     pristine_git_object: ec32aa84954b1a51f33327002cacd727eb9ab81e
   src/censys_platform/_version.py:
     id: d2dc39704c23
-    last_write_checksum: sha1:807b33eec25f692f482a94e160934c06965a8b58
-    pristine_git_object: 6fd291f690eb3a0db00932f2ce2d878632808f1d
+    last_write_checksum: sha1:bc905d0586fbfd1d5f75357b3c98a43b36550c5c
+    pristine_git_object: 962af7e9e0ea670bbb6fcd7af850de914435281e
   src/censys_platform/account_management.py:
     id: 09993862b047
     last_write_checksum: sha1:ffa901e36d87e9d190cefe08c68850912e9274d4
@@ -4494,20 +4506,20 @@ trackedFiles:
     pristine_git_object: 04d02d991fd90eb1c43e317e343d26fb395d2241
   src/censys_platform/collections.py:
     id: e6d640c28668
-    last_write_checksum: sha1:b3331489f8cb2e8acc6f945a0ab88738661eaa39
-    pristine_git_object: 3901f2ae25fe3f64dee51c8ff8849fbbcc0a80da
+    last_write_checksum: sha1:9bab5534f34d6ae9f7f0e910c601a34ef784d05c
+    pristine_git_object: eae22bbfe02a1e1e4642118027f89ea02ff27674
   src/censys_platform/global_data.py:
     id: 0eedbf9a2038
-    last_write_checksum: sha1:f929c93e0e43d3ffec9f75227033ddce381c1f7c
-    pristine_git_object: fca6f8529101b4623805399449f225b5b48695f0
+    last_write_checksum: sha1:9b2a3f26370122c5b7a43bc275f60b3b72c4f5a3
+    pristine_git_object: 9067625b17e526e80dd3cabab9f6632c9ec6de22
   src/censys_platform/httpclient.py:
     id: 9378a19c2de6
     last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/censys_platform/models/__init__.py:
     id: 4c65ae1e4fed
-    last_write_checksum: sha1:cdc62af14d562f0851600345ca5eea74cc8be94e
-    pristine_git_object: 01c85425016a47687b20b15d53dd02a811cc2c60
+    last_write_checksum: sha1:4180eef73f737fff68385b9c10ebf4d50a6110ac
+    pristine_git_object: a72e74eea4d2a32f3b9365c609ea891db6f4449b
   src/censys_platform/models/activemq.py:
     id: c852b87bc559
     last_write_checksum: sha1:2f5a5d430bcd61a0a23fa093852a2a08e8a3b5a7
@@ -4782,8 +4794,8 @@ trackedFiles:
     pristine_git_object: 9af17f2d5b165f6d31899392ca27ee374de3c8ab
   src/censys_platform/models/collection.py:
     id: 85cf87546205
-    last_write_checksum: sha1:f9ef3b4d528c373d0395fa8d775939fb00dc3be4
-    pristine_git_object: 86dc93e791907e106c223b5aca0d793f4bedd765
+    last_write_checksum: sha1:65f7f0d2bbbef8deb2b477217a98c89885b8f50b
+    pristine_git_object: ed69ed88c0ff292741935476899fc0a2bb75f33c
   src/censys_platform/models/collectionevent.py:
     id: 8e4536c271ed
     last_write_checksum: sha1:b5339a58f8520d042f87c3ddd6aa2bc40bd2d6be
@@ -4886,12 +4898,12 @@ trackedFiles:
     pristine_git_object: 7527b602e4597c2c605f69398daf72f6b7bcae5f
   src/censys_platform/models/crudcreateinputbody.py:
     id: 815e4cccc2fd
-    last_write_checksum: sha1:ecf7e71cc797ea91b5cfdf58685ef72bdd9fbaca
-    pristine_git_object: 626fa8abddfffa5fb60cf38da8d317457218835f
+    last_write_checksum: sha1:c567852529975152cc05f1935c4f4a690052e93e
+    pristine_git_object: e056e11bb66791a3c9938c7fcd38acb15ff47cc1
   src/censys_platform/models/crudupdateinputbody.py:
     id: 7632b4eff20b
-    last_write_checksum: sha1:18e8ec3da52abcef66b53f38fc84f2cf2a0855aa
-    pristine_git_object: bf3509e6468622266974070c5d61a8fc33be4649
+    last_write_checksum: sha1:4ad4cafb3e11145d829caeeb490c7adfbd1869c8
+    pristine_git_object: 028ce118c41bc52b25bb99c911bcce0fda154c27
   src/censys_platform/models/cryptsetup.py:
     id: e25d5d934655
     last_write_checksum: sha1:268197492b72056142b5fac1890ad4b9f0eefc22
@@ -7590,12 +7602,12 @@ trackedFiles:
     pristine_git_object: ad931db9913880d85cb080dbaa7b7b63f712cf5a
   src/censys_platform/models/v3_globaldata_asset_certificateop.py:
     id: 5ba0c7970383
-    last_write_checksum: sha1:180b98845c249264bad75902ee09a4f5a51f8fc0
-    pristine_git_object: 7ac6e4c73cd7b28e2c1a828e09f9bfdc4938dc94
+    last_write_checksum: sha1:6285987e97fbb9af2769c216119afff5278a9e0d
+    pristine_git_object: 7e8808eda3f390dc13e2d981b81d5fcdfadfba28
   src/censys_platform/models/v3_globaldata_asset_host_enrichmentop.py:
     id: 8287b8608cd9
-    last_write_checksum: sha1:992483870a7870ec872c40b89e38df15f91adf4e
-    pristine_git_object: a1d7fd2c57828ec069759f53e9edf702ab7af9bb
+    last_write_checksum: sha1:713b9b3aa7a6c346f17db34fda106d9a6aaf1616
+    pristine_git_object: 885f4317277c6ae4328de299c3a766f8ca3f148c
   src/censys_platform/models/v3_globaldata_asset_host_list_postop.py:
     id: 642c2e63ff60
     last_write_checksum: sha1:4394c54faeb64a852066b56c46f105d465c104cf
@@ -7606,8 +7618,8 @@ trackedFiles:
     pristine_git_object: 01fa8ca6a42113c5a42923aac4c8a45f21e96391
   src/censys_platform/models/v3_globaldata_asset_hostop.py:
     id: c5e3263e71a6
-    last_write_checksum: sha1:77c70699871260581fa68028321234b7a9c69654
-    pristine_git_object: 592c28ec579f4d1d237ce9392a7c1585ccf0bfe0
+    last_write_checksum: sha1:1a4154b64bab7fb66a734fb2ed6d09026cfdb529
+    pristine_git_object: 85ed71963ac1f6429a892b2bbb696988d8bf8ee0
   src/censys_platform/models/v3_globaldata_asset_webproperty_list_postop.py:
     id: c685301403e0
     last_write_checksum: sha1:26bc80e61d7ff2373ba82abe398c0626de1fb742
@@ -7618,8 +7630,8 @@ trackedFiles:
     pristine_git_object: 7926d3540ddda462b9937211e6b8476fca60fef0
   src/censys_platform/models/v3_globaldata_asset_webpropertyop.py:
     id: 1c3e75b528e2
-    last_write_checksum: sha1:7c61936acdb9cc1dd3fa468e38accf72a4782a5d
-    pristine_git_object: 7b51f506c6fd4a7e4effdc97e309636308013189
+    last_write_checksum: sha1:58aaddcc0de30af08d2487d398fdc55b1e7cafd6
+    pristine_git_object: dfcd7baeb655aae7fb5ab14314927d877d118542
   src/censys_platform/models/v3_globaldata_dns_ip_resolution_boundop.py:
     id: 92d62e8a9d4f
     last_write_checksum: sha1:edeee947db9ce219c8ff81d791f7a33b45b387e8
@@ -7930,8 +7942,8 @@ trackedFiles:
     pristine_git_object: 3a43a78ab719ec504ec95c050c984c843407d366
   src/censys_platform/types/base64fileinput.py:
     id: ccba2556f533
-    last_write_checksum: sha1:1522687ae3398374c35710cad993a6e82b5ab99d
-    pristine_git_object: 862566fe2b1db830276b390e136e65090e5963d2
+    last_write_checksum: sha1:94a99b9b1b7ab6d3fd8fb2e52385a50b4a2ff333
+    pristine_git_object: de42346d429a62ce8d39b04be6ee568c9d37e619
   src/censys_platform/types/basemodel.py:
     id: 0cf83f7ce28c
     last_write_checksum: sha1:99c644208e340c4974b94bbe6d52019c80fedb97
@@ -7942,8 +7954,8 @@ trackedFiles:
     pristine_git_object: 6d6c5c3f9973b392924f0ee369a6c6bb5407ea02
   src/censys_platform/utils/annotations.py:
     id: 259f8dfc4b83
-    last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
-    pristine_git_object: 12e0aa4f1151bb52474cc02e88397329b90703f6
+    last_write_checksum: sha1:2dd01678125b08184a96e28bb4f3692381bf04cc
+    pristine_git_object: 3af322f22ea3253fd1b6cdbb889af11c8b20dc3f
   src/censys_platform/utils/datetimes.py:
     id: 45311463dfef
     last_write_checksum: sha1:8d08dfebf00458efa19e0c19455eddcc9f14b8ca
@@ -8035,7 +8047,7 @@ examples:
         query:
           organization_id: "<id>"
       requestBody:
-        application/json: {"description": "Hosts with services with AsyncRAT indicator in cert subject DN", "name": "Hosts services with AsyncRAT indicator", "query": "host.services.cert.parsed.subject_dn: \"asyncrat\""}
+        application/json: {"description": "Hosts with services with AsyncRAT indicator in cert subject DN", "name": "Hosts services with AsyncRAT indicator", "privacy": "private", "query": "host.services.cert.parsed.subject_dn: \"asyncrat\""}
       responses:
         "200":
           application/json: {}
@@ -8188,6 +8200,8 @@ examples:
           certificate_id: "3daf2843a77b6f4e6af43cd9b6f6746053b8c928e056e8a724808db8905a94cf"
         query:
           organization_id: "<id>"
+          fields: "fingerprint_sha256,parsed.subject_dn"
+          exclude_fields: "names,fingerprint_sha1"
       responses:
         "200":
           application/vnd.censys.api.v3.certificate.v1+json: {}
@@ -8219,6 +8233,8 @@ examples:
         query:
           organization_id: "<id>"
           at_time: "2025-01-01T00:00:00Z"
+          fields: "ip,services.port,services.protocol"
+          exclude_fields: "services.banner,services.cert"
       responses:
         "200":
           application/vnd.censys.api.v3.host.v1+json: {}
@@ -8271,6 +8287,8 @@ examples:
         query:
           organization_id: "<id>"
           at_time: "2025-01-01T00:00:00Z"
+          fields: "hostname,port,tls.cipher_selected"
+          exclude_fields: "cert,endpoints.http.body"
       responses:
         "200":
           application/vnd.censys.api.v3.webproperty.v1+json: {}
@@ -9191,6 +9209,8 @@ examples:
           host_ip: "8.8.8.8"
         query:
           organization_id: "<id>"
+          fields: "ip,greynoise.classification,third_party.mallory"
+          exclude_fields: "whois,services"
       responses:
         "200":
           application/vnd.censys.api.v3.host-enrichment.v1+json: {}

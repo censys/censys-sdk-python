@@ -8,9 +8,17 @@ from censys_platform.types import (
     serialize_with_info,
 )
 from censys_platform.types.basemodel import current_filtered_dump
+from enum import Enum
 from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
+
+
+class CrudCreateInputBodyPrivacy(str, Enum):
+    r"""Collection visibility. `private` collections are visible to their creator and organization admins. `shared` collections are also visible to all organization members. Only the creator and organization admins can edit a collection."""
+
+    PRIVATE = "private"
+    SHARED = "shared"
 
 
 class CrudCreateInputBodyTypedDict(TypedDict):
@@ -20,6 +28,8 @@ class CrudCreateInputBodyTypedDict(TypedDict):
     r"""query string to search upon to build the collection"""
     description: NotRequired[str]
     r"""description of the collection"""
+    privacy: NotRequired[CrudCreateInputBodyPrivacy]
+    r"""Collection visibility. `private` collections are visible to their creator and organization admins. `shared` collections are also visible to all organization members. Only the creator and organization admins can edit a collection."""
 
 
 class CrudCreateInputBody(BaseModel):
@@ -32,12 +42,15 @@ class CrudCreateInputBody(BaseModel):
     description: Optional[str] = None
     r"""description of the collection"""
 
+    privacy: Optional[CrudCreateInputBodyPrivacy] = CrudCreateInputBodyPrivacy.PRIVATE
+    r"""Collection visibility. `private` collections are visible to their creator and organization admins. `shared` collections are also visible to all organization members. Only the creator and organization admins can edit a collection."""
+
     @model_serializer(mode="wrap")
     def _serialize_model_with_info(self, handler, info):
         return serialize_with_info(self.serialize_model, handler, info)
 
     def serialize_model(self, handler):
-        optional_fields = set(["description"])
+        optional_fields = set(["description", "privacy"])
         exclude_none = current_exclude_none()
         skip_filtered = exclude_none is False or current_filtered_dump()
         serialized = handler(self)

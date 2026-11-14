@@ -944,7 +944,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudUpdateResponse:
         r"""Update a collection
 
-        Update a collection's name, description, and/or query.<br><br>This endpoint does not cost credits to execute.
+        Update a collection's name, description, query, and/or privacy.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1067,7 +1067,7 @@ class Collections(BaseSDK):
     ) -> models.V3CollectionsCrudUpdateResponse:
         r"""Update a collection
 
-        Update a collection's name, description, and/or query.<br><br>This endpoint does not cost credits to execute.
+        Update a collection's name, description, query, and/or privacy.<br><br>This endpoint does not cost credits to execute.
 
         :param collection_uid: The UID for the collection
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
