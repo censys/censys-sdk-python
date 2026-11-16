@@ -57,6 +57,10 @@ class V3GlobaldataAssetCertificateRequestTypedDict(TypedDict):
     r"""The SHA-256 certificate fingerprint."""
     organization_id: NotRequired[str]
     r"""The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
+    fields: NotRequired[str]
+    r"""Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected."""
+    exclude_fields: NotRequired[str]
+    r"""Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`."""
 
 
 class V3GlobaldataAssetCertificateRequest(BaseModel):
@@ -71,12 +75,24 @@ class V3GlobaldataAssetCertificateRequest(BaseModel):
     ] = None
     r"""The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information."""
 
+    fields: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = None
+    r"""Comma-separated list of fields to include in the response, in dot notation (for example `services.port`). Repeated fields are filtered per element. Omit the parameter or pass `*` to return every field. Unknown fields are rejected."""
+
+    exclude_fields: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=False)),
+    ] = None
+    r"""Comma-separated list of fields to exclude from the response, in dot notation (for example `services.banner`). Repeated fields are filtered per element. Unknown fields are rejected. Cannot be used together with `fields`."""
+
     @model_serializer(mode="wrap")
     def _serialize_model_with_info(self, handler, info):
         return serialize_with_info(self.serialize_model, handler, info)
 
     def serialize_model(self, handler):
-        optional_fields = set(["organization_id"])
+        optional_fields = set(["organization_id", "fields", "exclude_fields"])
         exclude_none = current_exclude_none()
         skip_filtered = exclude_none is False or current_filtered_dump()
         serialized = handler(self)
