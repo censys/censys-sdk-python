@@ -514,7 +514,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateResponse:
         r"""Get a certificate
 
-        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint.<br><br>In a SOC environment, use this endpoint to look up a certificate by SHA-256 fingerprint to see its subject, issuer, and validity, so you can vet certs seen in TLS logs or alerts.
+        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint. Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>In a SOC environment, use this endpoint to look up a certificate by SHA-256 fingerprint to see its subject, issuer, and validity, so you can vet certs seen in TLS logs or alerts.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -631,7 +631,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetCertificateResponse:
         r"""Get a certificate
 
-        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint.<br><br>In a SOC environment, use this endpoint to look up a certificate by SHA-256 fingerprint to see its subject, issuer, and validity, so you can vet certs seen in TLS logs or alerts.
+        Retrieve information about a single certificate. A certificate ID is its SHA-256 fingerprint. Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>In a SOC environment, use this endpoint to look up a certificate by SHA-256 fingerprint to see its subject, issuer, and validity, so you can vet certs seen in TLS logs or alerts.
 
         :param certificate_id: The SHA-256 certificate fingerprint.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -978,7 +978,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostEnrichmentResponse:
         r"""Get host enrichment
 
-        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>Use this endpoint to add Censys context (location, ASN, labels, reputation, and more) to IPs in your SIEM or SOAR at high volume, without spending standard credits.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
+        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>Use this endpoint to add Censys context (location, ASN, labels, reputation, and more) to IPs in your SIEM or SOAR at high volume, without spending standard credits.<br><br>Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
 
         :param host_ip: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1098,7 +1098,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostEnrichmentResponse:
         r"""Get host enrichment
 
-        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>Use this endpoint to add Censys context (location, ASN, labels, reputation, and more) to IPs in your SIEM or SOAR at high volume, without spending standard credits.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
+        Retrieve enrichment data for a single host. This endpoint is optimized for high-volume SOC enrichment use cases.<br><br>Use this endpoint to add Censys context (location, ASN, labels, reputation, and more) to IPs in your SIEM or SOAR at high volume, without spending standard credits.<br><br>Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>This endpoint does not consume standard Censys credits. Core organizations may perform up to 20,000 enrichment calls per day. Core + Unlimited Enrichment organizations may perform an unlimited amount of enrichment calls per day.<br><br>[Learn more about the enrichment API here](https://docs.censys.com/docs/host-enrichment).
 
         :param host_ip: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1463,7 +1463,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostResponse:
         r"""Get a host
 
-        Retrieve information about a single host. A host ID is its IP address.<br><br>In a SOC environment, use this endpoint to pull the current services, software, certificates, and labels on an IP from an alert, so you can quickly judge whether it is malicious or benign.
+        Retrieve information about a single host. A host ID is its IP address. Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>In a SOC environment, use this endpoint to pull the current services, software, certificates, and labels on an IP from an alert, so you can quickly judge whether it is malicious or benign.
 
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -1583,7 +1583,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetHostResponse:
         r"""Get a host
 
-        Retrieve information about a single host. A host ID is its IP address.<br><br>In a SOC environment, use this endpoint to pull the current services, software, certificates, and labels on an IP from an alert, so you can quickly judge whether it is malicious or benign.
+        Retrieve information about a single host. A host ID is its IP address. Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>In a SOC environment, use this endpoint to pull the current services, software, certificates, and labels on an IP from an alert, so you can quickly judge whether it is malicious or benign.
 
         :param host_id: The IP address of a host.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -2401,7 +2401,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetWebpropertyResponse:
         r"""Get a web property
 
-        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.<br><br>In a SOC environment, use this endpoint to inspect the current content, technologies, and certificate for a hostname and port from a phishing or C2 alert.
+        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`. Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>In a SOC environment, use this endpoint to inspect the current content, technologies, and certificate for a hostname and port from a phishing or C2 alert.
 
         :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
@@ -2521,7 +2521,7 @@ class GlobalData(BaseSDK):
     ) -> models.V3GlobaldataAssetWebpropertyResponse:
         r"""Get a web property
 
-        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`.<br><br>In a SOC environment, use this endpoint to inspect the current content, technologies, and certificate for a hostname and port from a phishing or C2 alert.
+        Retrieve information about a single web property. Web properties are identified using a combination of a hostname and port joined with a colon, such as `platform.censys.io:80`. Use `fields` to include specific fields in the response. Use `exclude_fields` to omit specific fields from the response.<br><br>In a SOC environment, use this endpoint to inspect the current content, technologies, and certificate for a hostname and port from a phishing or C2 alert.
 
         :param webproperty_id: A web property identifier.
         :param organization_id: The ID of a Censys organization to associate the request with. If omitted, the request will be processed using the authenticated user's free wallet where applicable. See the [Getting Started docs](https://docs.censys.com/reference/get-started#step-3-find-and-use-your-organization-id-optional) for more information.
