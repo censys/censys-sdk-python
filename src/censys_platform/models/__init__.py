@@ -528,6 +528,11 @@ if TYPE_CHECKING:
     from .giop_iiopprofile import GiopIiopProfile, GiopIiopProfileTypedDict
     from .giop_ior import GiopIor, GiopIorTypedDict
     from .giop_taggedcomponent import GiopTaggedComponent, GiopTaggedComponentTypedDict
+    from .gluster import Gluster, GlusterTypedDict
+    from .gluster_brick import GlusterBrick, GlusterBrickTypedDict
+    from .gluster_option import GlusterOption, GlusterOptionTypedDict
+    from .gluster_peer import GlusterPeer, GlusterPeerTypedDict
+    from .gluster_volume import GlusterVolume, GlusterVolumeTypedDict
     from .gopher import Gopher, GopherTypedDict
     from .gopher_item import GopherItem, GopherItemTypedDict
     from .graphql import Graphql, GraphqlTypedDict
@@ -2666,6 +2671,16 @@ __all__ = [
     "GiopTaggedComponent",
     "GiopTaggedComponentTypedDict",
     "GiopTypedDict",
+    "Gluster",
+    "GlusterBrick",
+    "GlusterBrickTypedDict",
+    "GlusterOption",
+    "GlusterOptionTypedDict",
+    "GlusterPeer",
+    "GlusterPeerTypedDict",
+    "GlusterTypedDict",
+    "GlusterVolume",
+    "GlusterVolumeTypedDict",
     "Gopher",
     "GopherItem",
     "GopherItemTypedDict",
@@ -4767,6 +4782,16 @@ _dynamic_imports: dict[str, str] = {
     "GiopIorTypedDict": ".giop_ior",
     "GiopTaggedComponent": ".giop_taggedcomponent",
     "GiopTaggedComponentTypedDict": ".giop_taggedcomponent",
+    "Gluster": ".gluster",
+    "GlusterTypedDict": ".gluster",
+    "GlusterBrick": ".gluster_brick",
+    "GlusterBrickTypedDict": ".gluster_brick",
+    "GlusterOption": ".gluster_option",
+    "GlusterOptionTypedDict": ".gluster_option",
+    "GlusterPeer": ".gluster_peer",
+    "GlusterPeerTypedDict": ".gluster_peer",
+    "GlusterVolume": ".gluster_volume",
+    "GlusterVolumeTypedDict": ".gluster_volume",
     "Gopher": ".gopher",
     "GopherTypedDict": ".gopher",
     "GopherItem": ".gopher_item",

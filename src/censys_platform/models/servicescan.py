@@ -58,6 +58,7 @@ from .gearman import Gearman, GearmanTypedDict
 from .gemini import Gemini, GeminiTypedDict
 from .geovisionaudio import GeovisionAudio, GeovisionAudioTypedDict
 from .giop import Giop, GiopTypedDict
+from .gluster import Gluster, GlusterTypedDict
 from .gopher import Gopher, GopherTypedDict
 from .grilconsole import GrilConsole, GrilConsoleTypedDict
 from .hajime import Hajime, HajimeTypedDict
@@ -277,6 +278,7 @@ class ServiceScanTypedDict(TypedDict):
     gemini: NotRequired[GeminiTypedDict]
     geovision_audio: NotRequired[GeovisionAudioTypedDict]
     giop: NotRequired[GiopTypedDict]
+    gluster: NotRequired[GlusterTypedDict]
     gopher: NotRequired[GopherTypedDict]
     gril_console: NotRequired[GrilConsoleTypedDict]
     hajime: NotRequired[HajimeTypedDict]
@@ -531,6 +533,8 @@ class ServiceScan(BaseModel):
     geovision_audio: Optional[GeovisionAudio] = None
 
     giop: Optional[Giop] = None
+
+    gluster: Optional[Gluster] = None
 
     gopher: Optional[Gopher] = None
 
@@ -893,6 +897,7 @@ class ServiceScan(BaseModel):
                 "gemini",
                 "geovision_audio",
                 "giop",
+                "gluster",
                 "gopher",
                 "gril_console",
                 "hajime",
